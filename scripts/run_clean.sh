@@ -7,6 +7,8 @@
 # Original contents of archive/ may be overwritten.
 #
 
+mkdir -p archive
+
 [ -f scripts/gen_padframe.tcl ] && mv scripts/gen_padframe.tcl archive/
 [ -f verilog/gl/gf180mcu_padframe.v ] && mv verilog/gl/gf180mcu_padframe.v archive/
 [ -f verilog/gl/chipalooza_frame_wrapper.v ] && mv verilog/gl/chipalooza_frame_wrapper.v archive/

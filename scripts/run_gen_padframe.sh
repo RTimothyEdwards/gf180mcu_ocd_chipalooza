@@ -24,11 +24,13 @@
 #	2. Automate the generation of the padframe verilog corresponding to
 #	   this layout.
 
-echo ${PDK_ROOT:=/home/tim/gits} > /dev/null
-echo ${PDK:=gf180mcuD} > /dev/null
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
+export PDK=${PDK:-gf180mcuD}
 
 cd magic
 
+echo "running:"
+echo "magic -dnull -noconsole -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc"
 magic -dnull -noconsole -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
 source ../scripts/gen_padframe.tcl
 EOF

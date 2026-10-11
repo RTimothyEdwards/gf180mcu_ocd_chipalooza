@@ -1,99 +1,98 @@
 magic
 tech gf180mcuD
-magscale 1 2
-timestamp 1774808302
+magscale 1 10
+timestamp 1764982451
 << metal1 >>
-rect 571 327 573 371
-rect 1708 -93 1750 -89
-rect 1708 -227 1750 -222
-rect 1509 -344 1512 -302
+rect -205 1241 351 1243
+rect -205 1173 -193 1241
+rect -27 1173 351 1241
+rect 2679 1173 2878 1228
+rect -205 1171 351 1173
+rect 2823 1126 2878 1173
+rect 2823 1071 2992 1126
+rect -407 512 -395 672
+rect -235 512 -223 672
+rect -313 394 -241 512
+rect -313 322 311 394
+rect 2678 330 2906 392
+rect 2844 270 2906 330
+rect 2844 208 2992 270
 << via1 >>
-rect 869 731 1050 804
-rect 1708 454 1750 583
-rect 451 327 571 371
-rect 1341 332 1509 374
-rect 2153 -24 2334 49
-rect 1708 -222 1750 -93
-rect 451 -346 569 -303
-rect 1341 -344 1509 -302
-rect 870 -781 1051 -708
+rect 2656 1508 3252 1628
+rect -193 1173 -27 1241
+rect 256 724 852 844
+rect -395 512 -235 672
+rect 2656 -60 3252 60
 << metal2 >>
-rect 208 -298 253 853
-rect 439 375 484 853
-rect 861 804 1061 855
-rect 861 731 869 804
-rect 1050 731 1061 804
-rect 439 371 580 375
-rect 439 327 451 371
-rect 571 327 580 371
-rect 439 322 580 327
-rect 208 -303 579 -298
-rect 208 -346 451 -303
-rect 569 -346 579 -303
-rect 208 -351 579 -346
-rect 861 -708 1061 731
-rect 1698 583 1759 590
-rect 1698 454 1708 583
-rect 1750 454 1759 583
-rect 1698 389 1759 454
-rect 1331 374 1759 389
-rect 1331 332 1341 374
-rect 1509 332 1759 374
-rect 1331 315 1759 332
-rect 2144 49 2344 855
-rect 2144 -24 2153 49
-rect 2334 -24 2344 49
-rect 1698 -93 1759 -86
-rect 1698 -222 1708 -93
-rect 1750 -222 1759 -93
-rect 1698 -287 1759 -222
-rect 1331 -302 1759 -287
-rect 1331 -344 1341 -302
-rect 1509 -344 1759 -302
-rect 1331 -361 1759 -344
-rect 861 -781 870 -708
-rect 1051 -781 1061 -708
-rect 861 -816 1061 -781
-rect 2144 -817 2344 -24
-use gf180mcu_as_sc_mcu7t3v3__buff_8  gf180mcu_as_sc_mcu7t3v3__buff_8_0 gf180mcu_as_sc_mcu7t3v3
-timestamp 1773957321
-transform -1 0 1632 0 1 12
-box -48 -56 1296 834
-use gf180mcu_as_sc_mcu7t3v3__buff_8  gf180mcu_as_sc_mcu7t3v3__buff_8_1
-timestamp 1773957321
-transform -1 0 1632 0 -1 12
-box -48 -56 1296 834
-use gf180mcu_as_sc_mcu7t3v3__fillcap_4  gf180mcu_as_sc_mcu7t3v3__fillcap_4_0 gf180mcu_as_sc_mcu7t3v3
-timestamp 1774721386
-transform 1 0 0 0 1 12
-box -48 -56 432 834
+rect -74 1243 -18 1661
+rect 2654 1628 3254 1656
+rect 2654 1508 2656 1628
+rect 3252 1508 3254 1628
+rect 2654 1482 3254 1508
+rect -205 1241 -14 1243
+rect -205 1173 -193 1241
+rect -27 1173 -14 1241
+rect -205 1171 -14 1173
+rect -362 674 -306 1057
+rect 254 844 1474 857
+rect 254 724 256 844
+rect 852 724 1474 844
+rect 254 702 1474 724
+rect -407 672 -223 674
+rect -407 512 -395 672
+rect -235 512 -223 672
+rect -407 510 -223 512
+rect 2654 60 3254 85
+rect 2654 -60 2656 60
+rect 3252 -60 3254 60
+rect 2654 -78 3254 -60
+use gf180mcu_as_sc_mcu7t3v3__buff_12  gf180mcu_as_sc_mcu7t3v3__buff_12_0 $PDKPATH/libs.ref/gf180mcu_as_sc_mcu7t3v3/mag
+timestamp 1751664855
+transform -1 0 2790 0 1 0
+box -86 -86 2886 870
+use gf180mcu_as_sc_mcu7t3v3__buff_12  gf180mcu_as_sc_mcu7t3v3__buff_12_1
+timestamp 1751664855
+transform -1 0 2790 0 -1 1568
+box -86 -86 2886 870
+use gf180mcu_as_sc_mcu7t3v3__fillcap_4  gf180mcu_as_sc_mcu7t3v3__fillcap_4_0 $PDKPATH/libs.ref/gf180mcu_as_sc_mcu7t3v3/mag
+timestamp 1751532246
+transform 1 0 3238 0 -1 1568
+box -86 -86 534 870
 use gf180mcu_as_sc_mcu7t3v3__fillcap_4  gf180mcu_as_sc_mcu7t3v3__fillcap_4_1
-timestamp 1774721386
-transform 1 0 2016 0 1 12
-box -48 -56 432 834
-use gf180mcu_as_sc_mcu7t3v3__fillcap_4  gf180mcu_as_sc_mcu7t3v3__fillcap_4_2
-timestamp 1774721386
-transform 1 0 0 0 -1 12
-box -48 -56 432 834
-use gf180mcu_as_sc_mcu7t3v3__fillcap_4  gf180mcu_as_sc_mcu7t3v3__fillcap_4_3
-timestamp 1774721386
-transform 1 0 2016 0 -1 12
-box -48 -56 432 834
-use gf180mcu_tiehi  gf180mcu_tiehi_0 gf180mcu_as_sc_mcu7t3v3
-timestamp 1771620123
-transform -1 0 2016 0 1 12
-box -48 -56 432 834
-use gf180mcu_tielo  gf180mcu_tielo_0 gf180mcu_as_sc_mcu7t3v3
-timestamp 1772036422
-transform -1 0 2016 0 -1 12
-box -48 -56 432 834
+timestamp 1751532246
+transform 1 0 3238 0 1 0
+box -86 -86 534 870
+use gf180mcu_as_sc_mcu7t3v3__tap_2  gf180mcu_as_sc_mcu7t3v3__tap_2_0 $PDKPATH/libs.ref/gf180mcu_as_sc_mcu7t3v3/mag
+timestamp 1759751540
+transform 1 0 3686 0 -1 1568
+box -86 -86 310 870
+use gf180mcu_as_sc_mcu7t3v3__tap_2  gf180mcu_as_sc_mcu7t3v3__tap_2_1
+timestamp 1759751540
+transform 1 0 3686 0 1 0
+box -86 -86 310 870
+use gf180mcu_as_sc_mcu7t3v3__tap_2  gf180mcu_as_sc_mcu7t3v3__tap_2_2
+timestamp 1759751540
+transform 1 0 -234 0 -1 1568
+box -86 -86 310 870
+use gf180mcu_as_sc_mcu7t3v3__tap_2  gf180mcu_as_sc_mcu7t3v3__tap_2_3
+timestamp 1759751540
+transform 1 0 -234 0 1 0
+box -86 -86 310 870
+use gf180mcu_as_sc_mcu7t3v3__tieh_4  gf180mcu_as_sc_mcu7t3v3__tieh_4_0 $PDKPATH/libs.ref/gf180mcu_as_sc_mcu7t3v3/mag
+timestamp 1751532550
+transform -1 0 3238 0 -1 1568
+box -86 -86 534 870
+use gf180mcu_as_sc_mcu7t3v3__tiel_4  gf180mcu_as_sc_mcu7t3v3__tiel_4_0 $PDKPATH/libs.ref/gf180mcu_as_sc_mcu7t3v3/mag
+timestamp 1751532612
+transform -1 0 3238 0 1 0
+box -86 -86 534 870
 << labels >>
-flabel metal2 439 732 484 853 0 FreeSans 480 90 0 0 one
-port 0 nsew
-flabel metal2 861 817 1061 855 0 FreeSans 480 0 0 0 vdd
-port 2 nsew
-flabel metal2 2144 817 2344 855 0 FreeSans 480 0 0 0 vss
+flabel metal2 s 2654 1508 3254 1656 0 FreeSans 560 0 0 0 vss
 port 3 nsew
-flabel metal2 208 732 253 853 0 FreeSans 480 90 0 0 zero
+flabel metal2 874 709 1474 857 0 FreeSans 560 0 0 0 vdd
+port 2 nsew
+flabel metal2 -74 1528 -18 1661 0 FreeSans 480 90 0 0 one
 port 1 nsew
+flabel metal2 -362 924 -306 1057 0 FreeSans 480 90 0 0 zero
+port 0 nsew
 << end >>

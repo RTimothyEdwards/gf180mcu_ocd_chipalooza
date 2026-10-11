@@ -24,7 +24,7 @@
 # the comments below.  Steps 12, 16 and 17 name scripts by their old
 # caravel_openframe names;  the scripts called here are the current ones.
 
-PDK_ROOT ?= $(HOME)/gits
+PDK_ROOT ?= /usr/share/pdk
 PDK      ?= gf180mcuD
 export PDK_ROOT PDK
 

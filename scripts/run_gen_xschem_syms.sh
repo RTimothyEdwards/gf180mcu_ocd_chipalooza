@@ -27,9 +27,8 @@
 
 # This script to be run from the top level directory.
 
-echo ${PDK_ROOT:=/home/tim/gits} > /dev/null
-echo ${PDK:=gf180mcuD} > /dev/null
-export PDK_ROOT PDK
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
+export PDK=${PDK:-gf180mcuD}
 
 # Back up any existing symbols
 

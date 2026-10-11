@@ -14,10 +14,10 @@
 # When submitting for an GF shuttle run, the project name will be dictated
 # by the GF submission process (e.g., PROJECT=GF__MPC9763).
 
-echo ${PROJECT:=gf180mcu_ocd_chipalooza_final} > /dev/null
+export PROJECT=${PROJECT:-gf180mcu_ocd_chipalooza_final}
 
-echo ${PDK_ROOT:=/home/tim/gits} > /dev/null
-echo ${PDK:=gf180mcuD} > /dev/null
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
+export PDK=${PDK:-gf180mcuD}
 
 echo "Generating final (filled) GDS for $PROJECT"
 

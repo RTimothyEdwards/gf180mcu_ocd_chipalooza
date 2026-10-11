@@ -1,0 +1,1308 @@
+magic
+tech gf180mcuD
+magscale 1 10
+timestamp 1791743864
+<< checkpaint >>
+rect 15140 567600 29980 581973
+rect 37140 573200 60150 580600
+rect 88968 572303 346032 584400
+rect 31097 514432 403903 572303
+rect 18000 510432 416000 514432
+rect 18000 510400 261032 510432
+rect 326968 510400 416000 510432
+rect 18000 93000 92000 510400
+rect 327000 509800 416000 510400
+rect 329600 483200 416000 509800
+rect 330600 456600 339284 483200
+rect 332000 438080 336768 456600
+rect 332200 419560 336568 438080
+rect 332368 386520 336400 419560
+rect 342000 386520 416000 483200
+rect 332368 385204 416000 386520
+rect 332368 383404 421768 385204
+rect 332368 383088 453168 383404
+rect 332368 382520 509168 383088
+rect 332400 382320 509168 382520
+rect 342000 382288 509168 382320
+rect 342000 379404 540568 382288
+rect 176236 144466 206836 146382
+rect 176236 143466 238236 144466
+rect 176236 143150 269636 143466
+rect 176236 142150 296236 143150
+rect 342000 142150 416000 379404
+rect 417768 379088 540568 379404
+rect 449168 378288 540568 379088
+rect 505168 378088 540568 378288
+rect 176236 140466 416000 142150
+rect 202836 140266 416000 140466
+rect 234236 139150 416000 140266
+rect 265636 137350 416000 139150
+rect 18000 91968 93000 93000
+rect 173968 91970 210032 92000
+rect 105968 91968 210032 91970
+rect 342000 91968 416000 137350
+rect 18000 88968 416000 91968
+rect 31097 36810 403903 88968
+rect 31097 31097 416560 36810
+rect 13140 18400 36690 31028
+rect 88968 18000 346032 31097
+rect 371120 22000 416560 31097
+<< metal2 >>
+rect 19800 587800 414200 588000
+rect 19780 587600 414220 587800
+rect 19760 587400 414240 587600
+rect 19740 587200 414260 587400
+rect 19720 587000 414280 587200
+rect 19700 586800 414300 587000
+rect 19680 586600 414320 586800
+rect 19660 586400 414340 586600
+rect 19640 586200 414360 586400
+rect 19620 586000 414380 586200
+rect 19600 585800 414400 586000
+rect 19580 585600 414420 585800
+rect 19560 585400 414440 585600
+rect 19540 585200 414460 585400
+rect 19520 585000 414480 585200
+rect 19500 584800 414500 585000
+rect 19480 583520 414520 584800
+rect 20220 583400 413780 583520
+rect 20240 583200 413760 583400
+rect 20260 583000 413740 583200
+rect 20280 582800 413720 583000
+rect 20300 582600 413700 582800
+rect 20320 582400 413680 582600
+rect 20340 582200 413660 582400
+rect 20360 582000 413640 582200
+rect 20380 581800 413620 582000
+rect 331600 485200 339284 486000
+rect 332600 458600 337284 485200
+rect 365768 383404 393168 384320
+rect 366568 383262 393168 383404
+rect 392368 383202 419768 383204
+rect 366568 382404 419768 383202
+rect 393168 381404 419768 382404
+rect 450368 380288 451168 381088
+rect 537768 379172 538568 380088
+rect 178236 143582 179036 144382
+rect 178236 142466 205636 143382
+rect 236236 141466 237036 142266
+rect 267636 140466 268436 141150
+rect 350500 83350 350596 83750
+rect 350740 83350 350836 83750
+rect 350980 83350 351076 83750
+rect 351220 83350 351316 83750
+rect 351460 83350 351556 83750
+rect 351700 83350 351796 83750
+rect 351940 83350 352036 83750
+rect 352180 83350 352276 83750
+rect 352420 83350 352516 83750
+rect 352660 83350 352756 83750
+rect 352900 83350 352996 83750
+rect 353140 83350 353236 83750
+rect 353380 83350 353476 83750
+rect 353620 83350 353716 83750
+rect 353860 83350 353956 83750
+rect 354100 83350 354196 83750
+rect 354340 83350 354436 83750
+rect 354580 83350 354676 83750
+rect 354820 83350 354916 83750
+rect 355339 83350 355435 83750
+rect 355579 83350 355675 83750
+rect 355819 83350 355915 83750
+rect 356059 83350 356155 83750
+rect 356299 83350 356395 83750
+rect 356539 83350 356635 83750
+rect 356779 83350 356875 83750
+rect 357019 83350 357115 83750
+rect 357259 83350 357355 83750
+rect 357499 83350 357595 83750
+rect 357739 83350 357835 83750
+rect 357979 83350 358075 83750
+rect 358219 83350 358315 83750
+<< metal3 >>
+rect 20340 584380 20960 584400
+rect 19980 584360 20960 584380
+rect 19620 584340 20960 584360
+rect 19260 584320 20960 584340
+rect 18900 584300 20960 584320
+rect 18540 584280 20960 584300
+rect 18180 584260 20960 584280
+rect 17820 584240 20960 584260
+rect 17460 584220 20960 584240
+rect 17100 584200 20960 584220
+rect 16740 584180 20960 584200
+rect 16380 584160 20960 584180
+rect 16020 584140 20960 584160
+rect 15660 584120 20960 584140
+rect 15300 584100 20960 584120
+rect 14940 584080 20960 584100
+rect 14580 584060 20960 584080
+rect 14220 584040 20960 584060
+rect 13860 584020 20960 584040
+rect 13500 584000 20960 584020
+rect 13140 583200 20960 584000
+rect 13500 583180 20960 583200
+rect 13860 583160 20960 583180
+rect 14220 583140 20960 583160
+rect 14580 583120 20960 583140
+rect 14940 583100 20960 583120
+rect 15300 583080 20960 583100
+rect 15660 583060 20960 583080
+rect 16020 583040 20960 583060
+rect 16380 583020 20960 583040
+rect 16740 583000 20960 583020
+rect 17100 582980 20960 583000
+rect 17460 582960 20960 582980
+rect 17820 582940 20960 582960
+rect 18180 582920 20960 582940
+rect 18540 582900 20960 582920
+rect 18900 582880 20960 582900
+rect 19260 582860 20960 582880
+rect 19620 582840 20960 582860
+rect 19980 582820 20960 582840
+rect 20340 582800 20960 582820
+<< metal5 >>
+rect 20400 20400 413600 582000
+rect 478368 380288 507168 381088
+use caravel_logo  caravel_logo
+timestamp 1698868090
+transform 1 0 17140 0 1 569600
+box 0 0 10840 10373
+use copyright_block  copyright_block
+timestamp 1764012043
+transform 1 0 15140 0 1 19830
+box 0 570 19550 9198
+use caravel_motto  open_source
+timestamp 1670447192
+transform 1 0 39140 0 1 575200
+box 0 0 19010 3400
+use gf180mcu_ocd_io__cor  pad_corner_ne $PDKPATH/libs.ref/gf180mcu_ocd_io/mag
+timestamp 1791404503
+transform -1 0 415000 0 -1 583400
+box 13097 13097 71000 71000
+use gf180mcu_ocd_io__cor  pad_corner_nw
+timestamp 1791404503
+transform 0 1 20000 -1 0 583400
+box 13097 13097 71000 71000
+use gf180mcu_ocd_io__cor  pad_corner_se
+timestamp 1791404503
+transform 0 -1 415000 1 0 20000
+box 13097 13097 71000 71000
+use gf180mcu_ocd_io__cor  pad_corner_sw
+timestamp 1791404503
+transform 1 0 20000 0 1 20000
+box 13097 13097 71000 71000
+use gf180mcu_ocd_io__bi_24t  pad_gpio_7 $PDKPATH/libs.ref/gf180mcu_ocd_io/mag
+timestamp 1791404503
+transform 1 0 329000 0 1 20000
+box -32 0 15032 69968
+use gf180mcu_ocd_io__asig_5p0  pad_s9_an_2 $PDKPATH/libs.ref/gf180mcu_ocd_io/mag
+timestamp 1791404503
+transform 0 -1 414000 1 0 497400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__asig_5p0  pad_s10_an_0
+timestamp 1791404503
+transform 0 1 20000 -1 0 512400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__vdd  pad_vdd3v3_2 $PDKPATH/libs.ref/gf180mcu_ocd_io/mag
+timestamp 1791404503
+transform -1 0 344000 0 -1 582400
+box -32 0 15032 70000
+use user_id_routing  project_id
+timestamp 1785973749
+transform 1 0 359372 0 1 36000
+box -8852 0 24966 48514
+use gf180mcu_ocd_io__bi_24t  spacer_0a
+timestamp 1791404503
+transform 1 0 91000 0 1 20000
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_0b $PDKPATH/libs.ref/gf180mcu_ocd_io/mag
+timestamp 1791404503
+transform 1 0 106000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__in_c  spacer_1a $PDKPATH/libs.ref/gf180mcu_ocd_io/mag
+timestamp 1791404503
+transform 1 0 108000 0 1 20000
+box -32 0 15032 69970
+use gf180mcu_ocd_io__fill10  spacer_1b
+timestamp 1791404503
+transform 1 0 123000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__in_c  spacer_2a
+timestamp 1791404503
+transform 1 0 125000 0 1 20000
+box -32 0 15032 69970
+use gf180mcu_ocd_io__fill10  spacer_2b
+timestamp 1791404503
+transform 1 0 140000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__in_c  spacer_3a
+timestamp 1791404503
+transform 1 0 142000 0 1 20000
+box -32 0 15032 69970
+use gf180mcu_ocd_io__fill10  spacer_3b
+timestamp 1791404503
+transform 1 0 157000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__in_c  spacer_4a
+timestamp 1791404503
+transform 1 0 159000 0 1 20000
+box -32 0 15032 69970
+use gf180mcu_ocd_io__fill10  spacer_4b
+timestamp 1791404503
+transform 1 0 174000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__vdd  spacer_5a
+timestamp 1791404503
+transform 1 0 176000 0 1 20000
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_5b
+timestamp 1791404503
+transform 1 0 191000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__vdd  spacer_6a
+timestamp 1791404503
+transform 1 0 193000 0 1 20000
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_6b
+timestamp 1791404503
+transform 1 0 208000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_7a
+timestamp 1791404503
+transform 1 0 210000 0 1 20000
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_7b
+timestamp 1791404503
+transform 1 0 225000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_8a
+timestamp 1791404503
+transform 1 0 227000 0 1 20000
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_8b
+timestamp 1791404503
+transform 1 0 242000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_9a
+timestamp 1791404503
+transform 1 0 244000 0 1 20000
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_9b
+timestamp 1791404503
+transform 1 0 259000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_10a
+timestamp 1791404503
+transform 1 0 261000 0 1 20000
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_10b
+timestamp 1791404503
+transform 1 0 276000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_11a
+timestamp 1791404503
+transform 1 0 278000 0 1 20000
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_11b
+timestamp 1791404503
+transform 1 0 293000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_12a
+timestamp 1791404503
+transform 1 0 295000 0 1 20000
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_12b
+timestamp 1791404503
+transform 1 0 310000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_13a
+timestamp 1791404503
+transform 1 0 312000 0 1 20000
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_13b
+timestamp 1791404503
+transform 1 0 327000 0 1 20000
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvdd  spacer_14 $PDKPATH/libs.ref/gf180mcu_ocd_io/mag
+timestamp 1791404503
+transform 0 -1 414000 1 0 91000
+box -32 0 15032 70000
+use gf180mcu_ocd_io__vdd  spacer_15a
+timestamp 1791404503
+transform 0 -1 414000 1 0 106400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_15b
+timestamp 1791404503
+transform 0 -1 414000 1 0 121400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__vdd  spacer_16a
+timestamp 1791404503
+transform 0 -1 414000 1 0 123400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_16b
+timestamp 1791404503
+transform 0 -1 414000 1 0 138400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_17a
+timestamp 1791404503
+transform 0 -1 414000 1 0 140400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_17b
+timestamp 1791404503
+transform 0 -1 414000 1 0 155400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_18a
+timestamp 1791404503
+transform 0 -1 414000 1 0 157400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_18b
+timestamp 1791404503
+transform 0 -1 414000 1 0 172400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_19a
+timestamp 1791404503
+transform 0 -1 414000 1 0 174400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_19b
+timestamp 1791404503
+transform 0 -1 414000 1 0 189400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_20a
+timestamp 1791404503
+transform 0 -1 414000 1 0 191400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_20b
+timestamp 1791404503
+transform 0 -1 414000 1 0 206400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvss  spacer_21a $PDKPATH/libs.ref/gf180mcu_ocd_io/mag
+timestamp 1791404503
+transform 0 -1 414000 1 0 208400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_21b
+timestamp 1791404503
+transform 0 -1 414000 1 0 223400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_22a
+timestamp 1791404503
+transform 0 -1 414000 1 0 225400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_22b
+timestamp 1791404503
+transform 0 -1 414000 1 0 240400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_23a
+timestamp 1791404503
+transform 0 -1 414000 1 0 242400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_23b
+timestamp 1791404503
+transform 0 -1 414000 1 0 257400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_24a
+timestamp 1791404503
+transform 0 -1 414000 1 0 259400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_24b
+timestamp 1791404503
+transform 0 -1 414000 1 0 274400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__vss  spacer_25a $PDKPATH/libs.ref/gf180mcu_ocd_io/mag
+timestamp 1791404503
+transform 0 -1 414000 1 0 276400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_25b
+timestamp 1791404503
+transform 0 -1 414000 1 0 291400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_26a
+timestamp 1791404503
+transform 0 -1 414000 1 0 293400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_26b
+timestamp 1791404503
+transform 0 -1 414000 1 0 308400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_27a
+timestamp 1791404503
+transform 0 -1 414000 1 0 310400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_27b
+timestamp 1791404503
+transform 0 -1 414000 1 0 325400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_28a
+timestamp 1791404503
+transform 0 -1 414000 1 0 327400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_28b
+timestamp 1791404503
+transform 0 -1 414000 1 0 342400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_29a
+timestamp 1791404503
+transform 0 -1 414000 1 0 344400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_29b
+timestamp 1791404503
+transform 0 -1 414000 1 0 359400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_30a
+timestamp 1791404503
+transform 0 -1 414000 1 0 361400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_30b
+timestamp 1791404503
+transform 0 -1 414000 1 0 376400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__vss  spacer_31a
+timestamp 1791404503
+transform 0 -1 414000 1 0 378400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_31b
+timestamp 1791404503
+transform 0 -1 414000 1 0 393400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_32a
+timestamp 1791404503
+transform 0 -1 414000 1 0 395400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_32b
+timestamp 1791404503
+transform 0 -1 414000 1 0 410400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_33a
+timestamp 1791404503
+transform 0 -1 414000 1 0 412400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_33b
+timestamp 1791404503
+transform 0 -1 414000 1 0 427400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_34a
+timestamp 1791404503
+transform 0 -1 414000 1 0 429400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_34b
+timestamp 1791404503
+transform 0 -1 414000 1 0 444400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvss  spacer_35a
+timestamp 1791404503
+transform 0 -1 414000 1 0 446400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_35b
+timestamp 1791404503
+transform 0 -1 414000 1 0 461400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_36a
+timestamp 1791404503
+transform 0 -1 414000 1 0 463400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_36b
+timestamp 1791404503
+transform 0 -1 414000 1 0 478400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_37a
+timestamp 1791404503
+transform 0 -1 414000 1 0 480400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_37b
+timestamp 1791404503
+transform 0 -1 414000 1 0 495400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_38a
+timestamp 1791404503
+transform -1 0 327000 0 -1 582400
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_38b
+timestamp 1791404503
+transform -1 0 329000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_39a
+timestamp 1791404503
+transform -1 0 310000 0 -1 582400
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_39b
+timestamp 1791404503
+transform -1 0 312000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_40a
+timestamp 1791404503
+transform -1 0 293000 0 -1 582400
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_40b
+timestamp 1791404503
+transform -1 0 295000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__bi_24t  spacer_41a
+timestamp 1791404503
+transform -1 0 276000 0 -1 582400
+box -32 0 15032 69968
+use gf180mcu_ocd_io__fill10  spacer_41b
+timestamp 1791404503
+transform -1 0 278000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvss  spacer_42a
+timestamp 1791404503
+transform -1 0 259000 0 -1 582400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_42b
+timestamp 1791404503
+transform -1 0 261000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_43a
+timestamp 1791404503
+transform -1 0 242000 0 -1 582400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_43b
+timestamp 1791404503
+transform -1 0 244000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_44a
+timestamp 1791404503
+transform -1 0 225000 0 -1 582400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_44b
+timestamp 1791404503
+transform -1 0 227000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_45a
+timestamp 1791404503
+transform -1 0 208000 0 -1 582400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_45b
+timestamp 1791404503
+transform -1 0 210000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_46a
+timestamp 1791404503
+transform -1 0 191000 0 -1 582400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_46b
+timestamp 1791404503
+transform -1 0 193000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvss  spacer_47a
+timestamp 1791404503
+transform -1 0 174000 0 -1 582400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_47b
+timestamp 1791404503
+transform -1 0 176000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvdd  spacer_48a
+timestamp 1791404503
+transform -1 0 157000 0 -1 582400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_48b
+timestamp 1791404503
+transform -1 0 159000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvdd  spacer_49a
+timestamp 1791404503
+transform -1 0 140000 0 -1 582400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_49b
+timestamp 1791404503
+transform -1 0 142000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvdd  spacer_50a
+timestamp 1791404503
+transform -1 0 123000 0 -1 582400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_50b
+timestamp 1791404503
+transform -1 0 125000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvdd  spacer_51a
+timestamp 1791404503
+transform -1 0 106000 0 -1 582400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_51b
+timestamp 1791404503
+transform -1 0 108000 0 -1 582400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_52a
+timestamp 1791404503
+transform 0 1 20000 -1 0 495400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_52b
+timestamp 1791404503
+transform 0 1 20000 -1 0 497400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_53a
+timestamp 1791404503
+transform 0 1 20000 -1 0 478400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_53b
+timestamp 1791404503
+transform 0 1 20000 -1 0 480400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__vss  spacer_54a
+timestamp 1791404503
+transform 0 1 20000 -1 0 461400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_54b
+timestamp 1791404503
+transform 0 1 20000 -1 0 463400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_55a
+timestamp 1791404503
+transform 0 1 20000 -1 0 444400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_55b
+timestamp 1791404503
+transform 0 1 20000 -1 0 446400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_56a
+timestamp 1791404503
+transform 0 1 20000 -1 0 427400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_56b
+timestamp 1791404503
+transform 0 1 20000 -1 0 429400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_57a
+timestamp 1791404503
+transform 0 1 20000 -1 0 410400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_57b
+timestamp 1791404503
+transform 0 1 20000 -1 0 412400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvss  spacer_58a
+timestamp 1791404503
+transform 0 1 20000 -1 0 393400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_58b
+timestamp 1791404503
+transform 0 1 20000 -1 0 395400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_59a
+timestamp 1791404503
+transform 0 1 20000 -1 0 376400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_59b
+timestamp 1791404503
+transform 0 1 20000 -1 0 378400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_60a
+timestamp 1791404503
+transform 0 1 20000 -1 0 359400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_60b
+timestamp 1791404503
+transform 0 1 20000 -1 0 361400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_61a
+timestamp 1791404503
+transform 0 1 20000 -1 0 342400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_61b
+timestamp 1791404503
+transform 0 1 20000 -1 0 344400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_62a
+timestamp 1791404503
+transform 0 1 20000 -1 0 325400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_62b
+timestamp 1791404503
+transform 0 1 20000 -1 0 327400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_63a
+timestamp 1791404503
+transform 0 1 20000 -1 0 308400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_63b
+timestamp 1791404503
+transform 0 1 20000 -1 0 310400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__dvss  spacer_64a
+timestamp 1791404503
+transform 0 1 20000 -1 0 291400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_64b
+timestamp 1791404503
+transform 0 1 20000 -1 0 293400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_65a
+timestamp 1791404503
+transform 0 1 20000 -1 0 274400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_65b
+timestamp 1791404503
+transform 0 1 20000 -1 0 276400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_66a
+timestamp 1791404503
+transform 0 1 20000 -1 0 257400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_66b
+timestamp 1791404503
+transform 0 1 20000 -1 0 259400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_67a
+timestamp 1791404503
+transform 0 1 20000 -1 0 240400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_67b
+timestamp 1791404503
+transform 0 1 20000 -1 0 242400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__vss  spacer_68a
+timestamp 1791404503
+transform 0 1 20000 -1 0 223400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_68b
+timestamp 1791404503
+transform 0 1 20000 -1 0 225400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_69a
+timestamp 1791404503
+transform 0 1 20000 -1 0 206400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_69b
+timestamp 1791404503
+transform 0 1 20000 -1 0 208400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_70a
+timestamp 1791404503
+transform 0 1 20000 -1 0 189400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_70b
+timestamp 1791404503
+transform 0 1 20000 -1 0 191400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_71a
+timestamp 1791404503
+transform 0 1 20000 -1 0 172400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_71b
+timestamp 1791404503
+transform 0 1 20000 -1 0 174400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__asig_5p0  spacer_72a
+timestamp 1791404503
+transform 0 1 20000 -1 0 155400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_72b
+timestamp 1791404503
+transform 0 1 20000 -1 0 157400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__vdd  spacer_73a
+timestamp 1791404503
+transform 0 1 20000 -1 0 138400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_73b
+timestamp 1791404503
+transform 0 1 20000 -1 0 140400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__vdd  spacer_74a
+timestamp 1791404503
+transform 0 1 20000 -1 0 121400
+box -32 0 15032 70000
+use gf180mcu_ocd_io__fill10  spacer_74b
+timestamp 1791404503
+transform 0 1 20000 -1 0 123400
+box -32 13097 2032 69968
+use gf180mcu_ocd_io__vss  spacer_75
+timestamp 1791404503
+transform 0 1 20000 -1 0 106000
+box -32 0 15032 70000
+use gf180mcu_ocd_io__brk2  splitter_14 $PDKPATH/libs.ref/gf180mcu_ocd_io/mag
+timestamp 1791404503
+transform 0 -1 414000 1 0 106000
+box -32 13097 432 69968
+use gf180mcu_ocd_io__brk2  splitter_75
+timestamp 1791404503
+transform 0 1 20000 -1 0 106400
+box -32 13097 432 69968
+use user_id_textblock  user_id_textblock
+timestamp 1670447911
+transform 1 0 373120 0 1 24000
+box 0 0 41440 10810
+<< labels >>
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 SDO
+port 1 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 SDI
+port 2 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 CSB
+port 3 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 SCK
+port 4 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 clk
+port 5 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 vddd
+port 6 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[0]
+port 7 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[1]
+port 8 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[2]
+port 9 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[3]
+port 10 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[4]
+port 11 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[5]
+port 12 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[6]
+port 13 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[7]
+port 14 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s1_an[0]
+port 17 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s1_an[1]
+port 18 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s2_an[0]
+port 19 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s2_an[1]
+port 20 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s3_an[0]
+port 22 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s3_an[1]
+port 23 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s4_an[0]
+port 24 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s5_an[0]
+port 26 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s5_an[1]
+port 27 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s5_an[2]
+port 28 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s6_an[0]
+port 29 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s6_an[1]
+port 30 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s7_an[0]
+port 32 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s7_an[1]
+port 33 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s8_an[0]
+port 34 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s9_an[0]
+port 36 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s9_an[1]
+port 37 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s9_an[2]
+port 38 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[8]
+port 40 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[9]
+port 41 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[10]
+port 42 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 gpio[11]
+port 43 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 analog[0]
+port 45 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 analog[1]
+port 46 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 analog[2]
+port 47 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 analog[3]
+port 48 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 vdd5v0
+port 50 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s10_an[0]
+port 51 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s10_an[1]
+port 52 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s10_an[2]
+port 53 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s11_an[0]
+port 55 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s12_an[0]
+port 56 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s12_an[1]
+port 57 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s13_an[0]
+port 59 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s13_an[1]
+port 60 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s14_an[0]
+port 61 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s14_an[1]
+port 62 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s14_an[2]
+port 63 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 vss5v0
+port 64 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s15_an[0]
+port 65 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s16_an[0]
+port 66 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s16_an[1]
+port 67 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s17_an[0]
+port 69 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s17_an[1]
+port 70 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s18_an[0]
+port 71 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 s18_an[1]
+port 72 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 vdd3v3
+port 73 nsew
+flabel metal5 20400 20400 413600 582000 0 FreeSans 32000 0 0 0 vss3v3
+port 74 nsew
+flabel metal2 20380 581800 413620 582200 0 FreeSans 480 90 0 0 SDO_out
+port 75 nsew
+flabel metal2 20360 582000 413640 582400 0 FreeSans 480 90 0 0 SDO_ena
+port 76 nsew
+flabel metal2 20340 582200 413660 582600 0 FreeSans 480 90 0 0 SDI_in
+port 77 nsew
+flabel metal2 20320 582400 413680 582800 0 FreeSans 480 90 0 0 CSB_in
+port 78 nsew
+flabel metal2 20300 582600 413700 583000 0 FreeSans 480 90 0 0 SCK_in
+port 79 nsew
+flabel metal2 20280 582800 413720 583200 0 FreeSans 480 90 0 0 clk_in
+port 80 nsew
+flabel metal2 20260 583000 413740 583400 0 FreeSans 480 90 0 0 gpio_0_in
+port 81 nsew
+flabel metal2 20240 583200 413760 583600 0 FreeSans 480 90 0 0 gpio_0_out
+port 82 nsew
+flabel metal2 20220 583400 413780 583800 0 FreeSans 480 90 0 0 gpio_0_oe
+port 83 nsew
+flabel metal2 20200 583600 413800 584000 0 FreeSans 480 90 0 0 gpio_1_in
+port 84 nsew
+flabel metal2 20180 583800 413820 584200 0 FreeSans 480 90 0 0 gpio_1_out
+port 85 nsew
+flabel metal2 20160 584000 413840 584400 0 FreeSans 480 90 0 0 gpio_1_oe
+port 86 nsew
+flabel metal2 20140 584200 413860 584600 0 FreeSans 480 90 0 0 gpio_2_in
+port 87 nsew
+flabel metal2 20120 584400 413880 584800 0 FreeSans 480 90 0 0 gpio_2_out
+port 88 nsew
+flabel metal2 20100 584600 413900 585000 0 FreeSans 480 90 0 0 gpio_2_oe
+port 89 nsew
+flabel metal2 20080 584800 413920 585200 0 FreeSans 480 90 0 0 gpio_3_in
+port 90 nsew
+flabel metal2 20060 585000 413940 585400 0 FreeSans 480 90 0 0 gpio_3_out
+port 91 nsew
+flabel metal2 20040 585200 413960 585600 0 FreeSans 480 90 0 0 gpio_3_oe
+port 92 nsew
+flabel metal2 20020 585400 413980 585800 0 FreeSans 480 90 0 0 gpio_4_in
+port 93 nsew
+flabel metal2 20000 585600 414000 586000 0 FreeSans 480 90 0 0 gpio_4_out
+port 94 nsew
+flabel metal2 19980 585800 414020 586200 0 FreeSans 480 90 0 0 gpio_4_oe
+port 95 nsew
+flabel metal2 19960 586000 414040 586400 0 FreeSans 480 90 0 0 gpio_5_in
+port 96 nsew
+flabel metal2 19940 586200 414060 586600 0 FreeSans 480 90 0 0 gpio_5_out
+port 97 nsew
+flabel metal2 19920 586400 414080 586800 0 FreeSans 480 90 0 0 gpio_5_oe
+port 98 nsew
+flabel metal2 19900 586600 414100 587000 0 FreeSans 480 90 0 0 gpio_6_in
+port 99 nsew
+flabel metal2 19880 586800 414120 587200 0 FreeSans 480 90 0 0 gpio_6_out
+port 100 nsew
+flabel metal2 19860 587000 414140 587400 0 FreeSans 480 90 0 0 gpio_6_oe
+port 101 nsew
+flabel metal2 19840 587200 414160 587600 0 FreeSans 480 90 0 0 gpio_7_in
+port 102 nsew
+flabel metal2 19820 587400 414180 587800 0 FreeSans 480 90 0 0 gpio_7_out
+port 103 nsew
+flabel metal2 19800 587600 414200 588000 0 FreeSans 480 90 0 0 gpio_7_oe
+port 104 nsew
+flabel metal2 19780 587400 414220 587800 0 FreeSans 480 90 0 0 gpio_8_in
+port 105 nsew
+flabel metal2 19760 587200 414240 587600 0 FreeSans 480 90 0 0 gpio_8_out
+port 106 nsew
+flabel metal2 19740 587000 414260 587400 0 FreeSans 480 90 0 0 gpio_8_oe
+port 107 nsew
+flabel metal2 19720 586800 414280 587200 0 FreeSans 480 90 0 0 gpio_9_in
+port 108 nsew
+flabel metal2 19700 586600 414300 587000 0 FreeSans 480 90 0 0 gpio_9_out
+port 109 nsew
+flabel metal2 19680 586400 414320 586800 0 FreeSans 480 90 0 0 gpio_9_oe
+port 110 nsew
+flabel metal2 19660 586200 414340 586600 0 FreeSans 480 90 0 0 gpio_10_in
+port 111 nsew
+flabel metal2 19640 586000 414360 586400 0 FreeSans 480 90 0 0 gpio_10_out
+port 112 nsew
+flabel metal2 19620 585800 414380 586200 0 FreeSans 480 90 0 0 gpio_10_oe
+port 113 nsew
+flabel metal2 19600 585600 414400 586000 0 FreeSans 480 90 0 0 gpio_11_in
+port 114 nsew
+flabel metal2 19580 585400 414420 585800 0 FreeSans 480 90 0 0 gpio_11_out
+port 115 nsew
+flabel metal2 19560 585200 414440 585600 0 FreeSans 480 90 0 0 gpio_11_oe
+port 116 nsew
+flabel metal2 19540 585000 414460 585400 0 FreeSans 480 90 0 0 analog_0_esd
+port 117 nsew
+flabel metal2 19520 584800 414480 585200 0 FreeSans 480 90 0 0 analog_1_esd
+port 118 nsew
+flabel metal2 19500 584600 414500 585000 0 FreeSans 480 90 0 0 analog_2_esd
+port 119 nsew
+flabel metal2 19480 584400 414520 584800 0 FreeSans 480 90 0 0 analog_3_esd
+port 120 nsew
+flabel metal2 19480 584180 414520 584340 0 FreeSans 480 0 0 0 analog[0]
+port 45 nsew
+flabel metal2 19480 583960 414520 584120 0 FreeSans 480 0 0 0 analog[1]
+port 46 nsew
+flabel metal2 19480 583740 414520 583900 0 FreeSans 480 0 0 0 analog[2]
+port 47 nsew
+flabel metal2 19480 583520 414520 583680 0 FreeSans 480 0 0 0 analog[3]
+port 48 nsew
+flabel metal3 19280 583500 19680 583700 0 FreeSans 480 0 0 0 s1_an_0_esd
+port 121 nsew
+flabel metal3 19060 583500 19220 583700 0 FreeSans 480 90 0 0 s1_an[0]
+port 17 nsew
+flabel metal3 18860 583480 19260 583720 0 FreeSans 480 0 0 0 s1_an_1_esd
+port 122 nsew
+flabel metal3 18640 583480 18800 583720 0 FreeSans 480 90 0 0 s1_an[1]
+port 18 nsew
+flabel metal3 18440 583460 18840 583740 0 FreeSans 480 0 0 0 s2_an_0_esd
+port 123 nsew
+flabel metal3 18220 583460 18380 583740 0 FreeSans 480 90 0 0 s2_an[0]
+port 19 nsew
+flabel metal3 18020 583440 18420 583760 0 FreeSans 480 0 0 0 s2_an_1_esd
+port 124 nsew
+flabel metal3 17800 583440 17960 583760 0 FreeSans 480 90 0 0 s2_an[1]
+port 20 nsew
+flabel metal3 17600 583420 18000 583780 0 FreeSans 480 0 0 0 s3_an_0_esd
+port 125 nsew
+flabel metal3 17380 583420 17540 583780 0 FreeSans 480 90 0 0 s3_an[0]
+port 22 nsew
+flabel metal3 17180 583400 17580 583800 0 FreeSans 480 0 0 0 s3_an_1_esd
+port 126 nsew
+flabel metal3 16960 583400 17120 583800 0 FreeSans 480 90 0 0 s3_an[1]
+port 23 nsew
+flabel metal3 16760 583380 17160 583820 0 FreeSans 480 0 0 0 s4_an_0_esd
+port 127 nsew
+flabel metal3 16540 583380 16700 583820 0 FreeSans 480 90 0 0 s4_an[0]
+port 24 nsew
+flabel metal3 16340 583360 16740 583840 0 FreeSans 480 0 0 0 s5_an_0_esd
+port 128 nsew
+flabel metal3 16120 583360 16280 583840 0 FreeSans 480 90 0 0 s5_an[0]
+port 26 nsew
+flabel metal3 15920 583340 16320 583860 0 FreeSans 480 0 0 0 s5_an_1_esd
+port 129 nsew
+flabel metal3 15700 583340 15860 583860 0 FreeSans 480 90 0 0 s5_an[1]
+port 27 nsew
+flabel metal3 15500 583320 15900 583880 0 FreeSans 480 0 0 0 s5_an_2_esd
+port 130 nsew
+flabel metal3 15280 583320 15440 583880 0 FreeSans 480 90 0 0 s5_an[2]
+port 28 nsew
+flabel metal3 15080 583300 15480 583900 0 FreeSans 480 0 0 0 s6_an_0_esd
+port 131 nsew
+flabel metal3 14860 583300 15020 583900 0 FreeSans 480 90 0 0 s6_an[0]
+port 29 nsew
+flabel metal3 14660 583280 15060 583920 0 FreeSans 480 0 0 0 s6_an_1_esd
+port 132 nsew
+flabel metal3 14440 583280 14600 583920 0 FreeSans 480 90 0 0 s6_an[1]
+port 30 nsew
+flabel metal3 14240 583260 14640 583940 0 FreeSans 480 0 0 0 s7_an_0_esd
+port 133 nsew
+flabel metal3 14020 583260 14180 583940 0 FreeSans 480 90 0 0 s7_an[0]
+port 32 nsew
+flabel metal3 13820 583240 14220 583960 0 FreeSans 480 0 0 0 s7_an_1_esd
+port 134 nsew
+flabel metal3 13600 583240 13760 583960 0 FreeSans 480 90 0 0 s7_an[1]
+port 33 nsew
+flabel metal3 13400 583220 13800 583980 0 FreeSans 480 0 0 0 s8_an_0_esd
+port 135 nsew
+flabel metal3 13180 583220 13340 583980 0 FreeSans 480 90 0 0 s8_an[0]
+port 34 nsew
+flabel metal3 13140 583200 13540 584000 0 FreeSans 480 0 0 0 s9_an_0_esd
+port 136 nsew
+flabel metal3 13540 583200 13700 584000 0 FreeSans 480 90 0 0 s9_an[0]
+port 36 nsew
+flabel metal3 13500 583180 13900 584020 0 FreeSans 480 0 0 0 s9_an_1_esd
+port 137 nsew
+flabel metal3 13900 583180 14060 584020 0 FreeSans 480 90 0 0 s9_an[1]
+port 37 nsew
+flabel metal3 13860 583160 14260 584040 0 FreeSans 480 0 0 0 s9_an_2_esd
+port 138 nsew
+flabel metal3 14260 583160 14420 584040 0 FreeSans 480 90 0 0 s9_an[2]
+port 38 nsew
+flabel metal3 14220 583140 14620 584060 0 FreeSans 480 0 0 0 s10_an_0_esd
+port 139 nsew
+flabel metal3 14620 583140 14780 584060 0 FreeSans 480 90 0 0 s10_an[0]
+port 51 nsew
+flabel metal3 14580 583120 14980 584080 0 FreeSans 480 0 0 0 s10_an_1_esd
+port 140 nsew
+flabel metal3 14980 583120 15140 584080 0 FreeSans 480 90 0 0 s10_an[1]
+port 52 nsew
+flabel metal3 14940 583100 15340 584100 0 FreeSans 480 0 0 0 s10_an_2_esd
+port 141 nsew
+flabel metal3 15340 583100 15500 584100 0 FreeSans 480 90 0 0 s10_an[2]
+port 53 nsew
+flabel metal3 15300 583080 15700 584120 0 FreeSans 480 0 0 0 s11_an_0_esd
+port 142 nsew
+flabel metal3 15700 583080 15860 584120 0 FreeSans 480 90 0 0 s11_an[0]
+port 55 nsew
+flabel metal3 15660 583060 16060 584140 0 FreeSans 480 0 0 0 s12_an_0_esd
+port 143 nsew
+flabel metal3 16060 583060 16220 584140 0 FreeSans 480 90 0 0 s12_an[0]
+port 56 nsew
+flabel metal3 16020 583040 16420 584160 0 FreeSans 480 0 0 0 s12_an_1_esd
+port 144 nsew
+flabel metal3 16420 583040 16580 584160 0 FreeSans 480 90 0 0 s12_an[1]
+port 57 nsew
+flabel metal3 16380 583020 16780 584180 0 FreeSans 480 0 0 0 s13_an_0_esd
+port 145 nsew
+flabel metal3 16780 583020 16940 584180 0 FreeSans 480 90 0 0 s13_an[0]
+port 59 nsew
+flabel metal3 16740 583000 17140 584200 0 FreeSans 480 0 0 0 s13_an_1_esd
+port 146 nsew
+flabel metal3 17140 583000 17300 584200 0 FreeSans 480 90 0 0 s13_an[1]
+port 60 nsew
+flabel metal3 17100 582980 17500 584220 0 FreeSans 480 0 0 0 s14_an_0_esd
+port 147 nsew
+flabel metal3 17500 582980 17660 584220 0 FreeSans 480 90 0 0 s14_an[0]
+port 61 nsew
+flabel metal3 17460 582960 17860 584240 0 FreeSans 480 0 0 0 s14_an_1_esd
+port 148 nsew
+flabel metal3 17860 582960 18020 584240 0 FreeSans 480 90 0 0 s14_an[1]
+port 62 nsew
+flabel metal3 17820 582940 18220 584260 0 FreeSans 480 0 0 0 s14_an_2_esd
+port 149 nsew
+flabel metal3 18220 582940 18380 584260 0 FreeSans 480 90 0 0 s14_an[2]
+port 63 nsew
+flabel metal3 18180 582920 18580 584280 0 FreeSans 480 0 0 0 s15_an_0_esd
+port 150 nsew
+flabel metal3 18580 582920 18740 584280 0 FreeSans 480 90 0 0 s15_an[0]
+port 65 nsew
+flabel metal3 18540 582900 18940 584300 0 FreeSans 480 0 0 0 s16_an_0_esd
+port 151 nsew
+flabel metal3 18940 582900 19100 584300 0 FreeSans 480 90 0 0 s16_an[0]
+port 66 nsew
+flabel metal3 18900 582880 19300 584320 0 FreeSans 480 0 0 0 s16_an_1_esd
+port 152 nsew
+flabel metal3 19300 582880 19460 584320 0 FreeSans 480 90 0 0 s16_an[1]
+port 67 nsew
+flabel metal3 19260 582860 19660 584340 0 FreeSans 480 0 0 0 s17_an_0_esd
+port 153 nsew
+flabel metal3 19660 582860 19820 584340 0 FreeSans 480 90 0 0 s17_an[0]
+port 69 nsew
+flabel metal3 19620 582840 20020 584360 0 FreeSans 480 0 0 0 s17_an_1_esd
+port 154 nsew
+flabel metal3 20020 582840 20180 584360 0 FreeSans 480 90 0 0 s17_an[1]
+port 70 nsew
+flabel metal3 19980 582820 20380 584380 0 FreeSans 480 0 0 0 s18_an_0_esd
+port 155 nsew
+flabel metal3 20380 582820 20540 584380 0 FreeSans 480 90 0 0 s18_an[0]
+port 71 nsew
+flabel metal3 20340 582800 20740 584400 0 FreeSans 480 0 0 0 s18_an_1_esd
+port 156 nsew
+flabel metal3 20740 582800 20900 584400 0 FreeSans 480 90 0 0 s18_an[1]
+port 72 nsew
+flabel metal2 358219 83350 358315 83750 0 FreeSans 480 90 0 0 mask_rev[0]
+port 157 nsew
+flabel metal2 357979 83350 358075 83750 0 FreeSans 480 90 0 0 mask_rev[1]
+port 158 nsew
+flabel metal2 357739 83350 357835 83750 0 FreeSans 480 90 0 0 mask_rev[2]
+port 159 nsew
+flabel metal2 357499 83350 357595 83750 0 FreeSans 480 90 0 0 mask_rev[3]
+port 160 nsew
+flabel metal2 357259 83350 357355 83750 0 FreeSans 480 90 0 0 mask_rev[4]
+port 161 nsew
+flabel metal2 357019 83350 357115 83750 0 FreeSans 480 90 0 0 mask_rev[5]
+port 162 nsew
+flabel metal2 356779 83350 356875 83750 0 FreeSans 480 90 0 0 mask_rev[6]
+port 163 nsew
+flabel metal2 356539 83350 356635 83750 0 FreeSans 480 90 0 0 mask_rev[7]
+port 164 nsew
+flabel metal2 356299 83350 356395 83750 0 FreeSans 480 90 0 0 mask_rev[8]
+port 165 nsew
+flabel metal2 356059 83350 356155 83750 0 FreeSans 480 90 0 0 mask_rev[9]
+port 166 nsew
+flabel metal2 355819 83350 355915 83750 0 FreeSans 480 90 0 0 mask_rev[10]
+port 167 nsew
+flabel metal2 355579 83350 355675 83750 0 FreeSans 480 90 0 0 mask_rev[11]
+port 168 nsew
+flabel metal2 355339 83350 355435 83750 0 FreeSans 480 90 0 0 mask_rev[12]
+port 169 nsew
+flabel metal2 354820 83350 354916 83750 0 FreeSans 480 90 0 0 mask_rev[13]
+port 170 nsew
+flabel metal2 354580 83350 354676 83750 0 FreeSans 480 90 0 0 mask_rev[14]
+port 171 nsew
+flabel metal2 354340 83350 354436 83750 0 FreeSans 480 90 0 0 mask_rev[15]
+port 172 nsew
+flabel metal2 354100 83350 354196 83750 0 FreeSans 480 90 0 0 mask_rev[16]
+port 173 nsew
+flabel metal2 353860 83350 353956 83750 0 FreeSans 480 90 0 0 mask_rev[17]
+port 174 nsew
+flabel metal2 353620 83350 353716 83750 0 FreeSans 480 90 0 0 mask_rev[18]
+port 175 nsew
+flabel metal2 353380 83350 353476 83750 0 FreeSans 480 90 0 0 mask_rev[19]
+port 176 nsew
+flabel metal2 353140 83350 353236 83750 0 FreeSans 480 90 0 0 mask_rev[20]
+port 177 nsew
+flabel metal2 352900 83350 352996 83750 0 FreeSans 480 90 0 0 mask_rev[21]
+port 178 nsew
+flabel metal2 352660 83350 352756 83750 0 FreeSans 480 90 0 0 mask_rev[22]
+port 179 nsew
+flabel metal2 352420 83350 352516 83750 0 FreeSans 480 90 0 0 mask_rev[23]
+port 180 nsew
+flabel metal2 352180 83350 352276 83750 0 FreeSans 480 90 0 0 mask_rev[24]
+port 181 nsew
+flabel metal2 351940 83350 352036 83750 0 FreeSans 480 90 0 0 mask_rev[25]
+port 182 nsew
+flabel metal2 351700 83350 351796 83750 0 FreeSans 480 90 0 0 mask_rev[26]
+port 183 nsew
+flabel metal2 351460 83350 351556 83750 0 FreeSans 480 90 0 0 mask_rev[27]
+port 184 nsew
+flabel metal2 351220 83350 351316 83750 0 FreeSans 480 90 0 0 mask_rev[28]
+port 185 nsew
+flabel metal2 350980 83350 351076 83750 0 FreeSans 480 90 0 0 mask_rev[29]
+port 186 nsew
+flabel metal2 350740 83350 350836 83750 0 FreeSans 480 90 0 0 mask_rev[30]
+port 187 nsew
+flabel metal2 350500 83350 350596 83750 0 FreeSans 480 90 0 0 mask_rev[31]
+port 188 nsew
+flabel metal5 350500 111350 350596 112150 0 FreeSans 6400 0 0 0 vddd
+port 6 nsew
+flabel metal5 350500 139350 350596 140150 0 FreeSans 6400 0 0 0 vddd
+port 6 nsew
+flabel metal5 331276 139350 332076 140150 0 FreeSans 6400 270 0 0 vdd5v0
+port 50 nsew
+flabel metal5 312756 139350 313556 140150 0 FreeSans 6400 270 0 0 vdd3v3
+port 73 nsew
+flabel metal5 294236 139350 295036 140150 0 FreeSans 6400 270 0 0 vdd3v3
+port 73 nsew
+flabel metal2 267636 140466 268436 141150 0 FreeSans 6400 270 0 0 vss5v0
+port 64 nsew
+flabel metal2 236236 141466 237036 142266 0 FreeSans 6400 270 0 0 vss3v3
+port 74 nsew
+flabel metal2 204836 142466 205636 143382 0 FreeSans 6400 270 0 0 vss3v3
+port 74 nsew
+flabel metal2 178236 143582 179036 144382 0 FreeSans 6400 270 0 0 vss5v0
+port 64 nsew
+flabel metal5 330600 511800 342400 512600 0 FreeSans 6400 0 0 0 vdd3v3
+port 73 nsew
+flabel metal2 331600 485200 339284 486000 0 FreeSans 6400 0 0 0 vss5v0
+port 64 nsew
+flabel metal2 332600 458600 336168 459400 0 FreeSans 6400 0 0 0 vss5v0
+port 64 nsew
+flabel metal5 334200 440080 334568 440880 0 FreeSans 6400 0 0 0 vdd5v0
+port 50 nsew
+flabel metal5 334368 421560 334400 422360 0 FreeSans 6400 0 0 0 vdd5v0
+port 50 nsew
+flabel metal5 334368 403040 334400 403840 0 FreeSans 6400 0 0 0 vdd5v0
+port 50 nsew
+flabel metal5 334368 384520 334400 385320 0 FreeSans 6400 0 0 0 vdd5v0
+port 50 nsew
+flabel metal2 365768 383404 366568 384320 0 FreeSans 6400 270 0 0 vss3v3
+port 74 nsew
+flabel metal2 392368 382404 393168 383204 0 FreeSans 6400 270 0 0 vss5v0
+port 64 nsew
+flabel metal2 418968 381404 419768 382088 0 FreeSans 6400 270 0 0 vss5v0
+port 64 nsew
+flabel metal2 450368 380288 451168 381088 0 FreeSans 6400 270 0 0 vss3v3
+port 74 nsew
+flabel metal5 478368 380288 479168 381088 0 FreeSans 6400 270 0 0 vdd3v3
+port 73 nsew
+flabel metal5 506368 380288 507168 381088 0 FreeSans 6400 270 0 0 vdd3v3
+port 73 nsew
+flabel metal2 537768 379172 538568 380088 0 FreeSans 6400 270 0 0 vss3v3
+port 74 nsew
+<< properties >>
+string FIXED_BBOX 13140 20000 414520 588000
+<< end >>

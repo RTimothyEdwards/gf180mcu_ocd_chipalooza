@@ -17,8 +17,8 @@
 #	This script needs to be run only once.  It cannot be run again until
 #	the padframe cell is deleted.
 
-echo ${PDK_ROOT:=/home/tim/gits} > /dev/null
-echo ${PDK:=gf180mcuD} > /dev/null
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
+export PDK=${PDK:-gf180mcuD}
 
 cd magic
 
