@@ -1,0 +1,9 @@
+[submodule "dependencies/gf180mcu_ocd_ip__analog_switches"]
+	path = dependencies/gf180mcu_ocd_ip__analog_switches
+	url = https://github.com/RTimothyEdwards/gf180mcu_ocd_ip__analog_switches
+[submodule "dependencies/gf180mcu_ocd_ip__biasgen"]
+	path = dependencies/gf180mcu_ocd_ip__biasgen
+	url = https://github.com/RTimothyEdwards/gf180mcu_ocd_ip__biasgen
+[submodule "dependencies/gf180mcu_ocd_ip__por"]
+	path = dependencies/gf180mcu_ocd_ip__por
+	url = https://github.com/RTimothyEdwards/gf180mcu_ocd_ip__por

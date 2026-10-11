@@ -1,0 +1,76 @@
+Porting the Chipalooza harness chip from IHP SG13CMOS5L to GF180MCU
+-------------------------------------------------------------------
+This will start with a stupid-simple transfer of files with string
+substitutions.
+
+The following substitutions should be made everywhere, applied in
+the correct order (substrings that match the beginnings of longer
+strings should be applied later):
+
+WARNING: these are SUBSTRING substitutions with no word boundary, so
+the numeric rules at the bottom (3v3/1v2, 3.3/5.0, 1.2/3.3) also fire
+INSIDE longer numbers.  1.25 became 3.35 in the bandgap tempco
+denominator, and a whole 1.204..1.295 trim table in the bandgap
+Verilog became 3.304..3.395.  The damage is hard to spot because the
+result is still a plausible-looking number.  After running
+port_from_ihp.py, run scripts/find_subst_damage.py, which pairs each
+ported file with its IHP original and reports literals that differ by
+exactly one of these rules applied to a prefix.
+
+IHP SG13CMOS5L			GF180MCU
+-----------------------------------------------------------------
+IHP				GF
+SG13CMOS5L			GF180MCU
+sg13cmos5l			gf180mcu
+ihp-sg13cmos5l			gf180mcuD
+sg13cmos5l_stdcell		gf180mcu_as_sc_mcu7t3v3
+sg13cmos5l_io			gf180mcu_ocd_io
+sg13cmos5l_sram			gf180mcu_ocd_ip_sram
+RM_IHPSG13_1P_1024x8_c2_bm_bist	gf180mcu_ocd_ip_sram__sram1024x8m8wm1
+sg13cmos5l_ocd_ip__por		gf180mcu_ocd_ip__por
+sg13cmos5l_ocd_ip__biasgen	gf180mcu_ocd_ip__biasgen
+sg13cmos5l_ocd_ip__analog_switches	gf180mcu_ocd_ip__analog_switches
+sg13cmos5l_antennanp		gf180mcu_as_sc_mcu7t3v3__diode_2
+sg13cmos5l_buf_16		gf180mcu_as_sc_mcu7t3v3__buff_16
+sg13cmos5l_buf_8		gf180mcu_as_sc_mcu7t3v3__buff_8
+sg13cmos5l_buf_4		gf180mcu_as_sc_mcu7t3v3__buff_4
+sg13cmos5l_mux2_1		gf180mcu_as_sc_mcu7t3v3__mux2_2
+sg13cmos5l_dlhrq_1		gf180mcu_as_sc_mcu7t3v3__dlxtp_2
+sg13cmos5l_lgcp_1
+sg13cmos5l_decap_4		gf180mcu_as_sc_mcu7t3v3__fillcap_4
+sg13cmos5l_inv_4		gf180mcu_as_sc_mcu7t3v3__inv_4
+sg13cmos5l_inv_2		gf180mcu_as_sc_mcu7t3v3__inv_2
+sg13cmos5l_ocd_Split2000	gf180mcu_ocd_io__brk2
+sg13cmos5l_Corner		gf180mcu_ocd_io__cor
+sg13cmos5l_IOPadTriOut16mA	gf180mcu_ocd_io__bi_24t
+sg13cmos5l_IOPadIn		gf180mcu_ocd_io__in_c
+sg13cmos5l_IOPadVdd		gf180mcu_ocd_io__vdd
+sg13cmos5l_IOPadInOut16mA	gf180mcu_ocd_io__bi_24t
+sg13cmos5l_IOPadIOVdd		gf180mcu_ocd_io__dvdd
+sg13cmos5l_IOPadVss		gf180mcu_ocd_io__vss
+sg13cmos5l_IOPadIOVss		gf180mcu_ocd_io__dvss
+sg13cmos5l_IOPadAnalog		gf180mcu_ocd_io__asig_5p0
+sg13cmos5l_Filler1000		gf180mcu_ocd_io__fill5
+sg13cmos5l_Filler200		gf180mcu_ocd_io__fill1
+sg13cmos5l_pr			gf180mcu_fd_pr
+sg13_hv_nmos			nfet_06v0
+sg13_hv_pmos			pfet_06v0
+sg13_lv_nmos			nfet_03v3
+sg13_lv_pmos			pfet_03v3
+cap_momf			cap_mim_2f0fF
+pnpMPA				pnp_5x5
+rhigh				ppolyf_u_1k
+rppd				ppolyf_u
+dpantenna			diode_pd2nw_03v3
+dantenna			diode_nd2ps_03v3
+3v3				5v0
+1v2				3v3
+3.3				5.0
+1.2				3.3
+hvpd				mvpd
+hvnd				mvnd
+hvps				mvps
+hvns				mvns
+hvpf				mvpf
+hvnf				mvnf
+digisub				isosubstrate
