@@ -1,0 +1,668 @@
+// SPDX-FileCopyrightText: 2026 Open Circuit Design, LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// SPDX-License-Identifier: Apache-2.0
+//
+// Original SPDX-FileCopyrightText: 2020 Efabless Corporation
+
+`default_nettype none
+//----------------------------------------------------------
+// SPI controller for Caravel openframe project
+//----------------------------------------------------------
+// Written by Tim Edwards
+// efabless, inc. September 27, 2020
+// Modified for the GF180MCU openframe project
+// by Tim Edwards, Open Circuit Design, LLC
+// December 2025
+// Modified for the GFGF180MCU openframe projects
+// by Tim Edwards, Open Circuit Design, LLC
+// March 2026
+// Modified for the Chipalooza challenge
+// by Tim Edwards, Open Circuit Design, LLC
+// July 2026
+//----------------------------------------------------------
+
+//-----------------------------------------------------------
+// This is a standalone SPI for the caravel chip that is
+// intended to drive all functions required for the
+// user project.
+//
+// This module has been adapted for the GFGF180MCU
+// openframe architecture.
+//
+// For the Chipalooza analog harness chip, the registers
+// are as documented in doc/
+//
+//-----------------------------------------------------------
+
+//------------------------------------------------------------
+// Caravel openframe project defined registers:
+// Register 0:  SPI status and control (unused & reserved)
+// Register 1 and 2:  Manufacturer ID (0x0567) (readonly)
+// Register 3:  Product ID (= 24) (readonly)
+// Register 4-7: Mask revision (readonly) --- Externally programmed
+//	with via programming.  Via programmed with a script to match
+//	each project ID.
+//
+// Register 0x0E:	Sequencer clock prescaler (8 bits)
+// Register 0x0F:	Pattern generator clock prescaler (8 bits)
+// Register 0x10:	sequencer mode (3 bits)
+// Register 0x11:	SRAM mode (2 bits)
+// Register 0x12-0x13:	sequencer start value (16 bits)
+// Register 0x14-0x15:	sequencer stop value (16 bits)
+// Register 0x16-0x17:	pattern generator stop value (10 bits)
+// Register 0x18:	bias generator coarse/fine control (4 bits)
+// Register 0x19:	iDAC1 value (5 bits)
+// Register 0x1A:	iDAC2 value (5 bits)
+// Register 0x1B:	voltage bias control (7 bits)
+// Register 0x1C:	bandgap control (6 bits)
+// Register 0x1D:	bandgap bias tuning (5 bits)
+// Register 0x1E:	voltage bias tuning (sink) (6 bits)
+// Register 0x1F:	voltage bias tuning (source) (5 bits)
+// Register 0x20-0x37:	user project digital input routing (4 bits)
+// Register 0x38:	user project digital output (sampled) (8 bits)
+// Register 0x39:	user project digital output (sampled) (4 bits)
+// Register 0x40-0x4B:	user project digital output routing (4 bits)
+// Register 0x4C:	SRAM monitor (see SRAM values on digital out pins) (8 bits)
+// Register 0x4D:	sequencer/strobe monitors (4 bits)
+// Register 0x50:	selected user project (5 bits)
+// Register 0x51:	user project configuration (8 bits)
+// Register 0x52:	user project configuration (3 bits)
+//------------------------------------------------------------
+
+module housekeeping (
+`ifdef USE_POWER_PINS
+    inout wire VPWR,		// 1.8V supply
+    inout wire VGND,		// common ground
+`endif
+    
+    input wire porb,		// from padframe
+    input wire clk,		// from padframe
+    input wire SCK,		// from padframe
+    input wire SDI,		// from padframe
+    input wire CSB,		// from padframe
+    output wire SDO,		// to padframe
+    output wire sdo_ena,	// to padframe
+    output wire reset,		// to user projects
+    output wire clk_out,	// to user projects
+    input wire [31:0] mask_rev_in,	// metal programmed;  5.0V domain
+
+    output wire	seq_ena_out,		// sequencer running (selects the SRAM clock)
+    output wire [9:0] sram_addr,	// SRAM address
+    output wire [7:0] sram_idata,	// data input to SRAM
+    input wire [7:0] sram_odata,	// data output from SRAM
+    output wire	sram_read,		// SRAM read enable
+    output wire	sram_write,		// SRAM write enable
+
+    input wire [11:0] io_in,	// from shared digital I/O pads
+    output wire [11:0] io_out,	// to shared digital I/O pads
+    output wire [11:0] io_oe,	// to shared digital I/O pads
+
+    output wire [23:0] dbus_out,	// shared project digital bus (input to project)
+    input wire [11:0] dbus_in_left,	// shared project digital bus (output from
+					// projects on left side, daisy-chained)
+    input wire [11:0] dbus_in_right,	// shared project digital bus (output from
+					// projects on right side, daisy-chained)
+
+    output reg	[4:0]	proj_sel,	// selected project to enable
+    output reg 		proj_ena,	// individual project enables
+    output reg 		proj_dig_ena,	// individual project digital bus enable
+    output reg 		proj_5v0_ena,	// individual project power gate enable
+    output reg 		proj_3v3_ena,	// individual project power gate enable
+    output reg  [1:0]	proj_ibias_ena,	// individual project current bias enables
+    output reg		proj_vbias_ena,	// individual project voltage bias enable
+    output reg	[3:0]	analog_bus_ena,	// individual project analog bus enable
+
+    output reg [4:0] idac1_value,
+    output reg [4:0] idac2_value,
+    output reg [2:0] voltgen_ena,		// voltage bias enables
+    output reg voltgen_high,			// voltage bias high trim
+    output reg [2:0] voltgen_value,		// voltage bias value
+    output reg bandgap_ena,			// bandgap enable
+    output wire [15:0] bandgap_trim,		// bandgap trim (thermometer code)
+    output reg biasgen_ena,			// biasgen enable
+    output reg biasgen_coarse,			// biasgen coarse/fine control
+    output reg biasgen_fine,			// biasgen coarse/fine control
+    output reg biasgen_ref_vbg,			// biasgen bandgap-stabilize
+    output reg [2:0] bandgap_sink1,		// bandgap ibias 1 sink tuning
+    output reg [1:0] bandgap_sink2,		// bandgap ibias 2 sink tuning
+    output reg [2:0] voltgen_sink1,		// voltage bias ibias 1 sink tuning
+    output reg [2:0] voltgen_sink2,		// voltage bias ibias 2 sink tuning
+    output reg [4:0] voltgen_source,		// voltage bias ibias source tuning
+    output wire project_zero			// used for enabling diagnostic tests
+);
+
+    wire [7:0] odata;
+    wire [7:0] idata;
+    wire [7:0] iaddr;
+    wire [9:0] addr;
+    wire [9:0] pat_sram_addr;
+    wire [7:0] pat_sram_data;
+    wire [15:0] seq_out;
+    wire [11:0] dbus_in;
+
+    reg [4:0] bandgap_trim_set;		// Undecoded bandgap trim
+
+    wire rdstb;
+    wire wrstb;
+    wire loc_sdo;
+    wire loc_reset;
+
+    wire sram_ena;
+
+    reg seq_ena;
+    reg loop_mode;
+    wire seq_trig;
+    wire pat_trig;
+
+    wire seq_load;
+    wire [1:0] seq_cmd;		// loop, single-shot, stop
+
+    assign SDO = loc_sdo;
+    assign loc_reset = ~porb | reset;
+
+    // OR the two chains of "dbus_in" from the projects.  Only one project can
+    // be active at a time, and the inactive projects emit zero.
+
+    assign dbus_in = dbus_in_right | dbus_in_left;
+
+    // Buffer the clock passed to the user projects
+
+    assign clk_out = clk;
+
+    // Principle chip registers
+
+    reg [2:0] seq_mode;			// Sequencer mode
+    reg [1:0] sram_mode;		// SRAM mode
+    reg [7:0] seq_prescaler;		// Clock prescaler for sequencer
+    reg [7:0] pat_prescaler;		// Clock prescaler for pattern generator
+    reg [15:0] seq_start;		// Sequencer start value
+    reg [15:0] seq_stop;		// Sequencer stop value
+    reg [9:0]  pat_stop;		// Pattern generator stop value
+    reg [95:0] user_in_route;		// user digital input bus assignments
+    reg [47:0] user_out_route;		// user digital output bus assignments 
+    reg [7:0] sram_monitor;		// monitor SRAM on digital out [7:0]
+    reg [1:0] strobe_monitor;		// monitor strobes on digital out [9:8]
+    reg [1:0] seq_monitor;		// monitor sequencer on digital out
+
+    // Instantiate the SPI interface
+
+    housekeeping_spi spi (
+	.reset(~porb),
+    	.SCK(SCK),
+    	.SDI(SDI),
+    	.CSB(CSB),
+    	.SDO(loc_sdo),
+    	.sdoena(sdo_ena),
+    	.idata(odata),
+    	.odata(idata),
+    	.oaddr(addr),
+    	.rdstb(rdstb),
+    	.wrstb(wrstb),
+	.sram_ena(sram_ena),
+	.seq_load(seq_load),
+	.seq_mode(seq_cmd),
+	.dig_reset(reset)
+    );
+
+    wire [11:0] mfgr_id;
+    wire [7:0]  prod_id;
+    wire [31:0] mask_rev;
+
+    assign mfgr_id = 12'h567;		// Hard-coded
+    assign prod_id = 8'h18;		// Hard-coded
+    assign mask_rev = mask_rev_in;	// Copy in to out.
+
+    assign iaddr = addr[7:0];		// Register address space is the low
+					// 8 address bits only (SRAM gets
+					// all 10 bits).
+
+    // Decode the project selection for project 0 (enables diagnostic tests)
+    assign project_zero = (proj_sel == 5'h00);
+
+    // Bandgap trim is a thermometer code
+    genvar i;
+    generate
+        for (i = 0; i < 16; i = i + 1) begin : bg_trim_gen
+            assign bandgap_trim[i] = (bandgap_trim_set > i);
+        end
+    endgenerate
+
+    // Drive sequencer from SPI commands.  The SPI registers reset when CSB
+    // is raised, so seq_ena and loop_mode are held here instead, and the
+    // sequencer stays active after the SPI transmission stops.
+    //
+    // Clocked on SCK with seq_load as the enable, NOT on "posedge
+    // seq_strobe".  seq_load and seq_cmd are combinational decodes of the
+    // command word, so these capture on exactly the SCK edge that
+    // completes the command --- the same edge the old registered
+    // seq_strobe rose on --- but without a data-generated clock, and
+    // without seq_cmd changing at the instant of its own capture edge.
+    // See the note in housekeeping_spi.v.
+    //
+    // loc_reset stays asynchronous so that por/dig_reset clears the
+    // sequencer even with SCK stopped.
+
+    always @(posedge SCK or posedge loc_reset) begin
+	if (loc_reset) begin
+	    seq_ena <= 1'b0;
+	    loop_mode <= 1'b0;
+	end else if (seq_load) begin
+	    case (seq_cmd)
+		2'b00: begin
+		    seq_ena <= 1'b1;
+		    loop_mode <= 1'b1;
+		    end
+		2'b01: begin
+		    seq_ena <= 1'b1;
+		    loop_mode <= 1'b0;
+		    end
+		default: begin
+		    seq_ena <= 1'b0;
+		    end
+	    endcase
+	end
+    end
+
+    // Send register contents to odata on SPI read command
+    // All values are 1-4 bits and no shadow registers are required.
+
+    assign odata = 
+    (sram_ena == 1'b1) ? sram_odata :
+    (iaddr == 8'h00) ? 8'h00 :	// SPI status (fixed)
+    (iaddr == 8'h01) ? {4'h0, mfgr_id[11:8]} :	// Manufacturer ID (fixed)
+    (iaddr == 8'h02) ? mfgr_id[7:0] :	// Manufacturer ID (fixed)
+    (iaddr == 8'h03) ? prod_id :	// Product ID (fixed)
+    (iaddr == 8'h04) ? mask_rev[31:24] :	// Mask rev (metal programmed)
+    (iaddr == 8'h05) ? mask_rev[23:16] :	// Mask rev (metal programmed)
+    (iaddr == 8'h06) ? mask_rev[15:8] :		// Mask rev (metal programmed)
+    (iaddr == 8'h07) ? mask_rev[7:0] :		// Mask rev (metal programmed)
+
+    (iaddr == 8'h0e) ? seq_prescaler :
+    (iaddr == 8'h0f) ? pat_prescaler :
+
+    (iaddr == 8'h10) ? {5'h00, seq_mode} :
+    (iaddr == 8'h11) ? {6'h00, sram_mode} :
+    (iaddr == 8'h12) ? seq_start[7:0] :
+    (iaddr == 8'h13) ? seq_start[15:8] :
+    (iaddr == 8'h14) ? seq_stop[7:0] :
+    (iaddr == 8'h15) ? seq_stop[15:8] :
+    (iaddr == 8'h16) ? pat_stop[7:0] :
+    (iaddr == 8'h17) ? {6'h00, pat_stop[9:8]} :
+    (iaddr == 8'h18) ? {4'h0, biasgen_ref_vbg, biasgen_fine, biasgen_coarse,
+			biasgen_ena} :
+    (iaddr == 8'h19) ? {3'h0, idac1_value} :
+    (iaddr == 8'h1a) ? {3'h0, idac2_value} :
+    (iaddr == 8'h1b) ? {1'h0, voltgen_value, voltgen_high, voltgen_ena} :
+    (iaddr == 8'h1c) ? {2'h0, bandgap_trim_set, bandgap_ena} :
+    (iaddr == 8'h1d) ? {3'h0, bandgap_sink2, bandgap_sink1} :
+    (iaddr == 8'h1e) ? {2'h0, voltgen_sink2, voltgen_sink1} :
+    (iaddr == 8'h1f) ? {3'h0, voltgen_source} :
+
+    (iaddr == 8'h20) ? {4'h0, user_in_route[0*4 +: 4]} :
+    (iaddr == 8'h21) ? {4'h0, user_in_route[1*4 +: 4]} :
+    (iaddr == 8'h22) ? {4'h0, user_in_route[2*4 +: 4]} :
+    (iaddr == 8'h23) ? {4'h0, user_in_route[3*4 +: 4]} :
+    (iaddr == 8'h24) ? {4'h0, user_in_route[4*4 +: 4]} :
+    (iaddr == 8'h25) ? {4'h0, user_in_route[5*4 +: 4]} :
+    (iaddr == 8'h26) ? {4'h0, user_in_route[6*4 +: 4]} :
+    (iaddr == 8'h27) ? {4'h0, user_in_route[7*4 +: 4]} :
+    (iaddr == 8'h28) ? {4'h0, user_in_route[8*4 +: 4]} :
+    (iaddr == 8'h29) ? {4'h0, user_in_route[9*4 +: 4]} :
+    (iaddr == 8'h2a) ? {4'h0, user_in_route[10*4 +: 4]} :
+    (iaddr == 8'h2b) ? {4'h0, user_in_route[11*4 +: 4]} :
+    (iaddr == 8'h2c) ? {4'h0, user_in_route[12*4 +: 4]} :
+    (iaddr == 8'h2d) ? {4'h0, user_in_route[13*4 +: 4]} :
+    (iaddr == 8'h2e) ? {4'h0, user_in_route[14*4 +: 4]} :
+    (iaddr == 8'h2f) ? {4'h0, user_in_route[15*4 +: 4]} :
+    (iaddr == 8'h30) ? {4'h0, user_in_route[16*4 +: 4]} :
+    (iaddr == 8'h31) ? {4'h0, user_in_route[17*4 +: 4]} :
+    (iaddr == 8'h32) ? {4'h0, user_in_route[18*4 +: 4]} :
+    (iaddr == 8'h33) ? {4'h0, user_in_route[19*4 +: 4]} :
+    (iaddr == 8'h34) ? {4'h0, user_in_route[20*4 +: 4]} :
+    (iaddr == 8'h35) ? {4'h0, user_in_route[21*4 +: 4]} :
+    (iaddr == 8'h36) ? {4'h0, user_in_route[22*4 +: 4]} :
+    (iaddr == 8'h37) ? {4'h0, user_in_route[23*4 +: 4]} :
+    (iaddr == 8'h38) ? dbus_in[7:0] :
+    (iaddr == 8'h39) ? dbus_in[11:8] :
+    (iaddr == 8'h40) ? {4'h0, user_out_route[0*4 +: 4]} :
+    (iaddr == 8'h41) ? {4'h0, user_out_route[1*4 +: 4]} :
+    (iaddr == 8'h42) ? {4'h0, user_out_route[2*4 +: 4]} :
+    (iaddr == 8'h43) ? {4'h0, user_out_route[3*4 +: 4]} :
+    (iaddr == 8'h44) ? {4'h0, user_out_route[4*4 +: 4]} :
+    (iaddr == 8'h45) ? {4'h0, user_out_route[5*4 +: 4]} :
+    (iaddr == 8'h46) ? {4'h0, user_out_route[6*4 +: 4]} :
+    (iaddr == 8'h47) ? {4'h0, user_out_route[7*4 +: 4]} :
+    (iaddr == 8'h48) ? {4'h0, user_out_route[8*4 +: 4]} :
+    (iaddr == 8'h49) ? {4'h0, user_out_route[9*4 +: 4]} :
+    (iaddr == 8'h4a) ? {4'h0, user_out_route[10*4 +: 4]} :
+    (iaddr == 8'h4b) ? {4'h0, user_out_route[11*4 +: 4]} :
+    (iaddr == 8'h4c) ? sram_monitor :
+    (iaddr == 8'h4d) ? {4'h0, seq_monitor, strobe_monitor} :
+    (iaddr == 8'h50) ? {3'h0, proj_sel} :
+    (iaddr == 8'h51) ? {analog_bus_ena, proj_dig_ena, proj_3v3_ena,
+			proj_5v0_ena, proj_ena} :
+    (iaddr == 8'h52) ? {5'h0, proj_vbias_ena, proj_ibias_ena} :
+               8'h00;	// Default
+
+    // Register mapping and I/O to module
+
+    always @(posedge SCK or negedge porb) begin
+    if (porb == 1'b0) begin
+	// Default values on reset
+	seq_mode <= 3'b101;	// Set all sequencer bits to zero
+	sram_mode <= 2'b00;	// Increment SRAM address at clock rate
+	seq_prescaler <= 8'h07;	// Clock prescaler for sequencer = 7 (x8)
+	pat_prescaler <= 8'h07;	// Clock prescaler for pattern generator = 7 (x8)
+	seq_start <= 16'h0000;	// Sequencer starts at count 0
+	seq_stop <= 16'h00ff;	// Sequencer ends at count 255
+	pat_stop <= 10'h3ff;	// Pattern generator ends at addr 1023
+	idac1_value <= 5'h00;	// iDAC current value = 0
+	idac2_value <= 5'h00;	// iDAC current value = 0
+	user_in_route <= 96'd0;	// (See router.v)
+	user_out_route <= 48'd0; // (See router.v)
+	proj_sel <= 5'h00;	// Diagnostic project selected
+	proj_ena <= 1'b0;	// Project disabled
+	proj_dig_ena <= 1'b0;	// Project digital I/O disabled
+	proj_5v0_ena <= 1'b0;	// Project 5.0V power switch disabled
+	proj_3v3_ena <= 1'b0;	// Project 3.3V power switch disabled
+	proj_ibias_ena <= 2'b0;	// Project ibias switch disabled
+	proj_vbias_ena <= 1'b0;	// Project ibias switch disabled
+	analog_bus_ena <= 4'h0;	// Analog switches disabled
+	sram_monitor <= 8'h00;	// SRAM monitoring disabled
+	strobe_monitor <= 2'b00; // Strobe monitoring disabled.
+	seq_monitor <= 2'b00;	// Sequencer monitoring disabled.
+	voltgen_ena <= 3'b000;	// Voltage bias generator enables
+	voltgen_high <= 1'b0;	// Voltage bias generator high trim
+	voltgen_value <= 3'b000; // Voltage bias generator value (selection)
+	bandgap_ena <= 1'b0;	// Bandgap enable
+	bandgap_trim_set <= 5'h00; // Bandgap trim (binary coded)
+	biasgen_ena <= 1'b0;	// Current bias generator enable
+	biasgen_coarse <= 1'b0;	// Current bias generator coarse trim
+	biasgen_fine <= 1'b0;	// Current bias generator fine trim
+	biasgen_ref_vbg <= 1'b0; // Current bias generator bandgap regulation
+	bandgap_sink1 <= 3'b000; // Bandgap sink 1 current bias trim
+	bandgap_sink2 <= 2'b00; // Bandgap sink 2 current bias trim
+	voltgen_sink1 <= 3'b000; // Voltage bias generator sink 1 current bias trim
+	voltgen_sink2 <= 3'b000; // Voltage bias generator sink 2 current bias trim
+ 	voltgen_source <= 5'h00; // Voltage bias generator source current bias trim
+
+    end else if ((wrstb == 1'b1) && (sram_ena == 1'b0)) begin
+        case (iaddr)
+	8'h0e: begin
+	     seq_prescaler <= idata;
+	       end
+	8'h0f: begin
+	     pat_prescaler <= idata;
+	       end
+        8'h10: begin
+	     seq_mode <= idata[2:0];
+               end
+        8'h11: begin
+	     sram_mode <= idata[1:0];
+               end
+        8'h12: begin
+	     seq_start[7:0] <= idata;
+               end
+        8'h13: begin
+	     seq_start[15:8] <= idata;
+               end
+        8'h14: begin
+	     seq_stop[7:0] <= idata;
+               end
+        8'h15: begin
+	     seq_stop[15:8] <= idata;
+               end
+        8'h16: begin
+	     pat_stop[7:0] <= idata;
+               end
+        8'h17: begin
+	     pat_stop[9:8] <= idata[1:0];
+               end
+	8'h18: begin
+	     biasgen_ref_vbg <= idata[3];
+	     biasgen_fine <= idata[2];
+	     biasgen_coarse <= idata[1];
+	     biasgen_ena <= idata[0];
+	       end
+        8'h19: begin
+	     idac1_value <= idata[4:0];
+               end
+        8'h1a: begin
+	     idac2_value <= idata[4:0];
+               end
+        8'h1b: begin
+	     voltgen_value <= idata[6:4];
+	     voltgen_high <= idata[3];
+	     voltgen_ena <= idata[2:0];
+               end
+        8'h1c: begin
+	     bandgap_trim_set <= idata[5:1];
+	     bandgap_ena <= idata[0];
+               end
+        8'h1d: begin
+	     bandgap_sink2 <= idata[4:3];
+	     bandgap_sink1 <= idata[2:0];
+               end
+        8'h1e: begin
+	     voltgen_sink2 <= idata[5:3];
+	     voltgen_sink1 <= idata[2:0];
+               end
+        8'h1f: begin
+	     voltgen_source <= idata[4:0];
+               end
+        8'h20: begin
+	     user_in_route[0*4 +: 4] <= idata[3:0];
+	       end
+        8'h21: begin
+	     user_in_route[1*4 +: 4] <= idata[3:0];
+	       end
+        8'h22: begin
+	     user_in_route[2*4 +: 4] <= idata[3:0];
+	       end
+        8'h23: begin
+	     user_in_route[3*4 +: 4] <= idata[3:0];
+	       end
+        8'h24: begin
+	     user_in_route[4*4 +: 4] <= idata[3:0];
+	       end
+        8'h25: begin
+	     user_in_route[5*4 +: 4] <= idata[3:0];
+	       end
+        8'h26: begin
+	     user_in_route[6*4 +: 4] <= idata[3:0];
+	       end
+        8'h27: begin
+	     user_in_route[7*4 +: 4] <= idata[3:0];
+	       end
+        8'h28: begin
+	     user_in_route[8*4 +: 4] <= idata[3:0];
+	       end
+        8'h29: begin
+	     user_in_route[9*4 +: 4] <= idata[3:0];
+	       end
+        8'h2a: begin
+	     user_in_route[10*4 +: 4] <= idata[3:0];
+	       end
+        8'h2b: begin
+	     user_in_route[11*4 +: 4] <= idata[3:0];
+	       end
+        8'h2c: begin
+	     user_in_route[12*4 +: 4] <= idata[3:0];
+	       end
+        8'h2d: begin
+	     user_in_route[13*4 +: 4] <= idata[3:0];
+	       end
+        8'h2e: begin
+	     user_in_route[14*4 +: 4] <= idata[3:0];
+	       end
+        8'h2f: begin
+	     user_in_route[15*4 +: 4] <= idata[3:0];
+	       end
+        8'h30: begin
+	     user_in_route[16*4 +: 4] <= idata[3:0];
+	       end
+        8'h31: begin
+	     user_in_route[17*4 +: 4] <= idata[3:0];
+	       end
+        8'h32: begin
+	     user_in_route[18*4 +: 4] <= idata[3:0];
+	       end
+        8'h33: begin
+	     user_in_route[19*4 +: 4] <= idata[3:0];
+	       end
+        8'h34: begin
+	     user_in_route[20*4 +: 4] <= idata[3:0];
+	       end
+        8'h35: begin
+	     user_in_route[21*4 +: 4] <= idata[3:0];
+	       end
+        8'h36: begin
+	     user_in_route[22*4 +: 4] <= idata[3:0];
+	       end
+        8'h37: begin
+	     user_in_route[23*4 +: 4] <= idata[3:0];
+	       end
+        8'h40: begin
+	     user_out_route[0*4 +: 4] <= idata[3:0];
+	       end
+        8'h41: begin
+	     user_out_route[1*4 +: 4] <= idata[3:0];
+	       end
+        8'h42: begin
+	     user_out_route[2*4 +: 4] <= idata[3:0];
+	       end
+        8'h43: begin
+	     user_out_route[3*4 +: 4] <= idata[3:0];
+	       end
+        8'h44: begin
+	     user_out_route[4*4 +: 4] <= idata[3:0];
+	       end
+        8'h45: begin
+	     user_out_route[5*4 +: 4] <= idata[3:0];
+	       end
+        8'h46: begin
+	     user_out_route[6*4 +: 4] <= idata[3:0];
+	       end
+        8'h47: begin
+	     user_out_route[7*4 +: 4] <= idata[3:0];
+	       end
+        8'h48: begin
+	     user_out_route[8*4 +: 4] <= idata[3:0];
+	       end
+        8'h49: begin
+	     user_out_route[9*4 +: 4] <= idata[3:0];
+	       end
+        8'h4a: begin
+	     user_out_route[10*4 +: 4] <= idata[3:0];
+	       end
+        8'h4b: begin
+	     user_out_route[11*4 +: 4] <= idata[3:0];
+	       end
+	8'h4c: begin
+	     sram_monitor <= idata;
+	       end
+	8'h4d: begin
+	     strobe_monitor <= idata[1:0];
+	     seq_monitor <= idata[3:2];
+	       end
+        8'h50: begin
+	     proj_sel <= idata[4:0];
+	       end
+        8'h51: begin
+	     proj_ena <= idata[0];
+	     proj_5v0_ena <= idata[1];
+	     proj_3v3_ena <= idata[2];
+	     proj_dig_ena <= idata[3];
+	     analog_bus_ena <= idata[7:4];
+	       end
+        8'h52: begin
+	     proj_ibias_ena <= idata[1:0];
+	     proj_vbias_ena <= idata[2];
+	       end
+        endcase	// (iaddr)
+    end
+end
+
+/* SRAM address */
+
+assign sram_addr = (seq_ena == 1'b1) ? pat_sram_addr : addr;
+assign sram_read = seq_ena | (sram_ena & rdstb);
+assign sram_write = sram_ena & wrstb;
+assign sram_idata = {8{sram_ena}} & idata;
+
+/* The SRAM clock is muxed between clk (sequencer running) and SCK (SPI
+ * access), but the mux itself is an explicitly instantiated cell in
+ * housekeeping_top.v rather than a ternary here.  Left as a ternary,
+ * yosys built it out of a nand2 and an o21ai, which is both glitch-prone
+ * and impossible to point an SDC at.  Only the select needs to leave
+ * this module.
+ *
+ * Note the documented restriction that makes this safe:  "SRAM cannot be
+ * accessed while the sequencer is running", so the two clock sources are
+ * mutually exclusive and are declared logically exclusive in the SDC.
+ */
+assign seq_ena_out = seq_ena;
+
+/* Sequencer */
+sequencer sequencer (
+    .clk(clk),
+    .reset(loc_reset),
+    .sync_reset(~seq_ena),
+    .prescaler(seq_prescaler),
+    .seq_out(seq_out),	
+    .seq_mode(seq_mode),
+    .seq_start(seq_start),
+    .seq_stop(seq_stop),
+    .loop_mode(loop_mode),
+    .strobe_in(pat_trig),
+    .strobe_out(seq_trig)
+);
+
+/* Arbitrary pattern generator */
+pattern pattern (
+    .clk(clk),
+    .reset(loc_reset),
+    .sync_reset(~seq_ena),
+    .prescaler(pat_prescaler),
+    .sram_mode(sram_mode),
+    .sram_stop_addr(pat_stop),
+    .sram_addr(pat_sram_addr),
+    .sram_data_in(sram_odata),
+    .sram_data_out(pat_sram_data),
+    .loop_mode(loop_mode),
+    .strobe_in(seq_trig),
+    .strobe_out(pat_trig)
+);
+
+/* Multiplexed digital bus */
+
+router router (
+    .io_in(io_in),
+    .io_out(io_out),
+    .io_oe(io_oe),
+    .dbus_in(dbus_in),
+    .dbus_out(dbus_out),
+    .sram_out(pat_sram_data),
+    .seq_out(seq_out),
+    .strobe_out({seq_trig, pat_trig}),
+    .user_in_route(user_in_route),
+    .user_out_route(user_out_route),
+    .sram_monitor(sram_monitor),
+    .strobe_monitor(strobe_monitor),
+    .seq_monitor(seq_monitor)
+);
+
+endmodule	// housekeeping
+
+`default_nettype wire

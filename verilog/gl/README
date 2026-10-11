@@ -1,0 +1,3 @@
+iverilog -g2012 -I/home/tim/gits/gf180mcuD -I../rtl chipalooza_tb.v
+vvp a.out
+gtkwave chipalooza_tb.vcd

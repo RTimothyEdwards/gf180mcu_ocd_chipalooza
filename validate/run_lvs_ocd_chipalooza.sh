@@ -1,0 +1,80 @@
+#!/bin/sh
+#
+# Run LVS on the chipalooza top level (gf180mcu_ocd_chipalooza)
+#
+export PROJECT=${PROJECT:-gf180mcu_ocd_chipalooza}
+
+export PDK_ROOT=${PDK_ROOT:-/home/tim/gits}
+export PDK=${PDK:-gf180mcuD}
+
+export NETGEN_COLUMNS=75
+
+cat > netgen.tcl << EOF
+# Tcl script for project ${PROJECT} LVS
+set circuit1 [readnet spice ../netlist/layout/${PROJECT}.spice]
+# Read in libraries first, followed by all the verilog modules.
+set circuit2 [readnet spice ${PDK_ROOT}/${PDK}/libs.ref/gf180mcu_as_sc_mcu7t3v3/spice/gf180mcu_as_sc_mcu7t3v3.spice]
+
+# Issues in foundry I/O netlist require custom version.
+readnet spice ../netlist/schematic/gf180mcu_ocd_io.spice \$circuit2
+# readnet spice ${PDK_ROOT}/${PDK}/libs.ref/gf180mcu_ocd_io/spice/gf180mcu_ocd_io.spice \$circuit2
+
+# housekeeping_top must be read before the user project since it is a
+# component of the user project.  Source of housekeeping_top is:
+# ../librelane/runs/RUN_{latest}/51-openroad-fillinsertion/
+
+readnet verilog ../verilog/gl/housekeeping_top.pnl.v \$circuit2
+readnet verilog ../verilog/gl/user_project_control.pnl.v \$circuit2
+readnet verilog ../verilog/gl/netlists_lvs.v \$circuit2
+
+# The slot wrappers need their LVS view, not the simulation view in
+# verilog/rtl:  that one names the analog pins analog_pin0/analog_pin1,
+# has no ESD pins, and orders its ports for a human reader, none of which
+# matches the layout.  verilog/gl/slot<N>_wrapper_lvs.v is generated from
+# magic/slot<N>_wrapper.mag by scripts/run_gen_xschem_syms.sh, alongside
+# the xschem symbol, so all three agree by construction.
+
+for {set i 1} {\$i <= 18} {incr i} {
+    readnet verilog ../verilog/gl/slot\${i}_wrapper_lvs.v \$circuit2
+}
+
+# NOTE: SRAM read from CDL; this has incorrect devices but the layout
+# SRAM has been replaced with an abstract view and so the contents
+# will not be compared.
+
+readnet spice ${PDK_ROOT}/${PDK}/libs.ref/gf180mcu_ocd_ip_sram/cdl/gf180mcu_ocd_ip_sram__sram1024x8m8wm1.cdl \$circuit2
+
+# Read the project padframe
+readnet verilog ../verilog/gl/gf180mcu_padframe.v \$circuit2
+
+# The project is assumed to be a schematic-captured netlist
+readnet spice ../netlist/schematic/${PROJECT}.spice \$circuit2
+
+# Make "in" and "out" of all the switches permutable, since they are symmetric and layouts
+# have been placed for the convenience of routing, not with respect to any concept of "in"
+# and "out".
+permute "\$circuit1 analog_pswitch_small" in out
+permute "\$circuit2 analog_pswitch_small" in out
+permute "\$circuit1 analog_switch_small" in out
+permute "\$circuit2 analog_switch_small" in out
+permute "\$circuit1 analog_switch_med" in out
+permute "\$circuit2 analog_switch_med" in out
+
+# These cells need to be flattened or else pin differences will cause an LVS mismatch
+flatten class "\$circuit1 gf180mcu_SecondaryProtection"
+flatten class "\$circuit2 gf180mcu_SecondaryProtection"
+flatten class "\$circuit1 gf180mcu_ocd_io__vdd"
+flatten class "\$circuit2 gf180mcu_ocd_io__vdd"
+flatten class "\$circuit1 gf180mcu_ocd_io__dvdd"
+flatten class "\$circuit2 gf180mcu_ocd_io__dvdd"
+
+lvs "\$circuit1 ${PROJECT}" "\$circuit2 ${PROJECT}" \
+${PDK_ROOT}/${PDK}/libs.tech/netgen/${PDK}_setup.tcl \
+comp_${PROJECT}.out
+EOF
+
+netgen -batch source netgen.tcl
+rm netgen.tcl
+echo "Done!"
+exit 0
+

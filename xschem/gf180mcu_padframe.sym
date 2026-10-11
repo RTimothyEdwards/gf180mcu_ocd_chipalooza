@@ -1,0 +1,350 @@
+v {xschem version=3.4.6 file_version=3.3}
+G {}
+K {type=primitive
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+P 4 5 0 0 0 -1740 200 -1740 200 0 0 0 {}
+T {gf180mcu_padframe} 100.0 -1758.0 0 0 0.3 0.3 {hcenter=true}
+L 4 -20 -20 0 -20 {}
+T {vdd3v3} 5 -20.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -22.5 -17.5 -17.5 {name=vdd3v3 dir=inout}
+L 4 -20 -40 0 -40 {}
+T {vss3v3} 5 -40.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -42.5 -17.5 -37.5 {name=vss3v3 dir=inout}
+L 4 -20 -60 0 -60 {}
+T {vdd5v0} 5 -60.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -62.5 -17.5 -57.5 {name=vdd5v0 dir=inout}
+L 4 -20 -80 0 -80 {}
+T {vss5v0} 5 -80.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -82.5 -17.5 -77.5 {name=vss5v0 dir=inout}
+L 4 -20 -100 0 -100 {}
+T {vddd} 5 -100.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -102.5 -17.5 -97.5 {name=vddd dir=inout}
+L 4 -20 -120 0 -120 {}
+T {gpio[11:0]} 5 -120.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -122.5 -17.5 -117.5 {name=gpio[11:0] dir=inout}
+L 4 -20 -140 0 -140 {}
+T {analog[3:0]} 5 -140.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -142.5 -17.5 -137.5 {name=analog[3:0] dir=inout}
+L 4 -20 -160 0 -160 {}
+T {SDO} 5 -160.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -162.5 -17.5 -157.5 {name=SDO dir=inout}
+L 4 -20 -180 0 -180 {}
+T {SDI} 5 -180.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -182.5 -17.5 -177.5 {name=SDI dir=in}
+L 4 -20 -200 0 -200 {}
+T {CSB} 5 -200.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -202.5 -17.5 -197.5 {name=CSB dir=in}
+L 4 -20 -220 0 -220 {}
+T {SCK} 5 -220.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -222.5 -17.5 -217.5 {name=SCK dir=in}
+L 4 -20 -240 0 -240 {}
+T {clk} 5 -240.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -242.5 -17.5 -237.5 {name=clk dir=in}
+L 4 -20 -260 0 -260 {}
+T {s1_an[1:0]} 5 -260.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -262.5 -17.5 -257.5 {name=s1_an[1:0] dir=inout}
+L 4 -20 -280 0 -280 {}
+T {s2_an[1:0]} 5 -280.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -282.5 -17.5 -277.5 {name=s2_an[1:0] dir=inout}
+L 4 -20 -300 0 -300 {}
+T {s3_an[1:0]} 5 -300.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -302.5 -17.5 -297.5 {name=s3_an[1:0] dir=inout}
+L 4 -20 -320 0 -320 {}
+T {s4_an[0:0]} 5 -320.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -322.5 -17.5 -317.5 {name=s4_an[0:0] dir=inout}
+L 4 -20 -340 0 -340 {}
+T {s5_an[2:0]} 5 -340.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -342.5 -17.5 -337.5 {name=s5_an[2:0] dir=inout}
+L 4 -20 -360 0 -360 {}
+T {s6_an[1:0]} 5 -360.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -362.5 -17.5 -357.5 {name=s6_an[1:0] dir=inout}
+L 4 -20 -380 0 -380 {}
+T {s7_an[1:0]} 5 -380.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -382.5 -17.5 -377.5 {name=s7_an[1:0] dir=inout}
+L 4 -20 -400 0 -400 {}
+T {s8_an[0:0]} 5 -400.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -402.5 -17.5 -397.5 {name=s8_an[0:0] dir=inout}
+L 4 -20 -420 0 -420 {}
+T {s9_an[2:0]} 5 -420.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -422.5 -17.5 -417.5 {name=s9_an[2:0] dir=inout}
+L 4 -20 -440 0 -440 {}
+T {s10_an[2:0]} 5 -440.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -442.5 -17.5 -437.5 {name=s10_an[2:0] dir=inout}
+L 4 -20 -460 0 -460 {}
+T {s11_an[0:0]} 5 -460.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -462.5 -17.5 -457.5 {name=s11_an[0:0] dir=inout}
+L 4 -20 -480 0 -480 {}
+T {s12_an[1:0]} 5 -480.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -482.5 -17.5 -477.5 {name=s12_an[1:0] dir=inout}
+L 4 -20 -500 0 -500 {}
+T {s13_an[1:0]} 5 -500.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -502.5 -17.5 -497.5 {name=s13_an[1:0] dir=inout}
+L 4 -20 -520 0 -520 {}
+T {s14_an[2:0]} 5 -520.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -522.5 -17.5 -517.5 {name=s14_an[2:0] dir=inout}
+L 4 -20 -540 0 -540 {}
+T {s15_an[0:0]} 5 -540.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -542.5 -17.5 -537.5 {name=s15_an[0:0] dir=inout}
+L 4 -20 -560 0 -560 {}
+T {s16_an[1:0]} 5 -560.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -562.5 -17.5 -557.5 {name=s16_an[1:0] dir=inout}
+L 4 -20 -580 0 -580 {}
+T {s17_an[1:0]} 5 -580.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -582.5 -17.5 -577.5 {name=s17_an[1:0] dir=inout}
+L 4 -20 -600 0 -600 {}
+T {s18_an[1:0]} 5 -600.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -602.5 -17.5 -597.5 {name=s18_an[1:0] dir=inout}
+L 4 200 -20 220 -20 {}
+T {SDO_out} 195 -20.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -22.5 222.5 -17.5 {name=SDO_out dir=in}
+L 4 200 -40 220 -40 {}
+T {SDO_ena} 195 -40.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -42.5 222.5 -37.5 {name=SDO_ena dir=in}
+L 4 -20 -620 0 -620 {}
+T {CSB_in} 5 -620.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -622.5 -17.5 -617.5 {name=CSB_in dir=out}
+L 4 -20 -640 0 -640 {}
+T {SCK_in} 5 -640.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -642.5 -17.5 -637.5 {name=SCK_in dir=out}
+L 4 -20 -660 0 -660 {}
+T {SDI_in} 5 -660.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -662.5 -17.5 -657.5 {name=SDI_in dir=out}
+L 4 -20 -680 0 -680 {}
+T {clk_in} 5 -680.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -682.5 -17.5 -677.5 {name=clk_in dir=out}
+L 4 -20 -700 0 -700 {}
+T {gpio_0_in} 5 -700.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -702.5 -17.5 -697.5 {name=gpio_0_in dir=out}
+L 4 200 -60 220 -60 {}
+T {gpio_0_out} 195 -60.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -62.5 222.5 -57.5 {name=gpio_0_out dir=in}
+L 4 200 -80 220 -80 {}
+T {gpio_0_oe} 195 -80.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -82.5 222.5 -77.5 {name=gpio_0_oe dir=in}
+L 4 -20 -720 0 -720 {}
+T {gpio_1_in} 5 -720.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -722.5 -17.5 -717.5 {name=gpio_1_in dir=out}
+L 4 200 -100 220 -100 {}
+T {gpio_1_out} 195 -100.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -102.5 222.5 -97.5 {name=gpio_1_out dir=in}
+L 4 200 -120 220 -120 {}
+T {gpio_1_oe} 195 -120.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -122.5 222.5 -117.5 {name=gpio_1_oe dir=in}
+L 4 -20 -740 0 -740 {}
+T {gpio_2_in} 5 -740.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -742.5 -17.5 -737.5 {name=gpio_2_in dir=out}
+L 4 200 -140 220 -140 {}
+T {gpio_2_out} 195 -140.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -142.5 222.5 -137.5 {name=gpio_2_out dir=in}
+L 4 200 -160 220 -160 {}
+T {gpio_2_oe} 195 -160.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -162.5 222.5 -157.5 {name=gpio_2_oe dir=in}
+L 4 -20 -760 0 -760 {}
+T {gpio_3_in} 5 -760.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -762.5 -17.5 -757.5 {name=gpio_3_in dir=out}
+L 4 200 -180 220 -180 {}
+T {gpio_3_out} 195 -180.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -182.5 222.5 -177.5 {name=gpio_3_out dir=in}
+L 4 200 -200 220 -200 {}
+T {gpio_3_oe} 195 -200.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -202.5 222.5 -197.5 {name=gpio_3_oe dir=in}
+L 4 -20 -780 0 -780 {}
+T {gpio_4_in} 5 -780.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -782.5 -17.5 -777.5 {name=gpio_4_in dir=out}
+L 4 200 -220 220 -220 {}
+T {gpio_4_out} 195 -220.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -222.5 222.5 -217.5 {name=gpio_4_out dir=in}
+L 4 200 -240 220 -240 {}
+T {gpio_4_oe} 195 -240.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -242.5 222.5 -237.5 {name=gpio_4_oe dir=in}
+L 4 -20 -800 0 -800 {}
+T {gpio_5_in} 5 -800.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -802.5 -17.5 -797.5 {name=gpio_5_in dir=out}
+L 4 200 -260 220 -260 {}
+T {gpio_5_out} 195 -260.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -262.5 222.5 -257.5 {name=gpio_5_out dir=in}
+L 4 200 -280 220 -280 {}
+T {gpio_5_oe} 195 -280.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -282.5 222.5 -277.5 {name=gpio_5_oe dir=in}
+L 4 -20 -820 0 -820 {}
+T {gpio_6_in} 5 -820.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -822.5 -17.5 -817.5 {name=gpio_6_in dir=out}
+L 4 200 -300 220 -300 {}
+T {gpio_6_out} 195 -300.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -302.5 222.5 -297.5 {name=gpio_6_out dir=in}
+L 4 200 -320 220 -320 {}
+T {gpio_6_oe} 195 -320.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -322.5 222.5 -317.5 {name=gpio_6_oe dir=in}
+L 4 -20 -840 0 -840 {}
+T {gpio_7_in} 5 -840.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -842.5 -17.5 -837.5 {name=gpio_7_in dir=out}
+L 4 200 -340 220 -340 {}
+T {gpio_7_out} 195 -340.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -342.5 222.5 -337.5 {name=gpio_7_out dir=in}
+L 4 200 -360 220 -360 {}
+T {gpio_7_oe} 195 -360.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -362.5 222.5 -357.5 {name=gpio_7_oe dir=in}
+L 4 -20 -860 0 -860 {}
+T {gpio_8_in} 5 -860.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -862.5 -17.5 -857.5 {name=gpio_8_in dir=out}
+L 4 200 -380 220 -380 {}
+T {gpio_8_out} 195 -380.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -382.5 222.5 -377.5 {name=gpio_8_out dir=in}
+L 4 200 -400 220 -400 {}
+T {gpio_8_oe} 195 -400.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -402.5 222.5 -397.5 {name=gpio_8_oe dir=in}
+L 4 -20 -880 0 -880 {}
+T {gpio_9_in} 5 -880.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -882.5 -17.5 -877.5 {name=gpio_9_in dir=out}
+L 4 200 -420 220 -420 {}
+T {gpio_9_out} 195 -420.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -422.5 222.5 -417.5 {name=gpio_9_out dir=in}
+L 4 200 -440 220 -440 {}
+T {gpio_9_oe} 195 -440.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -442.5 222.5 -437.5 {name=gpio_9_oe dir=in}
+L 4 -20 -900 0 -900 {}
+T {gpio_10_in} 5 -900.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -902.5 -17.5 -897.5 {name=gpio_10_in dir=out}
+L 4 200 -460 220 -460 {}
+T {gpio_10_out} 195 -460.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -462.5 222.5 -457.5 {name=gpio_10_out dir=in}
+L 4 200 -480 220 -480 {}
+T {gpio_10_oe} 195 -480.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -482.5 222.5 -477.5 {name=gpio_10_oe dir=in}
+L 4 -20 -920 0 -920 {}
+T {gpio_11_in} 5 -920.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -922.5 -17.5 -917.5 {name=gpio_11_in dir=out}
+L 4 200 -500 220 -500 {}
+T {gpio_11_out} 195 -500.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -502.5 222.5 -497.5 {name=gpio_11_out dir=in}
+L 4 200 -520 220 -520 {}
+T {gpio_11_oe} 195 -520.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -522.5 222.5 -517.5 {name=gpio_11_oe dir=in}
+L 4 -20 -940 0 -940 {}
+T {s1_an_0_esd} 5 -940.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -942.5 -17.5 -937.5 {name=s1_an_0_esd dir=inout}
+L 4 -20 -960 0 -960 {}
+T {s1_an_1_esd} 5 -960.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -962.5 -17.5 -957.5 {name=s1_an_1_esd dir=inout}
+L 4 -20 -980 0 -980 {}
+T {s2_an_0_esd} 5 -980.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -982.5 -17.5 -977.5 {name=s2_an_0_esd dir=inout}
+L 4 -20 -1000 0 -1000 {}
+T {s2_an_1_esd} 5 -1000.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1002.5 -17.5 -997.5 {name=s2_an_1_esd dir=inout}
+L 4 -20 -1020 0 -1020 {}
+T {s3_an_0_esd} 5 -1020.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1022.5 -17.5 -1017.5 {name=s3_an_0_esd dir=inout}
+L 4 -20 -1040 0 -1040 {}
+T {s3_an_1_esd} 5 -1040.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1042.5 -17.5 -1037.5 {name=s3_an_1_esd dir=inout}
+L 4 -20 -1060 0 -1060 {}
+T {s4_an_0_esd} 5 -1060.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1062.5 -17.5 -1057.5 {name=s4_an_0_esd dir=inout}
+L 4 -20 -1080 0 -1080 {}
+T {s5_an_0_esd} 5 -1080.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1082.5 -17.5 -1077.5 {name=s5_an_0_esd dir=inout}
+L 4 -20 -1100 0 -1100 {}
+T {s5_an_1_esd} 5 -1100.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1102.5 -17.5 -1097.5 {name=s5_an_1_esd dir=inout}
+L 4 -20 -1120 0 -1120 {}
+T {s5_an_2_esd} 5 -1120.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1122.5 -17.5 -1117.5 {name=s5_an_2_esd dir=inout}
+L 4 -20 -1140 0 -1140 {}
+T {s6_an_0_esd} 5 -1140.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1142.5 -17.5 -1137.5 {name=s6_an_0_esd dir=inout}
+L 4 -20 -1160 0 -1160 {}
+T {s6_an_1_esd} 5 -1160.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1162.5 -17.5 -1157.5 {name=s6_an_1_esd dir=inout}
+L 4 -20 -1180 0 -1180 {}
+T {s7_an_0_esd} 5 -1180.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1182.5 -17.5 -1177.5 {name=s7_an_0_esd dir=inout}
+L 4 -20 -1200 0 -1200 {}
+T {s7_an_1_esd} 5 -1200.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1202.5 -17.5 -1197.5 {name=s7_an_1_esd dir=inout}
+L 4 -20 -1220 0 -1220 {}
+T {s8_an_0_esd} 5 -1220.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1222.5 -17.5 -1217.5 {name=s8_an_0_esd dir=inout}
+L 4 -20 -1240 0 -1240 {}
+T {s9_an_0_esd} 5 -1240.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1242.5 -17.5 -1237.5 {name=s9_an_0_esd dir=inout}
+L 4 -20 -1260 0 -1260 {}
+T {s9_an_1_esd} 5 -1260.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1262.5 -17.5 -1257.5 {name=s9_an_1_esd dir=inout}
+L 4 -20 -1280 0 -1280 {}
+T {s9_an_2_esd} 5 -1280.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1282.5 -17.5 -1277.5 {name=s9_an_2_esd dir=inout}
+L 4 -20 -1300 0 -1300 {}
+T {s10_an_0_esd} 5 -1300.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1302.5 -17.5 -1297.5 {name=s10_an_0_esd dir=inout}
+L 4 -20 -1320 0 -1320 {}
+T {s10_an_1_esd} 5 -1320.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1322.5 -17.5 -1317.5 {name=s10_an_1_esd dir=inout}
+L 4 -20 -1340 0 -1340 {}
+T {s10_an_2_esd} 5 -1340.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1342.5 -17.5 -1337.5 {name=s10_an_2_esd dir=inout}
+L 4 -20 -1360 0 -1360 {}
+T {s11_an_0_esd} 5 -1360.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1362.5 -17.5 -1357.5 {name=s11_an_0_esd dir=inout}
+L 4 -20 -1380 0 -1380 {}
+T {s12_an_0_esd} 5 -1380.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1382.5 -17.5 -1377.5 {name=s12_an_0_esd dir=inout}
+L 4 -20 -1400 0 -1400 {}
+T {s12_an_1_esd} 5 -1400.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1402.5 -17.5 -1397.5 {name=s12_an_1_esd dir=inout}
+L 4 -20 -1420 0 -1420 {}
+T {s13_an_0_esd} 5 -1420.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1422.5 -17.5 -1417.5 {name=s13_an_0_esd dir=inout}
+L 4 -20 -1440 0 -1440 {}
+T {s13_an_1_esd} 5 -1440.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1442.5 -17.5 -1437.5 {name=s13_an_1_esd dir=inout}
+L 4 -20 -1460 0 -1460 {}
+T {s14_an_0_esd} 5 -1460.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1462.5 -17.5 -1457.5 {name=s14_an_0_esd dir=inout}
+L 4 -20 -1480 0 -1480 {}
+T {s14_an_1_esd} 5 -1480.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1482.5 -17.5 -1477.5 {name=s14_an_1_esd dir=inout}
+L 4 -20 -1500 0 -1500 {}
+T {s14_an_2_esd} 5 -1500.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1502.5 -17.5 -1497.5 {name=s14_an_2_esd dir=inout}
+L 4 -20 -1520 0 -1520 {}
+T {s15_an_0_esd} 5 -1520.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1522.5 -17.5 -1517.5 {name=s15_an_0_esd dir=inout}
+L 4 -20 -1540 0 -1540 {}
+T {s16_an_0_esd} 5 -1540.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1542.5 -17.5 -1537.5 {name=s16_an_0_esd dir=inout}
+L 4 -20 -1560 0 -1560 {}
+T {s16_an_1_esd} 5 -1560.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1562.5 -17.5 -1557.5 {name=s16_an_1_esd dir=inout}
+L 4 -20 -1580 0 -1580 {}
+T {s17_an_0_esd} 5 -1580.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1582.5 -17.5 -1577.5 {name=s17_an_0_esd dir=inout}
+L 4 -20 -1600 0 -1600 {}
+T {s17_an_1_esd} 5 -1600.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1602.5 -17.5 -1597.5 {name=s17_an_1_esd dir=inout}
+L 4 -20 -1620 0 -1620 {}
+T {s18_an_0_esd} 5 -1620.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1622.5 -17.5 -1617.5 {name=s18_an_0_esd dir=inout}
+L 4 -20 -1640 0 -1640 {}
+T {s18_an_1_esd} 5 -1640.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1642.5 -17.5 -1637.5 {name=s18_an_1_esd dir=inout}
+L 4 -20 -1660 0 -1660 {}
+T {analog_0_esd} 5 -1660.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1662.5 -17.5 -1657.5 {name=analog_0_esd dir=inout}
+L 4 -20 -1680 0 -1680 {}
+T {analog_1_esd} 5 -1680.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1682.5 -17.5 -1677.5 {name=analog_1_esd dir=inout}
+L 4 -20 -1700 0 -1700 {}
+T {analog_2_esd} 5 -1700.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1702.5 -17.5 -1697.5 {name=analog_2_esd dir=inout}
+L 4 -20 -1720 0 -1720 {}
+T {analog_3_esd} 5 -1720.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -1722.5 -17.5 -1717.5 {name=analog_3_esd dir=inout}
+L 4 200 -540 220 -540 {}
+T {mask_rev[31:0]} 195 -540.0 0 1 0.25 0.25 {vcenter=true}
+B 5 217.5 -542.5 222.5 -537.5 {name=mask_rev[31:0] dir=out}

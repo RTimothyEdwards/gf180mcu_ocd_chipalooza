@@ -83,7 +83,13 @@ LEFTOVER = [b'sg13', b'ihp', b'cmos5l']
 
 # Never copied and never scanned, as a directory or as a file.
 
-SKIP = {'.git'}
+SKIP = {'.git', 'runs'}
+
+# Note:  I added 'dependencies' because I ran this script on the
+# dependencies themselves first, and then for the top level I did not
+# want to re-parse everything in the dependent repos.
+
+# SKIP = {'.git', 'dependencies', 'runs'}
 
 # Formats that are nominally text but carry an encoded binary payload, so
 # a substitution inside them is corruption rather than translation.

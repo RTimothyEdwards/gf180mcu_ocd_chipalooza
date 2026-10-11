@@ -1,0 +1,477 @@
+Chipalooza Analog Harness for GF GF180MCU
+---------------------------------------------------------------------------
+
+The Chipalooza Analog Harness design was created for the Open Circuit
+Design "Chipalooza Challenge", a program to develop analog circuit blocks
+for use in SoC designs, make them entirely open source and publicly
+available, and make them roughly compatible across the three major open
+source PDKs (Sky130, GF180MCU, and GF180MCU).  Measurement and
+characterization of the analog blocks requires a test structure, and to
+minimize costs, an analog "harness" chip was developed to accommodate
+multiple analog blocks with individual and shared resources including
+pins, biases, and digital communication.
+
+Efabless, Inc. ran the first Chipalooza challenge in 2024 on the Sky130
+process, which resulted in two custom-made test chips that were based on
+the Efabless "Caravel" harness.  The Chipalooza harness chip in this
+repository is loosely based on the Caravel Openframe (in this case ported
+to GF GF180MCU), but differs from the original, partly in pin count (80
+padframe pins instead of the original 64, although both designs go in a
+64-pin package), and mainly by having specific "slots" for users to place
+their analog blocks.  The fixed definition of the slots allows for the
+automation of the top-level assembly of the test chip.
+
+The idea behind the "harness" chip is that many circuit designers want to
+spend time designing, simulating, testing, validating, and measuring a single
+circuit or subsystem for a specific purpose.  Manufacturing and testing that
+circuit requires an entire additional layer of skills, work, and time.  The
+circuit under test needs significant infrastructure:  Control logic, padframe,
+stable voltage and current biases, and an interface to get signals and data
+off chip to a host computer and instrumentation.  The purpose of the harness
+chip is to provide that infrastructure.
+
+Unlike previous harness designs, the Chipalooza harness is designed such that
+each user project has access to dedicated padframe pads, and these pads can
+be any pad (from the same foundry I/O set) that the user wishes to have there.
+This means that every aspect of the chip is customizable.  Chip top level
+assembly requires filling out a configuration file "config.txt" in the top
+level directory containing a list of pad types for each project.  Automated
+scripts then assemble all of the chip views and layout based on templates
+and the configuration file definitions.
+
+This specific project is a three-level hierarchy:
+
+(1) The padframe is a fixed-pin-count 80-pin design which is not based on the
+    Efabless "caravel" but is a new design for the Chipalooza test chip
+    series.  The size of the chip is fixed according to both the pin count and
+    the size and number of spacers, all of which can be modified in the
+    padframe template as needed.  
+
+(2) The "chipalooza frame" fills the entire area inside the padframe,
+    connecting to power and ground, and analog or general-purpose digital I/O.
+    It contains the "housekeeping" SPI, registers, and sequencer, the
+    sequencer SRAM, and the project slot power switches, shared current
+    and voltage bias generators, and all other shared resources.
+
+(3) A "slot" is an analog user project that fits in one of the eighteen
+    avaiable locations in the chipalooza frame wrapper area.
+
+The design flow is described here, with information about how to create an
+analog project that fits into a slot, or to create an entirely new Chipalooza
+project.  All design steps are handled by scripts.
+
+The Chipalooza repository itself is designed to be as independent of a specific
+PDK as possible, so it is relatively easy to port between processes.  Each
+process will of course have its own I/O library with its own pad definitions,
+which is mainly what drives the process-specific implementation.  While porting
+is made convenient, it is not really possible/practical to create one repository
+that is compatible with multiple processes.  So it is expected that a Chipalooza
+repository is process-specific; this one is for GF GF180MCU.
+
+Unlike the original Efabless implementation, the Chipalooza harness design aims
+to have user-defined pad types in each signal pad position, as well as pre-
+defined pad types for shared analog and digital resources.  Each foundry PDK has
+different analog and digital cells in the I/O library with different inputs and
+outputs.  The original openframe harness was for sky130, which had an unusually
+complex general-purpose I/O design that was both analog and digital capable.
+That made it convenient to design a single fixed padframe supporting both analog
+and digital projects.  Since other PDKs don't have the combination I/O, it was
+necessary to work out a method by which each pad type can be selected.  But
+that implies that the core-facing signals change when any pad changes, so a
+large number of verilog, schematic, and layout files have to change accordingly,
+which in turn requires a large amount of automation.  This repository provides
+that automation.
+
+The process of preparing the Chipalooza harness chip for a tapeout is outlined
+below.  The steps require running individual scripts, which have been collected
+into a Makefile, where each step is a process of "make <something>", which is
+included in the instructions below.
+
+To create a new Chipalooza test chip with custom user analog projects:
+
+(1)  Clone or fork this repository.
+
+	git clone https://github.com/RTimothyEdwards/gf180mcu_ocd_chipalooza
+		--recurse-submodules
+
+     Note the use of "--recurse-submodules" to clone the three dependent
+     repositories into the top level as git submodules.
+
+     You probably want to create a new branch for the test chip;  then each test
+     chip has the same upstream repository but exists in its own development branch.
+
+	git branch tapeout_nov_2026
+	git checkout tapeout_nov_2026
+
+(2)  All scripts make use of an environment variable PDK_ROOT which should be set
+     appropriately to point to the directory containing the PDK (gf180mcuD),
+     e.g.,
+
+	export PDK_ROOT=/foss/pdk
+
+(3)  Edit the "config.txt" file.  This contains a "project_id" value which is an
+     arbitrary hex string of 8 digits.  This corresponds to a metal text block on
+     the layout, and a digital 32-bit ID value made available to the openframe
+     project.  It is recommended that the last four bits of the code be reserved
+     for a revision number.
+
+     This is followed by a list of project slot assignments.  For the Open
+     Circuit Design Chipalooza challenges, these are all 3rd-party designs and
+     are expected to exist in publicly available repositories on github and
+     elsewhere.  While there may one day be web-based handling of the slot
+     assignments, for now the URL information is entered manually.  Projects
+     can then be cloned into submodules:
+
+	make projects
+
+     The slot assignments are followed by a list of repository branches and
+     commit hashes.  These will normally be filled out automatically by using
+     "make projects", which effectively freezes the state of all submodules.
+     After a freeze, if a designer wishes to provide an updated version of their
+     design repository, the new commit hash can be entered here and the project
+     updated with
+
+	make projects-update
+
+     The slot assignments are followed by a list of signal pads.  The signal pads
+     are listed in counter-clockwise order of their physical position in the
+     padframe, and the name reflects the associated slot number.  This allows the
+     Chipalooza project designers to choose whether each of the signal pads will
+     be analog, or digital input, output, or bidirectional, or even a custom pad
+     design.  The user does not need to supply any additional information about
+     the pads.  The top level pin names will remain the same ("gpio[*]"), and the
+     internal signal names will be derived from the pad signal names, with an index.
+
+     The signal pad list entries are in the form:
+
+		sN_an[x]:  pad_name
+
+     where "N" is the project slot number, 1 to 18, and "x" is the index of the
+     per-slot pin, where different slots have from 1 to 3 dedicated pins ("x" =
+     0 to 2). 
+
+     Example:
+		s1_an[0]: gf180mcu_ocd_io__in_cOut4mA
+
+     Core signal names are derived from a signal name.  For the GF180MCU
+     technology, if the pad is a digital input-only or digital output-only pad,
+     then there is only one core facing signal, which is what is given in the
+     config.txt file.  If the pad is an analog pad, there are two signals, one
+     of which is the pad name (that is, the core name = the pad name because
+     there is a direct connection to the pad and the signals are the same), and
+     the other of which is the given signal name.  If the pad is one of the
+     "InOut" pads, then there are five core signals <signal_name>_in,
+     <signal_name>_out, <signal_name>_ena, <signal_name>_one, and
+     <signal_name>_zero.  The first three are the pad-to-core signal, the
+     core-to-pad signal, and the output enable signal, respectively.  The
+     additional two signals are digital zero and one outputs provided next to
+     the pad so that a project can opt to tie off control signals at the pad, or
+     to use these to power digital logic close to the pad.  In the example above,
+     the core facing signals would be:
+
+		s1_an_0_out
+		s1_an_0_in
+		s1_an_0_ena
+		s1_an_0_one
+		s1_an_0_zero
+
+     Note that only the user project dedicated pads can be reassigned.  The power
+     pads, SPI pins, and the shared analog and digital pins are fixed.  Note that
+     there is nothing technically preventing a user from specifying a ground or
+     power pad, but that breaks the intended isolation of each project from the
+     global power supplies.  Every specified pad *must* have a wirebond pad,
+     or else the wirebond diagram becomes invalid.
+
+     To recap:  For GF180MCU's PDK I/O library, there are eleven pad types, with
+     pin and core names derived per the following example:
+
+     1. Input-only pad:
+
+	gpio[0]:	gf180mcu_ocd_io__in_c	mysig
+
+		pad signal is:		gpio[0]
+		core signal is:		mysig
+
+     2. Output-only pad:
+
+	gpio[0]:	gf180mcu_IOPadOut4mA	mysig
+
+		pad signal is:		gpio[0]
+		core signal is:		mysig
+
+     3. Medium-drive output-only pad:
+
+	gpio[0]:	gf180mcu_IOPadOut16mA	mysig
+
+		pad signal is:		gpio[0]
+		core signal is:		mysig
+
+     4. High-drive output-only pad:
+
+	gpio[0]:	gf180mcu_IOPadOut30mA	mysig
+
+		pad signal is:		gpio[0]
+		core signal is:		mysig
+
+     5. Tri-state output-only pad:
+
+	gpio[0]:	gf180mcu_IOPadTriOut4mA	mysig
+
+		pad signal is:		gpio[0]
+		core signals are:	mysig
+					mysig_ena
+
+     6. Medium-drive tri-state output-only pad:
+
+	gpio[0]:	gf180mcu_ocd_io__bi_24t	mysig
+
+		pad signal is:		gpio[0]
+		core signals are:	mysig
+					mysig_ena
+					mysig_zero
+					mysig_one
+
+     7. High-drive tri-state output-only pad:
+
+	gpio[0]:	gf180mcu_IOPadTriOut30mA	mysig
+
+		pad signal is:		gpio[0]
+		core signals are:	mysig
+					mysig_ena
+					mysig_zero
+					mysig_one
+
+     8. Bidrectional pad:
+
+	gpio[0]:	gf180mcu_ocd_io__in_cOut4mA	mysig
+
+		pad signal is:		gpio[0]
+		core signals are:	mysig_in
+					mysig_out
+					mysig_ena
+					mysig_zero
+					mysig_one
+     9. Medium-drive bidrectional pad:
+
+	gpio[0]:	gf180mcu_ocd_io__bi_24t	mysig
+
+		pad signal is:		gpio[0]
+		core signals are:	mysig_in
+					mysig_out
+					mysig_ena
+					mysig_zero
+					mysig_one
+
+     10. High-drive bidrectional pad:
+
+	gpio[0]:	gf180mcu_ocd_io__in_cOut30mA	mysig
+
+		pad signal is:		gpio[0]
+		core signals are:	mysig_in
+					mysig_out
+					mysig_ena
+					mysig_zero
+					mysig_one
+
+     11. Analog pad:
+
+	gpio[0]:	gf180mcu_ocd_io__in_cOut30mA	mysig
+
+		pad signal is:		gpio[0]
+		core signals are:	gpio[0]
+					mysig_esd
+
+	Note that the analog pad is slightly different from other pads:
+	For all other pads, the user project wrapper pin names are the
+	same as the padframe core-facing pin names.  However, the analog
+	pad is connected directly to the core-facing non-ESD pin, so in
+	the padframe, the core-facing pin name is the same as the pad name.
+	In the user project wrapper, however, the core-facing non-ESD pin
+	is given the name "mysig".
+
+     Signals should not be indexed, as then different signals would have
+     different index ranges which would not match the indexes of the pads.
+
+     All pads in this library are the same size.
+
+-----------------------------------------------------------------------
+The following steps are for rebuilding the chip top-level with custom
+padframe changes due to users who have specified non-default I/O cell
+names for the dedicated pads connected to their projects (i.e., in
+config.txt one or more "Pad types" have been modified in the previous
+step).  If no changes were made to pad types in "config.txt", then
+proceed to step (8).
+-----------------------------------------------------------------------
+
+(4)  Parse the configuration file with
+
+	make config
+
+     This runs the script "scripts/parse_config.py".  This script reads in
+     the configuration file and produces:
+
+	1) A verilog netlist of the padframe in verilog/gl/gf180mcu_padframe.v
+	2) A Tcl script used in the next step to generate the padframe and
+	   wrapper layouts.
+	3) A verilog netlist of the user project wrapper in
+	   verilog/gl/chipalooza_frame_wrapper.v.  Note that this module is
+	   deprecated and unused, and the module that represents the chip
+	   core, which is verilog/rtl/chipalooza_frame.v, is not handled
+	   (yet) by the script.
+
+     If the script determines that any of the output files already exist, it
+     will not run.  Delete the existing files before re-running the config
+     file parser.
+
+     WARNING:  Because the "chipalooza_frame_wrapper" layout and verilog
+     contain the user project, MAKE SURE that you do not overwrite existing
+     layout and netlist work.  (See comments below about creating the frame
+     wrapper layout.)  No verilog netlist is made for the analog user project
+     slots, which are assumed to be analog/mixed signal and exist as a schematic,
+     not verilog.
+
+(5)  Build the padframe with
+
+	make padframe
+
+     This runs the script "scripts/run_gen_padframe.sh".  This script reads in the
+     configuration file and produces:
+
+	1) A padframe layout in magic/gf180mcu_padframe.mag
+	2) The user project wrapper layout in magic/openframe_project_wrapper.mag
+
+     This script must be run from the magic/ directory.  If the script determines
+     that a file "sg13cmos5_padframe.mag" exists, it will not run.  It may be run
+     again at any time by deleting the padframe layout.
+
+(6) Rebuild the project slot wrappers with any custom definitions for
+     the pads:
+
+	make gds-slots
+
+     This runs the script "run_gen_wrapper_gds.sh".
+     The script "run_gen_wrapper_gds.sh" creates GDS of the user project
+     slot wrappers.  The GDS views of the slot wrappers are what each
+     user will use to contain the user project, so these need to be
+     defined prior to the users designs, and user specification of
+     custom pads must be dealt with first.  However, while a change to an
+     individual slot revises all views up to the chip top level, other
+     slots are unaffected.
+
+-----------------------------------------------------------------------
+The following steps continue with the top-level chip integration
+-----------------------------------------------------------------------
+
+(7)  Set the user ID with
+
+	make user-id
+
+     This step runs the script "set_user_id.py".  This script reads the configuration
+     file and produces:
+
+	1) A modified layout "user_id_textblock.mag" with the text of the project
+           ID in metal
+	2) A modified layout "user_id_vias.mag" with the via programming for the
+           32-bit ROM matching the project ID.
+	3) A modified "gf180mcu_ocd_chipalooza.v" with the project ID set
+	4) A modified "user_id_programming.v" with the project ID bits set
+
+(8) Search the user project repositories for user project GDS:
+
+	make projects-gds
+
+     This runs the script "get_projects_gds.sh" which checks each of
+     the user project submodules and finds the "slot_<N>.gds" file,
+     including checks for various styles of repository ("final/gds/"
+     vs. "gds/"), allowing ".gds.gz" files, and failing if a GDS file
+     cannot be found or if both ".gds" and "gds.gz" files exist.
+
+(9) Assemble the chip top level (without fill):
+
+	make gds-prefill
+
+     This step assembles the chip top level prior to fill generation,
+     using the script generated in step (12) to drop the user projects
+     as "read-only" GDS into the top level layout over top the wrapper
+     locations.  It then places the seal ring and writes out the top-
+     level GDS. 
+
+(10) Generate fill patterns for the chip using
+
+	make fill
+
+     This step will "cd" to the gds/ directory and run the script
+     "generate_fill.py" as follows:
+
+	../scripts/generate_fill.py gf180mcu_ocd_chipalooza.gds.gz -dist 
+
+     This step generates the fill patterns for the chip, in a separate
+     GDS file called gf180mcu_ocd_chipalooza_fill_pattern.gds.gz.
+
+(11) Create the final top-level GDS with
+
+	make gds-final
+
+     This step runs the script "run_gen_filled_final_gds.sh" to get the
+     (post-fill) final design.  The final top level has its own cell name.
+     By default (which is not an GF-approved name) the top level cell will
+     be called "gf180mcu_ocd_chipalooza_final".  For GF submissions,
+     GF will provide the name of the top level cell as part of the
+     submission process.  To get the correct final top level cell name and
+     file name, set the environment variable "PROJECT" to the cell name
+     before running the script.
+
+(12) Final DRC verification:
+
+	make drc-final
+
+     This step runs the script "run_klayout_drc_final.sh" which runs
+     klayout DRC on the final design GDS.  If environment PROJECT has
+     been set (see above), then the final DRC result can be found in
+     validate/${PROJECT}.lyrdb
+
+(13) Extraction for final LVS verification:
+
+	make extract-sch-top
+	make extract-top
+
+     The script "run_extract_chipalooza_top.sh" does a full layout
+     extraction on the top level, producing a netlist that is placed
+     in netlist/layout/.  If the PROJECT environment variable has been
+     set, then the final netlist is netlist/layout/${PROJECT}.spice.
+
+(14) Final LVS:
+
+	make lvs-top
+
+     This runs the script "run_lvs_ocd_chipalooza.sh" which performs
+     top-level LVS.
+
+     Note that since the LVS process is highly dependent on what exists
+     in the user project area, this script needs to be modified for each
+     project.  It is normally set up to start with the top level verilog
+     and read the user project from a netlist, which should be extracted
+     from the user project schematic.  Everything above the user project
+     is in a verilog netlist.  If the top level cell has been named
+     according to environment variable PROJECT, then a top level verilog
+     netlist needs to be made for a module with the name ${PROJECT}.  This
+     is easy to do by copying the "gf180mcu_ocd_chipalooza_final.v"
+     file to ${PROJECT}.v and changing the module name to ${PROJECT}.
+
+     [To do:  Currently top level LVS through magic and netgen fails due
+     to a single issue with failure to cleanly separate the 5.0V and 3.3V
+     ground domains.  In addition, some cell views are problematic and
+     dealt with by treating them as "black boxes", such as the GF SRAM,
+     and these problems should be investigated and corrected.]
+
+     Checking LVS is done with magic and netgen.  LVS with klayout has
+     not been attempted and would require converting the verilog of the
+     padframe, wrapper, and top level cell to SPICE/CDL.
+     
+(15) (Item to do, not yet automated)
+     Preparation for foundry submission:
+
+     GF has its own requirements for chip submission that are not
+     exactly compatible with this repository;  the entire project needs
+     to be copied into a compatible repository with various directories
+     populated as dictated by GF.  This step will be automated.

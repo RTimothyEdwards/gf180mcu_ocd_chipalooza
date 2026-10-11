@@ -1,0 +1,43 @@
+magic
+tech gf180mcuD
+timestamp 1787863937
+<< checkpaint >>
+rect -9193 329137 222220 332220
+rect -1000 327387 222220 329137
+rect -1000 325482 2083 327387
+rect 219137 325482 222220 327387
+rect -7622 -12131 234791 325482
+rect -1000 -15193 2083 -12131
+use sealring_corner  sealring_corner_ne
+timestamp 1772318024
+transform -1 0 220500 0 -1 330500
+box -720 -720 2113 2113
+use sealring_corner  sealring_corner_nw
+timestamp 1772318024
+transform 0 1 720 -1 0 330500
+box -720 -720 2113 2113
+use sealring_corner  sealring_corner_se
+timestamp 1772318024
+transform 0 -1 220500 1 0 720
+box -720 -720 2113 2113
+use sealring_corner  sealring_corner_sw
+timestamp 1772318024
+transform 1 0 720 0 1 720
+box -720 -720 2113 2113
+use sealring_side_leftright  sealring_side_e
+timestamp 1787863937
+transform 0 -1 220500 1 0 2820
+box -13 -720 325593 363
+use sealring_side_topbottom  sealring_side_n
+timestamp 1787863937
+transform -1 0 218400 0 -1 330500
+box -13 -720 215593 363
+use sealring_side_topbottom  sealring_side_s
+timestamp 1787863937
+transform 1 0 2820 0 1 720
+box -13 -720 215593 363
+use sealring_side_leftright  sealring_side_w
+timestamp 1787863937
+transform 0 1 720 -1 0 328400
+box -13 -720 325593 363
+<< end >>

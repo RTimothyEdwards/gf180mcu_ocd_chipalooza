@@ -1,0 +1,3 @@
+iverilog -g2012 -I/home/tim/gits/gf180mcuD digital_tb.v
+vvp a.out
+gtkwave digital_tb.vcd
