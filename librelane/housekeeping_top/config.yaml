@@ -70,40 +70,28 @@ STD_CELL_LIBRARY: gf180mcu_as_sc_mcu7t3v3
 
 # Technology libs
 LIB:
-  "nom_typ_1p20V_25C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_typ_1p20V_25C.lib
+  "nom_tt_025C_3v30":
+    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3__tt_025C_3v30.lib
 
-  "nom_typ_1p50V_25C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_typ_1p50V_25C.lib
+  "nom_ss_125C_3v00":
+    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3__ss_125C_3v00.lib
 
-  "nom_slow_1p35V_125C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_slow_1p35V_125C.lib
-
-  "nom_slow_1p08V_125C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_slow_1p08V_125C.lib
-
-  "nom_fast_1p32V_m40C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_fast_1p32V_m40C.lib
-
-  "nom_fast_1p65V_m40C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_fast_1p65V_m40C.lib
+  "nom_ff_n40C_3v60":
+    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3__ff_n40C_3v60.lib
 
 
 # Corners
 STA_CORNERS:
-  - nom_typ_1p20V_25C
-  - nom_typ_1p50V_25C
-  - nom_slow_1p35V_125C
-  - nom_slow_1p08V_125C
-  - nom_fast_1p32V_m40C
-  - nom_fast_1p65V_m40C
+  - nom_tt_025C_3v30
+  - nom_ss_125C_3v00
+  - nom_ff_n40C_3v60
 
 CTS_CLK_BUFFERS:
-  - "gf180mcu_as_sc_mcu7t3v3__buff_8"
-  - "gf180mcu_as_sc_mcu7t3v3__buff_4"
-  - "gf180mcu_buf_2"
+  - "gf180mcu_as_sc_mcu7t3v3__clkbuff_12"
+  - "gf180mcu_as_sc_mcu7t3v3__clkbuff_8"
+  - "gf180mcu_as_sc_mcu7t3v3__clkbuff_4"
 
-DEFAULT_CORNER: nom_typ_1p20V_25C
+DEFAULT_CORNER: nom_tt_025C_3v30
 
 # Magic streamout: don't blackbox macros
 MAGIC_MACRO_STD_CELL_SOURCE: PDK
@@ -153,10 +141,7 @@ CTS_OBSTRUCTION_AWARE: true
 # CTS_CLK_MAX_WIRE_LENGTH removed.  Its default is 0, which lets
 # TritonCTS pick the segment length itself;  the explicit 1200 um was an
 # override roughly the width of the whole block, so the tree went almost
-# unbuffered.  Combined with no max_transition constraint, that produced
-# 4.589 ns of clock skew and 56 max-slew violations at
-# nom_slow_1p08V_125C, with a 468 um average leaf wire on 112 sinks.
-# max_transition is now set in constraints.sdc.
+# unbuffered.
 CTS_SINK_CLUSTERING_SIZE: 25 # default 25
 CTS_SINK_CLUSTERING_MAX_DIAMETER: 60 # default 50
 
@@ -165,8 +150,26 @@ GRT_ALLOW_CONGESTION: true
 # NOTE:  Changed to false to check for congestion issues early
 ## GRT_ALLOW_CONGESTION: false
 RT_CLOCK_MAX_LAYER: Metal4
-#RT_MAX_LAYER: Metal4
-#DRT_MAX_LAYER: Metal4
+
+# Keep signal routing off Metal5 as well.  Metal5 is only lightly used
+# anyway -- the GRT congestion report for the 15-56-18 run had it at
+# 3.78% (2453 of 64824) -- and moving all of it down leaves M2-M4 at
+# 13.6% of their combined resource, with Metal4 nearly empty at 2.67%.
+# There is plenty of room, and restricting the layers also makes the
+# router behave uniformly across bits of the same vector:  in that run
+# voltgen_source[0] and [3] took Metal5 for their long haul while [1],
+# [2] and [4] stayed on Metal3, which made the DRT-0218 failures look
+# placement-dependent rather than reproducible.
+#
+# (Setting reverted because it causes routing to fail)
+#
+# RT_MAX_LAYER: Metal4
+# DRT_MAX_LAYER: Metal4
+#
+# Instead, coerce the router into avoiding metal5 unless it must, so
+# it doesn't use it unnecessarily.
+
+# GRT_LAYER_ADJUSTMENTS: [0, 0, 0, 0, 0.5]
 
 # Resizer
 # RSZ_DONT_TOUCH_RX: porb_l|por_l
@@ -203,14 +206,40 @@ PDN_CORE_RING: false
 # Floorplanning
 FP_SIZING: absolute
 
-DIE_AREA: [ 640.00,  300.00, 1895.00, 430.00 ]
-CORE_AREA: [ 641.50,  301.50, 1893.50, 428.50 ]
+DIE_AREA: [ 975.00,  415.00, 3475.00, 700.00 ]
+CORE_AREA: [ 978.00,  418.00, 3472.00, 697.00 ]
 
 FP_DEF_TEMPLATE: dir::../../def/housekeeping_top.def
 FP_TEMPLATE_MATCH_MODE: permissive
 #FP_TEMPLATE_COPY_POWER_PINS: True
 
-PL_TARGET_DENSITY_PCT: 50 # Adjust as needed
+# Placement density.
+#
+# The block's actual utilization is 17.5% (GPL-0016/0019: 723854 um2 of
+# core, 17.492% utilized, 14.8% effective).  A 50% target was therefore
+# nearly four times the real occupancy, which let the placer pack all the
+# logic into roughly a third of the core and leave the rest empty.
+#
+# That is what put the output buffers a long way from the pins they
+# drive.  The median driver-to-pin distance over all 121 outbuffers is
+# 65.9 um, but the ones at the far end are nowhere near that:
+#     outbuffers[92]  io_out[7]           cell x 2276  pin x 3385  1116 um
+#     outbuffers[19]  voltgen_source[0]   cell x 2006  pin x 1050   972 um
+#     outbuffers[20]  voltgen_source[1]   cell x 1978  pin x 1052   938 um
+# The core is a long thin strip, 2496 x 296 um, with pins spread along
+# its whole length;  the logic needs to spread with them rather than
+# cluster at one end and route 900+ um back.
+#
+# Set just above the real utilization so the density penalty actually
+# spreads the logic along the strip.  Congestion is not the constraint
+# here -- the 15-56-18 run finished global routing at 11.19% total with
+# ZERO overflow on every layer and Metal3 worst at 22.95% -- so there is
+# no reason to keep cells packed.
+#
+# If total wirelength (GRT-0018, 440512 um in that run) climbs a lot, the
+# placer is over-spreading the internal logic to shorten the pin nets;
+# 25-30 is the obvious next thing to try in that case.
+PL_TARGET_DENSITY_PCT: 25
 
 # FP_OBSTRUCTIONS:
 ## SRAM
@@ -225,22 +254,13 @@ PL_TARGET_DENSITY_PCT: 50 # Adjust as needed
 # obsm* shapes painted by scripts/run_gen_hk_def.tcl have no effect on
 # the flow and must be restated here.  Keep the two in step.
 #
-# Layer names are LEF names.  magic's "m4"/metal4 is Metal4;  its
-# "m5"/metal5 is TopMetal1.
+# Layer names are LEF names.
 #
-# This keepout lets the 5.0 V supply reach up from the pad in the lower
-# right corner, over the right-hand end of this block.  It mirrors the
-# two boxes at the end of run_gen_hk_def.tcl:
-#     obsm5  (die_urx-33, die_lly+25) .. (die_urx, die_ury-60)
-#     obsm4  (die_urx-33, die_lly+25) .. (die_urx, die_ury)
+# To do:  Apply PDN and routing obstructions, if needed. 
 
-PDN_OBSTRUCTIONS:
-- [TopMetal1, 1862.00, 325.00, 1895.00, 370.00]
-- [Metal4, 1862.00, 325.00, 1895.00, 430.00]
+# PDN_OBSTRUCTIONS:
 
-ROUTING_OBSTRUCTIONS:
-- [TopMetal1, 1862.00, 325.00, 1895.00, 370.00]
-- [Metal4, 1862.00, 325.00, 1895.00, 430.00]
+# ROUTING_OBSTRUCTIONS:
 
 # NOTE:  run_gen_hk_def.tcl also paints 1 um obsm1..obsm4 strips along
 # all four die edges over the pins.  Those are deliberately NOT restated

@@ -145,7 +145,7 @@ s1_an[0]:	gf180mcu_ocd_io__asig_5p0		s1_an_0
 s1_an[1]:	gf180mcu_ocd_io__asig_5p0		s1_an_1
 s2_an[0]:	gf180mcu_ocd_io__asig_5p0		s2_an_0
 s2_an[1]:	gf180mcu_ocd_io__asig_5p0		s2_an_1
-s3_an[0]:	gf180mcu_ocd_io__asig_5p0		s3_an_0
+s3_an[0]:	gf180mcu_ocd_io__bi_a			s3_an_0
 s3_an[1]:	gf180mcu_ocd_io__asig_5p0		s3_an_1
 s4_an[0]:	gf180mcu_ocd_io__asig_5p0		s4_an_0
 s5_an[0]:	gf180mcu_ocd_io__asig_5p0		s5_an_0
@@ -167,7 +167,7 @@ s12_an[0]:	gf180mcu_ocd_io__asig_5p0		s12_an_0
 s12_an[1]:	gf180mcu_ocd_io__asig_5p0		s12_an_1
 s13_an[0]:	gf180mcu_ocd_io__asig_5p0		s13_an_0
 s13_an[1]:	gf180mcu_ocd_io__asig_5p0		s13_an_1
-s14_an[0]:	gf180mcu_ocd_io__asig_5p0		s14_an_0
+s14_an[0]:	gf180mcu_ocd_io__in_s			s14_an_0
 s14_an[1]:	gf180mcu_ocd_io__asig_5p0		s14_an_1
 s14_an[2]:	gf180mcu_ocd_io__asig_5p0		s14_an_2
 s15_an[0]:	gf180mcu_ocd_io__asig_5p0		s15_an_0

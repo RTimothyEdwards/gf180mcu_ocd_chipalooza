@@ -34,6 +34,9 @@ units microns
 # Add the I/O library path (see setup.sh)
 puts stdout "Adding path $::env(PDK_ROOT)/gf180mcuD/libs.ref/gf180mcu_ocd_io/mag"
 addpath $::env(PDK_ROOT)/gf180mcuD/libs.ref/gf180mcu_ocd_io/mag
+addpath $::env(PDK_ROOT)/gf180mcuD/libs.ref/gf180mcu_ocd_alpha_misc/mag
+addpath $::env(PDK_ROOT)/gf180mcuD/libs.ref/gf180mcu_ocd_alpha_large/mag
+addpath $::env(PDK_ROOT)/gf180mcuD/libs.ref/gf180mcu_ocd_alpha_small/mag
 
 # Ensure that the padframe layout does not already exist.
 if {[file exists gf180mcu_padframe.mag]} {
@@ -106,83 +109,113 @@ proc label_pad {pad_name pad_text} {
 proc label_bottom_signal {pad_name pin_name pin_text} {
     goto ${pad_name}/${pin_name}
     box move n [box height]
-    box move s 1
-    box height 2
-    box grow e 0.1
-    box grow w 0.1
+    box height 4
     paint m2
     label $pin_text FreeSans 0.3 90 0 0 c m2
     port make
 }
 
 # Label an internal pad signal on the right
+# Labels on are m3;  contact down to the pin on m2
 proc label_right_signal {pad_name pin_name pin_text} {
     goto ${pad_name}/${pin_name}
-    box move w 1
-    box width 2
-    box grow n 0.1
-    box grow s 0.1
+    box move w 4
+    box width 5
     paint m3
+    box width 4
     label $pin_text FreeSans 0.3 0 0 0 c m3
     port make
+    box move e 4
+    box width 1
+    box grow e -0.05
+    box grow w -0.05
+    paint via2
 }
 
 # Label an internal pad signal on the top
 proc label_top_signal {pad_name pin_name pin_text} {
     goto ${pad_name}/${pin_name}
-    box move s 1
-    box height 2
-    box grow e 0.1
-    box grow w 0.1
+    box move s 4
+    box height 4
     paint m2
     label $pin_text FreeSans 0.3 90 0 0 c m2
     port make
 }
 
 # Label an internal pad signal on the left
+# Labels on are m3;  contact down to the pin on m2
 proc label_left_signal {pad_name pin_name pin_text} {
     goto ${pad_name}/${pin_name}
     box move e [box width]
     box move w 1
-    box width 2
-    box grow n 0.1
-    box grow s 0.1
+    box width 5
     paint m3
+    box grow w -1
     label $pin_text FreeSans 0.3 0 0 0 c m3
     port make
+    box move w 1
+    box width 1
+    box grow e -0.05
+    box grow w -0.05
+    paint via2
 }
+
+# Note that analog labels have to be handled differently
+# because the pin name is the same as the pad name, and
+# selecting the label will land on the pad and not on the
+# core-facing label.
 
 # Label an analog pad signal on the left
 proc label_left_analog {pad_name pin_name pin_text} {
-    goto ${pad_name}/${pin_name}
+    select cell ${pad_name}
+    box values {*}[instance list abutment]
     box move e [box width]
-    box width 1.1
+    box width 1
+    box grow n -15.34
+    box grow s -15.34
+    paint m2,m3
+    box grow c -0.1
+    paint via2
+    box grow c 0.1
+    box move e 1
+    box width 3
     paint m3
-    box width 0.8 
-    paint m3
-    label $pin_text FreeSans 0.3 90 0 0 c m3
+    box width 2
+    label $pin_text FreeSans 2 90 0 0 c m3
     port make
 }
 
 # Label an analog pad signal on the right
 proc label_right_analog {pad_name pin_name pin_text} {
-    goto ${pad_name}/${pin_name}
-    box width 1.1
-    box move w 1.1
+    select cell ${pad_name}
+    box values {*}[instance list abutment]
+    box move w 1
+    box width 1
+    box grow n -15.34
+    box grow s -15.34
+    paint m2,m3
+    box grow c -0.1
+    paint via2
+    box grow c 0.1
+    box move w 3
+    box width 3
     paint m3
-    box width 0.8
-    label $pin_text FreeSans 0.3 90 0 0 c m3
+    box width 2
+    label $pin_text FreeSans 2 90 0 0 c m3
     port make
 }
 
 # Label an analog pad signal on the top
 proc label_top_analog {pad_name pin_name pin_text} {
-    goto ${pad_name}/${pin_name}
-    box height 1.1
-    box move s 1.1
+    select cell ${pad_name}
+    box values {*}[instance list abutment]
+    box move s 4
+    box height 4
+    box grow w -15.34
+    box grow e -15.34
     paint m2
-    box height 0.8
-    label $pin_text FreeSans 0.3 0 0 0 c m2
+    box height 2
+    label $pin_text FreeSans 2 0 0 0 c m2
     port make
 }
 
@@ -191,45 +224,67 @@ proc label_top_analog {pad_name pin_name pin_text} {
 
 proc add_constant_bottom {cellname instname} {
     select cell $cellname
-    # move to the corner position of the cell
-    box move n [box height]
+    box values {*}[instance list abutment]
     box move e [box width]
-    box move s 25.5
-    getcell constant_block_vrouted
+    box width 10
+    box grow c -1
+    select area subcell
+    delete
+    box grow c 1
+    getcell gf180mcu_ocd_io__fill10x
     identify $instname
 }
 
 proc add_constant_left {cellname instname} {
     select cell $cellname
-    # move to the corner position of the cell
-    box move e [box width]
-    box move s 10
-    box move w 26
-    getcell constant_block_hrouted 180v
+    box values {*}[instance list abutment]
+    box move n [box height]
+    box height 10
+    box grow c -1
+    select area subcell
+    delete
+    box grow c 1
+    getcell gf180mcu_ocd_io__fill10x 90
     identify $instname
 }
 
 proc add_constant_right {cellname instname} {
     select cell $cellname
-    # move to the corner position of the cell
+    box values {*}[instance list abutment]
     box move n [box height]
-    box move w 0.5
-    getcell constant_block_hrouted v
+    box height 10
+    box grow c -1
+    select area subcell
+    delete
+    box grow c 1
+    getcell gf180mcu_ocd_io__fill10x 270
+    identify $instname
+}
+
+proc add_constant_top {cellname instname} {
+    select cell $cellname
+    box values {*}[instance list abutment]
+    box move e [box width]
+    box width 10
+    box grow c -1
+    select area subcell
+    delete
+    box grow c 1
+    getcell gf180mcu_ocd_io__fill10x 180
     identify $instname
 }
 
 # Create the new padframe cell.
 load gf180mcu_padframe -silent
 
-# The Pad corner is inside the frame by the distance of a pad length (as defined
-# here, 100um)
-box values 100 100 100 100
+# The Pad corner is at the origin
+box values 0 0 0 0
 
 # Procedure to add spacers.
 # Top and bottom: 127um = 12x fill10, 1x fill5, 2x fill1
 # Left and right: 95um = 9x fill10, 1x fill5
 
-proc place_spacers_bottom {idx} {
+proc place_spacers_bottom {idx {extra 0}} {
     for {set i 0} {$i < 12} {incr i} {
         set letter [format %c [expr $i + 97]]
         place_pad_bottom spacer_${idx}${letter}	gf180mcu_ocd_io__fill10
@@ -242,18 +297,33 @@ proc place_spacers_bottom {idx} {
     incr i
     set letter [format %c [expr $i + 97]]
     place_pad_bottom spacer_${idx}${letter}	gf180mcu_ocd_io__fill1
+
+    for {set i 15} {$i < [expr 15 + $extra]} {incr i} {
+        set letter [format %c [expr $i + 97]]
+        place_pad_bottom spacer_${idx}${letter}	gf180mcu_ocd_io__fill1
+    }
 }
 
-proc place_spacers_right {idx} {
+proc place_spacers_right {idx {extra 0}} {
     for {set i 0} {$i < 9} {incr i} {
         set letter [format %c [expr $i + 97]]
         place_pad_right spacer_${idx}${letter}	gf180mcu_ocd_io__fill10
     }
     set letter [format %c [expr $i + 97]]
-    place_pad_right spacer_${idx}${letter}	gf180mcu_ocd_io__fill5
+    if {$extra == "s"} {
+	place_pad_right spacer_${idx}${letter}	gf180mcu_ocd_io__brk5
+	set extra 0
+    } else {
+	place_pad_right spacer_${idx}${letter}	gf180mcu_ocd_io__fill5
+    }
+
+    for {set i 11} {$i < [expr 11 + $extra]} {incr i} {
+        set letter [format %c [expr $i + 97]]
+        place_pad_right spacer_${idx}${letter}	gf180mcu_ocd_io__fill1
+    }
 }
 
-proc place_spacers_top {idx} {
+proc place_spacers_top {idx {extra 0}} {
     for {set i 0} {$i < 12} {incr i} {
         set letter [format %c [expr $i + 97]]
         place_pad_top spacer_${idx}${letter}	gf180mcu_ocd_io__fill10
@@ -266,33 +336,95 @@ proc place_spacers_top {idx} {
     incr i
     set letter [format %c [expr $i + 97]]
     place_pad_top spacer_${idx}${letter}	gf180mcu_ocd_io__fill1
+
+    for {set i 15} {$i < [expr 15 + $extra]} {incr i} {
+        set letter [format %c [expr $i + 97]]
+        place_pad_top spacer_${idx}${letter}	gf180mcu_ocd_io__fill1
+    }
 }
 
-proc place_spacers_left {idx} {
+proc place_spacers_left {idx {extra 0}} {
     for {set i 0} {$i < 9} {incr i} {
         set letter [format %c [expr $i + 97]]
         place_pad_left spacer_${idx}${letter}	gf180mcu_ocd_io__fill10
     }
     set letter [format %c [expr $i + 97]]
-    place_pad_left spacer_${idx}${letter}	gf180mcu_ocd_io__fill5
+    if {$extra == "s"} {
+	place_pad_left spacer_${idx}${letter}	gf180mcu_ocd_io__brk5
+	set extra 0
+    } else {
+	place_pad_left spacer_${idx}${letter}	gf180mcu_ocd_io__fill5
+    }
+
+    for {set i 11} {$i < [expr 11 + $extra]} {incr i} {
+        set letter [format %c [expr $i + 97]]
+        place_pad_left spacer_${idx}${letter}	gf180mcu_ocd_io__fill1
+    }
 }
 
-# Add voltage domain splitters (1um wide) + spacer (5um wide)
+# Label bottom power pads
 
-proc place_splitter_right {idx} {
-    for {set i 0} {$i < 9} {incr i} {
-        set letter [format %c [expr $i + 97]]
-        place_pad_right spacer_${idx}${letter}	gf180mcu_ocd_io__fill10
-    }
-    place_pad_right splitter_${idx}	gf180mcu_ocd_io__brk5
+proc label_power_pad_bottom {pad_name pin_name} {
+    select cell ${pad_name}
+    box values {*}[instance list abutment]
+    box move n [box height]
+    box height 3
+    box grow w -1.36
+    box grow e -1.36
+    getcell horz_power_connect
+    box move n 1
+    box height 3
+    paint m4
+    label ${pin_name} FreeSans 3 0 0 0 c m4
+    port make
 }
 
-proc place_splitter_left {idx} {
-    for {set i 0} {$i < 9} {incr i} {
-        set letter [format %c [expr $i + 97]]
-        place_pad_left spacer_${idx}${letter}	gf180mcu_ocd_io__fill10
-    }
-    place_pad_left splitter_${idx}	gf180mcu_ocd_io__brk5
+# Label right power pads
+
+proc label_power_pad_right {pad_name pin_name} {
+    select cell ${pad_name}
+    box values {*}[instance list abutment]
+    box move w 1.35
+    box grow s -1.36
+    box grow n -1.36
+    getcell vert_power_connect
+    box move w 3
+    box width 3
+    paint m5
+    label ${pin_name} FreeSans 3 270 0 0 c m5
+    port make
+}
+
+# Label top power pads
+
+proc label_power_pad_top {pad_name pin_name} {
+    select cell ${pad_name}
+    box values {*}[instance list abutment]
+    box grow w -1.36
+    box grow e -1.36
+    box move s 1
+    getcell horz_power_connect
+    box move s 3
+    box height 3
+    paint m4
+    label ${pin_name} FreeSans 3 0 0 0 c m4
+    port make
+}
+
+# Label left power pads
+
+proc label_power_pad_left {pad_name pin_name} {
+    select cell ${pad_name}
+    box values {*}[instance list abutment]
+    box move e [box width]
+    box grow n -1.36
+    box grow s -1.36
+    getcell vert_power_connect
+    box move e 1.35
+    box width 3
+    paint m5
+    label ${pin_name} FreeSans 3 270 0 0 c m5
+    port make
 }
 
 # Create the padframe (see documentation)
@@ -301,86 +433,91 @@ proc place_splitter_left {idx} {
 # counterclockwise.
 
 place_pad_bottom pad_corner_sw	gf180mcu_ocd_io__cor
+place_spacers_bottom 0 6
 place_pad_bottom pad_SDO 	gf180mcu_ocd_io__bi_24t pad_0
-place_spacers_bottom 0
-place_pad_bottom pad_SDI 	gf180mcu_ocd_io__in_c	 pad_1
 place_spacers_bottom 1
-place_pad_bottom pad_CSB 	gf180mcu_ocd_io__in_c	 pad_2
+place_pad_bottom pad_SDI 	gf180mcu_ocd_io__in_c	 pad_1
 place_spacers_bottom 2
-place_pad_bottom pad_SCK 	gf180mcu_ocd_io__in_c 	 pad_3
+place_pad_bottom pad_CSB 	gf180mcu_ocd_io__in_c	 pad_2
 place_spacers_bottom 3
-place_pad_bottom pad_clk 	gf180mcu_ocd_io__in_c	 pad_4
+place_pad_bottom pad_SCK 	gf180mcu_ocd_io__in_c 	 pad_3
 place_spacers_bottom 4
-place_pad_bottom pad_vddd_0 	gf180mcu_ocd_io__vdd	 pad_5
+place_pad_bottom pad_clk 	gf180mcu_ocd_io__in_c	 pad_4
 place_spacers_bottom 5
-place_pad_bottom pad_vddd_1 	gf180mcu_ocd_io__vdd	 pad_6
+place_pad_bottom pad_vddd_0 	gf180mcu_ocd_io__vdd	 pad_5
 place_spacers_bottom 6
-place_pad_bottom pad_gpio_0 	gf180mcu_ocd_io__bi_24t pad_7
+place_pad_bottom pad_vddd_1 	gf180mcu_ocd_io__vdd	 pad_6
 place_spacers_bottom 7
-place_pad_bottom pad_gpio_1 	gf180mcu_ocd_io__bi_24t pad_8
+place_pad_bottom pad_gpio_0 	gf180mcu_ocd_io__bi_24t pad_7
 place_spacers_bottom 8
-place_pad_bottom pad_gpio_2 	gf180mcu_ocd_io__bi_24t pad_9
+place_pad_bottom pad_gpio_1 	gf180mcu_ocd_io__bi_24t pad_8
 place_spacers_bottom 9
+place_pad_bottom pad_gpio_2 	gf180mcu_ocd_io__bi_24t pad_9
+place_spacers_bottom 10 
 place_pad_bottom pad_gpio_3 	gf180mcu_ocd_io__bi_24t pad_10
-place_spacers_bottom 10
-place_pad_bottom pad_gpio_4 	gf180mcu_ocd_io__bi_24t pad_11
 place_spacers_bottom 11
-place_pad_bottom pad_gpio_5 	gf180mcu_ocd_io__bi_24t pad_12
+place_pad_bottom pad_gpio_4 	gf180mcu_ocd_io__bi_24t pad_11
 place_spacers_bottom 12
-place_pad_bottom pad_gpio_6 	gf180mcu_ocd_io__bi_24t pad_13
+place_pad_bottom pad_gpio_5 	gf180mcu_ocd_io__bi_24t pad_12
 place_spacers_bottom 13
+place_pad_bottom pad_gpio_6 	gf180mcu_ocd_io__bi_24t pad_13
+place_spacers_bottom 14
 place_pad_bottom pad_gpio_7 	gf180mcu_ocd_io__bi_24t pad_14
+place_spacers_bottom 15 7
 
 place_pad_right	 pad_corner_se	gf180mcu_ocd_io__cor
+box move e 5
+place_spacers_right 16 7
 place_pad_right	 pad_vdd5v0_0	gf180mcu_ocd_io__dvdd	 pad_15
-place_splitter_right 14
+place_spacers_right 17 s
 place_pad_right	 pad_vdd3v3_0	gf180mcu_ocd_io__vdd	 pad_16
-place_spacers_right 15
-place_pad_right	 pad_vdd3v3_1	gf180mcu_ocd_io__vdd	 pad_17
-place_spacers_right 16
-place_pad_right	 pad_s1_an_0	PAD_1_0_TYPE 		 pad_18
-place_spacers_right 17
-place_pad_right	 pad_s1_an_1	PAD_1_1_TYPE 		 pad_19
 place_spacers_right 18
-place_pad_right	 pad_s2_an_0	PAD_2_0_TYPE 		 pad_20
+place_pad_right	 pad_vdd3v3_1	gf180mcu_ocd_io__vdd	 pad_17
 place_spacers_right 19
-place_pad_right	 pad_s2_an_1	PAD_2_1_TYPE 		 pad_21
+place_pad_right	 pad_s1_an_0	PAD_1_0_TYPE 		 pad_18
 place_spacers_right 20
-place_pad_right	 pad_vss5v0_0	gf180mcu_ocd_io__dvss	 pad_22
+place_pad_right	 pad_s1_an_1	PAD_1_1_TYPE 		 pad_19
 place_spacers_right 21
-place_pad_right	 pad_s3_an_0	PAD_3_0_TYPE	 	 pad_23
+place_pad_right	 pad_s2_an_0	PAD_2_0_TYPE 		 pad_20
 place_spacers_right 22
-place_pad_right	 pad_s3_an_1	PAD_3_1_TYPE	 	 pad_24
+place_pad_right	 pad_s2_an_1	PAD_2_1_TYPE 		 pad_21
 place_spacers_right 23
-place_pad_right	 pad_s4_an_0	PAD_4_0_TYPE	 	 pad_25
+place_pad_right	 pad_vss5v0_0	gf180mcu_ocd_io__dvss	 pad_22
 place_spacers_right 24
-place_pad_right	 pad_vss3v3_0	gf180mcu_ocd_io__vss 	 pad_26
+place_pad_right	 pad_s3_an_0	PAD_3_0_TYPE	 	 pad_23
 place_spacers_right 25
-place_pad_right	 pad_s5_an_0	PAD_5_0_TYPE	 	 pad_27
+place_pad_right	 pad_s3_an_1	PAD_3_1_TYPE	 	 pad_24
 place_spacers_right 26
-place_pad_right	 pad_s5_an_1	PAD_5_1_TYPE	 	 pad_28
+place_pad_right	 pad_s4_an_0	PAD_4_0_TYPE	 	 pad_25
 place_spacers_right 27
-place_pad_right	 pad_s5_an_2	PAD_5_2_TYPE	 	 pad_29
+place_pad_right	 pad_vss3v3_0	gf180mcu_ocd_io__vss 	 pad_26
 place_spacers_right 28
-place_pad_right	 pad_s6_an_0	PAD_6_0_TYPE	 	 pad_30
+place_pad_right	 pad_s5_an_0	PAD_5_0_TYPE	 	 pad_27
 place_spacers_right 29
-place_pad_right	 pad_s6_an_1	PAD_6_1_TYPE	 	 pad_31
+place_pad_right	 pad_s5_an_1	PAD_5_1_TYPE	 	 pad_28
 place_spacers_right 30
-place_pad_right	 pad_vss3v3_1	gf180mcu_ocd_io__vss 	 pad_32
+place_pad_right	 pad_s5_an_2	PAD_5_2_TYPE	 	 pad_29
 place_spacers_right 31
-place_pad_right	 pad_s7_an_0 	PAD_7_0_TYPE	 	 pad_33
+place_pad_right	 pad_s6_an_0	PAD_6_0_TYPE	 	 pad_30
 place_spacers_right 32
-place_pad_right	 pad_s7_an_1	PAD_7_1_TYPE	 	 pad_34
+place_pad_right	 pad_s6_an_1	PAD_6_1_TYPE	 	 pad_31
 place_spacers_right 33
-place_pad_right	 pad_s8_an_0	PAD_8_0_TYPE	 	 pad_35
+place_pad_right	 pad_vss3v3_1	gf180mcu_ocd_io__vss 	 pad_32
 place_spacers_right 34
-place_pad_right	 pad_vss5v0_1	gf180mcu_ocd_io__dvss	 pad_36
+place_pad_right	 pad_s7_an_0 	PAD_7_0_TYPE	 	 pad_33
 place_spacers_right 35
-place_pad_right	 pad_s9_an_0	PAD_9_0_TYPE	 	 pad_37
+place_pad_right	 pad_s7_an_1	PAD_7_1_TYPE	 	 pad_34
 place_spacers_right 36
-place_pad_right	 pad_s9_an_1	PAD_9_1_TYPE	 	 pad_38
+place_pad_right	 pad_s8_an_0	PAD_8_0_TYPE	 	 pad_35
 place_spacers_right 37
+place_pad_right	 pad_vss5v0_1	gf180mcu_ocd_io__dvss	 pad_36
+place_spacers_right 38
+place_pad_right	 pad_s9_an_0	PAD_9_0_TYPE	 	 pad_37
+place_spacers_right 39
+place_pad_right	 pad_s9_an_1	PAD_9_1_TYPE	 	 pad_38
+place_spacers_right 40
 place_pad_right	 pad_s9_an_2	PAD_9_2_TYPE	 	 pad_39
+place_spacers_right 41 8
 
 # Go back to the bottom left corner
 set ibox [instance list abutment pad_corner_sw]
@@ -388,91 +525,97 @@ box values {*}$ibox
 box move n [- [lindex $ibox 3] [lindex $ibox 1]]
 
 # Place the remainder in clockwise order
+place_spacers_left 83 7
 place_pad_left	 pad_vss3v3_4	gf180mcu_ocd_io__vss	 pad_79
-place_splitter_left 75
+place_spacers_left 82 s
 place_pad_left	 pad_vdd3v3_4 	gf180mcu_ocd_io__vdd	 pad_78
-place_spacers_left 74
+place_spacers_left 81
 place_pad_left	 pad_vdd3v3_3 	gf180mcu_ocd_io__vdd	 pad_77
-place_spacers_left 73
+place_spacers_left 80
 place_pad_left	 pad_s18_an_1	PAD_18_1_TYPE	 	 pad_76
-place_spacers_left 72
+place_spacers_left 79
 place_pad_left	 pad_s18_an_0	PAD_18_0_TYPE	 	 pad_75
-place_spacers_left 71
+place_spacers_left 78
 place_pad_left	 pad_s17_an_1	PAD_17_1_TYPE	 	 pad_74
-place_spacers_left 70
+place_spacers_left 77
 place_pad_left	 pad_s17_an_0	PAD_17_0_TYPE	 	 pad_73
-place_spacers_left 69
+place_spacers_left 76
 place_pad_left	 pad_vss3v3_3	gf180mcu_ocd_io__vss	 pad_72
-place_spacers_left 68
+place_spacers_left 75
 place_pad_left	 pad_s16_an_1	PAD_16_1_TYPE		 pad_71
-place_spacers_left 67
+place_spacers_left 74
 place_pad_left	 pad_s16_an_0	PAD_16_0_TYPE	 	 pad_70
-place_spacers_left 66
+place_spacers_left 73
 place_pad_left	 pad_s15_an_0	PAD_15_0_TYPE	 	 pad_69
-place_spacers_left 65
+place_spacers_left 72
 place_pad_left	 pad_vss5v0_5	gf180mcu_ocd_io__dvss 	 pad_68
-place_spacers_left 64
+place_spacers_left 71
 place_pad_left	 pad_s14_an_2	PAD_14_2_TYPE	 	 pad_67
-place_spacers_left 63
+place_spacers_left 70
 place_pad_left	 pad_s14_an_1	PAD_14_1_TYPE	 	 pad_66
-place_spacers_left 62
+place_spacers_left 69
 place_pad_left	 pad_s14_an_0	PAD_14_0_TYPE	 	 pad_65
-place_spacers_left 61
+place_spacers_left 68
 place_pad_left	 pad_s13_an_1	PAD_13_1_TYPE	 	 pad_64
-place_spacers_left 60
+place_spacers_left 67
 place_pad_left	 pad_s13_an_0	PAD_13_0_TYPE	 	 pad_63
-place_spacers_left 59
+place_spacers_left 66
 place_pad_left	 pad_vss5v0_4	gf180mcu_ocd_io__dvss	 pad_62
-place_spacers_left 58
+place_spacers_left 65
 place_pad_left	 pad_s12_an_1 	PAD_12_1_TYPE	 	pad_61
-place_spacers_left 57
+place_spacers_left 64
 place_pad_left	 pad_s12_an_0	PAD_12_0_TYPE	 	 pad_60
-place_spacers_left 56
+place_spacers_left 63
 place_pad_left	 pad_s11_an_0	PAD_11_0_TYPE	 	 pad_59
-place_spacers_left 55
+place_spacers_left 62
 place_pad_left	 pad_vss3v3_2	gf180mcu_ocd_io__vss 	 pad_58
-place_spacers_left 54
+place_spacers_left 61
 place_pad_left	 pad_s10_an_2	PAD_10_2_TYPE	 	 pad_57
-place_spacers_left 53
+place_spacers_left 60
 place_pad_left	 pad_s10_an_1	PAD_10_1_TYPE	 	 pad_56
-place_spacers_left 52
+place_spacers_left 59
 place_pad_left	 pad_s10_an_0	PAD_10_0_TYPE	 	 pad_55
+place_spacers_left 58 8
 place_pad_left	 pad_corner_nw	gf180mcu_ocd_io__cor
 
 # Move back down and to the right
 set ibox [instance list abutment pad_corner_nw]
 box values {*}$ibox
 box move e [- [lindex $ibox 2] [lindex $ibox 0]]
+box move n 5
 
+place_spacers_top 57 6
 place_pad_top	pad_vdd5v0_4	gf180mcu_ocd_io__dvdd	 pad_54
-place_spacers_top 51
+place_spacers_top 56
 place_pad_top	pad_vdd5v0_3	gf180mcu_ocd_io__dvdd	 pad_53
-place_spacers_top 50
+place_spacers_top 55
 place_pad_top	pad_vdd5v0_2	gf180mcu_ocd_io__dvdd	 pad_52
-place_spacers_top 49
+place_spacers_top 54
 place_pad_top	pad_vdd5v0_1	gf180mcu_ocd_io__dvdd	 pad_51
-place_spacers_top 48
+place_spacers_top 53
 place_pad_top	pad_vss5v0_3	gf180mcu_ocd_io__dvss 	 pad_50
-place_spacers_top 47
+place_spacers_top 52
 place_pad_top	pad_analog_3	gf180mcu_ocd_io__asig_5p0	 pad_49
-place_spacers_top 46
+place_spacers_top 51
 place_pad_top	pad_analog_2	gf180mcu_ocd_io__asig_5p0	 pad_48
-place_spacers_top 45
+place_spacers_top 50
 place_pad_top	pad_analog_1	gf180mcu_ocd_io__asig_5p0	 pad_47
-place_spacers_top 44
+place_spacers_top 49
 place_pad_top	pad_analog_0	gf180mcu_ocd_io__asig_5p0 	 pad_46
-place_spacers_top 43
+place_spacers_top 48
 place_pad_top	pad_vss5v0_2	gf180mcu_ocd_io__dvss	 pad_45
-place_spacers_top 42
+place_spacers_top 47
 place_pad_top	pad_gpio_11	gf180mcu_ocd_io__bi_24t pad_44
-place_spacers_top 41
+place_spacers_top 46
 place_pad_top	pad_gpio_10	gf180mcu_ocd_io__bi_24t pad_43
-place_spacers_top 40
+place_spacers_top 45
 place_pad_top	pad_gpio_9	gf180mcu_ocd_io__bi_24t pad_42
-place_spacers_top 39
+place_spacers_top 44
 place_pad_top	pad_gpio_8	gf180mcu_ocd_io__bi_24t pad_41
-place_spacers_top 38
+place_spacers_top 43
 place_pad_top	pad_vdd3v3_2	gf180mcu_ocd_io__vdd 	 pad_40
+place_spacers_top 42 7
+box move s 5
 place_pad_top	pad_corner_ne	gf180mcu_ocd_io__cor
 
 # Everything needs to be expanded for the pad labeling to work.
@@ -480,139 +623,234 @@ select top cell
 expand
 
 # Label all pads.
-label_pad pad_0 SDO
-label_pad pad_1 SDI
-label_pad pad_2 CSB
-label_pad pad_3 SCK
-label_pad pad_4 clk
-label_pad pad_5 vddd
-label_pad pad_6 vddd
-label_pad pad_7 gpio\[0\]
-label_pad pad_8 gpio\[1\]
-label_pad pad_9 gpio\[2\]
-label_pad pad_10 gpio\[3\]
-label_pad pad_11 gpio\[4\]
-label_pad pad_12 gpio\[5\]
-label_pad pad_13 gpio\[6\]
-label_pad pad_14 gpio\[7\]
-label_pad pad_15 vdd5v0
-label_pad pad_16 vdd3v3
-label_pad pad_17 vdd3v3
-label_pad pad_18 s1_an\[0\]
-label_pad pad_19 s1_an\[1\]
-label_pad pad_20 s2_an\[0\]
-label_pad pad_21 s2_an\[1\]
-label_pad pad_22 vss5v0
-label_pad pad_23 s3_an\[0\]
-label_pad pad_24 s3_an\[1\]
-label_pad pad_25 s4_an\[0\]
-label_pad pad_26 vss3v3
-label_pad pad_27 s5_an\[0\]
-label_pad pad_28 s5_an\[1\]
-label_pad pad_29 s5_an\[2\]
-label_pad pad_30 s6_an\[0\]
-label_pad pad_31 s6_an\[1\]
-label_pad pad_32 vss3v3
-label_pad pad_33 s7_an\[0\]
-label_pad pad_34 s7_an\[1\]
-label_pad pad_35 s8_an\[0\]
-label_pad pad_36 vss5v0
-label_pad pad_37 s9_an\[0\]
-label_pad pad_38 s9_an\[1\]
-label_pad pad_39 s9_an\[2\]
-label_pad pad_40 vdd3v3
-label_pad pad_41 gpio\[8\]
-label_pad pad_42 gpio\[9\]
-label_pad pad_43 gpio\[10\]
-label_pad pad_44 gpio\[11\]
-label_pad pad_45 vss5v0
-label_pad pad_46 analog\[0\]
-label_pad pad_47 analog\[1\]
-label_pad pad_48 analog\[2\]
-label_pad pad_49 analog\[3\]
-label_pad pad_50 vss5v0
-label_pad pad_51 vdd5v0
-label_pad pad_52 vdd5v0
-label_pad pad_53 vdd5v0
-label_pad pad_54 vdd5v0
-label_pad pad_55 s10_an\[0\]
-label_pad pad_56 s10_an\[1\]
-label_pad pad_57 s10_an\[2\]
-label_pad pad_58 vss3v3
-label_pad pad_59 s11_an\[0\]
-label_pad pad_60 s12_an\[0\]
-label_pad pad_61 s12_an\[1\]
-label_pad pad_62 vss5v0
-label_pad pad_63 s13_an\[0\]
-label_pad pad_64 s13_an\[1\]
-label_pad pad_65 s14_an\[0\]
-label_pad pad_66 s14_an\[1\]
-label_pad pad_67 s14_an\[2\]
-label_pad pad_68 vss5v0
-label_pad pad_69 s15_an\[0\]
-label_pad pad_70 s16_an\[0\]
-label_pad pad_71 s16_an\[1\]
-label_pad pad_72 vss3v3
-label_pad pad_73 s17_an\[0\]
-label_pad pad_74 s17_an\[1\]
-label_pad pad_75 s18_an\[0\]
-label_pad pad_76 s18_an\[1\]
-label_pad pad_77 vdd3v3
-label_pad pad_78 vdd3v3
-label_pad pad_79 vss3v3
+label_pad pad_SDO SDO
+label_pad pad_SDI SDI
+label_pad pad_CSB CSB
+label_pad pad_SCK SCK
+label_pad pad_clk clk
+label_pad pad_vddd_0 vddd
+label_pad pad_vddd_1 vddd
+label_pad pad_gpio_0 gpio\[0\]
+label_pad pad_gpio_1 gpio\[1\]
+label_pad pad_gpio_2 gpio\[2\]
+label_pad pad_gpio_3 gpio\[3\]
+label_pad pad_gpio_4 gpio\[4\]
+label_pad pad_gpio_5 gpio\[5\]
+label_pad pad_gpio_6 gpio\[6\]
+label_pad pad_gpio_7 gpio\[7\]
+label_pad pad_vdd5v0_0 vdd5v0
+label_pad pad_vdd3v3_0 vdd3v3
+label_pad pad_vdd3v3_1 vdd3v3
+label_pad pad_s1_an_0 s1_an\[0\]
+label_pad pad_s1_an_1 s1_an\[1\]
+label_pad pad_s2_an_0 s2_an\[0\]
+label_pad pad_s2_an_1 s2_an\[1\]
+label_pad pad_vss5v0_0 vss5v0
+label_pad pad_s3_an_0 s3_an\[0\]
+label_pad pad_s3_an_1 s3_an\[1\]
+label_pad pad_s4_an_0 s4_an\[0\]
+label_pad pad_vss3v3_0 vss3v3
+label_pad pad_s5_an_0 s5_an\[0\]
+label_pad pad_s5_an_1 s5_an\[1\]
+label_pad pad_s5_an_2 s5_an\[2\]
+label_pad pad_s6_an_0 s6_an\[0\]
+label_pad pad_s6_an_1 s6_an\[1\]
+label_pad pad_vss3v3_1 vss3v3
+label_pad pad_s7_an_0 s7_an\[0\]
+label_pad pad_s7_an_1 s7_an\[1\]
+label_pad pad_s8_an_0 s8_an\[0\]
+label_pad pad_vss5v0_1 vss5v0
+label_pad pad_s9_an_0 s9_an\[0\]
+label_pad pad_s9_an_1 s9_an\[1\]
+label_pad pad_s9_an_2 s9_an\[2\]
+label_pad pad_vdd3v3_2 vdd3v3
+label_pad pad_gpio_8 gpio\[8\]
+label_pad pad_gpio_9 gpio\[9\]
+label_pad pad_gpio_10 gpio\[10\]
+label_pad pad_gpio_11 gpio\[11\]
+label_pad pad_vss5v0_2 vss5v0
+label_pad pad_analog_0 analog\[0\]
+label_pad pad_analog_1 analog\[1\]
+label_pad pad_analog_2 analog\[2\]
+label_pad pad_analog_3 analog\[3\]
+label_pad pad_vss5v0_3 vss5v0
+label_pad pad_vdd5v0_1 vdd5v0
+label_pad pad_vdd5v0_2 vdd5v0
+label_pad pad_vdd5v0_3 vdd5v0
+label_pad pad_vdd5v0_4 vdd5v0
+label_pad pad_s10_an_0 s10_an\[0\]
+label_pad pad_s10_an_1 s10_an\[1\]
+label_pad pad_s10_an_2 s10_an\[2\]
+label_pad pad_vss3v3_2 vss3v3
+label_pad pad_s11_an_0 s11_an\[0\]
+label_pad pad_s12_an_0 s12_an\[0\]
+label_pad pad_s12_an_1 s12_an\[1\]
+label_pad pad_vss5v0_4 vss5v0
+label_pad pad_s13_an_0 s13_an\[0\]
+label_pad pad_s13_an_1 s13_an\[1\]
+label_pad pad_s14_an_0 s14_an\[0\]
+label_pad pad_s14_an_1 s14_an\[1\]
+label_pad pad_s14_an_2 s14_an\[2\]
+label_pad pad_vss5v0_4 vss5v0
+label_pad pad_s15_an_0 s15_an\[0\]
+label_pad pad_s16_an_0 s16_an\[0\]
+label_pad pad_s16_an_1 s16_an\[1\]
+label_pad pad_vss3v3_3 vss3v3
+label_pad pad_s17_an_0 s17_an\[0\]
+label_pad pad_s17_an_1 s17_an\[1\]
+label_pad pad_s18_an_0 s18_an\[0\]
+label_pad pad_s18_an_1 s18_an\[1\]
+label_pad pad_vdd3v3_3 vdd3v3
+label_pad pad_vdd3v3_4 vdd3v3
+label_pad pad_vss3v3_4 vss3v3
 
 # Label all internal digital pins
 
-label_bottom_signal pad_SDO     c2p    SDO_out
-label_bottom_signal pad_SDO     c2p_en SDO_ena
-label_bottom_signal pad_SDI 	p2c    SDI_in
-label_bottom_signal pad_CSB 	p2c    CSB_in
-label_bottom_signal pad_SCK 	p2c    SCK_in
-label_bottom_signal pad_clk 	p2c    clk_in
-label_bottom_signal pad_gpio_0 	p2c    gpio_0_in
-label_bottom_signal pad_gpio_0 	c2p    gpio_0_out
-label_bottom_signal pad_gpio_0 	c2p_en gpio_0_oe
-label_bottom_signal pad_gpio_1 	p2c    gpio_1_in
-label_bottom_signal pad_gpio_1 	c2p    gpio_1_out
-label_bottom_signal pad_gpio_1 	c2p_en gpio_1_oe
-label_bottom_signal pad_gpio_2 	p2c    gpio_2_in
-label_bottom_signal pad_gpio_2 	c2p    gpio_2_out
-label_bottom_signal pad_gpio_2 	c2p_en gpio_2_oe
-label_bottom_signal pad_gpio_3 	p2c    gpio_3_in
-label_bottom_signal pad_gpio_3 	c2p    gpio_3_out
-label_bottom_signal pad_gpio_3 	c2p_en gpio_3_oe
-label_bottom_signal pad_gpio_4 	p2c    gpio_4_in
-label_bottom_signal pad_gpio_4 	c2p    gpio_4_out
-label_bottom_signal pad_gpio_4 	c2p_en gpio_4_oe
-label_bottom_signal pad_gpio_5 	p2c    gpio_5_in
-label_bottom_signal pad_gpio_5 	c2p    gpio_5_out
-label_bottom_signal pad_gpio_5 	c2p_en gpio_5_oe
-label_bottom_signal pad_gpio_6 	p2c    gpio_6_in
-label_bottom_signal pad_gpio_6 	c2p    gpio_6_out
-label_bottom_signal pad_gpio_6 	c2p_en gpio_6_oe
-label_bottom_signal pad_gpio_7 	p2c    gpio_7_in
-label_bottom_signal pad_gpio_7 	c2p    gpio_7_out
-label_bottom_signal pad_gpio_7 	c2p_en gpio_7_oe
-label_top_signal pad_gpio_8 	p2c    gpio_8_in
-label_top_signal pad_gpio_8 	c2p    gpio_8_out
-label_top_signal pad_gpio_8 	c2p_en gpio_8_oe
-label_top_signal pad_gpio_9 	p2c    gpio_9_in
-label_top_signal pad_gpio_9 	c2p    gpio_9_out
-label_top_signal pad_gpio_9 	c2p_en gpio_9_oe
-label_top_signal pad_gpio_10	p2c    gpio_10_in
-label_top_signal pad_gpio_10	c2p    gpio_10_out
-label_top_signal pad_gpio_10 	c2p_en gpio_10_oe
-label_top_signal pad_gpio_11	p2c    gpio_11_in
-label_top_signal pad_gpio_11	c2p    gpio_11_out
-label_top_signal pad_gpio_11 	c2p_en gpio_11_oe
-label_top_signal pad_analog_0 	padres analog_0_esd
-label_top_signal pad_analog_1 	padres analog_1_esd
-label_top_signal pad_analog_2 	padres analog_2_esd
-label_top_signal pad_analog_3 	padres analog_3_esd
-label_top_analog pad_analog_0 	pad    analog\[0\]
-label_top_analog pad_analog_1 	pad    analog\[1\]
-label_top_analog pad_analog_2 	pad    analog\[2\]
-label_top_analog pad_analog_3 	pad    analog\[3\]
+label_bottom_signal pad_SDO     A      SDO_out
+label_bottom_signal pad_SDO     Y      SDO_in
+label_bottom_signal pad_SDO     OE     SDO_oe
+label_bottom_signal pad_SDO     IE     SDO_ie
+label_bottom_signal pad_SDO     PU     SDO_pullup
+label_bottom_signal pad_SDO     PD     SDO_pulldown
+label_bottom_signal pad_SDO     CS     SDO_level
+label_bottom_signal pad_SDO     SL     SDO_slew
+label_bottom_signal pad_SDI 	Y      SDI_in
+label_bottom_signal pad_SDI 	PU     SDI_pullup
+label_bottom_signal pad_SDI 	PD     SDI_pulldown
+label_bottom_signal pad_CSB 	Y      CSB_in
+label_bottom_signal pad_CSB 	PU     CSB_pullup
+label_bottom_signal pad_CSB 	PD     CSB_pulldown
+label_bottom_signal pad_SCK 	Y      SCK_in
+label_bottom_signal pad_SCK 	PU     SCK_pullup
+label_bottom_signal pad_SCK 	PD     SCK_pulldown
+label_bottom_signal pad_clk 	Y      clk_in
+label_bottom_signal pad_clk 	PU     clk_pullup
+label_bottom_signal pad_clk 	PD     clk_pulldown
+
+label_bottom_signal pad_gpio_0 	Y      gpio_0_in
+label_bottom_signal pad_gpio_0 	A      gpio_0_out
+label_bottom_signal pad_gpio_0 	OE     gpio_0_oe
+
+label_bottom_signal pad_gpio_0  IE     gpio_0_ie
+label_bottom_signal pad_gpio_0  PU     gpio_0_pullup
+label_bottom_signal pad_gpio_0  PD     gpio_0_pulldown
+label_bottom_signal pad_gpio_0  CS     gpio_0_level
+label_bottom_signal pad_gpio_0  SL     gpio_0_slew
+
+label_bottom_signal pad_gpio_1 	Y      gpio_1_in
+label_bottom_signal pad_gpio_1 	A      gpio_1_out
+label_bottom_signal pad_gpio_1 	OE     gpio_1_oe
+
+label_bottom_signal pad_gpio_1  IE     gpio_1_ie
+label_bottom_signal pad_gpio_1  PU     gpio_1_pullup
+label_bottom_signal pad_gpio_1  PD     gpio_1_pulldown
+label_bottom_signal pad_gpio_1  CS     gpio_1_level
+label_bottom_signal pad_gpio_1  SL     gpio_1_slew
+
+label_bottom_signal pad_gpio_2 	Y      gpio_2_in
+label_bottom_signal pad_gpio_2 	A      gpio_2_out
+label_bottom_signal pad_gpio_2 	OE     gpio_2_oe
+
+label_bottom_signal pad_gpio_2  IE     gpio_2_ie
+label_bottom_signal pad_gpio_2  PU     gpio_2_pullup
+label_bottom_signal pad_gpio_2  PD     gpio_2_pulldown
+label_bottom_signal pad_gpio_2  CS     gpio_2_level
+label_bottom_signal pad_gpio_2  SL     gpio_2_slew
+
+label_bottom_signal pad_gpio_3 	Y      gpio_3_in
+label_bottom_signal pad_gpio_3 	A      gpio_3_out
+label_bottom_signal pad_gpio_3 	OE     gpio_3_oe
+
+label_bottom_signal pad_gpio_3  IE     gpio_3_ie
+label_bottom_signal pad_gpio_3  PU     gpio_3_pullup
+label_bottom_signal pad_gpio_3  PD     gpio_3_pulldown
+label_bottom_signal pad_gpio_3  CS     gpio_3_level
+label_bottom_signal pad_gpio_3  SL     gpio_3_slew
+
+label_bottom_signal pad_gpio_4 	Y      gpio_4_in
+label_bottom_signal pad_gpio_4 	A      gpio_4_out
+label_bottom_signal pad_gpio_4 	OE     gpio_4_oe
+
+label_bottom_signal pad_gpio_4  IE     gpio_4_ie
+label_bottom_signal pad_gpio_4  PU     gpio_4_pullup
+label_bottom_signal pad_gpio_4  PD     gpio_4_pulldown
+label_bottom_signal pad_gpio_4  CS     gpio_4_level
+label_bottom_signal pad_gpio_4  SL     gpio_4_slew
+
+label_bottom_signal pad_gpio_5 	Y      gpio_5_in
+label_bottom_signal pad_gpio_5 	A      gpio_5_out
+label_bottom_signal pad_gpio_5 	OE     gpio_5_oe
+
+label_bottom_signal pad_gpio_5  IE     gpio_5_ie
+label_bottom_signal pad_gpio_5  PU     gpio_5_pullup
+label_bottom_signal pad_gpio_5  PD     gpio_5_pulldown
+label_bottom_signal pad_gpio_5  CS     gpio_5_level
+label_bottom_signal pad_gpio_5  SL     gpio_5_slew
+
+label_bottom_signal pad_gpio_6 	Y      gpio_6_in
+label_bottom_signal pad_gpio_6 	A      gpio_6_out
+label_bottom_signal pad_gpio_6 	OE     gpio_6_oe
+
+label_bottom_signal pad_gpio_6  IE     gpio_6_ie
+label_bottom_signal pad_gpio_6  PU     gpio_6_pullup
+label_bottom_signal pad_gpio_6  PD     gpio_6_pulldown
+label_bottom_signal pad_gpio_6  CS     gpio_6_level
+label_bottom_signal pad_gpio_6  SL     gpio_6_slew
+
+label_bottom_signal pad_gpio_7 	Y      gpio_7_in
+label_bottom_signal pad_gpio_7 	A      gpio_7_out
+label_bottom_signal pad_gpio_7 	OE     gpio_7_oe
+
+label_bottom_signal pad_gpio_7  IE     gpio_7_ie
+label_bottom_signal pad_gpio_7  PU     gpio_7_pullup
+label_bottom_signal pad_gpio_7  PD     gpio_7_pulldown
+label_bottom_signal pad_gpio_7  CS     gpio_7_level
+label_bottom_signal pad_gpio_7  SL     gpio_7_slew
+
+label_top_signal pad_gpio_8 	Y      gpio_8_in
+label_top_signal pad_gpio_8 	A      gpio_8_out
+label_top_signal pad_gpio_8 	OE     gpio_8_oe
+
+label_top_signal pad_gpio_8     IE     gpio_8_ie
+label_top_signal pad_gpio_8     PU     gpio_8_pullup
+label_top_signal pad_gpio_8     PD     gpio_8_pulldown
+label_top_signal pad_gpio_8     CS     gpio_8_level
+label_top_signal pad_gpio_8     SL     gpio_8_slew
+
+label_top_signal pad_gpio_9 	Y      gpio_9_in
+label_top_signal pad_gpio_9 	A      gpio_9_out
+label_top_signal pad_gpio_9 	OE     gpio_9_oe
+
+label_top_signal pad_gpio_9     IE     gpio_9_ie
+label_top_signal pad_gpio_9     PU     gpio_9_pullup
+label_top_signal pad_gpio_9     PD     gpio_9_pulldown
+label_top_signal pad_gpio_9     CS     gpio_9_level
+label_top_signal pad_gpio_9     SL     gpio_9_slew
+
+label_top_signal pad_gpio_10	Y      gpio_10_in
+label_top_signal pad_gpio_10	A      gpio_10_out
+label_top_signal pad_gpio_10 	OE     gpio_10_oe
+
+label_top_signal pad_gpio_10    IE     gpio_10_ie
+label_top_signal pad_gpio_10    PU     gpio_10_pullup
+label_top_signal pad_gpio_10    PD     gpio_10_pulldown
+label_top_signal pad_gpio_10    CS     gpio_10_level
+label_top_signal pad_gpio_10    SL     gpio_10_slew
+
+label_top_signal pad_gpio_11	Y      gpio_11_in
+label_top_signal pad_gpio_11	A      gpio_11_out
+label_top_signal pad_gpio_11 	OE     gpio_11_oe
+
+label_top_signal pad_gpio_11    IE     gpio_11_ie
+label_top_signal pad_gpio_11    PU     gpio_11_pullup
+label_top_signal pad_gpio_11    PD     gpio_11_pulldown
+label_top_signal pad_gpio_11    CS     gpio_11_level
+label_top_signal pad_gpio_11    SL     gpio_11_slew
+
+label_top_analog pad_analog_0 	ASIG5V analog\[0\]
+label_top_analog pad_analog_1 	ASIG5V analog\[1\]
+label_top_analog pad_analog_2 	ASIG5V analog\[2\]
+label_top_analog pad_analog_3 	ASIG5V analog\[3\]
 
 PAD_1_0_SIGNALS
 PAD_1_1_SIGNALS
@@ -656,415 +894,201 @@ select top cell
 set topbox [box values]
 property FIXED_BBOX $topbox
 
-# Add text decorations
-# Lower left:  Add the copyright block
-box position [lindex $topbox 0] [lindex $topbox 1]
-box move e 10
-box move n 2
-getcell copyright_block
-identify copyright_block
+# Add text and logo decorations
+#
+# NOTE: Keep the top corners clear for Wafer.Space
+# decorations.  Keep the entire bottom left area clear
+# for Wafer.Space decorations.  All areas between pads
+# and in the bottom right corner are available for
+# custom decorations.
 
 # Lower right:  Add the project ID text
 box position [lindex $topbox 2] [lindex $topbox 1]
-box move w 172	 ;# width of text block
-box move w 35
-box move n 20
+box move w 340
+box move n 5
 getcell user_id_textblock
 identify user_id_textblock
 
+# Lower right:  Add the copyright block
+box position [lindex $topbox 2] [lindex $topbox 1]
+box move w 470
+box move n 5
+getcell copyright_block
+identify copyright_block
+
 # Upper left:  Add the Caravel logo and motto
 box position [lindex $topbox 0] [lindex $topbox 3]
-box move s 78	;# height of caravel logo
-box move e 20
-box move s 14
+box move s 52	;# height of caravel logo
+box move e 245
+box move s 5
 getcell caravel_logo
 identify caravel_logo
 box position [lindex $topbox 0] [lindex $topbox 3]
 box move s 22	;# height of caravel motto
-box move e 130
-box move s 42
+box move e 320
+box move s 15
 getcell caravel_motto
 identify caravel_motto
 
 # Upper right:  Add the open source hardware logo
 box position [lindex $topbox 2] [lindex $topbox 3]
-box move w 70
-box move s 25
-box move w 141	;# width of open_source logo
+box move w 385 
+box move s 5
 box move s 55	;# height of open_source logo
 getcell open_source
 identify open_source
 
-# Lower right:  Add the project ID ROM block
-# above the project ID text
-box position [lindex $topbox 2] [lindex $topbox 1]
-box move w 320
-box move n 80
-getcell user_id_routing
-identify project_id
+## Lower right:  Add the project ID ROM block
+## above the project ID text
+## NOTE:  This block is being moved out of the padframe and
+## into the core, placed below housekeeping.
+# box position [lindex $topbox 2] [lindex $topbox 1]
+# box move w 490
+# box move n 10
+# getcell user_id_routing
+# identify project_id
 
 # Add constant blocks (digital one/zero outputs) next to
 # the digital bidirectional pads
+
+select top cell
+unexpand
+
+add_constant_bottom pad_SDO const_SDO
+add_constant_bottom pad_SDI const_SDI
+add_constant_bottom pad_CSB const_CSB
+add_constant_bottom pad_SCK const_SCK
+add_constant_bottom pad_clk const_clk
+add_constant_bottom pad_gpio_0 const_gpio_0
+add_constant_bottom pad_gpio_1 const_gpio_1
+add_constant_bottom pad_gpio_2 const_gpio_2
+add_constant_bottom pad_gpio_3 const_gpio_3
+add_constant_bottom pad_gpio_4 const_gpio_4
+add_constant_bottom pad_gpio_5 const_gpio_5
+add_constant_bottom pad_gpio_6 const_gpio_6
+add_constant_bottom pad_gpio_7 const_gpio_7
+
+add_constant_top pad_gpio_8 const_gpio_8
+add_constant_top pad_gpio_9 const_gpio_9
+add_constant_top pad_gpio_10 const_gpio_10
+add_constant_top pad_gpio_11 const_gpio_11
+
 CONSTANT_BLOCKS
+
+select top cell
+expand
+
+label_bottom_signal const_SDO zero SDO_zero
+label_bottom_signal const_SDO one SDO_one
+label_bottom_signal const_SDI zero SDI_zero
+label_bottom_signal const_SDI one SDI_one
+label_bottom_signal const_CSB zero CSB_zero
+label_bottom_signal const_CSB one CSB_one
+label_bottom_signal const_SCK zero SCK_zero
+label_bottom_signal const_SCK one SCK_one
+label_bottom_signal const_clk zero clk_zero
+label_bottom_signal const_clk one clk_one
+label_bottom_signal const_gpio_0 zero gpio_0_zero
+label_bottom_signal const_gpio_0 one gpio_0_one
+label_bottom_signal const_gpio_1 zero gpio_1_zero
+label_bottom_signal const_gpio_1 one gpio_1_one
+label_bottom_signal const_gpio_2 zero gpio_2_zero
+label_bottom_signal const_gpio_2 one gpio_2_one
+label_bottom_signal const_gpio_3 zero gpio_3_zero
+label_bottom_signal const_gpio_3 one gpio_3_one
+label_bottom_signal const_gpio_4 zero gpio_4_zero
+label_bottom_signal const_gpio_4 one gpio_4_one
+label_bottom_signal const_gpio_5 zero gpio_5_zero
+label_bottom_signal const_gpio_5 one gpio_5_one
+label_bottom_signal const_gpio_6 zero gpio_6_zero
+label_bottom_signal const_gpio_6 one gpio_6_one
+label_bottom_signal const_gpio_7 zero gpio_7_zero
+label_bottom_signal const_gpio_7 one gpio_7_one
+
+label_top_signal const_gpio_8 zero gpio_8_zero
+label_top_signal const_gpio_8 one gpio_8_one
+label_top_signal const_gpio_9 zero gpio_9_zero
+label_top_signal const_gpio_9 one gpio_9_one
+label_top_signal const_gpio_10 zero gpio_10_zero
+label_top_signal const_gpio_10 one gpio_10_one
+label_top_signal const_gpio_11 zero gpio_11_zero
+label_top_signal const_gpio_11 one gpio_11_one
 
 CONSTANT_SIGNALS
 
-label_bottom_signal  project_id	mask_rev\[0\]   mask_rev\[0\]
-label_bottom_signal  project_id	mask_rev\[1\]   mask_rev\[1\]
-label_bottom_signal  project_id	mask_rev\[2\]   mask_rev\[2\]
-label_bottom_signal  project_id	mask_rev\[3\]   mask_rev\[3\]
-label_bottom_signal  project_id	mask_rev\[4\]   mask_rev\[4\]
-label_bottom_signal  project_id	mask_rev\[5\]   mask_rev\[5\]
-label_bottom_signal  project_id	mask_rev\[6\]   mask_rev\[6\]
-label_bottom_signal  project_id	mask_rev\[7\]   mask_rev\[7\]
-label_bottom_signal  project_id	mask_rev\[8\]   mask_rev\[8\]
-label_bottom_signal  project_id	mask_rev\[9\]   mask_rev\[9\]
-label_bottom_signal  project_id	mask_rev\[10\]  mask_rev\[10\]
-label_bottom_signal  project_id	mask_rev\[11\]  mask_rev\[11\]
-label_bottom_signal  project_id	mask_rev\[12\]  mask_rev\[12\]
-label_bottom_signal  project_id	mask_rev\[13\]  mask_rev\[13\]
-label_bottom_signal  project_id	mask_rev\[14\]  mask_rev\[14\]
-label_bottom_signal  project_id	mask_rev\[15\]  mask_rev\[15\]
-label_bottom_signal  project_id	mask_rev\[16\]  mask_rev\[16\]
-label_bottom_signal  project_id	mask_rev\[17\]  mask_rev\[17\]
-label_bottom_signal  project_id	mask_rev\[18\]  mask_rev\[18\]
-label_bottom_signal  project_id	mask_rev\[19\]  mask_rev\[19\]
-label_bottom_signal  project_id	mask_rev\[20\]  mask_rev\[20\]
-label_bottom_signal  project_id	mask_rev\[21\]  mask_rev\[21\]
-label_bottom_signal  project_id	mask_rev\[22\]  mask_rev\[22\]
-label_bottom_signal  project_id	mask_rev\[23\]  mask_rev\[23\]
-label_bottom_signal  project_id	mask_rev\[24\]  mask_rev\[24\]
-label_bottom_signal  project_id	mask_rev\[25\]  mask_rev\[25\]
-label_bottom_signal  project_id	mask_rev\[26\]  mask_rev\[26\]
-label_bottom_signal  project_id	mask_rev\[27\]  mask_rev\[27\]
-label_bottom_signal  project_id	mask_rev\[28\]  mask_rev\[28\]
-label_bottom_signal  project_id	mask_rev\[29\]  mask_rev\[29\]
-label_bottom_signal  project_id	mask_rev\[30\]  mask_rev\[30\]
-label_bottom_signal  project_id	mask_rev\[31\]  mask_rev\[31\]
+## NOTE:  mask_rev has been removed from the padframe and put in
+## the core instead.
+
+# label_bottom_signal  project_id	mask_rev\[0\]   mask_rev\[0\]
+# label_bottom_signal  project_id	mask_rev\[1\]   mask_rev\[1\]
+# label_bottom_signal  project_id	mask_rev\[2\]   mask_rev\[2\]
+# label_bottom_signal  project_id	mask_rev\[3\]   mask_rev\[3\]
+# label_bottom_signal  project_id	mask_rev\[4\]   mask_rev\[4\]
+# label_bottom_signal  project_id	mask_rev\[5\]   mask_rev\[5\]
+# label_bottom_signal  project_id	mask_rev\[6\]   mask_rev\[6\]
+# label_bottom_signal  project_id	mask_rev\[7\]   mask_rev\[7\]
+# label_bottom_signal  project_id	mask_rev\[8\]   mask_rev\[8\]
+# label_bottom_signal  project_id	mask_rev\[9\]   mask_rev\[9\]
+# label_bottom_signal  project_id	mask_rev\[10\]  mask_rev\[10\]
+# label_bottom_signal  project_id	mask_rev\[11\]  mask_rev\[11\]
+# label_bottom_signal  project_id	mask_rev\[12\]  mask_rev\[12\]
+# label_bottom_signal  project_id	mask_rev\[13\]  mask_rev\[13\]
+# label_bottom_signal  project_id	mask_rev\[14\]  mask_rev\[14\]
+# label_bottom_signal  project_id	mask_rev\[15\]  mask_rev\[15\]
+# label_bottom_signal  project_id	mask_rev\[16\]  mask_rev\[16\]
+# label_bottom_signal  project_id	mask_rev\[17\]  mask_rev\[17\]
+# label_bottom_signal  project_id	mask_rev\[18\]  mask_rev\[18\]
+# label_bottom_signal  project_id	mask_rev\[19\]  mask_rev\[19\]
+# label_bottom_signal  project_id	mask_rev\[20\]  mask_rev\[20\]
+# label_bottom_signal  project_id	mask_rev\[21\]  mask_rev\[21\]
+# label_bottom_signal  project_id	mask_rev\[22\]  mask_rev\[22\]
+# label_bottom_signal  project_id	mask_rev\[23\]  mask_rev\[23\]
+# label_bottom_signal  project_id	mask_rev\[24\]  mask_rev\[24\]
+# label_bottom_signal  project_id	mask_rev\[25\]  mask_rev\[25\]
+# label_bottom_signal  project_id	mask_rev\[26\]  mask_rev\[26\]
+# label_bottom_signal  project_id	mask_rev\[27\]  mask_rev\[27\]
+# label_bottom_signal  project_id	mask_rev\[28\]  mask_rev\[28\]
+# label_bottom_signal  project_id	mask_rev\[29\]  mask_rev\[29\]
+# label_bottom_signal  project_id	mask_rev\[30\]  mask_rev\[30\]
+# label_bottom_signal  project_id	mask_rev\[31\]  mask_rev\[31\]
 
 # Create routes for the power supplies into the project area
 # and label them.
 
 # Bottom power pads
 
-select cell pad_vddd_0
-box values {*}[instance list abutment]
-box grow s -141
-box grow n 3
-fill n m5
-box move n [box height]
-box move s 4
-box height 4
-box grow w -8
-box grow e -8
-paint m5
-label vddd FreeSans 4 0 0 0 c m5
-port make
-
-select cell pad_vddd_1
-box values {*}[instance list abutment]
-box grow s -141
-box grow n 3
-fill n m5
-box move n [box height]
-box move s 4
-box height 4
-box grow w -8
-box grow e -8
-paint m5
-label vddd FreeSans 4 0 0 0 c m5
-port make
+label_power_pad_bottom pad_vddd_0 vddd
+label_power_pad_bottom pad_vddd_1 vddd
 
 # Right power pads
 
-select cell pad_vdd5v0_0
-box values {*}[instance list abutment]
-box grow e -93.6
-box grow s -7
-box grow n -7
-box grow w 3
-fill w m5
-box width 4
-paint m5
-label vdd5v0 FreeSans 4 270 0 0 c m5
-port make
-
-select cell pad_vdd3v3_0
-box values {*}[instance list abutment]
-box grow e -93.6
-box grow s -7
-box grow n -7
-box grow w 3
-fill w m5
-box width 4
-paint m5
-label vdd3v3 FreeSans 4 270 0 0 c m5
-port make
-
-select cell pad_vdd3v3_1
-box values {*}[instance list abutment]
-box grow e -93.6
-box grow s -7
-box grow n -7
-box grow w 3
-fill w m5
-box width 4
-paint m5
-label vdd3v3 FreeSans 4 270 0 0 c m5
-port make
-
-select cell pad_vss5v0_0
-box values {*}[instance list abutment]
-box grow e -134
-box grow w 3
-box grow n -5
-box grow s -10
-fill w m2
-box width 4
-box grow s -5.58
-paint m2
-label vss5v0 FreeSans 4 270 0 0 c m2
-port make
-
-select cell pad_vss3v3_0
-box values {*}[instance list abutment]
-box grow e -158
-box grow s -10 
-box grow n -5
-box grow w 3
-fill w m2
-box width 4
-box grow s -5.58
-paint m2
-label vss3v3 FreeSans 4 270 0 0 c m2
-port make
-
-select cell pad_vss3v3_1
-box values {*}[instance list abutment]
-box grow e -158
-box grow s -10 
-box grow n -5
-box grow w 3
-fill w m2
-box width 4
-box grow s -5.58
-paint m2
-label vss3v3 FreeSans 4 270 0 0 c m2
-port make
-
-select cell pad_vss5v0_1
-box values {*}[instance list abutment]
-box grow e -134
-box grow w 3
-box grow n -5
-box grow s -10
-fill w m2
-box width 4
-box grow s -5.58
-paint m2
-label vss5v0 FreeSans 4 270 0 0 c m2
-port make
+label_power_pad_right pad_vdd5v0_0 vdd5v0
+label_power_pad_right pad_vdd3v3_0 vdd3v3
+label_power_pad_right pad_vdd3v3_1 vdd3v3
+label_power_pad_right pad_vss5v0_0 vss5v0
+label_power_pad_right pad_vss3v3_0 vss3v3
+label_power_pad_right pad_vss3v3_1 vss3v3
+label_power_pad_right pad_vss5v0_1 vss5v0
 
 # Top power pads
 
-select cell pad_vdd3v3_2
-box values {*}[instance list abutment]
-box grow n -141
-box grow s 3
-fill s m5
-box height 4
-box grow w -8
-box grow e -8
-paint m5
-label vdd3v3 FreeSans 4 0 0 0 c m5
-port make
-
-select cell pad_vss5v0_2
-box values {*}[instance list abutment]
-box grow n -134
-box grow s 3
-box grow w -5
-box grow e -10
-fill s m2
-box height 4
-box grow e -5.58
-paint m2
-label vss5v0 FreeSans 4 0 0 0 c m2
-port make
-
-select cell pad_vss5v0_3
-box values {*}[instance list abutment]
-box grow n -134
-box grow s 3
-box grow w -5
-box grow e -10
-fill s m2
-box height 4
-box grow e -5.58
-paint m2
-label vss5v0 FreeSans 4 0 0 0 c m2
-port make
-
-select cell pad_vdd5v0_1
-box values {*}[instance list abutment]
-box grow n -93.6
-box grow w -7
-box grow e -7
-box grow s 3
-fill s m5
-box height 4
-box grow e -1
-box grow w -1
-paint m5
-label vdd5v0 FreeSans 4 0 0 0 c m5
-port make
-
-select cell pad_vdd5v0_2
-box values {*}[instance list abutment]
-box grow n -93.6
-box grow w -7
-box grow e -7
-box grow s 3
-fill s m5
-box height 4
-box grow e -1
-box grow w -1
-paint m5
-label vdd5v0 FreeSans 4 0 0 0 c m5
-port make
-
-select cell pad_vdd5v0_3
-box values {*}[instance list abutment]
-box grow n -93.6
-box grow w -7
-box grow e -7
-box grow s 3
-fill s m5
-box height 4
-box grow e -1
-box grow w -1
-paint m5
-label vdd5v0 FreeSans 4 0 0 0 c m5
-port make
-
-select cell pad_vdd5v0_4
-box values {*}[instance list abutment]
-box grow n -93.6
-box grow w -7
-box grow e -7
-box grow s 3
-fill s m5
-box height 4
-box grow e -1
-box grow w -1
-paint m5
-label vdd5v0 FreeSans 4 0 0 0 c m5
-port make
+label_power_pad_top pad_vdd3v3_2 vdd3v3
+label_power_pad_top pad_vss5v0_2 vdd5v0
+label_power_pad_top pad_vss5v0_3 vdd5v0
+label_power_pad_top pad_vdd5v0_1 vdd5v0
+label_power_pad_top pad_vdd5v0_2 vdd5v0
+label_power_pad_top pad_vdd5v0_3 vdd5v0
+label_power_pad_top pad_vdd5v0_4 vdd5v0
 
 # Left power pins
 
-select cell pad_vss3v3_2
-box values {*}[instance list abutment]
-box grow w -158
-box grow n -10
-box grow s -5
-box grow e 3
-fill e m2
-box move e [box width]
-box move w 4
-box width 4
-box grow n -5.58
-paint m2
-label vss3v3 FreeSans 4 270 0 0 c m2
-port make
-
-select cell pad_vss5v0_4
-box values {*}[instance list abutment]
-box grow w -134
-box grow s -5
-box grow n -10
-box grow e 3
-fill e m2
-box move e [box width]
-box move w 4
-box width 4
-box grow n -5.58
-paint m2
-label vss5v0 FreeSans 4 270 0 0 c m2
-port make
-
-select cell pad_vss5v0_5
-box values {*}[instance list abutment]
-box grow w -134
-box grow s -5
-box grow n -10
-box grow e 3
-fill e m2
-box move e [box width]
-box move w 4
-box width 4
-box grow n -5.58
-paint m2
-label vss5v0 FreeSans 4 270 0 0 c m2
-port make
-
-select cell pad_vss3v3_3
-box values {*}[instance list abutment]
-box grow w -158
-box grow n -10
-box grow s -5
-box grow e 3
-fill e m2
-box move e [box width]
-box move w 4
-box width 4
-box grow n -5.58
-paint m2
-label vss3v3 FreeSans 4 270 0 0 c m2
-port make
-
-select cell pad_vdd3v3_3
-box values {*}[instance list abutment]
-box grow w -141
-box grow e 3
-fill e m5
-box move e [box width]
-box move w 4
-box width 4
-box grow n -8
-box grow s -8
-paint m5
-label vdd3v3 FreeSans 4 270 0 0 c m5
-port make
-
-select cell pad_vdd3v3_4
-box values {*}[instance list abutment]
-box grow w -141
-box grow e 3
-fill e m5
-box move e [box width]
-box move w 4
-box width 4
-box grow n -8
-box grow s -8
-paint m5
-label vdd3v3 FreeSans 4 270 0 0 c m5
-port make
-
-select cell pad_vss3v3_4
-box values {*}[instance list abutment]
-box grow w -158
-box grow n -10
-box grow s -5
-box grow e 3
-fill e m2
-box move e [box width]
-box move w 4
-box width 4
-box grow n -5.58
-paint m2
-label vss3v3 FreeSans 4 270 0 0 c m2
-port make
+label_power_pad_left pad_vss3v3_2 vss3v3
+label_power_pad_left pad_vss5v0_4 vss5v0
+label_power_pad_left pad_vss5v0_5 vss5v0
+label_power_pad_left pad_vss3v3_3 vss3v3
+label_power_pad_left pad_vdd3v3_3 vdd3v3
+label_power_pad_left pad_vdd3v3_4 vdd3v3
+label_power_pad_left pad_vss3v3_4 vss3v3
 
 writeall force gf180mcu_padframe
 
@@ -1107,17 +1131,23 @@ select save padframe_pins
 
 select top cell
 expand
-box grow c -279
-select area m2,m3,via,via2,m5
+box grow c -350
+box grow c 0.24
+select area m2,m3,m4,m5
+select more area via2
+select more area via3
+select more area via4
 select less area labels
 unexpand
 select more area labels
 select save chipalooza_frame_wrapper
 load chipalooza_frame_wrapper
-select top cell
 tech unlock *
+select top cell
 contact erase via
 contact erase via2
+contact erase via3
+contact erase via4
 paint comment
 box grow c -0.5
 erase comment

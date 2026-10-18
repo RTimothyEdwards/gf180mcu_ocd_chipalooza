@@ -68,40 +68,35 @@ STD_CELL_LIBRARY: gf180mcu_as_sc_mcu7t3v3
 
 # Technology libs
 LIB:
-  "nom_typ_1p20V_25C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_typ_1p20V_25C.lib
+  "*_tt_025C_3v30":
+    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3__tt_025C_3v30.lib
 
-  "nom_typ_1p50V_25C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_typ_1p50V_25C.lib
+  "*_ss_125C_3v00":
+    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3__ss_125C_3v00.lib
 
-  "nom_slow_1p35V_125C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_slow_1p35V_125C.lib
-
-  "nom_slow_1p08V_125C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_slow_1p08V_125C.lib
-
-  "nom_fast_1p32V_m40C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_fast_1p32V_m40C.lib
-
-  "nom_fast_1p65V_m40C":
-    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3_fast_1p65V_m40C.lib
+  # NOTE the key is 3v60, not 3p60.  These keys are globs matched against
+  # the STA corner names below, so a key that does not match simply means
+  # no standard cell library is loaded for that corner.  Nothing warns:
+  # every cell silently becomes a black box, and the first symptom is
+  # set_driving_cell in constraints.sdc failing with
+  #   'gf180mcu_as_sc_mcu7t3v3__buff_4' not found
+  # which points at the SDC rather than at this file.
+  "*_ff_n40C_3v60":
+    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3__ff_n40C_3v60.lib
 
 
 # Corners
 STA_CORNERS:
-  - nom_typ_1p20V_25C
-  - nom_typ_1p50V_25C
-  - nom_slow_1p35V_125C
-  - nom_slow_1p08V_125C
-  - nom_fast_1p32V_m40C
-  - nom_fast_1p65V_m40C
+  - nom_tt_025C_3v30
+  - nom_ss_125C_3v00
+  - nom_ff_n40C_3v60
 
 CTS_CLK_BUFFERS:
-  - "gf180mcu_as_sc_mcu7t3v3__buff_8"
-  - "gf180mcu_as_sc_mcu7t3v3__buff_4"
-  - "gf180mcu_buf_2"
+  - "gf180mcu_as_sc_mcu7t3v3__clkbuff_12"
+  - "gf180mcu_as_sc_mcu7t3v3__clkbuff_8"
+  - "gf180mcu_as_sc_mcu7t3v3__clkbuff_4"
 
-DEFAULT_CORNER: nom_typ_1p20V_25C
+DEFAULT_CORNER: nom_tt_025C_3v30
 
 # Magic streamout: don't blackbox macros
 MAGIC_MACRO_STD_CELL_SOURCE: PDK
@@ -198,8 +193,8 @@ FP_SIZING: absolute
 # changing these numbers --- at 115x35 the rows only reached y = 30.24
 # inside a core ending at 32, giving 2870 um2 against 2938 um2 of cells,
 # which is why placement could not be legalized after CTS.
-DIE_AREA: [ 0.00, 0.00, 105.00, 60.00 ]
-CORE_AREA: [ 3.00, 3.00, 102.00, 57.00 ]
+DIE_AREA: [ 0.00, 0.00, 120.00, 70.00 ]
+CORE_AREA: [ 3.00, 3.00, 117.00, 67.00 ]
 
 FP_DEF_TEMPLATE: dir::../../def/user_project_control.def
 FP_TEMPLATE_MATCH_MODE: permissive
@@ -210,10 +205,7 @@ FP_TEMPLATE_MATCH_MODE: permissive
 PL_TARGET_DENSITY_PCT: 65
 
 # FP_OBSTRUCTIONS:
-## SRAM
-# - [2651.15, 0.00, 3170.30, 55.215]
-## ADC/DAC area
-# - [790, 0.00, 1720, 290]
+## (none)
 
 # Obstructions
 #
@@ -226,34 +218,11 @@ PL_TARGET_DENSITY_PCT: 65
 # Layer names here are LEF names.  magic's "m4"/metal4 is Metal4;  its
 # "m5"/metal5 is TopMetal1.
 #
-# These three vertical corridors are where the chip-level Metal4 power
-# buses, distributing supplies out to the user projects, run across this
-# block.  The block is rotated 90 degrees at chip level, so buses that
-# run horizontally there are vertical in these coordinates.  The block's
-# own router and its PDN both have to stay out of them.
-#
-# Corridors (die is 0,0 .. 105,60):   x = 0.0 .. 4.3
-#                                     x = 31.8 .. 61.7
-#                                     x = 75.0 .. 105.0
-# Leaving free windows for PDN straps at  x = 4.3 .. 31.8
-#                                     and x = 61.7 .. 75.0
-#
-# These follow run_gen_ctrl_def.tcl, where the third corridor is written
-# as (die_urx - 30) and so moved in with the right edge when the die
-# narrowed from 115 to 105.  If that bus actually sits at a fixed chip
-# coordinate rather than relative to this block's right edge, the
-# corridor should be 85.0 .. 105.0 instead --- 20 um wide, not 30 --- and
-# the script should use an absolute x.  Worth confirming in the layout.
+# PDN and routing obstructions to be added if needed.
 
-PDN_OBSTRUCTIONS:
-- [Metal4, 0.00, 0.00, 4.30, 60.00]
-- [Metal4, 31.80, 0.00, 61.70, 60.00]
-- [Metal4, 75.00, 0.00, 105.00, 60.00]
+# PDN_OBSTRUCTIONS:
 
-ROUTING_OBSTRUCTIONS:
-- [Metal4, 0.00, 0.00, 4.30, 60.00]
-- [Metal4, 31.80, 0.00, 61.70, 60.00]
-- [Metal4, 75.00, 0.00, 105.00, 60.00]
+# ROUTING_OBSTRUCTIONS:
 
 # NOTE:  run_gen_ctrl_def.tcl also paints 1 um obsm1/obsm2/obsm3/obsm4
 # strips along all four die edges, over the pins.  Those are NOT

@@ -123,9 +123,15 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(SDO),
-	.c2p(SDO_out),
-	.c2p_en(SDO_ena)
+	.PAD(SDO),
+	.A(SDO_out),
+	.Y(SDO_in),
+	.OE(SDO_oe),
+	.IE(SDO_ie),
+	.PU(SDO_pullup),
+	.PD(SDO_pulldown),
+	.SL(SDO_slew),
+	.SC(SDO_level)
     );
 
     gf180mcu_ocd_io__in_c pad_SDI (
@@ -135,8 +141,10 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(SDI),
-	.p2c(SDI_in)
+	.PAD(SDI),
+	.Y(SDI_in),
+	.PU(SDI_pullup),
+	.PD(SDI_pulldown)
     );
 
     gf180mcu_ocd_io__in_c pad_CSB (
@@ -146,8 +154,10 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(CSB),
-	.p2c(CSB_in)
+	.PAD(CSB),
+	.Y(CSB_in),
+	.PU(CSB_pullup),
+	.PD(CSB_pulldown)
     );
 
     gf180mcu_ocd_io__in_c pad_SCK (
@@ -157,8 +167,10 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(SCK),
-	.p2c(SCK_in)
+	.PAD(SCK),
+	.Y(SCK_in),
+	.PU(SCK_pullup),
+	.PD(SCK_pulldown)
     );
 
     gf180mcu_ocd_io__in_c pad_clk (
@@ -168,8 +180,10 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(clk),
-	.p2c(clk_in)
+	.PAD(clk),
+	.Y(clk_in),
+	.PU(clk_pullup),
+	.PD(clk_pulldown)
     );
 
     gf180mcu_ocd_io__vdd pad_vddd_0 (
@@ -198,10 +212,15 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[0]),
-	.p2c(gpio_0_in),
-	.c2p(gpio_0_out),
-	.c2p_en(gpio_0_oe)
+	.PAD(gpio[0]),
+	.A(gpio_0_out),
+	.Y(gpio_0_in),
+	.OE(gpio_0_oe),
+	.IE(gpio_0_ie),
+	.PU(gpio_0_pullup),
+	.PD(gpio_0_pulldown),
+	.SL(gpio_0_slew),
+	.SC(gpio_0_level)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_1 (
@@ -211,10 +230,15 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[1]),
-	.p2c(gpio_1_in),
-	.c2p(gpio_1_out),
-	.c2p_en(gpio_1_oe)
+	.PAD(gpio[1]),
+	.A(gpio_1_out),
+	.Y(gpio_1_in),
+	.OE(gpio_1_oe),
+	.IE(gpio_1_ie),
+	.PU(gpio_1_pullup),
+	.PD(gpio_1_pulldown),
+	.SL(gpio_1_slew),
+	.SC(gpio_1_level)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_2 (
@@ -224,10 +248,15 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[2]),
-	.p2c(gpio_2_in),
-	.c2p(gpio_2_out),
-	.c2p_en(gpio_2_oe)
+	.PAD(gpio[2]),
+	.A(gpio_2_out),
+	.Y(gpio_2_in),
+	.OE(gpio_2_oe),
+	.IE(gpio_2_ie),
+	.PU(gpio_2_pullup),
+	.PD(gpio_2_pulldown),
+	.SL(gpio_2_slew),
+	.SC(gpio_2_level)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_3 (
@@ -237,10 +266,15 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[3]),
-	.p2c(gpio_3_in),
-	.c2p(gpio_3_out),
-	.c2p_en(gpio_3_oe)
+	.PAD(gpio[3]),
+	.A(gpio_3_out),
+	.Y(gpio_3_in),
+	.OE(gpio_3_oe),
+	.IE(gpio_3_ie),
+	.PU(gpio_3_pullup),
+	.PD(gpio_3_pulldown),
+	.SL(gpio_3_slew),
+	.SC(gpio_3_level)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_4 (
@@ -250,10 +284,15 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[4]),
-	.p2c(gpio_4_in),
-	.c2p(gpio_4_out),
-	.c2p_en(gpio_4_oe)
+	.PAD(gpio[4]),
+	.A(gpio_4_out),
+	.Y(gpio_4_in),
+	.OE(gpio_4_oe),
+	.IE(gpio_4_ie),
+	.PU(gpio_4_pullup),
+	.PD(gpio_4_pulldown),
+	.SL(gpio_4_slew),
+	.SC(gpio_4_level)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_5 (
@@ -263,10 +302,15 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[5]),
-	.p2c(gpio_5_in),
-	.c2p(gpio_5_out),
-	.c2p_en(gpio_5_oe)
+	.PAD(gpio[5]),
+	.A(gpio_5_out),
+	.Y(gpio_5_in),
+	.OE(gpio_5_oe),
+	.IE(gpio_5_ie),
+	.PU(gpio_5_pullup),
+	.PD(gpio_5_pulldown),
+	.SL(gpio_5_slew),
+	.SC(gpio_5_level)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_6 (
@@ -276,10 +320,15 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[6]),
-	.p2c(gpio_6_in),
-	.c2p(gpio_6_out),
-	.c2p_en(gpio_6_oe)
+	.PAD(gpio[6]),
+	.A(gpio_6_out),
+	.Y(gpio_6_in),
+	.OE(gpio_6_oe),
+	.IE(gpio_6_ie),
+	.PU(gpio_6_pullup),
+	.PD(gpio_6_pulldown),
+	.SL(gpio_6_slew),
+	.SC(gpio_6_level)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_7 (
@@ -289,10 +338,15 @@ module gf180mcu_padframe (
 	    .vdd(vddd),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[7]),
-	.p2c(gpio_7_in),
-	.c2p(gpio_7_out),
-	.c2p_en(gpio_7_oe)
+	.PAD(gpio[7]),
+	.A(gpio_7_out),
+	.Y(gpio_7_in),
+	.OE(gpio_7_oe),
+	.IE(gpio_7_ie),
+	.PU(gpio_7_pullup),
+	.PD(gpio_7_pulldown),
+	.SL(gpio_7_slew),
+	.SC(gpio_7_level)
     );
 
     // Right side pads
@@ -340,7 +394,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s1_an[0]),
+	.PAD(s1_an[0]),
 	PAD_1_0_SIGNALS
     );
 
@@ -351,7 +405,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s1_an[1]),
+	.PAD(s1_an[1]),
 	PAD_1_1_SIGNALS
     );
 
@@ -362,7 +416,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s2_an[0]),
+	.PAD(s2_an[0]),
 	PAD_2_0_SIGNALS
     );
 
@@ -373,7 +427,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s2_an[1]),
+	.PAD(s2_an[1]),
 	PAD_2_1_SIGNALS
     );
 
@@ -393,7 +447,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s3_an[0]),
+	.PAD(s3_an[0]),
 	PAD_3_0_SIGNALS
     );
 
@@ -404,7 +458,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s3_an[1]),
+	.PAD(s3_an[1]),
 	PAD_3_1_SIGNALS
     );
 
@@ -415,7 +469,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s4_an[0]),
+	.PAD(s4_an[0]),
 	PAD_4_0_SIGNALS
     );
 
@@ -435,7 +489,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s5_an[0]),
+	.PAD(s5_an[0]),
 	PAD_5_0_SIGNALS
     );
 
@@ -446,7 +500,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s5_an[1]),
+	.PAD(s5_an[1]),
 	PAD_5_1_SIGNALS
     );
 
@@ -457,7 +511,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s5_an[2]),
+	.PAD(s5_an[2]),
 	PAD_5_2_SIGNALS
     );
 
@@ -468,7 +522,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s6_an[0]),
+	.PAD(s6_an[0]),
 	PAD_6_0_SIGNALS
     );
 
@@ -479,7 +533,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s6_an[1]),
+	.PAD(s6_an[1]),
 	PAD_6_1_SIGNALS
     );
 
@@ -499,7 +553,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s7_an[0]),
+	.PAD(s7_an[0]),
 	PAD_7_0_SIGNALS
     );
 
@@ -510,7 +564,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s7_an[1]),
+	.PAD(s7_an[1]),
 	PAD_7_1_SIGNALS
     );
 
@@ -521,7 +575,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s8_an[0]),
+	.PAD(s8_an[0]),
 	PAD_8_0_SIGNALS
     );
 
@@ -541,7 +595,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s9_an[0]),
+	.PAD(s9_an[0]),
 	PAD_9_0_SIGNALS
     );
 
@@ -552,7 +606,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s9_an[1]),
+	.PAD(s9_an[1]),
 	PAD_9_1_SIGNALS
     );
 
@@ -563,7 +617,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s9_an[2]),
+	.PAD(s9_an[2]),
 	PAD_9_2_SIGNALS
     );
 
@@ -585,10 +639,15 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[8]),
-	.p2c(gpio_8_in),
-	.c2p(gpio_8_out),
-	.c2p_en(gpio_8_oe)
+	.PAD(gpio[8]),
+	.A(gpio_8_out),
+	.Y(gpio_8_in),
+	.OE(gpio_8_oe),
+	.IE(gpio_8_ie),
+	.PU(gpio_8_pullup),
+	.PD(gpio_8_pulldown),
+	.SL(gpio_8_slew),
+	.SC(gpio_8_level)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_9 (
@@ -598,10 +657,15 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[9]),
-	.p2c(gpio_9_in),
-	.c2p(gpio_9_out),
-	.c2p_en(gpio_9_oe)
+	.PAD(gpio[9]),
+	.A(gpio_9_out),
+	.Y(gpio_9_in),
+	.OE(gpio_9_oe),
+	.IE(gpio_9_ie),
+	.PU(gpio_9_pullup),
+	.PD(gpio_9_pulldown),
+	.SL(gpio_9_slew),
+	.SC(gpio_9_level)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_10 (
@@ -611,10 +675,15 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[10]),
-	.p2c(gpio_10_in),
-	.c2p(gpio_10_out),
-	.c2p_en(gpio_10_oe)
+	.PAD(gpio[10]),
+	.A(gpio_10_out),
+	.Y(gpio_10_in),
+	.OE(gpio_10_oe),
+	.IE(gpio_10_ie),
+	.PU(gpio_10_pullup),
+	.PD(gpio_10_pulldown),
+	.SL(gpio_10_slew),
+	.SC(gpio_10_level)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_11 (
@@ -624,10 +693,15 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(gpio[11]),
-	.p2c(gpio_11_in),
-	.c2p(gpio_11_out),
-	.c2p_en(gpio_11_oe)
+	.PAD(gpio[11]),
+	.A(gpio_11_out),
+	.Y(gpio_11_in),
+	.OE(gpio_11_oe),
+	.IE(gpio_11_ie),
+	.PU(gpio_11_pullup),
+	.PD(gpio_11_pulldown),
+	.SL(gpio_11_slew),
+	.SC(gpio_11_level)
     );
 
     gf180mcu_ocd_io__dvss pad_vss5v0_3 (
@@ -646,8 +720,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(analog[0]),
-	.padres(analog_0_esd)
+	.ASIG5V(analog[0])
     );
 
     gf180mcu_ocd_io__asig_5p0 pad_analog_1 (
@@ -657,8 +730,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(analog[1]),
-	.padres(analog_1_esd)
+	.ASIG5V(analog[1])
     );
 
     gf180mcu_ocd_io__asig_5p0 pad_analog_2 (
@@ -668,8 +740,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(analog[2]),
-	.padres(analog_2_esd)
+	.ASIG5V(analog[2])
     );
 
     gf180mcu_ocd_io__asig_5p0 pad_analog_3 (
@@ -679,8 +750,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(analog[3]),
-	.padres(analog_3_esd)
+	.ASIG5V(analog[3])
     );
 
     gf180mcu_ocd_io__dvss pad_vss5v0_4 (
@@ -746,7 +816,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s10_an[0]),
+	.PAD(s10_an[0]),
 	PAD_10_0_SIGNALS
     );
 
@@ -757,7 +827,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s10_an[1]),
+	.PAD(s10_an[1]),
 	PAD_10_1_SIGNALS
     );
 
@@ -768,7 +838,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s10_an[2]),
+	.PAD(s10_an[2]),
 	PAD_10_2_SIGNALS
     );
 
@@ -788,7 +858,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s11_an[0]),
+	.PAD(s11_an[0]),
 	PAD_11_0_SIGNALS
     );
 
@@ -799,7 +869,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s12_an[0]),
+	.PAD(s12_an[0]),
 	PAD_12_0_SIGNALS
     );
 
@@ -810,7 +880,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s12_an[1]),
+	.PAD(s12_an[1]),
 	PAD_12_1_SIGNALS
     );
 
@@ -830,7 +900,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s13_an[0]),
+	.PAD(s13_an[0]),
 	PAD_13_0_SIGNALS
     );
 
@@ -841,7 +911,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s13_an[1]),
+	.PAD(s13_an[1]),
 	PAD_13_1_SIGNALS
     );
 
@@ -852,7 +922,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s14_an[0]),
+	.PAD(s14_an[0]),
 	PAD_14_0_SIGNALS
     );
 
@@ -863,7 +933,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s14_an[1]),
+	.PAD(s14_an[1]),
 	PAD_14_1_SIGNALS
     );
 
@@ -874,7 +944,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s14_an[2]),
+	.PAD(s14_an[2]),
 	PAD_14_2_SIGNALS
     );
 
@@ -894,7 +964,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s15_an[0]),
+	.PAD(s15_an[0]),
 	PAD_15_0_SIGNALS
     );
 
@@ -905,7 +975,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s16_an[0]),
+	.PAD(s16_an[0]),
 	PAD_16_0_SIGNALS
     );
 
@@ -916,7 +986,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s16_an[1]),
+	.PAD(s16_an[1]),
 	PAD_16_1_SIGNALS
     );
 
@@ -936,7 +1006,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s17_an[0]),
+	.PAD(s17_an[0]),
 	PAD_17_0_SIGNALS
     );
 
@@ -947,7 +1017,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s17_an[1]),
+	.PAD(s17_an[1]),
 	PAD_17_1_SIGNALS
     );
 
@@ -958,7 +1028,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s18_an[0]),
+	.PAD(s18_an[0]),
 	PAD_18_0_SIGNALS
     );
 
@@ -969,7 +1039,7 @@ module gf180mcu_padframe (
 	    .vdd(vdd3v3),
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
-	.pad(s18_an[1]),
+	.PAD(s18_an[1]),
 	PAD_18_1_SIGNALS
     );
 

@@ -109,34 +109,41 @@ with open(wrapper_in_file, 'r') as ifile:
                 entry = padlist[pad_idx]
                 pad_type = entry[0]
                 signal_name = entry[1]
-                if pad_type == 'gf180mcu_ocd_io__in_c':
-                    # The input pad has only one core facing signal
-                    newline = spaces + 'input  ' + signal_name + ','
-                elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
-                    # The input pad has the core signal + an ESD-protected signal
-                    newline = spaces + 'inout  ' + signal_name + '_esd,'
+                if pad_type.startswith('gf180mcu_ocd_io__in'):
+                    # The input pad has the core facing signal and pullup/pulldown
+                    newline = spaces + 'input  ' + signal_name + '_in,'
                     wrapper_lines.append(newline)
-                    newline = spaces + 'inout  ' + signal_name + ','
-                elif pad_type.startswith('gf180mcu_IOPadOut'):
-                    # The output-only pads have only one core facing signal
-                    newline = spaces + 'output ' + signal_name + ','
-                elif pad_type.startswith('gf180mcu_IOPadTriOut'):
-                    # The output tristate pads have a core facing signal and enable
-                    newline = spaces + 'output ' + signal_name + ','
+                    newline = spaces + 'input  ' + signal_name + '_pullup,'
                     wrapper_lines.append(newline)
-                    newline = spaces + 'output ' + signal_name + '_ena,'
+                    newline = spaces + 'input  ' + signal_name + '_pulldown,'
                     wrapper_lines.append(newline)
                     newline = spaces + 'input  ' + signal_name + '_one,'
                     wrapper_lines.append(newline)
                     newline = spaces + 'input  ' + signal_name + '_zero,'
-                elif pad_type.startswith('gf180mcu_ocd_io__in_cOut'):
-                    # The bidirectionsl pads have five core facing signals:  in,
-                    # out, enable, and digital one and zero
-                    newline = spaces + 'input  ' + signal_name + '_in,'
+                elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
+                    # The input pad has the core signal only
+                    newline = spaces + 'inout  ' + signal_name + ','
+                elif pad_type.startswith('gf180mcu_ocd_io__bi_'):
+                    # The bidirectional pads have a bunch of conotrols
+                    newline = spaces + 'input ' + signal_name + '_in,'
                     wrapper_lines.append(newline)
                     newline = spaces + 'output ' + signal_name + '_out,'
                     wrapper_lines.append(newline)
-                    newline = spaces + 'output ' + signal_name + '_ena,'
+                    newline = spaces + 'output ' + signal_name + '_oe,'
+                    wrapper_lines.append(newline)
+                    newline = spaces + 'output ' + signal_name + '_ie,'
+                    wrapper_lines.append(newline)
+                    newline = spaces + 'output ' + signal_name + '_pullup,'
+                    wrapper_lines.append(newline)
+                    newline = spaces + 'output ' + signal_name + '_pullup,'
+                    if pad_type.endswith('_a') or pad_type.endswith('_t'):
+                        wrapper_lines.append(newline)
+                        newline = spaces + 'output  ' + signal_name + '_drive_0,'
+                        wrapper_lines.append(newline)
+                        newline = spaces + 'output  ' + signal_name + '_drive_1,'
+                    if pad_type.endswith('_a'):
+                        wrapper_lines.append(newline)
+                        newline = spaces + 'output  ' + signal_name + '_ana,'
                     wrapper_lines.append(newline)
                     newline = spaces + 'input  ' + signal_name + '_one,'
                     wrapper_lines.append(newline)
@@ -187,22 +194,38 @@ with open(padframe_in_file, 'r') as ifile:
                 smatch = re.match(sprex, line)
                 spaces = smatch.group(1)
                 # The pad signals depend on the pad type
-                if pad_type == 'gf180mcu_ocd_io__in_c':
-                    newline = spaces + '.p2c(' + signal_name + ')'
+                if pad_type.startswith('gf180mcu_ocd_io__in'):
+                    newline = spaces + '.Y(' + signal_name + '_in)'
+                    padframe_lines.append(newline)
+                    newline = spaces + '.PU(' + signal_name + '_pullup)'
+                    padframe_lines.append(newline)
+                    newline = spaces + '.PD(' + signal_name + '_pulldown)'
                 elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
-                    newline = spaces + '.padres(' + signal_name + '_esd)'
-                elif pad_type.startswith('gf180mcu_IOPadOut'):
-                    newline = spaces + '.c2p(' + signal_name + ')'
-                elif pad_type.startswith('gf180mcu_IOPadTriOut'):
-                    newline = spaces + '.c2p(' + signal_name + '),'
+                    newline = spaces + '.ASIG5V(' + signal_name + ')'
+                elif pad_type.startswith('gf180mcu_ocd_io__bi_'):
+                    newline = spaces + '.IE(' + signal_name + '_ie)'
                     padframe_lines.append(newline)
-                    newline = spaces + '.c2p_en(' + signal_name + '_ena)'
-                elif pad_type.startswith('gf180mcu_ocd_io__in_cOut'):
-                    newline = spaces + '.c2p(' + signal_name + '_out),'
+                    newline = spaces + '.OE(' + signal_name + '_oe)'
                     padframe_lines.append(newline)
-                    newline = spaces + '.c2p_en(' + signal_name + '_ena),'
+                    newline = spaces + '.A(' + signal_name + '_out)'
                     padframe_lines.append(newline)
-                    newline = spaces + '.p2c(' + signal_name + '_in)'
+                    newline = spaces + '.Y(' + signal_name + '_in)'
+                    padframe_lines.append(newline)
+                    newline = spaces + '.CS(' + signal_name + '_level)'
+                    padframe_lines.append(newline)
+                    newline = spaces + '.SL(' + signal_name + '_slew)'
+                    if pad_type.endswith('_a') or pad_type.endswith('_t'):
+                        padframe_lines.append(newline)
+                        newline = spaces + '.PDRV0(' + signal_name + '_drive_0)'
+                        padframe_lines.append(newline)
+                        newline = spaces + '.PDRV1(' + signal_name + '_drive_1)'
+                    if pad_type.endswith('_a'):
+                        padframe_lines.append(newline)
+                        newline = spaces + '.ANA(' + signal_name + '_ana)'
+                    padframe_lines.append(newline)
+                    newline = spaces + '.PU(' + signal_name + '_pullup)'
+                    padframe_lines.append(newline)
+                    newline = spaces + '.PD(' + signal_name + '_pulldown)'
                 else:
                     print('Bad pad type ' + pad_type)
                     newline = line
@@ -218,22 +241,42 @@ with open(padframe_in_file, 'r') as ifile:
                 pad_type = padrec[0]
                 signal_name = padrec[1]
 
-                if pad_type == 'gf180mcu_ocd_io__in_c':
-                    newline = spaces + 'output wire ' + signal_name
-                elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
-                    newline = spaces + 'inout wire ' + signal_name + '_esd,'
-                elif pad_type.startswith('gf180mcu_IOPadOut'):
-                    newline = spaces + 'input wire ' + signal_name + ','
-                elif pad_type.startswith('gf180mcu_IOPadTriOut'):
-                    newline = spaces + 'input wire ' + signal_name + ','
+                if pad_type.startswith('gf180mcu_ocd_io__in'):
+                    newline = spaces + 'output wire ' + signal_name + '_in,'
                     padframe_lines.append(newline)
-                    newline = spaces + 'input wire ' + signal_name + '_ena,'
-                elif pad_type.startswith('gf180mcu_ocd_io__in_cOut'):
+                    newline = spaces + 'input wire ' + signal_name + '_pullup,'
+                    padframe_lines.append(newline)
+                    newline = spaces + 'input wire ' + signal_name + '_pulldown,'
+                    padframe_lines.append(newline)
+                    newline = spaces + 'output wire ' + signal_name + '_one,'
+                    padframe_lines.append(newline)
+                    newline = spaces + 'output wire ' + signal_name + '_zero,'
+                elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
+                    newline = spaces + 'inout wire ' + signal_name + ','
+                elif pad_type.startswith('gf180mcu_ocd_io__bi_'):
                     newline = spaces + 'output wire ' + signal_name + '_in,'
                     padframe_lines.append(newline)
                     newline = spaces + 'input wire ' + signal_name + '_out,'
                     padframe_lines.append(newline)
-                    newline = spaces + 'input wire ' + signal_name + '_ena,'
+                    newline = spaces + 'input wire ' + signal_name + '_oe,'
+                    padframe_lines.append(newline)
+                    newline = spaces + 'input wire ' + signal_name + '_ie,'
+                    padframe_lines.append(newline)
+                    newline = spaces + 'input wire ' + signal_name + '_pullup,'
+                    padframe_lines.append(newline)
+                    newline = spaces + 'input wire ' + signal_name + '_pulldown,'
+                    padframe_lines.append(newline)
+                    newline = spaces + 'input wire ' + signal_name + '_level,'
+                    padframe_lines.append(newline)
+                    newline = spaces + 'input wire ' + signal_name + '_slew,'
+                    if pad_type.endswith('_a') or pad_type.endswith('_t'):
+                        padframe_lines.append(newline)
+                        newline = spaces + 'input wire ' + signal_name + '_drive_0,'
+                        padframe_lines.append(newline)
+                        newline = spaces + 'input wire ' + signal_name + '_drive_1,'
+                    if pad_type.endswith('_a'):
+                        padframe_lines.append(newline)
+                        newline = spaces + 'output wire ' + signal_name + '_ana,'
                     padframe_lines.append(newline)
                     newline = spaces + 'output wire ' + signal_name + '_one,'
                     padframe_lines.append(newline)
@@ -250,7 +293,7 @@ with open(padframe_in_file, 'r') as ifile:
                 padrec = padlist[pad_idx]
                 pad_type = padrec[0]
                 signal_name = padrec[1]
-                if 'IOPadTriOut' in pad_type or 'IOPadInOut' in pad_type:
+                if '__bi_' in pad_type or '__in_' in pad_type:
                     newline = spaces + 'constant_block constant_block_' + signal_name + ' ('
                     padframe_lines.append(newline)
                     newline = spaces + r'    `ifdef USE_POWER_PINS'
@@ -313,36 +356,49 @@ with open(tcl_in_file, 'r') as ifile:
                 spaces = smatch.group(1)
                 # The slot index dictates what side of the chip the pad is on
                 slot_num = int(pad_slot_idx)
-                if slot_num >= 0 and slot_num <= 8:
+                if slot_num >= 0 and slot_num <= 9:
                     side = 'right'
                 else:
                     side = 'left'
 
                 # The pad signals depend on the pad type
-                if pad_type == 'gf180mcu_ocd_io__in_c':
-                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  p2c    ' + signal_name
-                elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
-                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  padres    ' + signal_name + '_esd'
+                if pad_type.startswith('gf180mcu_ocd_io__in'):
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  Y    ' + signal_name + '_in'
                     tcl_lines.append(newline)
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  PU    ' + signal_name + '_pullup'
+                    tcl_lines.append(newline)
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  PD    ' + signal_name + '_pulldown'
+                elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
                     # Note that in the padframe, since the analog core signal is
                     # connected directly to the pad, it has the name of the pad,
                     # not the given signal name.  The given signal name is used
                     # in the project wrapper.
                     newline = spaces + 'label_' + side + '_analog pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  pad s' + pad_slot_idx + r'_an\[' + pad_pin_idx + r'\]'
 
-                elif pad_type.startswith('gf180mcu_IOPadOut'):
-                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  c2p    ' + signal_name
-                elif pad_type.startswith('gf180mcu_IOPadTriOut'):
-                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  c2p    ' + signal_name
+                elif pad_type.startswith('gf180mcu_ocd_io__bi_'):
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  A    ' + signal_name + '_out'
                     tcl_lines.append(newline)
-                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  c2p_en ' + signal_name + '_ena'
-
-                elif pad_type.startswith('gf180mcu_ocd_io__in_cOut'):
-                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  c2p    ' + signal_name + '_out'
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  Y    ' + signal_name + '_in'
                     tcl_lines.append(newline)
-                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  c2p_en ' + signal_name + '_ena'
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  OE ' + signal_name + '_oe'
                     tcl_lines.append(newline)
-                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  p2c    ' + signal_name + '_in'
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  IE ' + signal_name + '_ie'
+                    tcl_lines.append(newline)
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  PU ' + signal_name + '_pullup'
+                    tcl_lines.append(newline)
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  PD ' + signal_name + '_pulldown'
+                    tcl_lines.append(newline)
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  SL ' + signal_name + '_slew'
+                    tcl_lines.append(newline)
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  CS ' + signal_name + '_level'
+                    if pad_type.endswith('_a') or pad_type.endswith('_t'):
+                        tcl_lines.append(newline)
+                        newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  PDRV0 ' + signal_name + '_drive_0'
+                        tcl_lines.append(newline)
+                        newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  PDRV1 ' + signal_name + '_drive_1'
+                    if pad_type.endswith('_a'):
+                        tcl_lines.append(newline)
+                        newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  ANA ' + signal_name + '_ana'
 
             tcl_lines.append(newline)
 
@@ -355,13 +411,13 @@ with open(tcl_in_file, 'r') as ifile:
                 pad_pin_idx = pad_idx[1]
                 pad_type = padrec[0]
                 signal_name = padrec[1]
-                if 'IOPadTriOut' in pad_type or 'IOPadInOut' in pad_type:
+                if '__in_' in pad_type or '__bi_' in pad_type:
                     slot_num = int(pad_slot_idx)
-                    if pad_num >= 0 and pad_num <= 8:
+                    if slot_num >= 0 and slot_num <= 9:
                         side = 'right'
                     else:
                         side = 'left'
-                    newline = spaces + 'add_constant_' + side + ' pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + ' const_' + pad_pin_idx
+                    newline = spaces + 'add_constant_' + side + ' pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + ' const_' + pad_slot_idx + '_' + pad_pin_idx
                     tcl_lines.append(newline)
 
         elif 'CONSTANT_SIGNALS' in line:
@@ -373,9 +429,9 @@ with open(tcl_in_file, 'r') as ifile:
                 pad_pin_idx = pad_idx[1]
                 pad_type = padrec[0]
                 signal_name = padrec[1]
-                if 'IOPadTriOut' in pad_type or 'IOPadInOut' in pad_type:
+                if '__in_' in pad_type or '__bi_' in pad_type:
                     slot_num = int(pad_slot_idx)
-                    if pad_num >= 0 and pad_num <= 8:
+                    if slot_num >= 0 and slot_num <= 9:
                         side = 'right'
                     else:
                         side = 'left'

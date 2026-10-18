@@ -78,7 +78,7 @@ set clk_transition  0.15
 set time_derate     5.0
 
 set max_fanout      10
-set driving_cell    "gf180mcu_as_sc_mcu7t3v3__buff_4/X"
+set driving_cell    "gf180mcu_as_sc_mcu7t3v3__buff_4/Y"
 set output_load     0.006
 
 # Design-rule limits.  The library defaults are max_transition 2.5074 ns
@@ -94,28 +94,40 @@ set max_capacitance 0.2
 # block's own share only;  $io_delay is added where they are applied,
 # because set_max_delay from an input port includes that port's input
 # delay in the measured path.
-# The chain itself (dig_out_relay -> mux -> buffer -> dig_out) measures
-# 0.337 ns at nom_slow_1p08V_125C into the real ~21 fF load of a 170 um
-# hop (Metal3 is 92 aF/um at minimum width), so ~6 ns over all 18 slots.
-# It is dominated by the mux2_1, not by the output buffer's drive.
+# ALL THREE BUDGETS BELOW ARE INHERITED FROM IHP AND UNVERIFIED HERE.
+# They were derived against sg13cmos5l at 1.2 V and carried over
+# unchanged;  nothing in them has been re-measured in GF180, where the
+# process is slower and the supply is 3.3 V.  Treat them as placeholders
+# until the relay path has been timed in this PDK -- see the note at the
+# set_false_path further down for why that path was never visible.
 #
-# Measured by swapping the cell in the post-PnR netlist and re-timing
-# against the extracted parasitics, at 21 fF:
-#     buf_4  0.3094 ns    buf_8  0.3365 ns    buf_16  0.3949 ns
-# buf_16 is worse at every load up to 100 fF:  its 15.92 fF input
-# capacitance costs the driving mux (slope 4.87 ns/pF) far more than the
-# extra drive returns.  buf_8 only overtakes buf_4 above ~70 fF, which
-# is roughly a 760 um hop.
+# FOR REFERENCE ONLY, the IHP measurements that set these numbers.  None
+# of it applies to GF180:  the hop length and its capacitance come from
+# the IHP floorplan, and the buffer comparison was run against IHP cells,
+# so an IHP 1.2 V buf_4 says nothing about a GF180 3.3 V buff_4's drive.
 #
-# The budget is set by the longest path into dig_out, which is not the
-# chain but proj_sel -> address comparator -> mux select, at 1.579 ns.
-# 1.5 left 12 setup violations of ~79 ps there.  Note that path is not
-# actually latency-critical:  proj_sel only changes when moving testing
-# from one project to another, and that change must be followed by a
-# whole sequence of enables before the project produces any output at
-# all.  It is budgeted rather than declared false only because doing so
-# costs nothing --- 2.0 ns is met at every corner, and the chain that
-# does matter still has over 1.1 ns of slack against it.
+#   [IHP] the chain (dig_out_relay -> mux -> buffer -> dig_out) measured
+#   0.337 ns at nom_slow_1p08V_125C into ~21 fF, a 170 um hop with
+#   Metal3 at 92 aF/um, so ~6 ns over all 18 slots, dominated by the
+#   mux2_1 rather than the output buffer's drive.
+#
+#   [IHP] by swapping the cell in the post-PnR netlist and re-timing
+#   against extracted parasitics at 21 fF:
+#       buf_4  0.3094 ns    buf_8  0.3365 ns    buf_16  0.3949 ns
+#   buf_16 was worse at every load up to 100 fF -- its 15.92 fF input
+#   capacitance cost the driving mux (slope 4.87 ns/pF) more than the
+#   extra drive returned -- and buf_8 only overtook buf_4 above ~70 fF,
+#   roughly a 760 um hop.
+#
+#   [IHP] the budget was set by proj_sel -> address comparator -> mux
+#   select at 1.579 ns, not by the chain;  1.5 left 12 setup violations
+#   of ~79 ps.  In GF180 that same path is 2.016 ns and is now declared
+#   false rather than budgeted.
+#
+# TO RE-DERIVE FOR GF180:  measure the GF180 hop length from the frame
+# floorplan, get Metal3's capacitance per micron from the GF180 tech LEF
+# rather than reusing 92 aF/um, and re-run the buffer comparison with
+# gf180mcu_as_sc_mcu7t3v3 cells at that load.
 set t_relay         2.0
 set t_dig_in        2.0
 set t_enables       2.0
@@ -149,6 +161,12 @@ set latched_outputs [get_ports {proj_dig_in[*]}]
 set enable_outputs [get_ports {proj_ena proj_5v0_ena proj_3v3_ena \
                                proj_analog_ena[*] proj_ibias_ena[*] \
                                proj_vbias_ena}]
+
+# Project selection.  Both feed the address comparator that produces
+# "select".  proj_sel is written once over SPI at the start of a test
+# campaign and then held for its whole duration;  proj_addr is tied to a
+# per-slot constant at chip level and does not change at all.
+set select_inputs [get_ports {proj_sel[*] proj_addr[*]}]
 
 #-----------------------------------------------------------------------
 # Clocks
@@ -248,11 +266,40 @@ set_output_delay $io_delay -clock clk $sync_outputs
 # multiplies.  1.5 ns per slot gives ~27 ns plus chip-level wire for the
 # whole chain, comfortably inside the 100 ns SPI readback period.
 #
-# Note that the worst path into dig_out starts at proj_addr, through the
-# address comparator.  At chip level proj_addr is tied to per-slot
-# constants, so that path does not exist dynamically;  the real chained
-# path is just dig_out_relay -> mux -> buffer, which is far shorter.
 set_max_delay [expr {$io_delay + $t_relay}] -from $data_inputs -to $relay_outputs
+
+# ...but NOT from the selection inputs.  proj_sel -> address comparator ->
+# mux select is the longest path into dig_out, and in GF180 it measures
+# 2.016 ns against the 2.0 ns budget:  -16 ps at nom_ss_125C_3v00, with
+# twelve more proj_sel[2] -> dig_out[*] paths strung out between -16 ps
+# and +8 ps.  In IHP the same path was 1.579 ns and the note here used to
+# say it was "budgeted rather than declared false only because doing so
+# costs nothing".  It now costs 16 ps, so the condition that justified
+# budgeting it has expired and it is declared false instead.
+#
+# THE ARGUMENT, which has not changed:  proj_sel is written once over SPI
+# to choose a project and then held static for the whole test campaign.
+# The change is made while the project is disabled, and dig_out carries
+# nothing until a sequence of enables has followed, so the propagation
+# delay from a selection change to dig_out is never observed.
+#
+# SCOPED DELIBERATELY to -to $relay_outputs.  A blanket
+# "set_false_path -from $select_inputs" would also delete the
+# proj_sel -> reset_sync setup check (reset_sync samples "select & reset",
+# and that path reports +10.26 ns), and would leave the enable outputs
+# with no timed paths at all, since proj_sel is their only startpoint.
+# Both of those are worth keeping.
+set_false_path -from $select_inputs -to $relay_outputs
+
+# WHAT THIS EXPOSES, AND WHICH NEEDS CHECKING.  Before this exception,
+# every one of the 23 timed paths in this block started at proj_sel, and
+# dig_out_relay appeared as a startpoint ZERO times in all three corner
+# reports.  The chained path that actually repeats 18 times --
+# dig_out_relay -> mux -> buffer -> dig_out -- was therefore never
+# visible, masked by proj_sel always being worse.  With proj_sel removed
+# it should appear.  CONFIRM THAT IT DOES:  if it still does not, the
+# set_max_delay above is not reaching it and the $t_relay budget has
+# never actually been tested.
 
 # Shared digital bus out to the project.  Only the "select"-gated reset
 # leg of the latches is timed by this;  the dig_in -> proj_dig_in paths

@@ -118,30 +118,42 @@ module housekeeping_top (
     (* keep *)
     gf180mcu_as_sc_mcu7t3v3__diode_2 tiedowns [80:0] (
 	// no. signals = 1 + 1 + 1 + 1 + 1 + 32 + 12 + 12 + 12 + 8 = 81
-	.A({porb, clk, SCK, SDI, CSB, mask_rev_in, dbus_in_right, dbus_in_left,
+	.DIODE({porb, clk, SCK, SDI, CSB, mask_rev_in, dbus_in_right, dbus_in_left,
 		io_in, sram_odata})
     );
     
-    /* Instantiate buffers on all potentially long-distance outputs */
+    /* Buffer the clock to all projects with the largest clock buffer available */
     (* keep *)
-    gf180mcu_as_sc_mcu7t3v3__buff_16 outbuffers [120:0] (
-	// no. signals: 24, 12, 12, 5, 5, 3, 1, 3, 1, 16, 1, 1, 1, 1, 3,
-	//		2, 3, 3, 5, 1, 5, 1, 1, 1, 1, 2, 1, 4, 1, 1 = 121
+    gf180mcu_as_sc_mcu7t3v3__clkbuff_12 outbuffer (
+	.A(clk_out_unbuf),
+	.Y(clk_out)
+    );
+
+    /* Instantiate buffers on all potentially long-distance outputs.
+     *
+     * NOTE:  This is somehow causing issues with the detailed router,
+     * and I don't know why.
+     */
+
+    (* keep *)
+    gf180mcu_as_sc_mcu7t3v3__buff_2 outbuffers [119:0] (
+	// no. signals: 24, 12, 12, 5, 5, 3, 1, 3, 1, 16, 1, 1, 1, 3,
+	//		2, 3, 3, 5, 1, 5, 1, 1, 1, 1, 2, 1, 4, 1, 1 = 120
 	.A({dbus_out_unbuf, io_out_unbuf, io_oe_unbuf, idac1_value_unbuf,
 		idac2_value_unbuf, voltgen_ena_unbuf, voltgen_high_unbuf,
 		voltgen_value_unbuf, bandgap_ena_unbuf, bandgap_trim_unbuf,
 		biasgen_ena_unbuf, biasgen_coarse_unbuf, biasgen_fine_unbuf,
 		biasgen_ref_vbg_unbuf, bandgap_sink1_unbuf, bandgap_sink2_unbuf,
 		voltgen_sink1_unbuf, voltgen_sink2_unbuf, voltgen_source_unbuf,
-		clk_out_unbuf, proj_sel_unbuf, proj_ena_unbuf, proj_dig_ena_unbuf,
+		proj_sel_unbuf, proj_ena_unbuf, proj_dig_ena_unbuf,
 		proj_5v0_ena_unbuf, proj_3v3_ena_unbuf, proj_ibias_ena_unbuf,
 		proj_vbias_ena_unbuf, analog_bus_ena_unbuf, reset_unbuf,
 		project_zero_unbuf}),
-	.X({dbus_out, io_out, io_oe, idac1_value, idac2_value, voltgen_ena,
+	.Y({dbus_out, io_out, io_oe, idac1_value, idac2_value, voltgen_ena,
 		voltgen_high, voltgen_value, bandgap_ena, bandgap_trim,
 		biasgen_ena, biasgen_coarse, biasgen_fine, biasgen_ref_vbg,
 		bandgap_sink1, bandgap_sink2, voltgen_sink1, voltgen_sink2,
-		voltgen_source, clk_out, proj_sel, proj_ena, proj_dig_ena,
+		voltgen_source, proj_sel, proj_ena, proj_dig_ena,
 		proj_5v0_ena, proj_3v3_ena, proj_ibias_ena, proj_vbias_ena,
 		analog_bus_ena, reset, project_zero})
     );
@@ -165,10 +177,10 @@ module housekeeping_top (
      */
     (* keep *)
     gf180mcu_as_sc_mcu7t3v3__mux2_2 sram_clk_mux (
-	.A0(SCK),
-	.A1(clk),
+	.A(SCK),
+	.B(clk),
 	.S(seq_ena),
-	.X(sram_clk)
+	.Y(sram_clk)
     );
 
     /* Instantiate the housekeeping module */

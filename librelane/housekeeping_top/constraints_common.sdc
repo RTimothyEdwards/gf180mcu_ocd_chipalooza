@@ -80,7 +80,7 @@ set clk_transition  0.15
 set time_derate     5.0
 
 set max_fanout      10
-set driving_cell    "gf180mcu_as_sc_mcu7t3v3__buff_4/X"
+set driving_cell    "gf180mcu_as_sc_mcu7t3v3__buff_4/Y"
 
 # Design-rule limits.  The library default max_transition is 2.5074 ns.
 # Leaving it there is what let an early run finish with 4.589 ns of clock
@@ -116,7 +116,7 @@ set driving_cell    "gf180mcu_as_sc_mcu7t3v3__buff_4/X"
 # clkbuf turns up in the violator list at the top of the sorted table on
 # every run.  It is an artifact of that report, not a slew.  Check the
 # pin in max.rpt before believing it:  in RUN_2026-09-26_16-35-14,
-# clkbuf_4_4__f_clk_regs/X reported 10.000 ns here while its real path
+# clkbuf_4_4__f_clk_regs/Y reported 10.000 ns here while its real path
 # data was fanout 10, cap 0.157 pF, slew 0.143 ns --- inside this 1.0 ns
 # limit, never mind the library's 2.5074 ns.
 #

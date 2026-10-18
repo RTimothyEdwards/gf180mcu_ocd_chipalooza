@@ -67,8 +67,8 @@ load user_project_control_def -silent
 
 set die_llx 0
 set die_lly 0
-set die_urx 105
-set die_ury 60
+set die_urx 120
+set die_ury 70
 
 box values 0 0 0 0
 
