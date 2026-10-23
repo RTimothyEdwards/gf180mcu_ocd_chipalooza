@@ -334,7 +334,7 @@ module housekeeping (
     (iaddr == 8'h36) ? {4'h0, user_in_route[22*4 +: 4]} :
     (iaddr == 8'h37) ? {4'h0, user_in_route[23*4 +: 4]} :
     (iaddr == 8'h38) ? dbus_in[7:0] :
-    (iaddr == 8'h39) ? dbus_in[11:8] :
+    (iaddr == 8'h39) ? {4'h0, dbus_in[11:8]} :
     (iaddr == 8'h40) ? {4'h0, user_out_route[0*4 +: 4]} :
     (iaddr == 8'h41) ? {4'h0, user_out_route[1*4 +: 4]} :
     (iaddr == 8'h42) ? {4'h0, user_out_route[2*4 +: 4]} :
@@ -590,6 +590,7 @@ module housekeeping (
 	     proj_ibias_ena <= idata[1:0];
 	     proj_vbias_ena <= idata[2];
 	       end
+        default: ;
         endcase	// (iaddr)
     end
 end

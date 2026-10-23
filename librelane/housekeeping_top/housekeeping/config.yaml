@@ -1,0 +1,277 @@
+meta:
+  version: 2
+  flow: Classic
+  substituting_steps:
+    
+    # Allow assignments for por, porb
+    Checker.NetlistAssignStatements: null
+    
+    # For debugging
+    +OpenROAD.GeneratePDN: Magic.StreamOut
+    
+    # Ignore disconnected pins
+    Checker.DisconnectedPins: null
+    
+    # TODO reenable again?
+    OpenROAD.IRDropReport: null
+    
+    Odb.CheckDesignAntennaProperties: null
+    
+    # Magic has no issues with DRC
+    # Magic.DRC: null
+    
+    # NOTE:  KLayout.StreamOut / KLayout.XOR / KLayout.DRC / Netgen.LVS
+    # are disabled through the RUN_* flow control variables below rather
+    # than nulled here.  Nulling a step leaves its Checker behind with
+    # nothing to check, which produced the
+    #   "The XOR differences metric was not found."
+    # message;  the flow control variables drop the checkers too.
+    
+    # Some macros may overlap on purpose
+    Checker.IllegalOverlap: null
+
+# Signoff tool selection and flow control
+#
+# THE IMPORTANT ONE:  the GF PDK sets PRIMARY_GDSII_STREAMOUT_TOOL to
+# "klayout", and Magic.StreamOut only registers the GDS view when this is
+# "magic".  With KLayout's streamout disabled nothing produced a GDS at
+# all, so Magic.DRC --- which takes DesignFormat.GDS as a REQUIRED input
+# --- aborted before running, leaving an empty step directory and an
+# empty error.log.  That is why the flow always stopped short of DRC.
+PRIMARY_GDSII_STREAMOUT_TOOL: magic
+
+# KLayout streamout off, which also drops KLayout.XOR and Checker.XOR.
+# Note this means the magic-vs-klayout GDS cross-check is not running.
+RUN_KLAYOUT_STREAMOUT: false
+RUN_KLAYOUT_XOR: false
+
+# KLayout DRC and LVS are run manually from validate/.  Disabling them
+# here also drops Checker.KLayoutDRC and Checker.LVS.
+RUN_KLAYOUT_DRC: false
+RUN_LVS: true
+
+DESIGN_NAME: housekeeping_harness
+OPENROAD_THREADS: 12
+VERILOG_FILES:
+- dir::../../../verilog/rtl/synth_defs.v
+- dir::../../../verilog/rtl/housekeeping_spi.v
+- dir::../../../verilog/rtl/housekeeping.v
+- dir::../../../verilog/rtl/sequencer.v
+- dir::../../../verilog/rtl/pattern.v
+- dir::../../../verilog/rtl/router.v
+- dir::../../../verilog/rtl/lfsr.v
+- dir::../../../verilog/rtl/housekeeping_harness.v
+
+DEDUPLICATE_CORNERS: true
+
+# Use the GF CMOS5L standard cell library
+STD_CELL_LIBRARY: gf180mcu_as_sc_mcu7t3v3
+
+# Technology libs
+LIB:
+  "nom_tt_025C_3v30":
+    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3__tt_025C_3v30.lib
+
+  "nom_ss_125C_3v00":
+    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3__ss_125C_3v00.lib
+
+  "nom_ff_n40C_3v60":
+    - pdk_dir::libs.ref/gf180mcu_as_sc_mcu7t3v3/lib/gf180mcu_as_sc_mcu7t3v3__ff_n40C_3v60.lib
+
+
+# Corners
+STA_CORNERS:
+  - nom_tt_025C_3v30
+  - nom_ss_125C_3v00
+  - nom_ff_n40C_3v60
+
+CTS_CLK_BUFFERS:
+  - "gf180mcu_as_sc_mcu7t3v3__clkbuff_12"
+  - "gf180mcu_as_sc_mcu7t3v3__clkbuff_8"
+  - "gf180mcu_as_sc_mcu7t3v3__clkbuff_4"
+
+DEFAULT_CORNER: nom_tt_025C_3v30
+
+# Magic streamout: don't blackbox macros
+MAGIC_MACRO_STD_CELL_SOURCE: PDK
+
+# Don't short top-level pins
+MAGIC_EXT_SHORT_RESISTOR: true
+
+# IGNORE_DISCONNECTED_MODULES:
+#     - manual_routing
+
+# Prevent porb_h mangling
+SYNTH_DIRECT_WIRE_BUFFERING: False
+SYNTH_WRITE_NOATTR: False
+
+# Ignores don't touch directive
+PL_TIME_DRIVEN: False
+
+# Clock
+# BOTH clocks must be listed.  CLOCK_PORT feeds CLOCK_NET, which is the
+# list CTS uses to decide what to build a tree for --- so with only "clk"
+# here, CTS never built one for SCK at all.  That is the direct cause of
+# the 324 unclocked register pins in the previous run:  the ~325 SCK
+# flops got whatever the resizer's max-fanout repair produced instead of
+# a balanced tree.
+CLOCK_NET: [clk, SCK]
+CLOCK_PORT: [clk, SCK]
+
+# The primary period.  SCK's 100 ns is set in constraints.sdc;  this
+# value is what LibreLane derives its own defaults from.
+CLOCK_PERIOD: 15
+
+# SDC
+# FALLBACK_SDC (deprecated name FALLBACK_SDC_FILE) only ever constrains
+# the FIRST entry of CLOCK_PORT, which is why the templated base.sdc
+# could never describe this block.  base.sdc is now unused.
+#
+# Two files, not one:  sram_clk is a clock mux output needing two
+# generated clocks on one port.  OpenSTA accepts that, TritonCTS does not
+# ("[ERROR CTS-0114] Clock sram_clk_s overlaps a previous clock"), so PnR
+# analyses the sequencer mode only via a case analysis and signoff
+# analyses both.  Both source constraints_common.sdc.
+PNR_SDC_FILE: dir::constraints_pnr.sdc
+SIGNOFF_SDC_FILE: dir::constraints_signoff.sdc
+
+# CTS
+# CTS_CLK_MAX_WIRE_LENGTH removed.  Its default is 0, which lets
+# TritonCTS pick the segment length itself;  the explicit 1200 um was an
+# override roughly the width of the whole block, so the tree went almost
+# unbuffered.
+CTS_SINK_CLUSTERING_SIZE: 25 # default 25
+CTS_SINK_CLUSTERING_MAX_DIAMETER: 60 # default 50
+
+# Routing
+GRT_ALLOW_CONGESTION: true
+# NOTE:  Changed to false to check for congestion issues early
+## GRT_ALLOW_CONGESTION: false
+RT_CLOCK_MAX_LAYER: Metal4
+
+# Keep signal routing off Metal5 as well.  Metal5 is only lightly used
+# anyway -- the GRT congestion report for the 15-56-18 run had it at
+# 3.78% (2453 of 64824) -- and moving all of it down leaves M2-M4 at
+# 13.6% of their combined resource, with Metal4 nearly empty at 2.67%.
+# There is plenty of room, and restricting the layers also makes the
+# router behave uniformly across bits of the same vector:  in that run
+# voltgen_source[0] and [3] took Metal5 for their long haul while [1],
+# [2] and [4] stayed on Metal3, which made the DRT-0218 failures look
+# placement-dependent rather than reproducible.
+#
+# (Setting reverted because it causes routing to fail)
+#
+# RT_MAX_LAYER: Metal4
+# DRT_MAX_LAYER: Metal4
+#
+# Instead, coerce the router into avoiding metal5 unless it must, so
+# it doesn't use it unnecessarily.
+
+# GRT_LAYER_ADJUSTMENTS: [0, 0, 0, 0, 0.5]
+
+# Resizer
+DESIGN_REPAIR_BUFFER_INPUT_PORTS: false
+DESIGN_REPAIR_BUFFER_OUTPUT_PORTS: false
+
+# Overfix hold violations
+PL_RESIZER_HOLD_SLACK_MARGIN: 0.2
+
+VDD_NETS:
+- vddd
+
+GND_NETS:
+- vssd
+
+PDN_CORE_RING: false
+
+# FP_PDN_CFG: dir::pdn_cfg.tcl
+
+# FP_PDN_VWIDTH: 2.0
+# FP_PDN_HWIDTH: 5.0
+# FP_PDN_VSPACING: 1.7
+# FP_PDN_HSPACING: 1.7
+# FP_PDN_VPITCH: 55
+# FP_PDN_HPITCH: 70
+
+# FP_PDN_CORE_RING: true
+# FP_PDN_CORE_RING_VWIDTH: 8
+# FP_PDN_CORE_RING_HWIDTH: 8
+
+# FP_PDN_CORE_RING_VOFFSET: 2
+# FP_PDN_CORE_RING_HOFFSET: 2
+
+# Floorplanning
+FP_SIZING: absolute
+
+DIE_AREA: [ 0.00,  0.00, 2440.00, 225.00 ]
+CORE_AREA: [ 3.32,  4.44, 2437.00, 222.00 ]
+
+FP_DEF_TEMPLATE: dir::../../../def/housekeeping_harness.def
+FP_TEMPLATE_MATCH_MODE: permissive
+#FP_TEMPLATE_COPY_POWER_PINS: True
+
+# Placement density.
+#
+# The block's actual utilization is 17.5% (GPL-0016/0019: 723854 um2 of
+# core, 17.492% utilized, 14.8% effective).  A 50% target was therefore
+# nearly four times the real occupancy, which let the placer pack all the
+# logic into roughly a third of the core and leave the rest empty.
+#
+# That is what put the output buffers a long way from the pins they
+# drive.  The median driver-to-pin distance over all 121 outbuffers is
+# 65.9 um, but the ones at the far end are nowhere near that:
+#     outbuffers[92]  io_out[7]           cell x 2276  pin x 3385  1116 um
+#     outbuffers[19]  voltgen_source[0]   cell x 2006  pin x 1050   972 um
+#     outbuffers[20]  voltgen_source[1]   cell x 1978  pin x 1052   938 um
+# The core is a long thin strip, 2496 x 296 um, with pins spread along
+# its whole length;  the logic needs to spread with them rather than
+# cluster at one end and route 900+ um back.
+#
+# Set just above the real utilization so the density penalty actually
+# spreads the logic along the strip.  Congestion is not the constraint
+# here -- the 15-56-18 run finished global routing at 11.19% total with
+# ZERO overflow on every layer and Metal3 worst at 22.95% -- so there is
+# no reason to keep cells packed.
+#
+# If total wirelength (GRT-0018, 440512 um in that run) climbs a lot, the
+# placer is over-spreading the internal logic to shorten the pin nets;
+# 25-30 is the obvious next thing to try in that case.
+PL_TARGET_DENSITY_PCT: 25
+
+# FP_OBSTRUCTIONS:
+## SRAM
+# - [2651.15, 0.00, 3170.30, 55.215]
+## ADC/DAC area
+# - [790, 0.00, 1720, 290]
+
+# Obstructions
+#
+# Odb.ApplyDEFTemplate only relocates pins and reads the die area out of
+# FP_DEF_TEMPLATE.  It does NOT import the BLOCKAGES section, so the
+# obsm* shapes painted by scripts/run_gen_hk_def.tcl have no effect on
+# the flow and must be restated here.  Keep the two in step.
+#
+# Layer names are LEF names.
+#
+# To do:  Apply PDN and routing obstructions, if needed. 
+
+# PDN_OBSTRUCTIONS:
+
+# ROUTING_OBSTRUCTIONS:
+
+# NOTE:  run_gen_hk_def.tcl also paints 1 um obsm1..obsm4 strips along
+# all four die edges over the pins.  Those are deliberately NOT restated
+# here:  the pin shapes are only 2 um long, so a 1 um same-layer routing
+# blockage would cover half of every pin.  The 3 um CORE_AREA margin
+# already keeps placement and most routing off the die edge.
+
+# Magic: Use GDS views (no DRC issues)
+MAGIC_DRC_USE_GDS: True
+
+# Allow top ports to be non-unique (because power names are duplicated)
+MAGIC_EXT_UNIQUE: notopports
+
+MACROS:
+
+PDN_MACRO_CONNECTIONS:
+
