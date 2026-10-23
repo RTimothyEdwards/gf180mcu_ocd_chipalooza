@@ -17,10 +17,6 @@ meta:
 
     Odb.CheckDesignAntennaProperties: null
 
-    # clk/SCK have a single sink here (the macro's pin) -- no fanout for
-    # CTS to balance, so it only added insertion delay.
-    OpenROAD.CTS: null
-
     # Magic has no issues with DRC
     # Magic.DRC: null
 
@@ -58,6 +54,12 @@ DESIGN_NAME: housekeeping_top
 OPENROAD_THREADS: 12
 VERILOG_FILES:
 - dir::../../verilog/rtl/synth_defs.v
+- dir::../../verilog/rtl/housekeeping_spi.v
+- dir::../../verilog/rtl/housekeeping.v
+- dir::../../verilog/rtl/sequencer.v
+- dir::../../verilog/rtl/pattern.v
+- dir::../../verilog/rtl/router.v
+- dir::../../verilog/rtl/lfsr.v
 - dir::../../verilog/rtl/housekeeping_top.v
 
 DEDUPLICATE_CORNERS: true
@@ -201,8 +203,8 @@ PDN_CORE_RING: false
 # Floorplanning
 FP_SIZING: absolute
 
-DIE_AREA: [ 975.00,  415.00, 3475.00, 700.00 ]
-CORE_AREA: [ 978.32,  419.44, 3472.00, 697.00 ]
+DIE_AREA: [ 0.00,  0.00, 2500.00, 285.00 ]
+CORE_AREA: [ 3.32,  4.44, 2497.00, 282.00 ]
 
 FP_DEF_TEMPLATE: dir::../../def/housekeeping_top.def
 FP_TEMPLATE_MATCH_MODE: permissive
@@ -270,31 +272,5 @@ MAGIC_DRC_USE_GDS: True
 MAGIC_EXT_UNIQUE: notopports
 
 MACROS:
-  housekeeping_harness:
-    gds:
-      - dir::housekeeping/final/gds/housekeeping_harness.gds
-    lef:
-      - dir::housekeeping/final/lef/housekeeping_harness.lef
-    vh:
-      - dir::housekeeping/final/vh/housekeeping_harness.vh
-    nl:
-      - dir::housekeeping/final/nl/housekeeping_harness.nl.v
-    spice:
-      - dir::housekeeping/final/spice/housekeeping_harness.spice
-    lib:
-      "nom_tt_025C_3v30":
-        - dir::housekeeping/final/lib/nom_tt_025C_3v30/housekeeping_harness__nom_tt_025C_3v30.lib
-      "nom_ss_125C_3v00":
-        - dir::housekeeping/final/lib/nom_ss_125C_3v00/housekeeping_harness__nom_ss_125C_3v00.lib
-      "nom_ff_n40C_3v60":
-        - dir::housekeeping/final/lib/nom_ff_n40C_3v60/housekeeping_harness__nom_ff_n40C_3v60.lib
-    spef:
-      "nom_*":
-        - dir::housekeeping/final/spef/nom/housekeeping_harness.nom.spef
-    instances:
-      harness:
-        location: [1003.32, 444.44]
-        orientation: N
 
 PDN_MACRO_CONNECTIONS:
-  - "harness vddd vssd vddd vssd"

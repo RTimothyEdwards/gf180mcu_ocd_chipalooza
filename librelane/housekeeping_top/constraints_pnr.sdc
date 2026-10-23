@@ -3,12 +3,36 @@
 #-----------------------------------------------------------------------
 #
 # Everything in constraints_common.sdc, plus a SINGLE sram_clk definition.
-# No sram_clk_mux case analysis here: that instance and the CTS-0114
-# dual-clock problem it works around are inside housekeeping_harness,
-# already resolved during its own PnR (see that project's constraints_pnr.sdc).
+#
+# TritonCTS cannot cope with two clocks on one net (CTS-0114), so PnR is
+# analysed in the sequencer mode only:  a case analysis pins the clock mux
+# select high, which both removes the SCK arc through the mux and selects
+# pat_sram_addr on the address mux, so the two are consistent.
+#
+# This is the demanding mode --- 15 ns rather than 100 ns --- and the hold
+# padding the tool adds to the address path applies to the SPI mode too,
+# since it is the same physical path with the same 0.849 ns requirement.
+# The SPI mode is checked separately;  see constraints_signoff.sdc.
+#
+# NOTE the case analysis is on the MUX INSTANCE PIN, not on the seq_ena
+# net.  Putting it on the net would also force sram_read, the address mux
+# and the sequencer/pattern sync_reset, masking real paths.
 #-----------------------------------------------------------------------
 
 source [file join [file dirname [file normalize [info script]]] constraints_common.sdc]
+
+# Sequencer mode:  seq_ena = 1 selects clk (mux function is (!S*A0)+(S*A1)
+# with A1 = clk), and disables the SCK arc through the mux.
+set mux_sel [get_pins -quiet sram_clk_mux/S]
+if { [llength $mux_sel] != 1 } {
+    puts "\[ERROR] sram_clk_mux/S not found.  The (* keep *) mux instance in"
+    puts "        housekeeping_top.v has been renamed or optimised away, so the"
+    puts "        clock mux is NOT pinned and CTS will see two clocks on"
+    puts "        sram_clk again (CTS-0114).  Fix the name here."
+} else {
+    set_case_analysis 1 $mux_sel
+    puts "\[INFO] clock mux pinned to clk (sequencer mode) for PnR"
+}
 
 create_generated_clock -name sram_clk -source $clk_port -combinational \
     [get_ports sram_clk]
