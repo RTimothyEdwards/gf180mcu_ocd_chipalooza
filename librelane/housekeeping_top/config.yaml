@@ -201,8 +201,8 @@ PDN_CORE_RING: false
 # Floorplanning
 FP_SIZING: absolute
 
-DIE_AREA: [ 0.00,  0.00, 2500.00, 285.00 ]
-CORE_AREA: [ 3.32,  4.44, 2497.00, 282.00 ]
+DIE_AREA: [ 975.00,  415.00, 3475.00, 700.00 ]
+CORE_AREA: [ 978.32,  419.44, 3472.00, 697.00 ]
 
 FP_DEF_TEMPLATE: dir::../../def/housekeeping_top.def
 FP_TEMPLATE_MATCH_MODE: permissive
@@ -293,7 +293,7 @@ MACROS:
         - dir::housekeeping/final/spef/nom/housekeeping_harness.nom.spef
     instances:
       harness:
-        location: [28.32, 29.44]
+        location: [1003.32, 444.44]
         orientation: N
 
 PDN_MACRO_CONNECTIONS:

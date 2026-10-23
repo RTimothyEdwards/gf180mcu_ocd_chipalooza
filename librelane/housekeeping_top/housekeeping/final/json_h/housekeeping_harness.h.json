@@ -5,7 +5,7 @@
       "attributes": {
         "hdlname": "housekeeping_harness",
         "top": "00000000000000000000000000000001",
-        "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:21.1-243.10"
+        "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:21.1-241.10"
       },
       "ports": {
         "VPWR": {
@@ -49038,7 +49038,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49056,7 +49056,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49074,7 +49074,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49092,7 +49092,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49110,7 +49110,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49128,7 +49128,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49146,7 +49146,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49164,7 +49164,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49182,7 +49182,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49200,7 +49200,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49218,7 +49218,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49236,7 +49236,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49254,7 +49254,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49272,7 +49272,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49290,7 +49290,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49308,7 +49308,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49326,7 +49326,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49344,7 +49344,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49362,7 +49362,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49380,7 +49380,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49398,7 +49398,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49416,7 +49416,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49434,7 +49434,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49452,7 +49452,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:158.37-161.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:156.37-159.6"
           },
           "port_directions": {
             "A": "input",
@@ -49471,7 +49471,7 @@
           "attributes": {
             "keep": "00000000000000000000000000000001",
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:123.41-126.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:121.41-124.6"
           },
           "port_directions": {
             "A": "input",
@@ -49489,7 +49489,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49507,7 +49507,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49525,7 +49525,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49543,7 +49543,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49561,7 +49561,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49579,7 +49579,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49597,7 +49597,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49615,7 +49615,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49633,7 +49633,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49651,7 +49651,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49669,7 +49669,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49687,7 +49687,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49705,7 +49705,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49723,7 +49723,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49741,7 +49741,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49759,7 +49759,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49777,7 +49777,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49795,7 +49795,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49813,7 +49813,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49831,7 +49831,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49849,7 +49849,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49867,7 +49867,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49885,7 +49885,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49903,7 +49903,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49921,7 +49921,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49939,7 +49939,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49957,7 +49957,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49975,7 +49975,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -49993,7 +49993,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50011,7 +50011,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50029,7 +50029,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50047,7 +50047,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50065,7 +50065,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50083,7 +50083,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50101,7 +50101,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50119,7 +50119,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50137,7 +50137,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50155,7 +50155,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50173,7 +50173,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50191,7 +50191,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50209,7 +50209,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50227,7 +50227,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50245,7 +50245,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50263,7 +50263,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50281,7 +50281,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50299,7 +50299,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50317,7 +50317,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50335,7 +50335,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50353,7 +50353,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50371,7 +50371,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50389,7 +50389,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50407,7 +50407,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50425,7 +50425,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50443,7 +50443,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50461,7 +50461,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50479,7 +50479,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50497,7 +50497,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50515,7 +50515,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50533,7 +50533,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50551,7 +50551,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50569,7 +50569,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50587,7 +50587,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50605,7 +50605,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50623,7 +50623,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50641,7 +50641,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50659,7 +50659,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50677,7 +50677,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50695,7 +50695,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50713,7 +50713,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50731,7 +50731,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50749,7 +50749,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50767,7 +50767,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50785,7 +50785,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50803,7 +50803,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50821,7 +50821,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50839,7 +50839,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50857,7 +50857,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50875,7 +50875,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50893,7 +50893,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50911,7 +50911,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50929,7 +50929,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50947,7 +50947,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50965,7 +50965,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -50983,7 +50983,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51001,7 +51001,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51019,7 +51019,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51037,7 +51037,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51055,7 +51055,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51073,7 +51073,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51091,7 +51091,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51109,7 +51109,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51127,7 +51127,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51145,7 +51145,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51163,7 +51163,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51181,7 +51181,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51199,7 +51199,7 @@
           },
           "attributes": {
             "keep": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:135.37-155.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:133.37-153.6"
           },
           "port_directions": {
             "A": "input",
@@ -51218,7 +51218,7 @@
           "attributes": {
             "keep": "00000000000000000000000000000001",
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:181.37-186.6"
+            "src": "/foss/designs/gf180mcu_ocd_chipalooza_clean/verilog/rtl/housekeeping_harness.v:179.37-184.6"
           },
           "port_directions": {
             "A": "input",
