@@ -2,33 +2,31 @@ meta:
   version: 2
   flow: Classic
   substituting_steps:
-    
+
     # Allow assignments for por, porb
     Checker.NetlistAssignStatements: null
-    
+
     # For debugging
     +OpenROAD.GeneratePDN: Magic.StreamOut
-    
+
     # Ignore disconnected pins
     Checker.DisconnectedPins: null
-    
+
     # TODO reenable again?
     OpenROAD.IRDropReport: null
-    
-    # Not needed
-    Magic.WriteLef: null
+
     Odb.CheckDesignAntennaProperties: null
-    
+
     # Magic has no issues with DRC
     # Magic.DRC: null
-    
+
     # NOTE:  KLayout.StreamOut / KLayout.XOR / KLayout.DRC / Netgen.LVS
     # are disabled through the RUN_* flow control variables below rather
     # than nulled here.  Nulling a step leaves its Checker behind with
     # nothing to check, which produced the
     #   "The XOR differences metric was not found."
     # message;  the flow control variables drop the checkers too.
-    
+
     # Some macros may overlap on purpose
     Checker.IllegalOverlap: null
 
@@ -50,9 +48,10 @@ RUN_KLAYOUT_XOR: false
 # KLayout DRC and LVS are run manually from validate/.  Disabling them
 # here also drops Checker.KLayoutDRC and Checker.LVS.
 RUN_KLAYOUT_DRC: false
-RUN_LVS: false
+RUN_LVS: true
 
 DESIGN_NAME: housekeeping_top
+OPENROAD_THREADS: 12
 VERILOG_FILES:
 - dir::../../verilog/rtl/synth_defs.v
 - dir::../../verilog/rtl/housekeeping_spi.v
@@ -137,7 +136,6 @@ PNR_SDC_FILE: dir::constraints_pnr.sdc
 SIGNOFF_SDC_FILE: dir::constraints_signoff.sdc
 
 # CTS
-CTS_OBSTRUCTION_AWARE: true
 # CTS_CLK_MAX_WIRE_LENGTH removed.  Its default is 0, which lets
 # TritonCTS pick the segment length itself;  the explicit 1200 um was an
 # override roughly the width of the whole block, so the tree went almost
@@ -172,7 +170,6 @@ RT_CLOCK_MAX_LAYER: Metal4
 # GRT_LAYER_ADJUSTMENTS: [0, 0, 0, 0, 0.5]
 
 # Resizer
-# RSZ_DONT_TOUCH_RX: porb_l|por_l
 DESIGN_REPAIR_BUFFER_INPUT_PORTS: false
 DESIGN_REPAIR_BUFFER_OUTPUT_PORTS: false
 
@@ -206,8 +203,8 @@ PDN_CORE_RING: false
 # Floorplanning
 FP_SIZING: absolute
 
-DIE_AREA: [ 975.00,  415.00, 3475.00, 700.00 ]
-CORE_AREA: [ 978.00,  418.00, 3472.00, 697.00 ]
+DIE_AREA: [ 0.00,  0.00, 2500.00, 285.00 ]
+CORE_AREA: [ 3.32,  4.44, 2497.00, 282.00 ]
 
 FP_DEF_TEMPLATE: dir::../../def/housekeeping_top.def
 FP_TEMPLATE_MATCH_MODE: permissive
@@ -256,7 +253,7 @@ PL_TARGET_DENSITY_PCT: 25
 #
 # Layer names are LEF names.
 #
-# To do:  Apply PDN and routing obstructions, if needed. 
+# To do:  Apply PDN and routing obstructions, if needed.
 
 # PDN_OBSTRUCTIONS:
 
@@ -277,4 +274,3 @@ MAGIC_EXT_UNIQUE: notopports
 MACROS:
 
 PDN_MACRO_CONNECTIONS:
-

@@ -23,7 +23,7 @@ module housekeeping_top (
     inout VPWR,     // 1.8V supply
     inout VGND,     // common ground
 `endif
-  
+
     input wire porb,
     input wire clk,
     input wire SCK,      // from padframe
@@ -121,7 +121,7 @@ module housekeeping_top (
 	.DIODE({porb, clk, SCK, SDI, CSB, mask_rev_in, dbus_in_right, dbus_in_left,
 		io_in, sram_odata})
     );
-    
+
     /* Buffer the clock to all projects with the largest clock buffer available */
     (* keep *)
     gf180mcu_as_sc_mcu7t3v3__clkbuff_12 outbuffer (
@@ -136,10 +136,10 @@ module housekeeping_top (
      */
 
     (* keep *)
-    gf180mcu_as_sc_mcu7t3v3__buff_2 outbuffers [119:0] (
-	// no. signals: 24, 12, 12, 5, 5, 3, 1, 3, 1, 16, 1, 1, 1, 3,
-	//		2, 3, 3, 5, 1, 5, 1, 1, 1, 1, 2, 1, 4, 1, 1 = 120
-	.A({dbus_out_unbuf, io_out_unbuf, io_oe_unbuf, idac1_value_unbuf,
+    gf180mcu_as_sc_mcu7t3v3__buff_2 outbuffers [95:0] (
+	// no. signals: 12, 12, 5, 5, 3, 1, 3, 1, 16, 1, 1, 1, 3,
+	//		2, 3, 3, 5, 1, 5, 1, 1, 1, 1, 2, 1, 4, 1, 1 = 96
+	.A({io_out_unbuf, io_oe_unbuf, idac1_value_unbuf,
 		idac2_value_unbuf, voltgen_ena_unbuf, voltgen_high_unbuf,
 		voltgen_value_unbuf, bandgap_ena_unbuf, bandgap_trim_unbuf,
 		biasgen_ena_unbuf, biasgen_coarse_unbuf, biasgen_fine_unbuf,
@@ -149,13 +149,19 @@ module housekeeping_top (
 		proj_5v0_ena_unbuf, proj_3v3_ena_unbuf, proj_ibias_ena_unbuf,
 		proj_vbias_ena_unbuf, analog_bus_ena_unbuf, reset_unbuf,
 		project_zero_unbuf}),
-	.Y({dbus_out, io_out, io_oe, idac1_value, idac2_value, voltgen_ena,
+	.Y({io_out, io_oe, idac1_value, idac2_value, voltgen_ena,
 		voltgen_high, voltgen_value, bandgap_ena, bandgap_trim,
 		biasgen_ena, biasgen_coarse, biasgen_fine, biasgen_ref_vbg,
 		bandgap_sink1, bandgap_sink2, voltgen_sink1, voltgen_sink2,
 		voltgen_source, proj_sel, proj_ena, proj_dig_ena,
 		proj_5v0_ena, proj_3v3_ena, proj_ibias_ena, proj_vbias_ena,
 		analog_bus_ena, reset, project_zero})
+    );
+
+    (* keep *)
+    gf180mcu_as_sc_mcu7t3v3__buff_8 dbus_out_buffers [23:0] (
+	.A(dbus_out_unbuf),
+	.Y(dbus_out)
     );
 
     /* Vectors as seen by the SRAM, which in this version of the housekeeping

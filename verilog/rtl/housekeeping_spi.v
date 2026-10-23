@@ -253,7 +253,7 @@ module housekeeping_spi (
 	            rdstb <= 1'b0;
 	        end
             end else if (state == `DATA) begin
-	        predata <= {predata[6:0], SDI};
+	        predata <= {predata[5:0], SDI};
 	        count <= count + 1;
 		if (count == 3'b111) begin
 		    addr <= addr + 1;

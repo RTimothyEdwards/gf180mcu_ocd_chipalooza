@@ -158,7 +158,7 @@ always @(posedge clk or posedge reset) begin
 		if (sram_addr >= sram_stop_addr) begin
 		    strobe_out <= 1'b1;
 		    if (loop_mode == 1'b1) begin
-			sram_addr <= 1'b0;
+			sram_addr <= 10'd0;
 		    end else begin
 			pat_end <= 1'b1;
 		    end
@@ -178,7 +178,7 @@ always @(posedge clk or posedge reset) begin
 		    if (sram_addr == sram_stop_addr) begin
 		        strobe_out <= 1'b1;
 		        if (loop_mode == 1'b1) begin
-			    sram_addr <= 8'h00;
+			    sram_addr <= 10'd0;
 		        end else begin
 			    pat_end <= 1'b1;
 			end
