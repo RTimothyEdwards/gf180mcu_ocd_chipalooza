@@ -93,10 +93,20 @@ load housekeeping_top_def -silent
 # LibreLane config.yaml file.
 #
 # (Updated version: Shaving 20 micons off of the height)
+#
+# NOTE:  (October 24, 2026)  OpenROAD prefers to have the
+# die area at the origin, whereas the coordinates below are
+# relative to the whole chip's origin.  This worked for the IHP
+# PDK without incident but the GF PDK with the Avalon
+# Semiconductors standard cells won't route correctly unless
+# the die is at the origin.  This is handled by keepin the
+# original coordinates and moving the origin before writing
+# DEF.  The position of the instance in the chipalooza_frame
+# is moved to compensate for the difference.
 
 set die_llx 975
 set die_lly 415
-set die_urx 3475
+set die_urx 3175
 set die_ury 700
 
 box values 0 0 0 0
@@ -243,12 +253,18 @@ label_bottom_signal io_in\[4\]	      2781	input
 label_bottom_signal io_out\[5\]	      2981	output
 label_bottom_signal io_oe\[5\]	      2982	output
 label_bottom_signal io_in\[5\]	      2983	input
-label_bottom_signal io_out\[6\]	      3183	output
-label_bottom_signal io_oe\[6\]	      3184	output
-label_bottom_signal io_in\[6\]	      3185	input
-label_bottom_signal io_out\[7\]	      3385	output
-label_bottom_signal io_oe\[7\]	      3386	output
-label_bottom_signal io_in\[7\]	      3387	input
+
+# The width of the housekeeping block has been reduced and
+# gpio[6] and gpio[7] are now to the right of the block.
+# Space the pins from io_out[6] at 2um apart to avoid
+# overrunning the end of the housekeeping block.
+
+label_bottom_signal io_out\[6\]	      3160	output
+label_bottom_signal io_oe\[6\]	      3162	output
+label_bottom_signal io_in\[6\]	      3164	input
+label_bottom_signal io_out\[7\]	      3166	output
+label_bottom_signal io_oe\[7\]	      3168	output
+label_bottom_signal io_in\[7\]	      3170	input
 
 # The SRAM is on the left of housekeeping with pins facing right.
 # The pin positions are aligned to the nearest integer micron so
@@ -484,6 +500,11 @@ box values [- $die_urx 33] [+ $die_lly 25] $die_urx [- $die_ury 60]
 paint obsm5
 box values [- $die_urx 33] [+ $die_lly 25] $die_urx $die_ury
 paint obsm4
+
+# Move the entire coordinate system to put the die area at the
+# origin (see note up top).
+
+move origin 975 415
 
 writeall force housekeeping_top_def
 

@@ -130,13 +130,9 @@ module housekeeping_top (
     );
 
     /* Instantiate buffers on all potentially long-distance outputs.
-     *
-     * NOTE:  This is somehow causing issues with the detailed router,
-     * and I don't know why.
-     */
 
     (* keep *)
-    gf180mcu_as_sc_mcu7t3v3__buff_2 outbuffers [119:0] (
+    gf180mcu_as_sc_mcu7t3v3__buff_8 outbuffers [119:0] (
 	// no. signals: 24, 12, 12, 5, 5, 3, 1, 3, 1, 16, 1, 1, 1, 3,
 	//		2, 3, 3, 5, 1, 5, 1, 1, 1, 1, 2, 1, 4, 1, 1 = 120
 	.A({dbus_out_unbuf, io_out_unbuf, io_oe_unbuf, idac1_value_unbuf,

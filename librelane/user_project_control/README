@@ -25,3 +25,14 @@ NOTE:  The run results are *not* pushed back to the git repository, because
 the size of everything in the directories is huge.  The project final output
 was copied into the ../gds/ directory, and the project can be recreated on
 demand from the existing configuration files.
+
+Another NOTE:  Apart from running nix-shell, the immediate steps above have now
+been simplified with a Makefile so that the steps to build and install are:
+
+	make run
+and
+	make final
+
+"make final" finds the most recent runs/RUN* directory and pulls the final gate-level
+verilog and magic layout view from the final/ directory and copies them to verilog/gl/
+and magic/, respectively.

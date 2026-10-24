@@ -34,8 +34,8 @@ reg  [20:0] lfsr_pipe2;
 
 always @(posedge clk or posedge reset) begin
     if (reset) begin
-	lfsr_pipe1 <= 19'h6b5d3;
-	lfsr_pipe2 <= 19'h4821e;
+	lfsr_pipe1 <= 20'h6b5d3;
+	lfsr_pipe2 <= 20'h4821e;
     end else begin
 	lfsr_pipe2 <= {lfsr_pipe2[19:0], lfsr_pipe2[20] ^ lfsr_pipe2[18]}; 
 	lfsr_pipe1 <= {lfsr_pipe1[18:0], lfsr_pipe1[19] ^ lfsr_pipe1[16]}; 

@@ -348,9 +348,9 @@ set_output_delay $sck_io_delay -clock SCK $config_outputs
 # and reported a 14.8 ns violation on a path that is actually 2.6 ns.
 #
 # Measured depth is 14 logic levels, 2.58 ns at nom_slow_1p08V_125C on a
-# non-timing-driven netlist, so 8 ns is comfortable.  dbus_out also has
+# non-timing-driven netlist, so 7.5 ns is comfortable.  dbus_out also has
 # to charge the trunk load, which is the slower part.
-set_max_delay 8.0 -to $router_outputs
+set_max_delay 7.5 -to $router_outputs
 
 #-----------------------------------------------------------------------
 # SRAM interface timing

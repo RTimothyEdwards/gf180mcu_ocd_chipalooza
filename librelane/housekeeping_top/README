@@ -26,8 +26,14 @@ the size of everything in the directories is huge.  The project final output
 was copied into the ../gds/ directory, and the project can be recreated on
 demand from the existing configuration files.
 
-Another note:  After a LibreLane failure that filled up my memory and swap and
-locked up my machine, on advice of Claude Opus I am running with a memory cap:
+Another NOTE:  Apart from running nix-shell, the immediate steps above have now
+been simplified with a Makefile so that the steps to build and install are:
 
-	systemd-run --user --scope -p MemoryMax=24G -p MemorySwapMax=0 -- \
-	librelane config.yaml --manual-pdk --pdk gf180mcuD --pdk-root ${PDK_ROOT}
+        make run
+and
+        make final
+
+"make final" finds the most recent runs/RUN* directory and pulls the final gate-level
+verilog and magic layout view from the final/ directory and copies them to verilog/gl/
+and magic/, respectively.
+
