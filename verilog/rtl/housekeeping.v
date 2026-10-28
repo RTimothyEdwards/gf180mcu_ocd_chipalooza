@@ -111,7 +111,7 @@ module housekeeping (
     output reg  [11:0] io_slew,		// slew rate control, to shared digital I/O pads
     output reg  [11:0] io_pulldown,	// pulldown, to shared digital I/O pads
     output reg  [11:0] io_pullup,	// pullup, to shared digital I/O pads
-    output reg  [11:0] io_level,	// schmitt trigger, to shared digital I/O pads
+    output reg  [11:0] io_schmitt,	// schmitt trigger, to shared digital I/O pads
 
     output wire [23:0] dbus_out,	// shared project digital bus (input to project)
     input wire [11:0] dbus_in_left,	// shared project digital bus (output from
@@ -358,18 +358,18 @@ module housekeeping (
     (iaddr == 8'h51) ? {analog_bus_ena, proj_dig_ena, proj_3v3_ena,
 			proj_5v0_ena, proj_ena} :
     (iaddr == 8'h52) ? {5'h0, proj_vbias_ena, proj_ibias_ena} :
-    (iaddr == 8'h53) ? {4'h0, io_slew[0], io_level[0], io_pullup[0], io_pulldown[0]} :
-    (iaddr == 8'h54) ? {4'h0, io_slew[1], io_level[1], io_pullup[1], io_pulldown[1]} :
-    (iaddr == 8'h55) ? {4'h0, io_slew[2], io_level[2], io_pullup[2], io_pulldown[2]} :
-    (iaddr == 8'h56) ? {4'h0, io_slew[3], io_level[3], io_pullup[3], io_pulldown[3]} :
-    (iaddr == 8'h57) ? {4'h0, io_slew[4], io_level[4], io_pullup[4], io_pulldown[4]} :
-    (iaddr == 8'h58) ? {4'h0, io_slew[5], io_level[5], io_pullup[5], io_pulldown[5]} :
-    (iaddr == 8'h59) ? {4'h0, io_slew[6], io_level[6], io_pullup[6], io_pulldown[6]} :
-    (iaddr == 8'h5a) ? {4'h0, io_slew[7], io_level[7], io_pullup[7], io_pulldown[7]} :
-    (iaddr == 8'h5b) ? {4'h0, io_slew[8], io_level[8], io_pullup[8], io_pulldown[8]} :
-    (iaddr == 8'h5c) ? {4'h0, io_slew[9], io_level[9], io_pullup[9], io_pulldown[9]} :
-    (iaddr == 8'h5d) ? {4'h0, io_slew[10], io_level[10], io_pullup[10], io_pulldown[10]} :
-    (iaddr == 8'h5e) ? {4'h0, io_slew[11], io_level[11], io_pullup[11], io_pulldown[11]} :
+    (iaddr == 8'h53) ? {4'h0, io_slew[0], io_schmitt[0], io_pullup[0], io_pulldown[0]} :
+    (iaddr == 8'h54) ? {4'h0, io_slew[1], io_schmitt[1], io_pullup[1], io_pulldown[1]} :
+    (iaddr == 8'h55) ? {4'h0, io_slew[2], io_schmitt[2], io_pullup[2], io_pulldown[2]} :
+    (iaddr == 8'h56) ? {4'h0, io_slew[3], io_schmitt[3], io_pullup[3], io_pulldown[3]} :
+    (iaddr == 8'h57) ? {4'h0, io_slew[4], io_schmitt[4], io_pullup[4], io_pulldown[4]} :
+    (iaddr == 8'h58) ? {4'h0, io_slew[5], io_schmitt[5], io_pullup[5], io_pulldown[5]} :
+    (iaddr == 8'h59) ? {4'h0, io_slew[6], io_schmitt[6], io_pullup[6], io_pulldown[6]} :
+    (iaddr == 8'h5a) ? {4'h0, io_slew[7], io_schmitt[7], io_pullup[7], io_pulldown[7]} :
+    (iaddr == 8'h5b) ? {4'h0, io_slew[8], io_schmitt[8], io_pullup[8], io_pulldown[8]} :
+    (iaddr == 8'h5c) ? {4'h0, io_slew[9], io_schmitt[9], io_pullup[9], io_pulldown[9]} :
+    (iaddr == 8'h5d) ? {4'h0, io_slew[10], io_schmitt[10], io_pullup[10], io_pulldown[10]} :
+    (iaddr == 8'h5e) ? {4'h0, io_slew[11], io_schmitt[11], io_pullup[11], io_pulldown[11]} :
                8'h00;	// Default
 
     // Register mapping and I/O to module
@@ -403,7 +403,7 @@ module housekeeping (
 	 * reset as x. */
 	io_pulldown <= 12'h000;	// No pad pulldowns
 	io_pullup <= 12'h000;	// No pad pullups
-	io_level <= 12'h000;	// Pad schmitt triggers off
+	io_schmitt <= 12'h000;	// Pad schmitt triggers off
 	io_slew <= 12'h000;	// Pad slew rate control off
 	sram_monitor <= 8'h00;	// SRAM monitoring disabled
 	strobe_monitor <= 2'b00; // Strobe monitoring disabled.
@@ -620,73 +620,73 @@ module housekeeping (
         8'h53: begin
 	     io_pulldown[0] <= idata[0];
 	     io_pullup[0] <= idata[1];
-	     io_level[0] <= idata[2];
+	     io_schmitt[0] <= idata[2];
 	     io_slew[0] <= idata[3];
 	       end
         8'h54: begin
 	     io_pulldown[1] <= idata[0];
 	     io_pullup[1] <= idata[1];
-	     io_level[1] <= idata[2];
+	     io_schmitt[1] <= idata[2];
 	     io_slew[1] <= idata[3];
 	       end
         8'h55: begin
 	     io_pulldown[2] <= idata[0];
 	     io_pullup[2] <= idata[1];
-	     io_level[2] <= idata[2];
+	     io_schmitt[2] <= idata[2];
 	     io_slew[2] <= idata[3];
 	       end
         8'h56: begin
 	     io_pulldown[3] <= idata[0];
 	     io_pullup[3] <= idata[1];
-	     io_level[3] <= idata[2];
+	     io_schmitt[3] <= idata[2];
 	     io_slew[3] <= idata[3];
 	       end
         8'h57: begin
 	     io_pulldown[4] <= idata[0];
 	     io_pullup[4] <= idata[1];
-	     io_level[4] <= idata[2];
+	     io_schmitt[4] <= idata[2];
 	     io_slew[4] <= idata[3];
 	       end
         8'h58: begin
 	     io_pulldown[5] <= idata[0];
 	     io_pullup[5] <= idata[1];
-	     io_level[5] <= idata[2];
+	     io_schmitt[5] <= idata[2];
 	     io_slew[5] <= idata[3];
 	       end
         8'h59: begin
 	     io_pulldown[6] <= idata[0];
 	     io_pullup[6] <= idata[1];
-	     io_level[6] <= idata[2];
+	     io_schmitt[6] <= idata[2];
 	     io_slew[6] <= idata[3];
 	       end
         8'h5a: begin
 	     io_pulldown[7] <= idata[0];
 	     io_pullup[7] <= idata[1];
-	     io_level[7] <= idata[2];
+	     io_schmitt[7] <= idata[2];
 	     io_slew[7] <= idata[3];
 	       end
         8'h5b: begin
 	     io_pulldown[8] <= idata[0];
 	     io_pullup[8] <= idata[1];
-	     io_level[8] <= idata[2];
+	     io_schmitt[8] <= idata[2];
 	     io_slew[8] <= idata[3];
 	       end
         8'h5c: begin
 	     io_pulldown[9] <= idata[0];
 	     io_pullup[9] <= idata[1];
-	     io_level[9] <= idata[2];
+	     io_schmitt[9] <= idata[2];
 	     io_slew[9] <= idata[3];
 	       end
         8'h5d: begin
 	     io_pulldown[10] <= idata[0];
 	     io_pullup[10] <= idata[1];
-	     io_level[10] <= idata[2];
+	     io_schmitt[10] <= idata[2];
 	     io_slew[10] <= idata[3];
 	       end
         8'h5e: begin
 	     io_pulldown[11] <= idata[0];
 	     io_pullup[11] <= idata[1];
-	     io_level[11] <= idata[2];
+	     io_schmitt[11] <= idata[2];
 	     io_slew[11] <= idata[3];
 	       end
 	default: ;

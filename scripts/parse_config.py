@@ -195,35 +195,35 @@ with open(padframe_in_file, 'r') as ifile:
                 spaces = smatch.group(1)
                 # The pad signals depend on the pad type
                 if pad_type.startswith('gf180mcu_ocd_io__in'):
-                    newline = spaces + '.Y(' + signal_name + '_in)'
+                    newline = spaces + '.Y(' + signal_name + '_in),'
                     padframe_lines.append(newline)
-                    newline = spaces + '.PU(' + signal_name + '_pullup)'
+                    newline = spaces + '.PU(' + signal_name + '_pullup),'
                     padframe_lines.append(newline)
                     newline = spaces + '.PD(' + signal_name + '_pulldown)'
                 elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
                     newline = spaces + '.ASIG5V(' + signal_name + ')'
                 elif pad_type.startswith('gf180mcu_ocd_io__bi_'):
-                    newline = spaces + '.IE(' + signal_name + '_ie)'
+                    newline = spaces + '.IE(' + signal_name + '_ie),'
                     padframe_lines.append(newline)
-                    newline = spaces + '.OE(' + signal_name + '_oe)'
+                    newline = spaces + '.OE(' + signal_name + '_oe),'
                     padframe_lines.append(newline)
-                    newline = spaces + '.A(' + signal_name + '_out)'
+                    newline = spaces + '.A(' + signal_name + '_out),'
                     padframe_lines.append(newline)
-                    newline = spaces + '.Y(' + signal_name + '_in)'
+                    newline = spaces + '.Y(' + signal_name + '_in),'
                     padframe_lines.append(newline)
-                    newline = spaces + '.CS(' + signal_name + '_level)'
+                    newline = spaces + '.CS(' + signal_name + '_schmitt),'
                     padframe_lines.append(newline)
-                    newline = spaces + '.SL(' + signal_name + '_slew)'
+                    newline = spaces + '.SL(' + signal_name + '_slew),'
                     if pad_type.endswith('_a') or pad_type.endswith('_t'):
                         padframe_lines.append(newline)
-                        newline = spaces + '.PDRV0(' + signal_name + '_drive_0)'
+                        newline = spaces + '.PDRV0(' + signal_name + '_drive_0),'
                         padframe_lines.append(newline)
-                        newline = spaces + '.PDRV1(' + signal_name + '_drive_1)'
+                        newline = spaces + '.PDRV1(' + signal_name + '_drive_1),'
                     if pad_type.endswith('_a'):
                         padframe_lines.append(newline)
-                        newline = spaces + '.ANA(' + signal_name + '_ana)'
+                        newline = spaces + '.ANA(' + signal_name + '_ana),'
                     padframe_lines.append(newline)
-                    newline = spaces + '.PU(' + signal_name + '_pullup)'
+                    newline = spaces + '.PU(' + signal_name + '_pullup),'
                     padframe_lines.append(newline)
                     newline = spaces + '.PD(' + signal_name + '_pulldown)'
                 else:
@@ -266,7 +266,7 @@ with open(padframe_in_file, 'r') as ifile:
                     padframe_lines.append(newline)
                     newline = spaces + 'input wire ' + signal_name + '_pulldown,'
                     padframe_lines.append(newline)
-                    newline = spaces + 'input wire ' + signal_name + '_level,'
+                    newline = spaces + 'input wire ' + signal_name + '_schmitt,'
                     padframe_lines.append(newline)
                     newline = spaces + 'input wire ' + signal_name + '_slew,'
                     if pad_type.endswith('_a') or pad_type.endswith('_t'):
@@ -390,7 +390,7 @@ with open(tcl_in_file, 'r') as ifile:
                     tcl_lines.append(newline)
                     newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  SL ' + signal_name + '_slew'
                     tcl_lines.append(newline)
-                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  CS ' + signal_name + '_level'
+                    newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  CS ' + signal_name + '_schmitt'
                     if pad_type.endswith('_a') or pad_type.endswith('_t'):
                         tcl_lines.append(newline)
                         newline = spaces + 'label_' + side + '_signal pad_s' + pad_slot_idx + '_an_' + pad_pin_idx + '  PDRV0 ' + signal_name + '_drive_0'

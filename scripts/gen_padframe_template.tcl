@@ -712,7 +712,7 @@ label_bottom_signal pad_SDO     OE     SDO_oe
 label_bottom_signal pad_SDO     IE     SDO_ie
 label_bottom_signal pad_SDO     PU     SDO_pullup
 label_bottom_signal pad_SDO     PD     SDO_pulldown
-label_bottom_signal pad_SDO     CS     SDO_level
+label_bottom_signal pad_SDO     CS     SDO_schmitt
 label_bottom_signal pad_SDO     SL     SDO_slew
 label_bottom_signal pad_SDI 	Y      SDI_in
 label_bottom_signal pad_SDI 	PU     SDI_pullup
@@ -734,7 +734,7 @@ label_bottom_signal pad_gpio_0 	OE     gpio_0_oe
 label_bottom_signal pad_gpio_0  IE     gpio_0_ie
 label_bottom_signal pad_gpio_0  PU     gpio_0_pullup
 label_bottom_signal pad_gpio_0  PD     gpio_0_pulldown
-label_bottom_signal pad_gpio_0  CS     gpio_0_level
+label_bottom_signal pad_gpio_0  CS     gpio_0_schmitt
 label_bottom_signal pad_gpio_0  SL     gpio_0_slew
 
 label_bottom_signal pad_gpio_1 	Y      gpio_1_in
@@ -744,7 +744,7 @@ label_bottom_signal pad_gpio_1 	OE     gpio_1_oe
 label_bottom_signal pad_gpio_1  IE     gpio_1_ie
 label_bottom_signal pad_gpio_1  PU     gpio_1_pullup
 label_bottom_signal pad_gpio_1  PD     gpio_1_pulldown
-label_bottom_signal pad_gpio_1  CS     gpio_1_level
+label_bottom_signal pad_gpio_1  CS     gpio_1_schmitt
 label_bottom_signal pad_gpio_1  SL     gpio_1_slew
 
 label_bottom_signal pad_gpio_2 	Y      gpio_2_in
@@ -754,7 +754,7 @@ label_bottom_signal pad_gpio_2 	OE     gpio_2_oe
 label_bottom_signal pad_gpio_2  IE     gpio_2_ie
 label_bottom_signal pad_gpio_2  PU     gpio_2_pullup
 label_bottom_signal pad_gpio_2  PD     gpio_2_pulldown
-label_bottom_signal pad_gpio_2  CS     gpio_2_level
+label_bottom_signal pad_gpio_2  CS     gpio_2_schmitt
 label_bottom_signal pad_gpio_2  SL     gpio_2_slew
 
 label_bottom_signal pad_gpio_3 	Y      gpio_3_in
@@ -764,7 +764,7 @@ label_bottom_signal pad_gpio_3 	OE     gpio_3_oe
 label_bottom_signal pad_gpio_3  IE     gpio_3_ie
 label_bottom_signal pad_gpio_3  PU     gpio_3_pullup
 label_bottom_signal pad_gpio_3  PD     gpio_3_pulldown
-label_bottom_signal pad_gpio_3  CS     gpio_3_level
+label_bottom_signal pad_gpio_3  CS     gpio_3_schmitt
 label_bottom_signal pad_gpio_3  SL     gpio_3_slew
 
 label_bottom_signal pad_gpio_4 	Y      gpio_4_in
@@ -774,7 +774,7 @@ label_bottom_signal pad_gpio_4 	OE     gpio_4_oe
 label_bottom_signal pad_gpio_4  IE     gpio_4_ie
 label_bottom_signal pad_gpio_4  PU     gpio_4_pullup
 label_bottom_signal pad_gpio_4  PD     gpio_4_pulldown
-label_bottom_signal pad_gpio_4  CS     gpio_4_level
+label_bottom_signal pad_gpio_4  CS     gpio_4_schmitt
 label_bottom_signal pad_gpio_4  SL     gpio_4_slew
 
 label_bottom_signal pad_gpio_5 	Y      gpio_5_in
@@ -784,7 +784,7 @@ label_bottom_signal pad_gpio_5 	OE     gpio_5_oe
 label_bottom_signal pad_gpio_5  IE     gpio_5_ie
 label_bottom_signal pad_gpio_5  PU     gpio_5_pullup
 label_bottom_signal pad_gpio_5  PD     gpio_5_pulldown
-label_bottom_signal pad_gpio_5  CS     gpio_5_level
+label_bottom_signal pad_gpio_5  CS     gpio_5_schmitt
 label_bottom_signal pad_gpio_5  SL     gpio_5_slew
 
 label_bottom_signal pad_gpio_6 	Y      gpio_6_in
@@ -794,7 +794,7 @@ label_bottom_signal pad_gpio_6 	OE     gpio_6_oe
 label_bottom_signal pad_gpio_6  IE     gpio_6_ie
 label_bottom_signal pad_gpio_6  PU     gpio_6_pullup
 label_bottom_signal pad_gpio_6  PD     gpio_6_pulldown
-label_bottom_signal pad_gpio_6  CS     gpio_6_level
+label_bottom_signal pad_gpio_6  CS     gpio_6_schmitt
 label_bottom_signal pad_gpio_6  SL     gpio_6_slew
 
 label_bottom_signal pad_gpio_7 	Y      gpio_7_in
@@ -804,7 +804,7 @@ label_bottom_signal pad_gpio_7 	OE     gpio_7_oe
 label_bottom_signal pad_gpio_7  IE     gpio_7_ie
 label_bottom_signal pad_gpio_7  PU     gpio_7_pullup
 label_bottom_signal pad_gpio_7  PD     gpio_7_pulldown
-label_bottom_signal pad_gpio_7  CS     gpio_7_level
+label_bottom_signal pad_gpio_7  CS     gpio_7_schmitt
 label_bottom_signal pad_gpio_7  SL     gpio_7_slew
 
 label_top_signal pad_gpio_8 	Y      gpio_8_in
@@ -814,7 +814,7 @@ label_top_signal pad_gpio_8 	OE     gpio_8_oe
 label_top_signal pad_gpio_8     IE     gpio_8_ie
 label_top_signal pad_gpio_8     PU     gpio_8_pullup
 label_top_signal pad_gpio_8     PD     gpio_8_pulldown
-label_top_signal pad_gpio_8     CS     gpio_8_level
+label_top_signal pad_gpio_8     CS     gpio_8_schmitt
 label_top_signal pad_gpio_8     SL     gpio_8_slew
 
 label_top_signal pad_gpio_9 	Y      gpio_9_in
@@ -824,7 +824,7 @@ label_top_signal pad_gpio_9 	OE     gpio_9_oe
 label_top_signal pad_gpio_9     IE     gpio_9_ie
 label_top_signal pad_gpio_9     PU     gpio_9_pullup
 label_top_signal pad_gpio_9     PD     gpio_9_pulldown
-label_top_signal pad_gpio_9     CS     gpio_9_level
+label_top_signal pad_gpio_9     CS     gpio_9_schmitt
 label_top_signal pad_gpio_9     SL     gpio_9_slew
 
 label_top_signal pad_gpio_10	Y      gpio_10_in
@@ -834,7 +834,7 @@ label_top_signal pad_gpio_10 	OE     gpio_10_oe
 label_top_signal pad_gpio_10    IE     gpio_10_ie
 label_top_signal pad_gpio_10    PU     gpio_10_pullup
 label_top_signal pad_gpio_10    PD     gpio_10_pulldown
-label_top_signal pad_gpio_10    CS     gpio_10_level
+label_top_signal pad_gpio_10    CS     gpio_10_schmitt
 label_top_signal pad_gpio_10    SL     gpio_10_slew
 
 label_top_signal pad_gpio_11	Y      gpio_11_in
@@ -844,7 +844,7 @@ label_top_signal pad_gpio_11 	OE     gpio_11_oe
 label_top_signal pad_gpio_11    IE     gpio_11_ie
 label_top_signal pad_gpio_11    PU     gpio_11_pullup
 label_top_signal pad_gpio_11    PD     gpio_11_pulldown
-label_top_signal pad_gpio_11    CS     gpio_11_level
+label_top_signal pad_gpio_11    CS     gpio_11_schmitt
 label_top_signal pad_gpio_11    SL     gpio_11_slew
 
 label_top_analog pad_analog_0 	ASIG5V analog\[0\]

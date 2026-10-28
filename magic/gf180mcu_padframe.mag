@@ -5648,7 +5648,7 @@ flabel metal2 98793 69952 98869 70752 0 FreeSans 480 90 0 0 SDO_pullup
 port 67 nsew
 flabel metal2 99666 69952 99742 70752 0 FreeSans 480 90 0 0 SDO_pulldown
 port 68 nsew
-flabel metal2 98272 69952 98348 70752 0 FreeSans 480 90 0 0 SDO_level
+flabel metal2 98272 69952 98348 70752 0 FreeSans 480 90 0 0 SDO_schmitt
 port 69 nsew
 flabel metal2 111334 69952 111410 70752 0 FreeSans 480 90 0 0 SDO_slew
 port 70 nsew
@@ -5688,7 +5688,7 @@ flabel metal2 381593 69952 381669 70752 0 FreeSans 480 90 0 0 gpio_0_pullup
 port 87 nsew
 flabel metal2 382466 69952 382542 70752 0 FreeSans 480 90 0 0 gpio_0_pulldown
 port 88 nsew
-flabel metal2 381072 69952 381148 70752 0 FreeSans 480 90 0 0 gpio_0_level
+flabel metal2 381072 69952 381148 70752 0 FreeSans 480 90 0 0 gpio_0_schmitt
 port 89 nsew
 flabel metal2 394134 69952 394210 70752 0 FreeSans 480 90 0 0 gpio_0_slew
 port 90 nsew
@@ -5704,7 +5704,7 @@ flabel metal2 421993 69952 422069 70752 0 FreeSans 480 90 0 0 gpio_1_pullup
 port 95 nsew
 flabel metal2 422866 69952 422942 70752 0 FreeSans 480 90 0 0 gpio_1_pulldown
 port 96 nsew
-flabel metal2 421472 69952 421548 70752 0 FreeSans 480 90 0 0 gpio_1_level
+flabel metal2 421472 69952 421548 70752 0 FreeSans 480 90 0 0 gpio_1_schmitt
 port 97 nsew
 flabel metal2 434534 69952 434610 70752 0 FreeSans 480 90 0 0 gpio_1_slew
 port 98 nsew
@@ -5720,7 +5720,7 @@ flabel metal2 462393 69952 462469 70752 0 FreeSans 480 90 0 0 gpio_2_pullup
 port 103 nsew
 flabel metal2 463266 69952 463342 70752 0 FreeSans 480 90 0 0 gpio_2_pulldown
 port 104 nsew
-flabel metal2 461872 69952 461948 70752 0 FreeSans 480 90 0 0 gpio_2_level
+flabel metal2 461872 69952 461948 70752 0 FreeSans 480 90 0 0 gpio_2_schmitt
 port 105 nsew
 flabel metal2 474934 69952 475010 70752 0 FreeSans 480 90 0 0 gpio_2_slew
 port 106 nsew
@@ -5736,7 +5736,7 @@ flabel metal2 502793 69952 502869 70752 0 FreeSans 480 90 0 0 gpio_3_pullup
 port 111 nsew
 flabel metal2 503666 69952 503742 70752 0 FreeSans 480 90 0 0 gpio_3_pulldown
 port 112 nsew
-flabel metal2 502272 69952 502348 70752 0 FreeSans 480 90 0 0 gpio_3_level
+flabel metal2 502272 69952 502348 70752 0 FreeSans 480 90 0 0 gpio_3_schmitt
 port 113 nsew
 flabel metal2 515334 69952 515410 70752 0 FreeSans 480 90 0 0 gpio_3_slew
 port 114 nsew
@@ -5752,7 +5752,7 @@ flabel metal2 543193 69952 543269 70752 0 FreeSans 480 90 0 0 gpio_4_pullup
 port 119 nsew
 flabel metal2 544066 69952 544142 70752 0 FreeSans 480 90 0 0 gpio_4_pulldown
 port 120 nsew
-flabel metal2 542672 69952 542748 70752 0 FreeSans 480 90 0 0 gpio_4_level
+flabel metal2 542672 69952 542748 70752 0 FreeSans 480 90 0 0 gpio_4_schmitt
 port 121 nsew
 flabel metal2 555734 69952 555810 70752 0 FreeSans 480 90 0 0 gpio_4_slew
 port 122 nsew
@@ -5768,7 +5768,7 @@ flabel metal2 583593 69952 583669 70752 0 FreeSans 480 90 0 0 gpio_5_pullup
 port 127 nsew
 flabel metal2 584466 69952 584542 70752 0 FreeSans 480 90 0 0 gpio_5_pulldown
 port 128 nsew
-flabel metal2 583072 69952 583148 70752 0 FreeSans 480 90 0 0 gpio_5_level
+flabel metal2 583072 69952 583148 70752 0 FreeSans 480 90 0 0 gpio_5_schmitt
 port 129 nsew
 flabel metal2 596134 69952 596210 70752 0 FreeSans 480 90 0 0 gpio_5_slew
 port 130 nsew
@@ -5784,7 +5784,7 @@ flabel metal2 623993 69952 624069 70752 0 FreeSans 480 90 0 0 gpio_6_pullup
 port 135 nsew
 flabel metal2 624866 69952 624942 70752 0 FreeSans 480 90 0 0 gpio_6_pulldown
 port 136 nsew
-flabel metal2 623472 69952 623548 70752 0 FreeSans 480 90 0 0 gpio_6_level
+flabel metal2 623472 69952 623548 70752 0 FreeSans 480 90 0 0 gpio_6_schmitt
 port 137 nsew
 flabel metal2 636534 69952 636610 70752 0 FreeSans 480 90 0 0 gpio_6_slew
 port 138 nsew
@@ -5800,7 +5800,7 @@ flabel metal2 664393 69952 664469 70752 0 FreeSans 480 90 0 0 gpio_7_pullup
 port 143 nsew
 flabel metal2 665266 69952 665342 70752 0 FreeSans 480 90 0 0 gpio_7_pulldown
 port 144 nsew
-flabel metal2 663872 69952 663948 70752 0 FreeSans 480 90 0 0 gpio_7_level
+flabel metal2 663872 69952 663948 70752 0 FreeSans 480 90 0 0 gpio_7_schmitt
 port 145 nsew
 flabel metal2 676934 69952 677010 70752 0 FreeSans 480 90 0 0 gpio_7_slew
 port 146 nsew
@@ -5816,7 +5816,7 @@ flabel metal2 636531 943248 636607 944048 0 FreeSans 480 90 0 0 gpio_8_pullup
 port 151 nsew
 flabel metal2 635658 943248 635734 944048 0 FreeSans 480 90 0 0 gpio_8_pulldown
 port 152 nsew
-flabel metal2 637052 943248 637128 944048 0 FreeSans 480 90 0 0 gpio_8_level
+flabel metal2 637052 943248 637128 944048 0 FreeSans 480 90 0 0 gpio_8_schmitt
 port 153 nsew
 flabel metal2 623990 943248 624066 944048 0 FreeSans 480 90 0 0 gpio_8_slew
 port 154 nsew
@@ -5832,7 +5832,7 @@ flabel metal2 596131 943248 596207 944048 0 FreeSans 480 90 0 0 gpio_9_pullup
 port 159 nsew
 flabel metal2 595258 943248 595334 944048 0 FreeSans 480 90 0 0 gpio_9_pulldown
 port 160 nsew
-flabel metal2 596652 943248 596728 944048 0 FreeSans 480 90 0 0 gpio_9_level
+flabel metal2 596652 943248 596728 944048 0 FreeSans 480 90 0 0 gpio_9_schmitt
 port 161 nsew
 flabel metal2 583590 943248 583666 944048 0 FreeSans 480 90 0 0 gpio_9_slew
 port 162 nsew
@@ -5848,7 +5848,7 @@ flabel metal2 555731 943248 555807 944048 0 FreeSans 480 90 0 0 gpio_10_pullup
 port 167 nsew
 flabel metal2 554858 943248 554934 944048 0 FreeSans 480 90 0 0 gpio_10_pulldown
 port 168 nsew
-flabel metal2 556252 943248 556328 944048 0 FreeSans 480 90 0 0 gpio_10_level
+flabel metal2 556252 943248 556328 944048 0 FreeSans 480 90 0 0 gpio_10_schmitt
 port 169 nsew
 flabel metal2 543190 943248 543266 944048 0 FreeSans 480 90 0 0 gpio_10_slew
 port 170 nsew
@@ -5864,7 +5864,7 @@ flabel metal2 515331 943248 515407 944048 0 FreeSans 480 90 0 0 gpio_11_pullup
 port 175 nsew
 flabel metal2 514458 943248 514534 944048 0 FreeSans 480 90 0 0 gpio_11_pulldown
 port 176 nsew
-flabel metal2 515852 943248 515928 944048 0 FreeSans 480 90 0 0 gpio_11_level
+flabel metal2 515852 943248 515928 944048 0 FreeSans 480 90 0 0 gpio_11_schmitt
 port 177 nsew
 flabel metal2 502790 943248 502866 944048 0 FreeSans 480 90 0 0 gpio_11_slew
 port 178 nsew
@@ -5898,7 +5898,7 @@ flabel metal3 705200 365466 706000 365542 0 FreeSans 480 0 0 0 s3_an_0_pulldown
 port 184 nsew
 flabel metal3 705200 377134 706000 377210 0 FreeSans 480 0 0 0 s3_an_0_slew
 port 185 nsew
-flabel metal3 705200 364072 706000 364148 0 FreeSans 480 0 0 0 s3_an_0_level
+flabel metal3 705200 364072 706000 364148 0 FreeSans 480 0 0 0 s3_an_0_schmitt
 port 186 nsew
 flabel metal3 705200 364822 706000 364898 0 FreeSans 480 0 0 0 s3_an_0_drive_0
 port 187 nsew
