@@ -71,7 +71,7 @@ topcell="gf180mcu_ocd_chipalooza"
 outfile="scripts/user_projects.tcl"
 nslots=18
 
-export PDK_ROOT=${PDK_ROOT:-/home/tim/gits}
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
 export PDK=${PDK:-gf180mcuD}
 
 dryrun=0
@@ -367,6 +367,7 @@ fi
     echo "# properties are cleared per cell below, which is what makes magic"
     echo "# prefix the subcells so user cell names cannot collide."
     echo "gds readonly true"
+    echo "gds noduplicates true"
     echo ""
     for n in "${placed[@]}"; do
 	echo "gds read ../${GDSPATH[$n]}"

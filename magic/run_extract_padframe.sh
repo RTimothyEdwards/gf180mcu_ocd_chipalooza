@@ -5,7 +5,7 @@
 
 export PROJECT=${PROJECT:-gf180mcu_padframe}
 
-export PDK_ROOT=${PDK_ROOT:-/home/tim/gits}
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
 export PDK=${PDK:-gf180mcuD}
 
 magic -dnull -noconsole -rcfile $PDK_ROOT/$PDK/libs.tech/magic/${PDK}.magicrc << EOF

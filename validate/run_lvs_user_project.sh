@@ -2,7 +2,7 @@
 #
 # Run LVS on the bandgap
 #
-echo ${PDK_ROOT:=/home/tim/gits} > /dev/null
+echo ${PDK_ROOT:=/usr/share/pdk} > /dev/null
 echo ${PDK:=gf180mcuD} > /dev/null
 
 project=openframe_user_project

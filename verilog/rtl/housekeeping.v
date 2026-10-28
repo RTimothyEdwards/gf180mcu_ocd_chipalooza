@@ -78,6 +78,7 @@
 // Register 0x50:	selected user project (5 bits)
 // Register 0x51:	user project configuration (8 bits)
 // Register 0x52:	user project configuration (3 bits)
+// Register 0x53-0x5e	GPIO (static) controls
 //------------------------------------------------------------
 
 module housekeeping (
@@ -101,12 +102,16 @@ module housekeeping (
     output wire [9:0] sram_addr,	// SRAM address
     output wire [7:0] sram_idata,	// data input to SRAM
     input wire [7:0] sram_odata,	// data output from SRAM
-    output wire	sram_read,		// SRAM read enable
-    output wire	sram_write,		// SRAM write enable
+    output wire	sram_writeb,		// SRAM write enable (active low)
 
-    input wire [11:0] io_in,	// from shared digital I/O pads
-    output wire [11:0] io_out,	// to shared digital I/O pads
-    output wire [11:0] io_oe,	// to shared digital I/O pads
+    input wire [11:0] io_in,		// from shared digital I/O pads
+    output wire [11:0] io_out,		// to shared digital I/O pads
+    output wire [11:0] io_oe,		// to shared digital I/O pads
+    output wire [11:0] io_ie,		// input enable , to shared digital I/O pads
+    output reg  [11:0] io_slew,		// slew rate control, to shared digital I/O pads
+    output reg  [11:0] io_pulldown,	// pulldown, to shared digital I/O pads
+    output reg  [11:0] io_pullup,	// pullup, to shared digital I/O pads
+    output reg  [11:0] io_level,	// schmitt trigger, to shared digital I/O pads
 
     output wire [23:0] dbus_out,	// shared project digital bus (input to project)
     input wire [11:0] dbus_in_left,	// shared project digital bus (output from
@@ -353,6 +358,18 @@ module housekeeping (
     (iaddr == 8'h51) ? {analog_bus_ena, proj_dig_ena, proj_3v3_ena,
 			proj_5v0_ena, proj_ena} :
     (iaddr == 8'h52) ? {5'h0, proj_vbias_ena, proj_ibias_ena} :
+    (iaddr == 8'h53) ? {4'h0, io_slew[0], io_level[0], io_pullup[0], io_pulldown[0]} :
+    (iaddr == 8'h54) ? {4'h0, io_slew[1], io_level[1], io_pullup[1], io_pulldown[1]} :
+    (iaddr == 8'h55) ? {4'h0, io_slew[2], io_level[2], io_pullup[2], io_pulldown[2]} :
+    (iaddr == 8'h56) ? {4'h0, io_slew[3], io_level[3], io_pullup[3], io_pulldown[3]} :
+    (iaddr == 8'h57) ? {4'h0, io_slew[4], io_level[4], io_pullup[4], io_pulldown[4]} :
+    (iaddr == 8'h58) ? {4'h0, io_slew[5], io_level[5], io_pullup[5], io_pulldown[5]} :
+    (iaddr == 8'h59) ? {4'h0, io_slew[6], io_level[6], io_pullup[6], io_pulldown[6]} :
+    (iaddr == 8'h5a) ? {4'h0, io_slew[7], io_level[7], io_pullup[7], io_pulldown[7]} :
+    (iaddr == 8'h5b) ? {4'h0, io_slew[8], io_level[8], io_pullup[8], io_pulldown[8]} :
+    (iaddr == 8'h5c) ? {4'h0, io_slew[9], io_level[9], io_pullup[9], io_pulldown[9]} :
+    (iaddr == 8'h5d) ? {4'h0, io_slew[10], io_level[10], io_pullup[10], io_pulldown[10]} :
+    (iaddr == 8'h5e) ? {4'h0, io_slew[11], io_level[11], io_pullup[11], io_pulldown[11]} :
                8'h00;	// Default
 
     // Register mapping and I/O to module
@@ -379,6 +396,15 @@ module housekeeping (
 	proj_ibias_ena <= 2'b0;	// Project ibias switch disabled
 	proj_vbias_ena <= 1'b0;	// Project ibias switch disabled
 	analog_bus_ena <= 4'h0;	// Analog switches disabled
+	/* GPIO pad static configuration (GF180MCU I/O library specific).
+	 * All zero out of reset:  no pullup, no pulldown, no schmitt
+	 * trigger, slowest slew.  These were added with the 12 GPIO pad
+	 * controls and had no reset, so every pad control came out of
+	 * reset as x. */
+	io_pulldown <= 12'h000;	// No pad pulldowns
+	io_pullup <= 12'h000;	// No pad pullups
+	io_level <= 12'h000;	// Pad schmitt triggers off
+	io_slew <= 12'h000;	// Pad slew rate control off
 	sram_monitor <= 8'h00;	// SRAM monitoring disabled
 	strobe_monitor <= 2'b00; // Strobe monitoring disabled.
 	seq_monitor <= 2'b00;	// Sequencer monitoring disabled.
@@ -590,6 +616,79 @@ module housekeeping (
 	     proj_ibias_ena <= idata[1:0];
 	     proj_vbias_ena <= idata[2];
 	       end
+	// Static configuration of the GPIO pads (GF180MCU I/O library specific)
+        8'h53: begin
+	     io_pulldown[0] <= idata[0];
+	     io_pullup[0] <= idata[1];
+	     io_level[0] <= idata[2];
+	     io_slew[0] <= idata[3];
+	       end
+        8'h54: begin
+	     io_pulldown[1] <= idata[0];
+	     io_pullup[1] <= idata[1];
+	     io_level[1] <= idata[2];
+	     io_slew[1] <= idata[3];
+	       end
+        8'h55: begin
+	     io_pulldown[2] <= idata[0];
+	     io_pullup[2] <= idata[1];
+	     io_level[2] <= idata[2];
+	     io_slew[2] <= idata[3];
+	       end
+        8'h56: begin
+	     io_pulldown[3] <= idata[0];
+	     io_pullup[3] <= idata[1];
+	     io_level[3] <= idata[2];
+	     io_slew[3] <= idata[3];
+	       end
+        8'h57: begin
+	     io_pulldown[4] <= idata[0];
+	     io_pullup[4] <= idata[1];
+	     io_level[4] <= idata[2];
+	     io_slew[4] <= idata[3];
+	       end
+        8'h58: begin
+	     io_pulldown[5] <= idata[0];
+	     io_pullup[5] <= idata[1];
+	     io_level[5] <= idata[2];
+	     io_slew[5] <= idata[3];
+	       end
+        8'h59: begin
+	     io_pulldown[6] <= idata[0];
+	     io_pullup[6] <= idata[1];
+	     io_level[6] <= idata[2];
+	     io_slew[6] <= idata[3];
+	       end
+        8'h5a: begin
+	     io_pulldown[7] <= idata[0];
+	     io_pullup[7] <= idata[1];
+	     io_level[7] <= idata[2];
+	     io_slew[7] <= idata[3];
+	       end
+        8'h5b: begin
+	     io_pulldown[8] <= idata[0];
+	     io_pullup[8] <= idata[1];
+	     io_level[8] <= idata[2];
+	     io_slew[8] <= idata[3];
+	       end
+        8'h5c: begin
+	     io_pulldown[9] <= idata[0];
+	     io_pullup[9] <= idata[1];
+	     io_level[9] <= idata[2];
+	     io_slew[9] <= idata[3];
+	       end
+        8'h5d: begin
+	     io_pulldown[10] <= idata[0];
+	     io_pullup[10] <= idata[1];
+	     io_level[10] <= idata[2];
+	     io_slew[10] <= idata[3];
+	       end
+        8'h5e: begin
+	     io_pulldown[11] <= idata[0];
+	     io_pullup[11] <= idata[1];
+	     io_level[11] <= idata[2];
+	     io_slew[11] <= idata[3];
+	       end
 	default: ;
         endcase	// (iaddr)
     end
@@ -597,10 +696,51 @@ end
 
 /* SRAM address */
 
-assign sram_addr = (seq_ena == 1'b1) ? pat_sram_addr : addr;
-assign sram_read = seq_ena | (sram_ena & rdstb);
-assign sram_write = sram_ena & wrstb;
-assign sram_idata = {8{sram_ena}} & idata;
+/* THE GF SRAM MACRO HAS NO WRITE STROBE.  It writes from the LIVE A and
+ * D on the sram_clk edge:
+ *     write_flag = cen_fell & !CEN & !GWEN & !(&WEN)
+ *     always @(posedge clk_dly) if (write_flag) mem[A] = cd5;
+ * The SPI advances its address and shifts predata on that SAME edge, and
+ * sram_idata is combinational out of predata, so the macro captured the
+ * POST-edge address together with the POST-shift data.  Every byte landed
+ * one address late and shifted left one bit:
+ *     mem[base+k] = (payload[k-1] << 1) | (payload[k-1] & 1)
+ * and mem[base] was never written at all.  The IHP part did not have
+ * this problem because it took separate A_WEN and A_REN strobes, so its
+ * write did not depend on A and D being stable across the edge.
+ *
+ * Register the SPI side, so the address, data and write enable handed to
+ * the macro are the set that was valid BEFORE the edge and hold across
+ * it.  The write enable is registered WITH them on purpose:  left
+ * combinational it would deassert while the registered data was still
+ * being presented, which would drop the write rather than misplace it.
+ *
+ * Only the SPI path is registered.  The pattern generator drives
+ * pat_sram_addr from "clk" and does not move it on the sram_clk edge
+ * that reads it, so it already meets the macro's requirement;  a
+ * register in that path would delay the pattern by a cycle.
+ */
+reg [9:0] spi_sram_addr;
+reg [7:0] spi_sram_idata;
+reg       spi_sram_writeb;
+
+always @(posedge SCK or negedge porb) begin
+    if (porb == 1'b0) begin
+	spi_sram_addr <= 10'd0;
+	spi_sram_idata <= 8'h00;
+	spi_sram_writeb <= 1'b1;
+    end else begin
+	spi_sram_addr <= addr;
+	spi_sram_idata <= {8{sram_ena}} & idata;
+	spi_sram_writeb <= ~(sram_ena & wrstb);
+    end
+end
+
+/* In sequencer mode sram_ena is low, so the registered write enable is 1
+ * and the registered data is zero;  no extra gating is needed here. */
+assign sram_addr = (seq_ena == 1'b1) ? pat_sram_addr : spi_sram_addr;
+assign sram_writeb = spi_sram_writeb;
+assign sram_idata = spi_sram_idata;
 
 /* The SRAM clock is muxed between clk (sequencer running) and SCK (SPI
  * access), but the mux itself is an explicitly instantiated cell in
@@ -652,6 +792,7 @@ router router (
     .io_in(io_in),
     .io_out(io_out),
     .io_oe(io_oe),
+    .io_ie(io_ie),
     .dbus_in(dbus_in),
     .dbus_out(dbus_out),
     .sram_out(pat_sram_data),

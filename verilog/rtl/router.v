@@ -53,6 +53,7 @@ module router(
     input wire [11:0] io_in,		// Digital inputs from pads
     output wire [11:0] io_out,		// Digital outputs to pads
     output wire [11:0] io_oe,		// Bidirectional pad control
+    output wire [11:0] io_ie,		// Bidirectional pad control
     input wire [11:0] dbus_in,		// Digital bus from user projects (status)
     output wire [23:0] dbus_out,	// Digital bus to user projects (control)
 
@@ -119,6 +120,9 @@ for (i = 0; i < 12; i = i + 1) begin : out_mux
 	(user_out_route[7*4 +: 4] == i) || (user_out_route[8*4 +: 4] == i) ||
 	(user_out_route[9*4 +: 4] == i) || (user_out_route[10*4 +: 4] == i) ||
 	(user_out_route[11*4 +: 4] == i)) ? 1'b1 : spec_ena[i]; 
+
+    /* Note: Should allow unused GPIO to have both input and output buffers turned off */
+    assign io_ie[i] = ~io_oe[i];
 
 end
 

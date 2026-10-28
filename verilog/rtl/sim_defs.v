@@ -53,17 +53,15 @@
 `include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/analog_pswitch_small.v"
 `include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/power_stage3v3.v"
 `include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/power_stage2.v"
-`include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__bandgap_v3.v"
-`include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__voltgen_v3.v"
+`include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__bandgap.v"
+`include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__voltgen.v"
 `include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__classab_buffer.v"
-`include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__biasgen2.v"
+`include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__biasgen.v"
 `include "../../dependencies/gf180mcu_ocd_ip__por/verilog/gf180mcu_ocd_ip__por.v"
 
 // Foundry IP blocks
 `include "libs.ref/gf180mcu_ocd_ip_sram/verilog/gf180mcu_ocd_ip_sram__sram1024x8m8wm1.v"
-`include "libs.ref/gf180mcu_ocd_ip_sram/verilog/RM_GFSG13_1P_core_behavioral_bm_bist.v"
 `include "libs.ref/gf180mcu_as_sc_mcu7t3v3/verilog/gf180mcu_as_sc_mcu7t3v3.v"
-`include "libs.ref/gf180mcu_as_sc_mcu7t3v3/verilog/gf180mcu_udp.v"
 
 // All the digital, cobbled together for simulation
 `include "chipalooza_frame.v"

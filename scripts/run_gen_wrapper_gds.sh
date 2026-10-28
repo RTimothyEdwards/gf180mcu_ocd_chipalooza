@@ -13,7 +13,7 @@
 # (2) Read each layout "slotN_wrapper", for N = 1 to 18
 # (3) Write GDS of the slot wrapper into the ../gds directory
 #
-export PDK_ROOT=${PDK_ROOT:-/home/tim/gits}
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
 export PDK=${PDK:-gf180mcuD}
 
 echo "Generating GDS for Chipalooza slot wrappers"

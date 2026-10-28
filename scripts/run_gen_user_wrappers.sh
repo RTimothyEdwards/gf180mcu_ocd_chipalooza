@@ -22,7 +22,7 @@
 # to the magic/ directory to run magic.
 
 
-export PDK_ROOT=${PDK_ROOT:-/home/tim/gits}
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
 export PDK=${PDK:-gf180mcuD}
 
 cd magic

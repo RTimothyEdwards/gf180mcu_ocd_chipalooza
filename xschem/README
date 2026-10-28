@@ -1,0 +1,3 @@
+Note:  The SRAM symbol has been copied from the gf180mcu_ocd_ip_sram
+repo, but open-pdks really should be copying the symbols into the
+xschem/ directory of the installed library in open-pdks.

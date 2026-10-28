@@ -39,8 +39,7 @@ module housekeeping_top (
     output wire [9:0] sram_addr,	// SRAM address
     output wire [7:0] sram_idata,	// data input to SRAM
     input  wire [7:0] sram_odata,	// data output from SRAM
-    output wire sram_read,		// SRAM read enable
-    output wire sram_write,		// SRAM write enable
+    output wire sram_writeb,		// SRAM write enable (active low)
 
     input wire [11:0] io_in,    // from shared digital I/O pads
     output wire [11:0] io_out,  // to shared digital I/O pads
@@ -129,7 +128,7 @@ module housekeeping_top (
 	.Y(clk_out)
     );
 
-    /* Instantiate buffers on all potentially long-distance outputs.
+    /* Instantiate buffers on all potentially long-distance outputs */
 
     (* keep *)
     gf180mcu_as_sc_mcu7t3v3__buff_8 outbuffers [119:0] (
@@ -199,8 +198,7 @@ module housekeeping_top (
 	    .sram_addr(sram_addr),
 	    .sram_idata(sram_idata),
 	    .sram_odata(sram_odata),
-	    .sram_read(sram_read),
-	    .sram_write(sram_write),
+	    .sram_writeb(sram_writeb),
 	    .io_in(io_in),
 	    .io_out(io_out_unbuf),
 	    .io_oe(io_oe_unbuf),

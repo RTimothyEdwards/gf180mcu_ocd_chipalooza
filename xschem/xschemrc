@@ -21,13 +21,42 @@ if { ![info exists env(PDK)] } {
   set ::env(PDK) gf180mcuD
 }
 
-# Source the PDK xschemrc file
-if {![info exists PDK]} {
+# Source the PDK xschemrc file, but only once.
+#
+# This guard is load bearing.  The PDK xschemrc begins with
+#     set XSCHEM_LIBRARY_PATH {}
+# so sourcing it a second time silently discards every library path added
+# up to that point.  The previous test, "![info exists PDK]", never fired:
+# nothing anywhere sets a plain variable named PDK (the PDK name lives in
+# env(PDK)), so each dependency xschemrc re-sourced the PDK file and wiped
+# out the paths contributed by the ones sourced before it.  Only the last
+# dependency in the list survived.
+if {![info exists ::pdk_xschemrc_sourced]} {
+    set ::pdk_xschemrc_sourced 1
     source $env(PDK_ROOT)/$env(PDK)/libs.tech/xschem/xschemrc
 }
 
+# Append a directory to XSCHEM_LIBRARY_PATH unless it is already there.
+# Paths are normalized first, so the same directory reached by a relative
+# and by an absolute path counts as one entry.  Every one of these
+# repositories adds the Avalon standard cell library, so without the
+# duplicate check it would be appended once per dependency.
+#
+# Defined only if some other xschemrc in the chain has not defined it
+# already, so that each repository still works when xschem is started
+# inside it on its own.
+if {![llength [info procs add_library_path]]} {
+    proc add_library_path {dir} {
+        global XSCHEM_LIBRARY_PATH
+        set dir [file normalize $dir]
+        if {[lsearch -exact [split $XSCHEM_LIBRARY_PATH :] $dir] < 0} {
+            append XSCHEM_LIBRARY_PATH :$dir
+        }
+    }
+}
+
 # Add current directory to xschem library path
-append XSCHEM_LIBRARY_PATH :[file dirname [info script]]
+add_library_path [file dirname [info script]]
 
 # Source the xschemrc file of the dependent repositories
 

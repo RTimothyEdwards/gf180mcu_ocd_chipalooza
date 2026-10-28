@@ -9,7 +9,7 @@ mkdir -p ../netlist/schematic
 
 project=chipalooza_frame
 
-export PDK_ROOT=${PDK_ROOT:-/home/tim/gits}
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
 export PDK=${PDK:-gf180mcuD}
 
 # Source the local xschemrc, which recursively reads the xschemrc files

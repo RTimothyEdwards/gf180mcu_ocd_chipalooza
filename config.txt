@@ -47,17 +47,12 @@
 #    
 #    The "s[x]_an[[y]]" entry has two fields:
 #
-#    A. The "pad type" is one of 11 valid pad types:
+#    A. The "pad type" is one of 6 valid pad types:
+#		gf180mcu_ocd_io__bi_24t
+#		gf180mcu_ocd_io__bi_t
+#		gf180mcu_ocd_io__bi_a
 #		gf180mcu_ocd_io__in_c
-#		gf180mcu_IOPadOut16mA
-#		gf180mcu_IOPadOut16mA
-#		gf180mcu_IOPadOut30mA
-#		gf180mcu_ocd_io__bi_24t
-#		gf180mcu_ocd_io__bi_24t
-#		gf180mcu_IOPadTriOut30mA
-#		gf180mcu_ocd_io__bi_24t
-#		gf180mcu_ocd_io__bi_24t
-#		gf180mcu_ocd_io__in_cOut30mA
+#		gf180mcu_ocd_io__in_s
 #		gf180mcu_ocd_io__asig_5p0
 #
 #	The default value of each user project pad type is an analog

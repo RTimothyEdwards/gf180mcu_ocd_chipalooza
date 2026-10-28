@@ -257,7 +257,7 @@ async def reset(dut, clk_running=True):
     then serves a full POR_DELAY_NS before releasing.  It is an explicit
     testbench affordance, and the model documents it as such.
     """
-    dut.por.por_int.value = 1
+    dut.porgen.por_int.value = 1
     dut.SCK_in.value = 0
     dut.SDI_in.value = 0
     dut.CSB_in.value = 1
@@ -439,8 +439,8 @@ async def apply_bias_defaults(spi):
 # deliberate, so that a change to the model has to be a change to the
 # test as well rather than the test silently following it.
 BANDGAP_TRIM_V = [
-    1.184, 1.188, 1.192, 1.198, 3.304, 3.311, 3.317, 3.324, 3.331,
-    3.338, 3.346, 3.354, 3.361, 3.370, 3.378, 3.387, 3.395,
+    1.138, 1.140, 1.146, 1.155, 1.165, 1.176, 1.187, 1.199, 1.212,
+    1.225, 1.239, 1.254, 1.269, 1.286, 1.303, 1.322, 1.341,
 ]
 
 # Half trim, which is where the tempco curve is flattest.  This is the

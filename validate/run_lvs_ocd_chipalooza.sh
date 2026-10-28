@@ -4,7 +4,7 @@
 #
 export PROJECT=${PROJECT:-gf180mcu_ocd_chipalooza}
 
-export PDK_ROOT=${PDK_ROOT:-/home/tim/gits}
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
 export PDK=${PDK:-gf180mcuD}
 
 export NETGEN_COLUMNS=75

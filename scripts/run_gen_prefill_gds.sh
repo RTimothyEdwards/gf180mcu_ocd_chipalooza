@@ -12,7 +12,7 @@
 # NOTE:  This script depends on knowing that certain layouts do not interact
 # with each other and so it is valid to import the layout as a read-only
 
-export PDK_ROOT=${PDK_ROOT:-/home/tim/gits}
+export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
 export PDK=${PDK:-gf180mcuD}
 
 echo "Generating (temporary) GDS for gf180mcu_ocd_chipalooza"

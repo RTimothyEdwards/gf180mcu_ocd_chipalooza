@@ -147,29 +147,18 @@ module chipalooza_frame (
     assign tie_hi = vdd3v3;
     assign tie_lo = vss3v3;
 
-    /* The SRAM's tie-highs go to ITS supply, which is vddd, not vdd3v3.
-     * The schematic ties A_BM and A_DLY to vddd alongside VDD and
-     * VDDARRAY;  using the general tie_hi here put 9 extra connections
-     * on vdd3v3 and left netgen unable to tell vddd from vdd3v3 at the
-     * top level.  The tie-LOWS need no equivalent:  the SRAM's VSS is
-     * vss3v3, which is what tie_lo already is. */
-    wire tie_hi_sram;
-    assign tie_hi_sram = vddd;
 `else
     wire tie_hi;
     wire tie_lo;
-    wire tie_hi_sram;
     assign tie_hi = 1'b1;
     assign tie_lo = 1'b0;
-    assign tie_hi_sram = 1'b1;
 `endif
 
     /* Signals between housekeeping and the SRAM */
     wire [9:0] sram_addr;
     wire [7:0] sram_idata;
     wire [7:0] sram_odata;
-    wire       sram_read;
-    wire       sram_write;
+    wire       sram_writeb;
     wire       sram_clk;
 
     /* Signals between project control wrappers and housekeeping */
@@ -179,6 +168,7 @@ module chipalooza_frame (
     wire porb;				// power-on reset, active low.
 					// Generated on chip by the POR block
 					// below;  there is no porb pad.
+    wire por;				// power-on reset, active high.
     wire project_zero;			// diagnostic
     wire clk_out;			// buffered clock to the projects
     wire reset;				// digital reset from housekeeping,
@@ -337,8 +327,7 @@ module chipalooza_frame (
 	    .sram_addr(sram_addr),
 	    .sram_idata(sram_idata),
 	    .sram_odata(sram_odata),
-	    .sram_read(sram_read),
-	    .sram_write(sram_write),
+	    .sram_writeb(sram_writeb),
 	    .io_in(gpio_in),
 	    .io_out(gpio_out),
 	    .io_oe(gpio_oe),
@@ -377,33 +366,17 @@ module chipalooza_frame (
      */
 
     gf180mcu_ocd_ip_sram__sram1024x8m8wm1 sram (
-	.A_CLK(sram_clk),
-	.A_MEN(porb),
-	.A_WEN(sram_write),	// write enable
-	.A_REN(sram_read),	// read enable
-	.A_ADDR(sram_addr),
-	.A_DIN(sram_idata),
-	.A_DLY(tie_hi_sram),		// set to 1 per documentation recommendation
-	.A_DOUT(sram_odata),
-	.A_BM({8{tie_hi_sram}}),	// bit mask (all bits used)
-	.A_BIST_CLK(tie_lo),	// not using BIST
-	.A_BIST_EN(tie_lo),
-	.A_BIST_MEN(tie_lo),
-	.A_BIST_WEN(tie_lo),
-	.A_BIST_REN(tie_lo),
-	.A_BIST_ADDR({10{tie_lo}}),
-	.A_BIST_DIN({8{tie_lo}}),
-	.A_BIST_BM({8{tie_lo}})
 `ifdef LVS_STRUCTURAL
-	/* The GF SRAM's Verilog model declares no supply pins at all, so
-	 * these can only be connected in the structural view, where the
-	 * blackbox is generated with the CDL's full pin list.  The mapping
-	 * is the schematic's:  both VDD and VDDARRAY take the digital 3.3 V
-	 * supply, VSS the 3.3 V ground. */
-	, .VDD(vddd),
-	.VDDARRAY(vddd),
-	.VSS(vss3v3)
+	.VDD(vddd),
+	.VSS(vss3v3),
 `endif
+	.CLK(sram_clk),
+	.CEN(por),		// enable (active low)
+	.GWEN(sram_writeb),	// write enable (active low)
+	.WEN({8{tie_lo}}),	// bit mask write enable (all bits used)
+	.A(sram_addr),
+	.D(sram_idata),
+	.Q(sram_odata)
     );
 
     /* Signals between project control and project wrapper (18 instances) */
@@ -563,7 +536,7 @@ module chipalooza_frame (
     /* Instantiate the three main analog resource blocks (bandgap, biasgen, and voltgen) */
     /* These are behavioral models, using real-type values for currents and voltages */
 
-    gf180mcu_ocd_ip__bandgap_v3 bandgap (
+    gf180mcu_ocd_ip__bandgap bandgap (
 	`ifdef USE_POWER_PINS
 	    .dvdd(vdd3v3),
 	    .dvss(vss3v3),
@@ -605,7 +578,7 @@ module chipalooza_frame (
 	.out(vbias_from_classab)
     );
 
-    gf180mcu_ocd_ip__voltgen_v3 voltgen (
+    gf180mcu_ocd_ip__voltgen voltgen (
 	`ifdef USE_POWER_PINS
 	    .dvdd(vdd3v3),
 	    .dvss(vss3v3),
@@ -625,7 +598,7 @@ module chipalooza_frame (
 	.vout_buf(vbias_from_cascode)
     );
     
-    gf180mcu_ocd_ip__biasgen2 biasgen (
+    gf180mcu_ocd_ip__biasgen biasgen (
 	`ifdef USE_POWER_PINS
 	    .dvdd(vdd3v3),
 	    .dvss(vss3v3),
@@ -664,24 +637,24 @@ module chipalooza_frame (
      * Keep the default parameter POR_DELAY_NS (= 1us) for simulation purposes.
      */
 
-    gf180mcu_ocd_ip__por por (
+    gf180mcu_ocd_ip__por porgen (
 	`ifdef USE_POWER_PINS
 	    .vdd3v3(vdd3v3),
 	    .vss(vss3v3),
 	`endif
-	/* "ena" gates the amplifier's tail current and is tied to the
-	 * 3.3 V supply in the layout.  It must NOT be written as vdd3v3
-	 * unconditionally:  vdd3v3 only exists inside the USE_POWER_PINS
-	 * guard, so without that define it becomes an implicit undeclared
-	 * net, the enable is x, and the part never leaves reset.  That is
-	 * the same trap that .ref_in(vdd5v0) fell into on the biasgen.
+	/* "ena" gates the amplifier's tail current (XM5 in por_amp) and is
+	 * a real pin on this block, so it has to be tied here.  It must NOT
+	 * be written as vdd3v3 unconditionally:  vdd3v3 only exists inside
+	 * the USE_POWER_PINS guard, so without that define it would become
+	 * an implicit undeclared net, the enable would be x, and the part
+	 * would never leave reset.
 	 */
 	`ifdef USE_POWER_PINS
 	    .ena(vdd3v3),
 	`else
 	    .ena(1'b1),
 	`endif
-	.por(),		// unused output
+	.por(por),
 	.porb(porb),
 	.por_unbuf()	// diagnostic output, not to be used
     );
