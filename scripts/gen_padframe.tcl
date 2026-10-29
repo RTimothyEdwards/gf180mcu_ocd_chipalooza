@@ -116,13 +116,20 @@ proc label_bottom_signal {pad_name pin_name pin_text} {
 }
 
 # Label an internal pad signal on the right
+# Labels on are m3;  contact down to the pin on m2
 proc label_right_signal {pad_name pin_name pin_text} {
     goto ${pad_name}/${pin_name}
     box move w 4
-    box width 4
+    box width 5
     paint m3
+    box width 4
     label $pin_text FreeSans 0.3 0 0 0 c m3
     port make
+    box move e 4
+    box width 1
+    box grow e -0.05
+    box grow w -0.05
+    paint via2
 }
 
 # Label an internal pad signal on the top
@@ -136,13 +143,21 @@ proc label_top_signal {pad_name pin_name pin_text} {
 }
 
 # Label an internal pad signal on the left
+# Labels on are m3;  contact down to the pin on m2
 proc label_left_signal {pad_name pin_name pin_text} {
     goto ${pad_name}/${pin_name}
     box move e [box width]
-    box width 4
+    box move w 1
+    box width 5
     paint m3
+    box grow w -1
     label $pin_text FreeSans 0.3 0 0 0 c m3
     port make
+    box move w 1
+    box width 1
+    box grow e -0.05
+    box grow w -0.05
+    paint via2
 }
 
 # Note that analog labels have to be handled differently
@@ -156,8 +171,8 @@ proc label_left_analog {pad_name pin_name pin_text} {
     box values {*}[instance list abutment]
     box move e [box width]
     box width 1
-    box grow n -8.75
-    box grow s -8.75
+    box grow n -15.34
+    box grow s -15.34
     paint m2,m3
     box grow c -0.1
     paint via2
@@ -176,8 +191,8 @@ proc label_right_analog {pad_name pin_name pin_text} {
     box values {*}[instance list abutment]
     box move w 1
     box width 1
-    box grow n -8.75
-    box grow s -8.75
+    box grow n -15.34
+    box grow s -15.34
     paint m2,m3
     box grow c -0.1
     paint via2
@@ -196,8 +211,8 @@ proc label_top_analog {pad_name pin_name pin_text} {
     box values {*}[instance list abutment]
     box move s 4
     box height 4
-    box grow w -8.75
-    box grow e -8.75
+    box grow w -15.34
+    box grow e -15.34
     paint m2
     box height 2
     label $pin_text FreeSans 2 0 0 0 c m2

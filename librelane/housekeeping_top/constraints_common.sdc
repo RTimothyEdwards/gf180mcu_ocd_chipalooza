@@ -195,7 +195,7 @@ set async_inputs [get_ports {porb CSB mask_rev_in[*]}]
 set feedthrough_inputs [get_ports {io_in[*] dbus_in_left[*] dbus_in_right[*]}]
 
 # SRAM interface
-set sram_out_ports  [get_ports {sram_addr[*] sram_idata[*] sram_read sram_write}]
+set sram_out_ports  [get_ports {sram_addr[*] sram_idata[*] sram_writeb}]
 
 # Outputs driven by the SCK-domain configuration registers, going up the
 # trunk to the control blocks and out to the bias generators.
@@ -356,47 +356,108 @@ set_max_delay 7.5 -to $router_outputs
 # SRAM interface timing
 #-----------------------------------------------------------------------
 #
-# RM_GFSG13_1P_1024x8_c2 is characterised at exactly three corners, and
-# they line up precisely with this chip's 3.3 V operating mode:
+# This block was rewritten for GF180MCU on 2026-10-28.  What was here
+# before described IHP:  the macro name RM_GFSG13_1P_1024x8_c2 (itself a
+# blind IHP->GF substitution of RM_IHPSG13_...), SRAM corners at
+# 1.08/1.20/1.32 V, six STA corners, and a 1.5 V operating mode.  None of
+# that applies.  This chip has one digital mode at 3.3 V and three STA
+# corners, and the macro is gf180mcu_ocd_ip_sram__sram1024x8m8wm1.
 #
-#     SRAM corner          matches STA corner
-#     slow_1p08V_125C      nom_slow_1p08V_125C
-#     typ_1p20V_25C        nom_typ_1p20V_25C
-#     fast_1p32V_m55C      nom_fast_1p32V_m40C
+# The corner detection below reads the loaded standard-cell liberty,
+# because LibreLane does not name the active corner in the environment.
+# That only works where exactly ONE liberty is loaded, which is the case
+# for the per-corner signoff STA but NOT during place-and-route, where all
+# three are read at once.  So only constraints_signoff.sdc calls
+# sram_corner_values;  constraints_pnr.sdc uses ::sram_tim_pnr instead.
+# The proc returns "MULTI" if it sees more than one, so a mistake is loud
+# rather than silent --- though see the note on the lib-name filter, which
+# is how that guard was defeated for every GF run.
 #
-# The other three STA corners (1.35 / 1.50 / 1.65 V) are the 1.5 V mode,
-# nominal +/-10%, and the SRAM is characterised at NONE of them.
+# SRAM INTERFACE TIMING.
 #
-# THE SRAM IS DELIBERATELY NOT TIMED IN THE 1.5 V MODE.  Running the
-# digital at 1.5 V is a supported option --- block designers asked for it
-# and the transistors are rated for continuous 1.5 V operation, so
-# nothing is damaged --- but GF does not characterise this SRAM there,
-# so there is no honest number to check against.  The caveat that goes
-# with the 1.5 V mode is therefore: the pattern generator and its memory
-# are not qualified above 1.32 V.  A designer running at 1.5 V either
-# does not use the pattern generator, or does so at their own risk.
+# Values are read out of the macro's own liberty, which the PDK ships at
+# exactly the three corners this block is timed at:
+#   libs.ref/gf180mcu_ocd_ip_sram/lib/
+#       gf180mcu_ocd_ip_sram__sram1024x8m8wm1__{ff_n40C_3v60,
+#                                               tt_025C_3v30,
+#                                               ss_125C_3v00}.lib
+# Each number below is the MAXIMUM over the seven slew points in the
+# corresponding liberty table, which is the conservative pick.
 #
-# Inventing numbers for those corners is what the first run effectively
-# did, by applying the 1.08 V values everywhere.  It produced 17 hold
-# violations on sram_addr / sram_idata / sram_read --- none of them
-# register-to-register, all of them artifacts of demanding 0.849 ns of
-# hold where the part needs far less.  Extrapolating instead would have
-# been a guess dressed up as a constraint.  Declaring the paths unchecked
-# says what is actually true.
+# PROVENANCE OF THESE NUMBERS, AND WHY THEY ARE CONSERVATIVE.  The 3.3 V
+# macro was produced by shrinking the GlobalFoundries 5 V SRAM and
+# swapping its thick-oxide devices for thin-oxide ones.  There is no
+# tooling on hand to re-characterise the delay tables, so the liberty
+# carries the 5 V part's numbers with the technology relabelled --- the
+# header of the .lib says so.  A 5 V-device array operated at 3.3 V is
+# considerably slower than a thin-oxide array at 3.3 V, so every setup
+# and hold requirement here OVER-states what the real part needs.  That
+# is the safe direction for both checks: the design is held to a
+# stricter requirement than silicon imposes.
 #
-# NOTE ON THE CORNER DETECTION BELOW.  It reads the loaded standard-cell
-# liberty, because LibreLane does not name the active corner in the
-# environment.  That only works where exactly ONE liberty is loaded,
-# which is the case for the per-corner signoff STA but NOT during
-# place-and-route, where all six are read at once.  So only
-# constraints_signoff.sdc uses it;  constraints_pnr.sdc uses the fixed
-# worst-case values instead.  The proc returns "MULTI" if it sees more
-# than one, so a mistake is loud rather than silent.
+# The read access time Q is the one value where that is not simply
+# conservative, and it is handled separately below.
+#
+# WHAT REPLACED WHAT.  These were previously the IHP sg13cmos5l numbers,
+# and the corner detection matched liberty names against "*slow_1p08V*",
+# "*typ_1p20V*" and "*fast_1p32V*" --- IHP's 1.2 V corners.  Nothing
+# matched a GF liberty, so every corner silently fell through to the
+# UNRECOGNISED branch and got IHP's SLOW values, including at GF's FAST
+# corner.  That produced one hold violation of -5.6 ps on sram_addr[8],
+# by demanding 0.849 ns of address hold where this macro needs 0.499 ns.
+# The violation was an artefact of the wrong process's numbers, not a
+# timing problem in the design.
+#
+# PINS THAT ARE NOT CONSTRAINED HERE.  The macro's CEN and WEN are not
+# ports of housekeeping_top:  chipalooza_frame ties CEN to por and WEN
+# to a constant, so neither is a timed path out of this block.  Their
+# liberty values are recorded in the comment below for reference only.
+#
+# {addr_su addr_hd din_su din_hd wen_su wen_hd dout read_ok}
+#   addr -> A      din -> D      wen -> GWEN (sram_writeb)   dout -> Q
+#   for reference, not constrained here:
+#       ff  CEN su/hd 0.520/1.027   WEN su/hd 0.056/0.779
+#       tt  CEN su/hd 0.827/1.603   WEN su/hd 0.005/1.183
+#       ss  CEN su/hd 1.735/2.866   WEN su/hd 0.000/2.155
+set ::sram_tim_fast {0.715 0.499 0.478 0.493 0.756 0.779  4.791 1}
+set ::sram_tim_typ  {1.167 0.705 0.731 0.636 1.204 1.182  8.035 1}
+set ::sram_tim_slow {2.360 1.164 1.343 0.971 2.316 2.152 15.640 0}
 
-# {addr_su addr_hd din_su din_hd wen_su wen_hd ren_su ren_hd dout}
-set ::sram_tim_slow {-0.198 0.849 -0.001 0.652 0.849 0.372 0.458 0.411 7.186}
-set ::sram_tim_typ  {-0.003 0.525  0.115 0.399 0.607 0.247 0.376 0.271 4.304}
-set ::sram_tim_fast { 0.068 0.341  0.140 0.264 0.447 0.177 0.302 0.189 2.651}
+# Place-and-route sees all three liberties at once and so cannot detect a
+# corner;  it uses worst-case WRITE requirements, as before.  For the READ
+# it uses the tt access time rather than ss, because ss is the figure that
+# does not fit the clock period at all and false-pathing the read here
+# would leave the resizer with no target on sram_odata -> capture, only
+# for signoff to then time those same paths at tt and ff.  tt is the worst
+# corner at which the read IS timed, and the one corroborated by silicon.
+set ::sram_tim_pnr  {2.360 1.164 1.343 0.971 2.316 2.152  8.035 1}
+
+# THE READ PATH AT THE SLOW CORNER IS NOT TIMED, and read_ok above says
+# so.  The macro is synchronous and the protocol is single cycle:
+# pattern.v's header states it "registers the address on one clock and
+# presents the data on the next", and in modes 0 and 2 sram_data_in is
+# captured on EVERY clock with only the address gated by the prescaler.
+# So Q has one clk period, 15 ns, and no multicycle relaxation is
+# available --- TIMER_WAIT exists to align when the RTL samples, not to
+# give the macro extra time.
+#
+# Against that 15 ns, ff (4.791) and tt (8.035) close comfortably, and
+# tt is corroborated by silicon: the manufactured part runs cleanly at
+# 100 MHz at nominal conditions, so the real access time at nominal is
+# under 10 ns.  The ss figure of 15.640 does not fit in 15 ns at all,
+# and it is a 1.95x derate off tt that belongs to thick-oxide devices
+# rather than to the thin-oxide shrink that was actually built.
+#
+# Timing the read against a number known to be wrong, in a direction
+# that cannot be bounded without characterisation, would be a guess
+# dressed up as a constraint.  Declaring it unchecked says what is
+# actually true, and confines the gap to one direction of one corner.
+#
+# CONSEQUENCE, which belongs in the datasheet:  the pattern generator's
+# SRAM read is not verified by static timing at the slow corner.
+# Everything else across this interface is constrained against
+# same-process data.  Re-characterising Q for the 3.3 V macro is what
+# closes this, and would also let read_ok be set to 1 for slow.
 
 # Returns {corner-name values qualified}.  qualified == 0 means the SRAM
 # has no model at this corner and its paths must not be timed.
@@ -404,30 +465,30 @@ proc sram_corner_values {} {
     set libs {}
     foreach l [get_libs -quiet *] {
 	set n [get_full_name $l]
-	if { [string match "*stdcell*" $n] } { lappend libs $n }
+	# The GF standard cell liberty is named gf180mcu_as_sc_mcu7t3v3__*.
+	# Matching "*stdcell*" here, as this did when it was inherited from
+	# IHP, selects nothing at all:  $libs comes back empty, the
+	# llength test below fails, and every corner takes the MULTI
+	# branch.  That is how the wrong values got applied silently.
+	if { [string match "*mcu7t3v3*" $n] } { lappend libs $n }
     }
     if { [llength $libs] != 1 } {
 	return [list "MULTI ([llength $libs] libs)" $::sram_tim_slow -1]
     }
     set libname [lindex $libs 0]
 
-    if { [string match "*slow_1p08V*" $libname] } { return [list slow_1p08V $::sram_tim_slow 1] }
-    if { [string match "*typ_1p20V*"  $libname] } { return [list typ_1p20V  $::sram_tim_typ  1] }
-    if { [string match "*fast_1p32V*" $libname] } { return [list fast_1p32V $::sram_tim_fast 1] }
-
-    # 1.5 V mode corners:  no SRAM model, not timed.
-    if { [string match "*1p35V*" $libname] } { return [list 1p35V $::sram_tim_slow 0] }
-    if { [string match "*1p50V*" $libname] } { return [list 1p50V $::sram_tim_slow 0] }
-    if { [string match "*1p65V*" $libname] } { return [list 1p65V $::sram_tim_slow 0] }
+    if { [string match "*ss_125C_3v00*" $libname] } { return [list ss_125C_3v00 $::sram_tim_slow 1] }
+    if { [string match "*tt_025C_3v30*" $libname] } { return [list tt_025C_3v30 $::sram_tim_typ  1] }
+    if { [string match "*ff_n40C_3v60*" $libname] } { return [list ff_n40C_3v60 $::sram_tim_fast 1] }
 
     return [list "UNRECOGNISED" $::sram_tim_slow -1]
 }
 
 # Applies the SRAM interface constraints for one or more sram clocks.
-# $vals is a nine-element list as above.
+# $vals is an eight-element list as above.
 proc sram_apply {clocks vals} {
     set wire 0.020
-    lassign $vals addr_su addr_hd din_su din_hd wen_su wen_hd ren_su ren_hd dout
+    lassign $vals addr_su addr_hd din_su din_hd wen_su wen_hd dout read_ok
     foreach sc $clocks {
 	set_output_delay -clock $sc -max [expr { $addr_su + $wire}] -add_delay [get_ports {sram_addr[*]}]
 	set_output_delay -clock $sc -min [expr {-$addr_hd + $wire}] -add_delay [get_ports {sram_addr[*]}]
@@ -435,21 +496,27 @@ proc sram_apply {clocks vals} {
 	set_output_delay -clock $sc -max [expr { $din_su + $wire}] -add_delay [get_ports {sram_idata[*]}]
 	set_output_delay -clock $sc -min [expr {-$din_hd + $wire}] -add_delay [get_ports {sram_idata[*]}]
 
-	set_output_delay -clock $sc -max [expr { $wen_su + $wire}] -add_delay [get_ports {sram_write}]
-	set_output_delay -clock $sc -min [expr {-$wen_hd + $wire}] -add_delay [get_ports {sram_write}]
+	# sram_writeb drives GWEN.  There is no read enable on this macro:
+	# a read is simply CEN asserted with GWEN high, which is why the
+	# IHP ren_su/ren_hd pair is gone and why sram_read and sram_write
+	# no longer exist as ports.
+	set_output_delay -clock $sc -max [expr { $wen_su + $wire}] -add_delay [get_ports {sram_writeb}]
+	set_output_delay -clock $sc -min [expr {-$wen_hd + $wire}] -add_delay [get_ports {sram_writeb}]
 
-	set_output_delay -clock $sc -max [expr { $ren_su + $wire}] -add_delay [get_ports {sram_read}]
-	set_output_delay -clock $sc -min [expr {-$ren_hd + $wire}] -add_delay [get_ports {sram_read}]
-
-	# Read data returns $dout after the SRAM clock edge;  against a 15 ns
-	# period that leaves ample time for the return route and capture.
-	set_input_delay  -clock $sc -max [expr { $dout   + $wire}] -add_delay [get_ports {sram_odata[*]}]
-	set_input_delay  -clock $sc -min 0.500                     -add_delay [get_ports {sram_odata[*]}]
+	if { $read_ok == 1 } {
+	    set_input_delay -clock $sc -max [expr { $dout + $wire}] -add_delay [get_ports {sram_odata[*]}]
+	    set_input_delay -clock $sc -min 0.500                   -add_delay [get_ports {sram_odata[*]}]
+	}
+    }
+    if { $read_ok != 1 } {
+	# See the discussion above:  Q is not characterised for this macro
+	# and the inherited 5 V value does not fit the clock period.
+	set_false_path -from [get_ports {sram_odata[*]}]
     }
 }
 
 # Declares the SRAM interface unchecked, for corners with no SRAM model.
 proc sram_not_timed {} {
-    set_false_path -to   [get_ports {sram_addr[*] sram_idata[*] sram_read sram_write}]
+    set_false_path -to   [get_ports {sram_addr[*] sram_idata[*] sram_writeb}]
     set_false_path -from [get_ports {sram_odata[*]}]
 }

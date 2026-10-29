@@ -550,16 +550,16 @@ module gf180mcu_padframe (
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
 	.PAD(s3_an[0]),
-	.IE(s3_an_0_ie)
-	.OE(s3_an_0_oe)
-	.A(s3_an_0_out)
-	.Y(s3_an_0_in)
-	.CS(s3_an_0_schmitt)
-	.SL(s3_an_0_slew)
-	.PDRV0(s3_an_0_drive_0)
-	.PDRV1(s3_an_0_drive_1)
-	.ANA(s3_an_0_ana)
-	.PU(s3_an_0_pullup)
+	.IE(s3_an_0_ie),
+	.OE(s3_an_0_oe),
+	.A(s3_an_0_out),
+	.Y(s3_an_0_in),
+	.CS(s3_an_0_schmitt),
+	.SL(s3_an_0_slew),
+	.PDRV0(s3_an_0_drive_0),
+	.PDRV1(s3_an_0_drive_1),
+	.ANA(s3_an_0_ana),
+	.PU(s3_an_0_pullup),
 	.PD(s3_an_0_pulldown)
     );
 
@@ -1035,8 +1035,8 @@ module gf180mcu_padframe (
 	    .vss(vss3v3),
 	`endif	/* USE_POWER_PINS */
 	.PAD(s14_an[0]),
-	.Y(s14_an_0_in)
-	.PU(s14_an_0_pullup)
+	.Y(s14_an_0_in),
+	.PU(s14_an_0_pullup),
 	.PD(s14_an_0_pulldown)
     );
 

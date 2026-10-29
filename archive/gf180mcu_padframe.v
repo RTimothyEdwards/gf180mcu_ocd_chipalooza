@@ -38,7 +38,7 @@ module gf180mcu_padframe (
     input wire s3_an_0_ie,
     input wire s3_an_0_pullup,
     input wire s3_an_0_pulldown,
-    input wire s3_an_0_level,
+    input wire s3_an_0_schmitt,
     input wire s3_an_0_slew,
     input wire s3_an_0_drive_0,
     input wire s3_an_0_drive_1,
@@ -119,7 +119,7 @@ module gf180mcu_padframe (
     input wire s3_an_0_ie,
     input wire s3_an_0_pullup,
     input wire s3_an_0_pulldown,
-    input wire s3_an_0_level,
+    input wire s3_an_0_schmitt,
     input wire s3_an_0_slew,
     input wire s3_an_0_drive_0,
     input wire s3_an_0_drive_1,
@@ -233,7 +233,7 @@ module gf180mcu_padframe (
 	.PU(SDO_pullup),
 	.PD(SDO_pulldown),
 	.SL(SDO_slew),
-	.SC(SDO_level)
+	.CS(SDO_schmitt)
     );
 
     gf180mcu_ocd_io__in_c pad_SDI (
@@ -322,7 +322,7 @@ module gf180mcu_padframe (
 	.PU(gpio_0_pullup),
 	.PD(gpio_0_pulldown),
 	.SL(gpio_0_slew),
-	.SC(gpio_0_level)
+	.CS(gpio_0_schmitt)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_1 (
@@ -340,7 +340,7 @@ module gf180mcu_padframe (
 	.PU(gpio_1_pullup),
 	.PD(gpio_1_pulldown),
 	.SL(gpio_1_slew),
-	.SC(gpio_1_level)
+	.CS(gpio_1_schmitt)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_2 (
@@ -358,7 +358,7 @@ module gf180mcu_padframe (
 	.PU(gpio_2_pullup),
 	.PD(gpio_2_pulldown),
 	.SL(gpio_2_slew),
-	.SC(gpio_2_level)
+	.CS(gpio_2_schmitt)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_3 (
@@ -376,7 +376,7 @@ module gf180mcu_padframe (
 	.PU(gpio_3_pullup),
 	.PD(gpio_3_pulldown),
 	.SL(gpio_3_slew),
-	.SC(gpio_3_level)
+	.CS(gpio_3_schmitt)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_4 (
@@ -394,7 +394,7 @@ module gf180mcu_padframe (
 	.PU(gpio_4_pullup),
 	.PD(gpio_4_pulldown),
 	.SL(gpio_4_slew),
-	.SC(gpio_4_level)
+	.CS(gpio_4_schmitt)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_5 (
@@ -412,7 +412,7 @@ module gf180mcu_padframe (
 	.PU(gpio_5_pullup),
 	.PD(gpio_5_pulldown),
 	.SL(gpio_5_slew),
-	.SC(gpio_5_level)
+	.CS(gpio_5_schmitt)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_6 (
@@ -430,7 +430,7 @@ module gf180mcu_padframe (
 	.PU(gpio_6_pullup),
 	.PD(gpio_6_pulldown),
 	.SL(gpio_6_slew),
-	.SC(gpio_6_level)
+	.CS(gpio_6_schmitt)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_7 (
@@ -448,7 +448,7 @@ module gf180mcu_padframe (
 	.PU(gpio_7_pullup),
 	.PD(gpio_7_pulldown),
 	.SL(gpio_7_slew),
-	.SC(gpio_7_level)
+	.CS(gpio_7_schmitt)
     );
 
     // Right side pads
@@ -554,7 +554,7 @@ module gf180mcu_padframe (
 	.OE(s3_an_0_oe)
 	.A(s3_an_0_out)
 	.Y(s3_an_0_in)
-	.CS(s3_an_0_level)
+	.CS(s3_an_0_schmitt)
 	.SL(s3_an_0_slew)
 	.PDRV0(s3_an_0_drive_0)
 	.PDRV1(s3_an_0_drive_1)
@@ -759,7 +759,7 @@ module gf180mcu_padframe (
 	.PU(gpio_8_pullup),
 	.PD(gpio_8_pulldown),
 	.SL(gpio_8_slew),
-	.SC(gpio_8_level)
+	.CS(gpio_8_schmitt)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_9 (
@@ -777,7 +777,7 @@ module gf180mcu_padframe (
 	.PU(gpio_9_pullup),
 	.PD(gpio_9_pulldown),
 	.SL(gpio_9_slew),
-	.SC(gpio_9_level)
+	.CS(gpio_9_schmitt)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_10 (
@@ -795,7 +795,7 @@ module gf180mcu_padframe (
 	.PU(gpio_10_pullup),
 	.PD(gpio_10_pulldown),
 	.SL(gpio_10_slew),
-	.SC(gpio_10_level)
+	.CS(gpio_10_schmitt)
     );
 
     gf180mcu_ocd_io__bi_24t pad_gpio_11 (
@@ -813,7 +813,7 @@ module gf180mcu_padframe (
 	.PU(gpio_11_pullup),
 	.PD(gpio_11_pulldown),
 	.SL(gpio_11_slew),
-	.SC(gpio_11_level)
+	.CS(gpio_11_schmitt)
     );
 
     gf180mcu_ocd_io__dvss pad_vss5v0_3 (

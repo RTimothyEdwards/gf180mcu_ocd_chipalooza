@@ -53,7 +53,6 @@ RUN_KLAYOUT_DRC: false
 RUN_LVS: true
 
 DESIGN_NAME: housekeeping_top
-OPENROAD_THREADS: 12
 VERILOG_FILES:
 - dir::../../verilog/rtl/synth_defs.v
 - dir::../../verilog/rtl/housekeeping_spi.v

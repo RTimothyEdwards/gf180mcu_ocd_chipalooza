@@ -11,8 +11,8 @@ one bounding box and one row assignment:  regenerating one in isolation
 without reading the others would give it a geometry that disagrees with
 its siblings.
 
-The two synthesized blocks have 49 and 24 port declarations, which expand
-to 227 and 121 physical pins.  Drawing those by hand is not reasonable,
+The two synthesized blocks have 53 and 26 port declarations, which expand
+to 286 and 121 physical pins.  Drawing those by hand is not reasonable,
 and getting one pin wrong produces an LVS mismatch that is tedious to
 find, so the symbol is generated from the same Verilog the block was
 synthesized from.
@@ -20,7 +20,7 @@ synthesized from.
 BUSES STAY BUSES.  A port declared [23:0] becomes one symbol pin named
 "dig_in[23:0]", which is how the bandgap and bg_trim symbols in this
 project express them and how xschem expands them at netlist time.  That
-is why 49 declarations give 49 pins rather than 227.
+is why 53 declarations give 53 pins rather than 286.
 
 THE 18 SLOT WRAPPERS SHARE ONE FIXED TEMPLATE.  The top level schematic
 is one user-project cell drawn once and copied 18 times, with only the
@@ -37,12 +37,26 @@ positionally, so the B lines must stay in magic's port-index order (see
 emit()), but where a pin is DRAWN is a separate choice.  The template
 therefore fixes coordinates without touching the netlist order.
 
-POWER PINS COME FROM THE LAYOUT, NOT THE RTL.  housekeeping_top declares
-VPWR/VGND inside `ifdef USE_POWER_PINS, but the flow emits them as
-vddd/vssd, and user_project_control declares none at all while its DEF
-still has both.  The symbol has to match the LAYOUT, since that is what
-LVS compares against, so VPWR/VGND are dropped and vddd/vssd are added.
-Verified against the final DEF of each block: 227 and 121 pins, exact.
+POWER PINS COME FROM THE LAYOUT, NOT THE RTL.  Both blocks declare
+VPWR/VGND inside `ifdef USE_POWER_PINS, and the flow emits them as
+vddd/vssd.  The symbol has to match the LAYOUT, since that is what LVS
+compares against, so VPWR/VGND are dropped and vddd/vssd used instead.
+
+Note this is handled by READING them from the .pnl.v, which declares
+both:  POWER_PINS is applied only on the RTL fallback path, for a block
+that has not been through the flow yet.  An earlier version of this note
+said user_project_control declared no power pins at all;  its .pnl.v
+does, which is where its 26th declaration comes from.
+Verified against the final DEF of each block.  housekeeping_top's DEF
+lists 284 pins to the netlist's 286:  vddd and vssd are in the port list
+but not in the DEF PINS section, being special nets, so the two reconcile.
+
+The housekeeping_top counts grew from 227 pins on 2026-10-28, when the
+twelve shared GPIO pads gained five static controls each (io_ie,
+io_pullup, io_pulldown, io_schmitt, io_slew):  227 + 60 - 1 = 286, the
+one removal being sram_read, which this SRAM macro does not have.
+sram_write became sram_writeb over the same change, which is a rename
+and does not move the count.
 """
 
 import os
@@ -116,7 +130,7 @@ def gl_ports(path, module):
     go on it matches the two positionally.  The flow emits the port list
     sorted (scalars alphabetically, then buses), which is NOT the order
     the ports are declared in the RTL, so a symbol built from the RTL
-    has the right 49 pins in the wrong sequence and every net comes out
+    has the right 53 pins in the wrong sequence and every net comes out
     shifted.  Reading the .pnl.v makes the symbol track whatever the
     flow produced, including on a re-synthesis.
     """

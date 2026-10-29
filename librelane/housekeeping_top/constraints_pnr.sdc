@@ -11,12 +11,16 @@
 #
 # This is the demanding mode --- 15 ns rather than 100 ns --- and the hold
 # padding the tool adds to the address path applies to the SPI mode too,
-# since it is the same physical path with the same 0.849 ns requirement.
+# since it is the same physical path with the same requirement, now
+# 1.164 ns of address hold from the macro's ss liberty rather than the
+# 0.849 ns that was inherited from IHP.
 # The SPI mode is checked separately;  see constraints_signoff.sdc.
 #
 # NOTE the case analysis is on the MUX INSTANCE PIN, not on the seq_ena
-# net.  Putting it on the net would also force sram_read, the address mux
-# and the sequencer/pattern sync_reset, masking real paths.
+# net.  Putting it on the net would also force the address mux and the
+# sequencer/pattern sync_reset, masking real paths.  (It would have
+# forced sram_read too, before that port was removed:  this macro has no
+# read enable.)
 #-----------------------------------------------------------------------
 
 source [file join [file dirname [file normalize [info script]]] constraints_common.sdc]
@@ -88,4 +92,48 @@ set sram_wire 0.020
 # among the three corners where the SRAM is actually qualified, so padding
 # to satisfy them satisfies the other two by a wide margin.
 puts "\[INFO] SRAM interface: fixed slow_1p08V values for PnR"
-sram_apply {sram_clk} $::sram_tim_slow
+sram_apply {sram_clk} $::sram_tim_pnr
+
+# MAKE THE SPI-MODE SRAM INTERFACE VISIBLE TO HOLD REPAIR.
+#
+# The SRAM outputs are driven by SCK-domain registers (spi_sram_addr,
+# spi_sram_idata, spi_sram_writeb in housekeeping.v).  At signoff they
+# are captured against sram_clk_s, the SCK-sourced generated clock, so
+# that is a same-clock hold check and a tight one.
+#
+# sram_clk_s does not exist here.  This file creates one sram_clk sourced
+# from clk, because CTS rejects two generated clocks on one port
+# ("[ERROR CTS-0114] Clock sram_clk_s overlaps a previous clock"), and
+# constraints_common.sdc declares clk and SCK asynchronous.  So during
+# place-and-route these paths are NOT TIMED AT ALL, the resizer cannot
+# pad them, and signoff then checks a mode nothing optimised.  That is
+# how sram_writeb reached signoff at -1.077 ns on hold at ss while the
+# resizer reported nothing to fix.
+#
+# THE FIX IS TO REFERENCE THE OUTPUT DELAY TO SCK ITSELF.  SCK is a real
+# clock here and is the launch domain, so the path is timed without any
+# path-delay constraint and without disturbing the asynchronous grouping.
+#
+# A set_min_delay was tried first and rejected:  path-delay checks ignore
+# clock latency, so the required value works out to
+# (capture insertion - launch insertion), which was -0.49 ns at ss on the
+# 20-43-16 run.  That is both negative and a function of this run's clock
+# trees, so it would drift every time CTS changed.
+#
+# THE INSERTION ALLOWANCE below stands in for the sram_clk insertion
+# delay that the signoff check includes and an SCK-referenced output
+# delay does not.  Measured on 20-43-16 at the sram_clk port:  0.617 ns
+# at ff, 0.778 at tt, 1.040 at ss.  Worst case is used, rounded up.  It
+# is an estimate of the clock tree, so it is approximate by nature --- if
+# CTS changes shape significantly, re-measure it.
+set sram_clk_insertion 1.10
+
+# Hold requirements, from ::sram_tim_pnr above, which carries the
+# worst-corner values.
+lassign $::sram_tim_pnr _a_su a_hd _d_su d_hd _w_su w_hd _dout _rok
+set_output_delay -clock SCK -min [expr {-($a_hd + $sram_clk_insertion)}] \
+    -add_delay [get_ports {sram_addr[*]}]
+set_output_delay -clock SCK -min [expr {-($d_hd + $sram_clk_insertion)}] \
+    -add_delay [get_ports {sram_idata[*]}]
+set_output_delay -clock SCK -min [expr {-($w_hd + $sram_clk_insertion)}] \
+    -add_delay [get_ports {sram_writeb}]

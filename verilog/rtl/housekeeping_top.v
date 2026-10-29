@@ -44,6 +44,7 @@ module housekeeping_top (
     input wire [11:0] io_in,    // from shared digital I/O pads
     output wire [11:0] io_out,  // to shared digital I/O pads
     output wire [11:0] io_oe,   // to shared digital I/O pads
+    output wire [11:0] io_ie,   // to shared digital I/O pads
 
     /* Static per-pad configuration for the 12 shared digital I/O pads,
      * written over SPI at registers 0x53 and up.  These land on the pad
@@ -92,6 +93,7 @@ module housekeeping_top (
     wire [23:0] dbus_out_unbuf;
     wire [11:0] io_out_unbuf;
     wire [11:0] io_oe_unbuf;
+    wire [11:0] io_ie_unbuf;
     wire [11:0] io_pullup_unbuf;
     wire [11:0] io_pulldown_unbuf;
     wire [11:0] io_schmitt_unbuf;
@@ -145,10 +147,10 @@ module housekeeping_top (
     /* Instantiate buffers on all potentially long-distance outputs */
 
     (* keep *)
-    gf180mcu_as_sc_mcu7t3v3__buff_8 outbuffers [167:0] (
+    gf180mcu_as_sc_mcu7t3v3__buff_8 outbuffers [179:0] (
 	// no. signals: 24, 12, 12, 5, 5, 3, 1, 3, 1, 16, 1, 1, 1, 3,
 	//		2, 3, 3, 5, 1, 5, 1, 1, 1, 1, 2, 1, 4, 1, 1 = 120
-	//		+ the four pad config vectors, 12, 12, 12, 12 = 168
+	//		+ the five pad config vectors, 12, 12, 12, 12, 12 = 180
 	.A({dbus_out_unbuf, io_out_unbuf, io_oe_unbuf, idac1_value_unbuf,
 		idac2_value_unbuf, voltgen_ena_unbuf, voltgen_high_unbuf,
 		voltgen_value_unbuf, bandgap_ena_unbuf, bandgap_trim_unbuf,
@@ -159,7 +161,7 @@ module housekeeping_top (
 		proj_5v0_ena_unbuf, proj_3v3_ena_unbuf, proj_ibias_ena_unbuf,
 		proj_vbias_ena_unbuf, analog_bus_ena_unbuf, reset_unbuf,
 		project_zero_unbuf, io_pullup_unbuf, io_pulldown_unbuf,
-		io_schmitt_unbuf, io_slew_unbuf}),
+		io_schmitt_unbuf, io_slew_unbuf, io_ie_unbuf}),
 	.Y({dbus_out, io_out, io_oe, idac1_value, idac2_value, voltgen_ena,
 		voltgen_high, voltgen_value, bandgap_ena, bandgap_trim,
 		biasgen_ena, biasgen_coarse, biasgen_fine, biasgen_ref_vbg,
@@ -167,7 +169,7 @@ module housekeeping_top (
 		voltgen_source, proj_sel, proj_ena, proj_dig_ena,
 		proj_5v0_ena, proj_3v3_ena, proj_ibias_ena, proj_vbias_ena,
 		analog_bus_ena, reset, project_zero, io_pullup, io_pulldown,
-		io_schmitt, io_slew})
+		io_schmitt, io_slew, io_ie})
     );
 
     /* Vectors as seen by the SRAM, which in this version of the housekeeping
@@ -219,6 +221,7 @@ module housekeeping_top (
 	    .io_in(io_in),
 	    .io_out(io_out_unbuf),
 	    .io_oe(io_oe_unbuf),
+	    .io_ie(io_ie_unbuf),
 	    .io_pullup(io_pullup_unbuf),
 	    .io_pulldown(io_pulldown_unbuf),
 	    .io_schmitt(io_schmitt_unbuf),

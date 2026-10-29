@@ -45,7 +45,8 @@ T {Note:  Ground domains are shorted in layout extraction in spite of
 efforts to keep the vdd3v3 ground inside "isosubstrate" areas.  Until
 that issue is resolved, netlists are matched by adding a short
 between the two ground domains in the schematic.  Note that this
-short is real, as "isosubstrate" is only a virtual separation.} 1710 -2250 0 0 0.4 0.4 {}
+short is real, as "isosubstrate" is only a virtual separation.
+To be done:  Cleanly separate analog using deep nwell structures.} 1710 -2300 0 0 0.4 0.4 {}
 T {These pins exist in the layout but fall between user wrappers and so cannot
 be reached from the user wrapper without additional wiring.} 720 6130 0 0 0.4 0.4 {}
 T {Shared analog ESD inputs are not connected in the core.} 1760 -1890 0 0 0.4 0.4 {}
@@ -68,9 +69,7 @@ N 1720 -1670 1780 -1670 {lab=vdd5v0}
 N 1720 -1650 1780 -1650 {lab=vss5v0}
 N 1720 -1630 1780 -1630 {lab=vdd3v3}
 N 1720 -1610 1780 -1610 {lab=vss3v3}
-N 1970 -1670 2030 -1670 {lab=vdd5v0}
-N 1970 -1650 2030 -1650 {lab=vdd3v3}
-N 1970 -1630 2030 -1630 {lab=vss3v3}
+N 1970 -1670 2030 -1670 {lab=vdd3v3}
 N 1970 -1550 2030 -1550 {lab=vss5v0}
 N 1380 -1630 1420 -1630 {lab=vbg}
 N 1380 -1750 1380 -1630 {lab=vbg}
@@ -113,8 +112,8 @@ N 1950 -1450 2540 -1450 {lab=#net3}
 N 1720 -1450 1930 -1450 {lab=#net4}
 N 1720 -1230 1750 -1230 {lab=#net5}
 N 1720 -1190 1750 -1190 {lab=#net6}
-N 1570 -1130 1570 -1110 {lab=vss3v3}
-N 1540 -1110 1570 -1110 {lab=vss3v3}
+N 1570 -1150 1570 -1130 {lab=vss3v3}
+N 1540 -1130 1570 -1130 {lab=vss3v3}
 N 1400 -1300 1570 -1300 {lab=vdd3v3}
 N 1400 -1300 1400 -1230 {lab=vdd3v3}
 N 1400 -1230 1420 -1230 {lab=vdd3v3}
@@ -1252,10 +1251,10 @@ N 2830 2850 2940 2850 {lab=s5_an_1_esd}
 N 2870 4420 2940 4420 {lab=s3_an_0_esd}
 N 2840 5230 2940 5230 {lab=s2_an_1_esd}
 N 2840 5980 2940 5980 {lab=s1_an_0_esd}
-N 1370 -2000 1440 -2000 {lab=gpio_out[11:0]}
-N 1370 -1980 1440 -1980 {lab=gpio_oe[11:0]}
-N 1370 -1960 1440 -1960 {lab=gpio_in[11:0]}
-N 1370 -1890 1440 -1890 {lab=analog[3:0]}
+N 1370 -2040 1440 -2040 {lab=gpio_out[11:0]}
+N 1370 -2020 1440 -2020 {lab=gpio_oe[11:0]}
+N 1370 -2000 1440 -2000 {lab=gpio_in[11:0]}
+N 1370 -1800 1440 -1800 {lab=analog[3:0]}
 N 2840 -300 2940 -300 {lab=s9_an_1_esd}
 N 1370 -2090 1440 -2090 {lab=vddd}
 N 1350 -680 1350 -630 {lab=#net15}
@@ -1948,7 +1947,7 @@ N 1000 6280 1090 6280 {lab=s5_an_2_esd}
 N 1000 6310 1090 6310 {lab=s7_an_1_esd}
 N 1000 6340 1090 6340 {lab=s9_an_2_esd}
 N 1870 -1830 1920 -1830 {lab=analog_esd[3:0]}
-N 2840 -1330 2910 -1330 {lab=vgen_ena2}
+N 2840 -1340 2910 -1340 {lab=vgen_ena2}
 N 2740 -1740 2790 -1740 {lab=voltgen_vout}
 N 1970 -1490 1970 -1470 {lab=#net2}
 N 1970 -1470 2240 -1470 {lab=#net2}
@@ -1966,6 +1965,13 @@ N 2600 -1740 2620 -1740 {lab=#net1}
 N 2600 -1740 2600 -1640 {lab=#net1}
 N 730 -1510 770 -1510 {lab=vddd}
 N 730 -1530 770 -1530 {lab=vss3v3}
+N 1370 -1980 1440 -1980 {lab=gpio_oe[11:0]}
+N 1370 -1880 1440 -1880 {lab=gpio_in[11:0]}
+N 1370 -1860 1440 -1860 {lab=gpio_in[11:0]}
+N 1370 -1960 1440 -1960 {lab=gpio_oe[11:0]}
+N 1370 -1940 1440 -1940 {lab=gpio_oe[11:0]}
+N 1370 -1920 1440 -1920 {lab=gpio_oe[11:0]}
+N 1370 -1900 1440 -1900 {lab=gpio_oe[11:0]}
 C {iopin.sym} 1370 -2170 0 1 {name=p1 lab=vdd5v0}
 C {iopin.sym} 1370 -2130 0 1 {name=p3 lab=vdd3v3}
 C {iopin.sym} 1370 -2110 0 1 {name=p4 lab=vss3v3}
@@ -1982,11 +1988,9 @@ C {lab_pin.sym} 2740 -1220 3 0 {name=p103 sig_type=std_logic lab=vss5v0}
 C {lab_pin.sym} 2630 -1560 1 0 {name=p104 sig_type=std_logic lab=vdd3v3}
 C {lab_pin.sym} 2740 -1560 1 0 {name=p105 sig_type=std_logic lab=vdd5v0}
 C {lab_pin.sym} 2490 -1410 0 0 {name=p107 sig_type=std_logic lab=vbg}
-C {lab_pin.sym} 1970 -1650 0 0 {name=p108 sig_type=std_logic lab=vdd3v3}
-C {lab_pin.sym} 1970 -1630 0 0 {name=p109 sig_type=std_logic lab=vss3v3}
-C {lab_pin.sym} 1970 -1670 0 0 {name=p110 sig_type=std_logic lab=vdd5v0}
+C {lab_pin.sym} 1970 -1670 0 0 {name=p108 sig_type=std_logic lab=vdd3v3}
+C {lab_pin.sym} 1970 -1550 0 0 {name=p109 sig_type=std_logic lab=vss3v3}
 C {lab_pin.sym} 1780 -1670 2 0 {name=p111 sig_type=std_logic lab=vdd5v0}
-C {lab_pin.sym} 1970 -1550 0 0 {name=p112 sig_type=std_logic lab=vss5v0}
 C {lab_pin.sym} 1780 -1650 0 1 {name=p113 sig_type=std_logic lab=vss5v0}
 C {lab_pin.sym} 1780 -1630 0 1 {name=p114 sig_type=std_logic lab=vdd3v3}
 C {lab_pin.sym} 1780 -1610 0 1 {name=p115 sig_type=std_logic lab=vss3v3}
@@ -2010,7 +2014,7 @@ C {por_3v3_selfbiased.sym} 1570 -1220 0 0 {name=x20}
 C {lab_pin.sym} 2280 -1650 0 1 {name=p96 sig_type=std_logic lab=vbg}
 C {noconn.sym} 1750 -1190 0 1 {name=l6}
 C {lab_pin.sym} 1400 -1300 0 0 {name=p52 sig_type=std_logic lab=vdd3v3}
-C {lab_pin.sym} 1540 -1110 0 0 {name=p97 sig_type=std_logic lab=vss3v3}
+C {lab_pin.sym} 1540 -1130 0 0 {name=p97 sig_type=std_logic lab=vss3v3}
 C {lab_pin.sym} 1800 -1210 0 1 {name=p98 sig_type=std_logic lab=porb}
 C {lab_pin.sym} 350 -1660 0 0 {name=p101 sig_type=std_logic lab=porb}
 C {lab_pin.sym} 780 -2380 0 1 {name=p116 sig_type=std_logic lab=project_zero}
@@ -2775,14 +2779,14 @@ C {slot6_wrapper.sym} 2960 1700 2 1 {name=x93}
 C {slot7_wrapper.sym} 2960 920 2 1 {name=x94}
 C {slot8_wrapper.sym} 2960 130 2 1 {name=x95}
 C {slot9_wrapper.sym} 2960 -660 2 1 {name=x96}
-C {lab_pin.sym} 1370 -2000 0 0 {name=p800 sig_type=std_logic lab=gpio_out[11:0]}
-C {lab_pin.sym} 1370 -1980 0 0 {name=p801 sig_type=std_logic lab=gpio_oe[11:0]}
-C {lab_pin.sym} 1440 -1960 0 1 {name=p802 sig_type=std_logic lab=gpio_in[11:0]}
-C {ipin.sym} 1370 -1960 0 0 {name=p803 lab=gpio_in[11:0]}
-C {opin.sym} 1440 -2000 0 0 {name=p804 lab=gpio_out[11:0]}
-C {opin.sym} 1440 -1980 0 0 {name=p805 lab=gpio_oe[11:0]}
-C {opin.sym} 1440 -1890 0 0 {name=p806 lab=analog[3:0]}
-C {lab_pin.sym} 1370 -1890 0 0 {name=p807 sig_type=std_logic lab=analog[3:0]}
+C {lab_pin.sym} 1370 -2040 0 0 {name=p800 sig_type=std_logic lab=gpio_out[11:0]}
+C {lab_pin.sym} 1370 -2020 0 0 {name=p801 sig_type=std_logic lab=gpio_oe[11:0]}
+C {lab_pin.sym} 1440 -2000 0 1 {name=p802 sig_type=std_logic lab=gpio_in[11:0]}
+C {ipin.sym} 1370 -2000 0 0 {name=p803 lab=gpio_in[11:0]}
+C {opin.sym} 1440 -2040 0 0 {name=p804 lab=gpio_out[11:0]}
+C {opin.sym} 1440 -2020 0 0 {name=p805 lab=gpio_oe[11:0]}
+C {opin.sym} 1440 -1800 0 0 {name=p806 lab=analog[3:0]}
+C {lab_pin.sym} 1370 -1800 0 0 {name=p807 sig_type=std_logic lab=analog[3:0]}
 C {iopin.sym} 990 -270 0 1 {name=p808 lab=s10_an_2_esd}
 C {iopin.sym} 990 -290 0 1 {name=p809 lab=s10_an_1_esd}
 C {iopin.sym} 990 -310 0 1 {name=p810 lab=s10_an_0_esd}
@@ -3164,10 +3168,24 @@ C {noconn.sym} 1090 6340 0 1 {name=l8}
 C {opin.sym} 1920 -1830 0 0 {name=p1061 lab=analog_esd[3:0]}
 C {noconn.sym} 1870 -1830 0 0 {name=l9[3:0]}
 C {gf180mcu_ocd_ip__voltgen.sym} 2690 -1360 0 0 {name=x101}
-C {lab_pin.sym} 2910 -1330 0 1 {name=p1062 sig_type=std_logic lab=vgen_ena2}
+C {lab_pin.sym} 2910 -1340 0 1 {name=p1062 sig_type=std_logic lab=vgen_ena2}
 C {lab_pin.sym} 2600 -1770 0 0 {name=p1063 sig_type=std_logic lab=vgen_ena2}
 C {lab_pin.sym} 2790 -1740 0 1 {name=p1064 sig_type=std_logic lab=voltgen_vout}
 C {lab_pin.sym} 2690 -1810 2 0 {name=p1065 sig_type=std_logic lab=vdd5v0}
 C {lab_pin.sym} 2690 -1680 2 0 {name=p1066 sig_type=std_logic lab=vss5v0}
 C {gf180mcu_ocd_ip__classab_buffer.sym} 2770 -1740 0 0 {name=x102}
 C {lab_pin.sym} 1750 -1230 0 1 {name=p46 sig_type=std_logic lab=por}
+C {lab_pin.sym} 1370 -1980 0 0 {name=p110 sig_type=std_logic lab=gpio_ie[11:0]}
+C {opin.sym} 1440 -1980 0 0 {name=p112 lab=gpio_ie[11:0]}
+C {lab_pin.sym} 1440 -1880 0 1 {name=p144 sig_type=std_logic lab=gpio_one[11:0]}
+C {ipin.sym} 1370 -1880 0 0 {name=p153 lab=gpio_one[11:0]}
+C {lab_pin.sym} 1440 -1860 0 1 {name=p156 sig_type=std_logic lab=gpio_zero[11:0]}
+C {ipin.sym} 1370 -1860 0 0 {name=p160 lab=gpio_zero[11:0]}
+C {lab_pin.sym} 1370 -1960 0 0 {name=p166 sig_type=std_logic lab=gpio_schmitt[11:0]}
+C {opin.sym} 1440 -1960 0 0 {name=p167 lab=gpio_schmitt[11:0]}
+C {lab_pin.sym} 1370 -1940 0 0 {name=p168 sig_type=std_logic lab=gpio_slew[11:0]}
+C {opin.sym} 1440 -1940 0 0 {name=p169 lab=gpio_slew[11:0]}
+C {lab_pin.sym} 1370 -1920 0 0 {name=p170 sig_type=std_logic lab=gpio_pullup[11:0]}
+C {opin.sym} 1440 -1920 0 0 {name=p171 lab=gpio_pullup[11:0]}
+C {lab_pin.sym} 1370 -1900 0 0 {name=p172 sig_type=std_logic lab=gpio_pulldown[11:0]}
+C {opin.sym} 1440 -1900 0 0 {name=p1067 lab=gpio_pulldown[11:0]}
