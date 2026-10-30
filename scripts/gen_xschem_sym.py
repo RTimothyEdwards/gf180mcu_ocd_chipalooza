@@ -174,13 +174,34 @@ def guess_dir(name):
     return 'inout'
 
 
+# Buses written in DESCENDING bit order, whatever order the source view
+# presents them in.  Everything else keeps the source's own direction.
+#
+# WHY.  These are wired bus-to-bus in chipalooza_frame against the
+# housekeeping ports, which follow the Verilog convention (dbus_out[23:0]
+# and so on).  xschem pairs the bits of two buses in the order each one
+# declares, so a pin drawn as dig_in[0:23] against a net labelled
+# dbus_out[23:0] connects bit 23 to bit 0 and reverses the whole bus,
+# silently.  Matching the convention lets the wire be drawn directly.
+#
+# The analog vectors are deliberately NOT in this list:  s<N>_an runs
+# [0:1] or [0:2] and is wired per bit, so it keeps the layout's order.
+#
+# Layout-versus-schematic port ORDER is reconciled by netgen at LVS time,
+# so the schematic side is free to choose its own convention here;  the
+# only thing that has to agree is the two ends of a wire in the drawing.
+DESCENDING_BUSES = (
+    r'^dig_in$',
+    r'^dig_out$',
+)
+
+
 def collapse(ordered):
     """Collapse contiguous runs of bits of one signal into a bus pin.
 
-    ORDER IS PRESERVED and the run's own direction is used:  in the slot
-    wrappers dig_in runs 23 down to 0 while s1_an runs 0 up to 1.  A
-    primitive netlists POSITIONALLY, so emitting either backwards would
-    silently mis-wire the whole bus with nothing to flag it.
+    The run's own direction is preserved, except for the buses named in
+    DESCENDING_BUSES, which are always emitted high:low -- see the note
+    there for why.
     """
     out, i = [], 0
     bit = re.compile(r'^(\w+)[\[<](\d+)[\]>]$')
@@ -197,8 +218,12 @@ def collapse(ordered):
             if d not in (1, -1) or (step is not None and d != step):
                 break
             step = d; bits.append(int(m2.group(2))); j += 1
-        out.append(f'{base}[{bits[0]}:{bits[-1]}]' if len(bits) > 1
-                   else f'{base}[{bits[0]}]')
+        if len(bits) == 1:
+            out.append(f'{base}[{bits[0]}]')
+        elif any(re.match(p, base) for p in DESCENDING_BUSES):
+            out.append(f'{base}[{max(bits)}:{min(bits)}]')
+        else:
+            out.append(f'{base}[{bits[0]}:{bits[-1]}]')
         i = j + 1
     return out
 
@@ -228,12 +253,26 @@ def mag_ports(path):
     return [(lab, guess_dir(lab), '') for lab in collapse(ordered)]
 
 
-def cdl_ports(path, subckt):
-    """(name, dir, '') from a CDL .SUBCKT line, in declaration order.
+PININFO_DIR = {'I': 'input', 'O': 'output', 'B': 'inout'}
 
-    The CDL is the view that gets substituted for this primitive, so its
-    port ORDER is what the instance line must match.  Bus bits are
-    written <N> here and are rewritten to xschem's [N] form.
+
+def spice_ports(path, subckt):
+    """(name, dir, '') from a .subckt line, in declaration order.
+
+    This is the view that gets substituted for the primitive, so its port
+    ORDER is what the instance line must match.  Bus bits may be written
+    <N> or [N];  collapse() accepts either and emits [N].
+
+    DIRECTIONS COME FROM *.PININFO WHEN IT IS THERE.  The SRAM netlist
+    carries a line like
+
+        *.PININFO Q[7:0]:O WEN[7:0]:I A[9:0]:I CLK:I VDD:B VSS:B
+
+    which is worth reading, because guess_dir's rules were written for
+    IHP's A_ADDR/A_DIN/A_DOUT naming and match none of A/D/Q/CLK/GWEN/
+    WEN/CEN.  Without it every SRAM pin comes out "inout", which only
+    affects which side of the symbol a pin is drawn on, but there is no
+    reason to get it wrong when the file says.
     """
     s = open(path).read()
     m = re.search(r'^\.SUBCKT\s+' + re.escape(subckt) + r'\s+(.*?)(?=^\*|^\w)',
@@ -241,7 +280,23 @@ def cdl_ports(path, subckt):
     if not m:
         sys.exit(f'{path}: no .SUBCKT {subckt}')
     ports = m.group(1).replace('\n+', ' ').split()
-    return [(lab, guess_dir(lab), '') for lab in collapse(ports)]
+
+    pininfo = {}
+    pm = re.search(r'^\*\.PININFO\s+(.*)$', s, re.M)
+    if pm:
+        for tok in pm.group(1).split():
+            if ':' not in tok:
+                continue
+            nm, _, d = tok.rpartition(':')
+            base = re.sub(r'[\[<].*$', '', nm)
+            if d.upper() in PININFO_DIR:
+                pininfo[base] = PININFO_DIR[d.upper()]
+
+    out = []
+    for lab in collapse(ports):
+        base = re.sub(r'[\[<].*$', '', lab)
+        out.append((lab, pininfo.get(base) or guess_dir(lab), ''))
+    return out
 
 
 def pin_label(name, rng):
@@ -476,7 +531,11 @@ def main(argv):
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     outdir = os.path.join(root, 'xschem')
     os.makedirs(outdir, exist_ok=True)
-    pdk = os.path.join(os.environ.get('PDK_ROOT', os.path.expanduser('~/gits')),
+    # /usr/share/pdk is where open_pdks installs, and is the right default
+    # for GF180MCU on this machine.  The ~/gits fallback this used to have
+    # was inherited from IHP, whose PDK lives in its own repository rather
+    # than being installed, and it made every PDK-sourced job silently skip.
+    pdk = os.path.join(os.environ.get('PDK_ROOT', '/usr/share/pdk'),
                        os.environ.get('PDK', 'gf180mcuD'))
     sram = 'gf180mcu_ocd_ip_sram__sram1024x8m8wm1'
 
@@ -508,8 +567,11 @@ def main(argv):
     # The SRAM:  ports from the CDL, which is the view substituted for
     # this primitive, so its port ORDER is what the instance must match.
 
-    jobs.append((sram, 'cdl', os.path.join(
-        pdk, 'libs.ref', 'gf180mcu_ocd_ip_sram', 'cdl', sram + '.cdl')))
+    # The SRAM ships a SPICE netlist, not a CDL.  The cdl/ path was
+    # inherited from IHP, where that view existed;  here it does not, so
+    # the job skipped and no symbol was written.
+    jobs.append((sram, 'spice', os.path.join(
+        pdk, 'libs.ref', 'gf180mcu_ocd_ip_sram', 'spice', sram + '.spice')))
 
     # The padframe:  ports from verilog/gl/gf180mcu_padframe.v, NOT from
     # the layout, and NOT with the slot template.
@@ -557,7 +619,7 @@ def main(argv):
         elif kind == 'mag':
             ports = mag_ports(path)
         else:
-            ports = cdl_ports(path, module)
+            ports = spice_ports(path, module)
         loaded.append((module, kind, ports))
 
     slots = [(m, p) for m, k, p in loaded if k == 'mag']
@@ -585,12 +647,12 @@ def main(argv):
                          geom if kind == 'mag' else None,
                          draw.get(module))
         extra = ''
-        if kind == 'cdl':
+        if kind == 'spice':
             gldir = os.path.join(root, 'verilog', 'gl')
             os.makedirs(gldir, exist_ok=True)
             emit_lvs_verilog(module, ports,
                              os.path.join(gldir, module + '_lvs.v'),
-                             'the GF CDL for this cell')
+                             'the SPICE netlist shipped with this cell')
             extra = '  + gl/' + module + '_lvs.v'
         if kind == 'mag':
             gldir = os.path.join(root, 'verilog', 'gl')
@@ -604,4 +666,5 @@ def main(argv):
               f'({nl} left, {nr} right)  [{kind}]{extra}')
 
 
-main(sys.argv[1:])
+if __name__ == '__main__':
+    main(sys.argv[1:])

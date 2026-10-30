@@ -1,0 +1,89 @@
+v {xschem version=3.4.6 file_version=3.3}
+G {}
+K {type=primitive
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+P 4 5 0 0 0 -340 260 -340 260 0 0 0 {}
+T {user_project_control} 130.0 -358.0 0 0 0.3 0.3 {hcenter=true}
+L 4 -20 -60 0 -60 {}
+T {clk} 5 -60.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -62.5 -17.5 -57.5 {name=clk dir=in}
+L 4 -20 -80 0 -80 {}
+T {dig_ena} 5 -80.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -82.5 -17.5 -77.5 {name=dig_ena dir=in}
+L 4 -20 -100 0 -100 {}
+T {enable} 5 -100.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -102.5 -17.5 -97.5 {name=enable dir=in}
+L 4 -20 -220 0 -220 {}
+T {power_3v3_ena} 5 -220.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -222.5 -17.5 -217.5 {name=power_3v3_ena dir=in}
+L 4 -20 -200 0 -200 {}
+T {power_5v0_ena} 5 -200.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -202.5 -17.5 -197.5 {name=power_5v0_ena dir=in}
+L 4 260 -120 280 -120 {}
+T {proj_3v3_ena} 255 -120.0 0 1 0.25 0.25 {vcenter=true}
+B 5 277.5 -122.5 282.5 -117.5 {name=proj_3v3_ena dir=out}
+L 4 260 -100 280 -100 {}
+T {proj_5v0_ena} 255 -100.0 0 1 0.25 0.25 {vcenter=true}
+B 5 277.5 -102.5 282.5 -97.5 {name=proj_5v0_ena dir=out}
+L 4 260 -40 280 -40 {}
+T {proj_clk} 255 -40.0 0 1 0.25 0.25 {vcenter=true}
+B 5 277.5 -42.5 282.5 -37.5 {name=proj_clk dir=out}
+L 4 260 -60 280 -60 {}
+T {proj_ena} 255 -60.0 0 1 0.25 0.25 {vcenter=true}
+B 5 277.5 -62.5 282.5 -57.5 {name=proj_ena dir=out}
+L 4 260 -80 280 -80 {}
+T {proj_reset} 255 -80.0 0 1 0.25 0.25 {vcenter=true}
+B 5 277.5 -82.5 282.5 -77.5 {name=proj_reset dir=out}
+L 4 260 -180 280 -180 {}
+T {proj_vbias_ena} 255 -180.0 0 1 0.25 0.25 {vcenter=true}
+B 5 277.5 -182.5 282.5 -177.5 {name=proj_vbias_ena dir=out}
+L 4 -20 -120 0 -120 {}
+T {reset} 5 -120.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -122.5 -17.5 -117.5 {name=reset dir=in}
+L 4 -20 -180 0 -180 {}
+T {vbias_ena} 5 -180.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -182.5 -17.5 -177.5 {name=vbias_ena dir=in}
+L 4 -20 -300 0 -300 {}
+T {vddd} 5 -300.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -302.5 -17.5 -297.5 {name=vddd dir=inout}
+L 4 -20 -320 0 -320 {}
+T {vssd} 5 -320.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -322.5 -17.5 -317.5 {name=vssd dir=inout}
+L 4 -20 -140 0 -140 {}
+T {analog_ena[3:0]} 5 -140.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -142.5 -17.5 -137.5 {name=analog_ena[3:0] dir=in}
+L 4 -20 -240 0 -240 {}
+T {dig_in[23:0]} 5 -240.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -242.5 -17.5 -237.5 {name=dig_in[23:0] dir=in}
+L 4 260 -20 280 -20 {}
+T {dig_out[11:0]} 255 -20.0 0 1 0.25 0.25 {vcenter=true}
+B 5 277.5 -22.5 282.5 -17.5 {name=dig_out[11:0] dir=out}
+L 4 -20 -260 0 -260 {}
+T {dig_out_relay[11:0]} 5 -260.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -262.5 -17.5 -257.5 {name=dig_out_relay[11:0] dir=in}
+L 4 -20 -160 0 -160 {}
+T {ibias_ena[1:0]} 5 -160.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -162.5 -17.5 -157.5 {name=ibias_ena[1:0] dir=in}
+L 4 -20 -20 0 -20 {}
+T {proj_addr[4:0]} 5 -20.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -22.5 -17.5 -17.5 {name=proj_addr[4:0] dir=in}
+L 4 260 -140 280 -140 {}
+T {proj_analog_ena[3:0]} 255 -140.0 0 1 0.25 0.25 {vcenter=true}
+B 5 277.5 -142.5 282.5 -137.5 {name=proj_analog_ena[3:0] dir=out}
+L 4 260 -200 280 -200 {}
+T {proj_dig_in[23:0]} 255 -200.0 0 1 0.25 0.25 {vcenter=true}
+B 5 277.5 -202.5 282.5 -197.5 {name=proj_dig_in[23:0] dir=out}
+L 4 -20 -280 0 -280 {}
+T {proj_dig_out[11:0]} 5 -280.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -282.5 -17.5 -277.5 {name=proj_dig_out[11:0] dir=in}
+L 4 260 -160 280 -160 {}
+T {proj_ibias_ena[1:0]} 255 -160.0 0 1 0.25 0.25 {vcenter=true}
+B 5 277.5 -162.5 282.5 -157.5 {name=proj_ibias_ena[1:0] dir=out}
+L 4 -20 -40 0 -40 {}
+T {proj_sel[4:0]} 5 -40.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -42.5 -17.5 -37.5 {name=proj_sel[4:0] dir=in}

@@ -1,0 +1,170 @@
+v {xschem version=3.4.6 file_version=3.3}
+G {}
+K {type=primitive
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+P 4 5 0 0 0 -840 250 -840 250 0 0 0 {}
+T {housekeeping_top} 125.0 -858.0 0 0 0.3 0.3 {hcenter=true}
+L 4 -20 -100 0 -100 {}
+T {CSB} 5 -100.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -102.5 -17.5 -97.5 {name=CSB dir=in}
+L 4 -20 -60 0 -60 {}
+T {SCK} 5 -60.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -62.5 -17.5 -57.5 {name=SCK dir=in}
+L 4 -20 -80 0 -80 {}
+T {SDI} 5 -80.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -82.5 -17.5 -77.5 {name=SDI dir=in}
+L 4 250 -20 270 -20 {}
+T {SDO} 245 -20.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -22.5 272.5 -17.5 {name=SDO dir=out}
+L 4 250 -600 270 -600 {}
+T {bandgap_ena} 245 -600.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -602.5 272.5 -597.5 {name=bandgap_ena dir=out}
+L 4 250 -660 270 -660 {}
+T {biasgen_coarse} 245 -660.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -662.5 272.5 -657.5 {name=biasgen_coarse dir=out}
+L 4 250 -640 270 -640 {}
+T {biasgen_ena} 245 -640.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -642.5 272.5 -637.5 {name=biasgen_ena dir=out}
+L 4 250 -680 270 -680 {}
+T {biasgen_fine} 245 -680.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -682.5 272.5 -677.5 {name=biasgen_fine dir=out}
+L 4 250 -700 270 -700 {}
+T {biasgen_ref_vbg} 245 -700.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -702.5 272.5 -697.5 {name=biasgen_ref_vbg dir=out}
+L 4 -20 -40 0 -40 {}
+T {clk} 5 -40.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -42.5 -17.5 -37.5 {name=clk dir=in}
+L 4 250 -80 270 -80 {}
+T {clk_out} 245 -80.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -82.5 272.5 -77.5 {name=clk_out dir=out}
+L 4 -20 -20 0 -20 {}
+T {porb} 5 -20.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -22.5 -17.5 -17.5 {name=porb dir=in}
+L 4 250 -420 270 -420 {}
+T {proj_3v3_ena} 245 -420.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -422.5 272.5 -417.5 {name=proj_3v3_ena dir=out}
+L 4 250 -400 270 -400 {}
+T {proj_5v0_ena} 245 -400.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -402.5 272.5 -397.5 {name=proj_5v0_ena dir=out}
+L 4 250 -380 270 -380 {}
+T {proj_dig_ena} 245 -380.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -382.5 272.5 -377.5 {name=proj_dig_ena dir=out}
+L 4 250 -360 270 -360 {}
+T {proj_ena} 245 -360.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -362.5 272.5 -357.5 {name=proj_ena dir=out}
+L 4 250 -460 270 -460 {}
+T {proj_vbias_ena} 245 -460.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -462.5 272.5 -457.5 {name=proj_vbias_ena dir=out}
+L 4 250 -820 270 -820 {}
+T {project_zero} 245 -820.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -822.5 272.5 -817.5 {name=project_zero dir=out}
+L 4 250 -60 270 -60 {}
+T {reset} 245 -60.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -62.5 272.5 -57.5 {name=reset dir=out}
+L 4 250 -40 270 -40 {}
+T {sdo_ena} 245 -40.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -42.5 272.5 -37.5 {name=sdo_ena dir=out}
+L 4 250 -100 270 -100 {}
+T {sram_clk} 245 -100.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -102.5 272.5 -97.5 {name=sram_clk dir=out}
+L 4 250 -160 270 -160 {}
+T {sram_writeb} 245 -160.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -162.5 272.5 -157.5 {name=sram_writeb dir=out}
+L 4 250 -560 270 -560 {}
+T {voltgen_high} 245 -560.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -562.5 272.5 -557.5 {name=voltgen_high dir=out}
+L 4 -20 -220 0 -220 {}
+T {vddd} 5 -220.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -222.5 -17.5 -217.5 {name=vddd dir=inout}
+L 4 -20 -240 0 -240 {}
+T {vssd} 5 -240.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -242.5 -17.5 -237.5 {name=vssd dir=inout}
+L 4 250 -480 270 -480 {}
+T {analog_bus_ena[3:0]} 245 -480.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -482.5 272.5 -477.5 {name=analog_bus_ena[3:0] dir=out}
+L 4 250 -720 270 -720 {}
+T {bandgap_sink1[2:0]} 245 -720.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -722.5 272.5 -717.5 {name=bandgap_sink1[2:0] dir=out}
+L 4 250 -740 270 -740 {}
+T {bandgap_sink2[1:0]} 245 -740.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -742.5 272.5 -737.5 {name=bandgap_sink2[1:0] dir=out}
+L 4 250 -620 270 -620 {}
+T {bandgap_trim[15:0]} 245 -620.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -622.5 272.5 -617.5 {name=bandgap_trim[15:0] dir=out}
+L 4 -20 -180 0 -180 {}
+T {dbus_in_left[11:0]} 5 -180.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -182.5 -17.5 -177.5 {name=dbus_in_left[11:0] dir=in}
+L 4 -20 -200 0 -200 {}
+T {dbus_in_right[11:0]} 5 -200.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -202.5 -17.5 -197.5 {name=dbus_in_right[11:0] dir=in}
+L 4 250 -320 270 -320 {}
+T {dbus_out[23:0]} 245 -320.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -322.5 272.5 -317.5 {name=dbus_out[23:0] dir=out}
+L 4 250 -500 270 -500 {}
+T {idac1_value[4:0]} 245 -500.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -502.5 272.5 -497.5 {name=idac1_value[4:0] dir=out}
+L 4 250 -520 270 -520 {}
+T {idac2_value[4:0]} 245 -520.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -522.5 272.5 -517.5 {name=idac2_value[4:0] dir=out}
+L 4 250 -220 270 -220 {}
+T {io_ie[11:0]} 245 -220.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -222.5 272.5 -217.5 {name=io_ie[11:0] dir=out}
+L 4 -20 -160 0 -160 {}
+T {io_in[11:0]} 5 -160.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -162.5 -17.5 -157.5 {name=io_in[11:0] dir=in}
+L 4 250 -200 270 -200 {}
+T {io_oe[11:0]} 245 -200.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -202.5 272.5 -197.5 {name=io_oe[11:0] dir=out}
+L 4 250 -180 270 -180 {}
+T {io_out[11:0]} 245 -180.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -182.5 272.5 -177.5 {name=io_out[11:0] dir=out}
+L 4 250 -260 270 -260 {}
+T {io_pulldown[11:0]} 245 -260.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -262.5 272.5 -257.5 {name=io_pulldown[11:0] dir=out}
+L 4 250 -240 270 -240 {}
+T {io_pullup[11:0]} 245 -240.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -242.5 272.5 -237.5 {name=io_pullup[11:0] dir=out}
+L 4 250 -280 270 -280 {}
+T {io_schmitt[11:0]} 245 -280.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -282.5 272.5 -277.5 {name=io_schmitt[11:0] dir=out}
+L 4 250 -300 270 -300 {}
+T {io_slew[11:0]} 245 -300.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -302.5 272.5 -297.5 {name=io_slew[11:0] dir=out}
+L 4 -20 -120 0 -120 {}
+T {mask_rev_in[31:0]} 5 -120.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -122.5 -17.5 -117.5 {name=mask_rev_in[31:0] dir=in}
+L 4 250 -440 270 -440 {}
+T {proj_ibias_ena[1:0]} 245 -440.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -442.5 272.5 -437.5 {name=proj_ibias_ena[1:0] dir=out}
+L 4 250 -340 270 -340 {}
+T {proj_sel[4:0]} 245 -340.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -342.5 272.5 -337.5 {name=proj_sel[4:0] dir=out}
+L 4 250 -120 270 -120 {}
+T {sram_addr[9:0]} 245 -120.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -122.5 272.5 -117.5 {name=sram_addr[9:0] dir=out}
+L 4 250 -140 270 -140 {}
+T {sram_idata[7:0]} 245 -140.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -142.5 272.5 -137.5 {name=sram_idata[7:0] dir=out}
+L 4 -20 -140 0 -140 {}
+T {sram_odata[7:0]} 5 -140.0 0 0 0.25 0.25 {vcenter=true}
+B 5 -22.5 -142.5 -17.5 -137.5 {name=sram_odata[7:0] dir=in}
+L 4 250 -540 270 -540 {}
+T {voltgen_ena[2:0]} 245 -540.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -542.5 272.5 -537.5 {name=voltgen_ena[2:0] dir=out}
+L 4 250 -760 270 -760 {}
+T {voltgen_sink1[2:0]} 245 -760.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -762.5 272.5 -757.5 {name=voltgen_sink1[2:0] dir=out}
+L 4 250 -780 270 -780 {}
+T {voltgen_sink2[2:0]} 245 -780.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -782.5 272.5 -777.5 {name=voltgen_sink2[2:0] dir=out}
+L 4 250 -800 270 -800 {}
+T {voltgen_source[4:0]} 245 -800.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -802.5 272.5 -797.5 {name=voltgen_source[4:0] dir=out}
+L 4 250 -580 270 -580 {}
+T {voltgen_value[2:0]} 245 -580.0 0 1 0.25 0.25 {vcenter=true}
+B 5 267.5 -582.5 272.5 -577.5 {name=voltgen_value[2:0] dir=out}

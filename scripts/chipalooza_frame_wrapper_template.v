@@ -51,9 +51,7 @@ module chipalooza_frame_wrapper (
 	input  SCK,
 	input  clk,
 	input [11:0] gpio,
-	inout [3:0] analog,
-	input  porb,
-	input  [31:0] mask_rev
+	inout [3:0] analog
 );
 
 	// Declare a user project by defining HAS_USER_PROJECT

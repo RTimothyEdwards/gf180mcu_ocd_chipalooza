@@ -490,13 +490,13 @@ place_pad_right	 pad_s3_an_1	PAD_3_1_TYPE	 	 pad_24
 place_spacers_right 26
 place_pad_right	 pad_s4_an_0	PAD_4_0_TYPE	 	 pad_25
 place_spacers_right 27
-place_pad_right	 pad_vss3v3_0	gf180mcu_ocd_io__vss 	 pad_26
+place_pad_right	 pad_s4_an_1	PAD_4_1_TYPE	 	 pad_26
 place_spacers_right 28
-place_pad_right	 pad_s5_an_0	PAD_5_0_TYPE	 	 pad_27
+place_pad_right	 pad_vss3v3_0	gf180mcu_ocd_io__vss 	 pad_27
 place_spacers_right 29
-place_pad_right	 pad_s5_an_1	PAD_5_1_TYPE	 	 pad_28
+place_pad_right	 pad_s5_an_0	PAD_5_0_TYPE	 	 pad_28
 place_spacers_right 30
-place_pad_right	 pad_s5_an_2	PAD_5_2_TYPE	 	 pad_29
+place_pad_right	 pad_s5_an_1	PAD_5_1_TYPE	 	 pad_29
 place_spacers_right 31
 place_pad_right	 pad_s6_an_0	PAD_6_0_TYPE	 	 pad_30
 place_spacers_right 32
@@ -546,11 +546,11 @@ place_pad_left	 pad_s16_an_1	PAD_16_1_TYPE		 pad_71
 place_spacers_left 74
 place_pad_left	 pad_s16_an_0	PAD_16_0_TYPE	 	 pad_70
 place_spacers_left 73
-place_pad_left	 pad_s15_an_0	PAD_15_0_TYPE	 	 pad_69
+place_pad_left	 pad_s15_an_1	PAD_15_1_TYPE	 	 pad_69
 place_spacers_left 72
-place_pad_left	 pad_vss5v0_5	gf180mcu_ocd_io__dvss 	 pad_68
+place_pad_left	 pad_s15_an_0	PAD_15_0_TYPE	 	 pad_68
 place_spacers_left 71
-place_pad_left	 pad_s14_an_2	PAD_14_2_TYPE	 	 pad_67
+place_pad_left	 pad_vss5v0_5	gf180mcu_ocd_io__dvss 	 pad_67
 place_spacers_left 70
 place_pad_left	 pad_s14_an_1	PAD_14_1_TYPE	 	 pad_66
 place_spacers_left 69
@@ -859,9 +859,9 @@ PAD_2_1_SIGNALS
 PAD_3_0_SIGNALS
 PAD_3_1_SIGNALS
 PAD_4_0_SIGNALS
+PAD_4_1_SIGNALS
 PAD_5_0_SIGNALS
 PAD_5_1_SIGNALS
-PAD_5_2_SIGNALS
 PAD_6_0_SIGNALS
 PAD_6_1_SIGNALS
 PAD_7_0_SIGNALS
@@ -880,8 +880,8 @@ PAD_13_0_SIGNALS
 PAD_13_1_SIGNALS
 PAD_14_0_SIGNALS
 PAD_14_1_SIGNALS
-PAD_14_2_SIGNALS
 PAD_15_0_SIGNALS
+PAD_15_1_SIGNALS
 PAD_16_0_SIGNALS
 PAD_16_1_SIGNALS
 PAD_17_0_SIGNALS

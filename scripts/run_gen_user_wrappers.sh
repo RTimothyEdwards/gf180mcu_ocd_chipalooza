@@ -39,8 +39,9 @@ drc off
 crashbackups stop
 locking disable
 tech unlock *
+units microns
+snap internal
 
-source ../scripts/layout_setup.tcl
 load chipalooza_frame
 select top cell
 expand
@@ -56,25 +57,25 @@ for {set i 1} {\$i <= 18} {incr i} {
 }
 
 # Place box at slot 18 position
-box position 279 503.95
-box width 537.15
-box height 273
+box position 349.76 903.65
+box width 1274.25
+box height 412.71
 
 # Generate wrapper layouts for slots 10 to 18
 for {set i 18} {\$i >= 10} {incr i -1} {
     select area
     select save slot\${i}_wrapper
-    box move n 275
+    box move n 413
 }
 
 # Place box at slot 1 position
-box position 1363.85 503.95
+box position 2255.97 903.65
 
 # Generate wrapper layouts for slots 1 to 9
 for {set i 1} {\$i <= 9} {incr i} {
     select area
     select save slot\${i}_wrapper
-    box move n 275
+    box move n 413
 }
 
 # Now edit each slot wrapper in turn
@@ -133,18 +134,15 @@ for {set i 1} {\$i <= 18} {incr i} {
     select top cell
     port makeall
 
-    # for ports 10 to 18, flip the layout so that resources are on the left
-    # and pads are on the right.
-    if {\${i} >= 10} {
-	select top cell
-	select area
-	sideways
-    }
+    # Note:  The IHP version of the script flipped the layouts of slots
+    # 10 to 18.  This turned out to be of no particular use, and caused
+    # users to get artwork reversed, so it's not being done any more.
+    # Every slot is now oriented as it is in the chip top level.
 
     # Move the lower left corner to the origin and set the bounding box
     select top cell
     move origin {*}[box position]
-    property FIXED_BBOX 0 0 537.15 273
+    property FIXED_BBOX 0 0 1274.27 412.71
 
     # save this result
     writeall force slot\${i}_wrapper

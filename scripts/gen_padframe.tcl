@@ -484,19 +484,19 @@ place_pad_right	 pad_s2_an_1	gf180mcu_ocd_io__asig_5p0 		 pad_21
 place_spacers_right 23
 place_pad_right	 pad_vss5v0_0	gf180mcu_ocd_io__dvss	 pad_22
 place_spacers_right 24
-place_pad_right	 pad_s3_an_0	gf180mcu_ocd_io__bi_a	 	 pad_23
+place_pad_right	 pad_s3_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_23
 place_spacers_right 25
 place_pad_right	 pad_s3_an_1	gf180mcu_ocd_io__asig_5p0	 	 pad_24
 place_spacers_right 26
 place_pad_right	 pad_s4_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_25
 place_spacers_right 27
-place_pad_right	 pad_vss3v3_0	gf180mcu_ocd_io__vss 	 pad_26
+place_pad_right	 pad_s4_an_1	gf180mcu_ocd_io__asig_5p0	 	 pad_26
 place_spacers_right 28
-place_pad_right	 pad_s5_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_27
+place_pad_right	 pad_vss3v3_0	gf180mcu_ocd_io__vss 	 pad_27
 place_spacers_right 29
-place_pad_right	 pad_s5_an_1	gf180mcu_ocd_io__asig_5p0	 	 pad_28
+place_pad_right	 pad_s5_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_28
 place_spacers_right 30
-place_pad_right	 pad_s5_an_2	gf180mcu_ocd_io__asig_5p0	 	 pad_29
+place_pad_right	 pad_s5_an_1	gf180mcu_ocd_io__asig_5p0	 	 pad_29
 place_spacers_right 31
 place_pad_right	 pad_s6_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_30
 place_spacers_right 32
@@ -546,15 +546,15 @@ place_pad_left	 pad_s16_an_1	gf180mcu_ocd_io__asig_5p0		 pad_71
 place_spacers_left 74
 place_pad_left	 pad_s16_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_70
 place_spacers_left 73
-place_pad_left	 pad_s15_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_69
+place_pad_left	 pad_s15_an_1	gf180mcu_ocd_io__asig_5p0	 	 pad_69
 place_spacers_left 72
-place_pad_left	 pad_vss5v0_5	gf180mcu_ocd_io__dvss 	 pad_68
+place_pad_left	 pad_s15_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_68
 place_spacers_left 71
-place_pad_left	 pad_s14_an_2	gf180mcu_ocd_io__asig_5p0	 	 pad_67
+place_pad_left	 pad_vss5v0_5	gf180mcu_ocd_io__dvss 	 pad_67
 place_spacers_left 70
 place_pad_left	 pad_s14_an_1	gf180mcu_ocd_io__asig_5p0	 	 pad_66
 place_spacers_left 69
-place_pad_left	 pad_s14_an_0	gf180mcu_ocd_io__in_s	 	 pad_65
+place_pad_left	 pad_s14_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_65
 place_spacers_left 68
 place_pad_left	 pad_s13_an_1	gf180mcu_ocd_io__asig_5p0	 	 pad_64
 place_spacers_left 67
@@ -856,22 +856,12 @@ label_right_analog pad_s1_an_0  pad s1_an\[0\]
 label_right_analog pad_s1_an_1  pad s1_an\[1\]
 label_right_analog pad_s2_an_0  pad s2_an\[0\]
 label_right_analog pad_s2_an_1  pad s2_an\[1\]
-label_right_signal pad_s3_an_0  A    s3_an_0_out
-label_right_signal pad_s3_an_0  Y    s3_an_0_in
-label_right_signal pad_s3_an_0  OE s3_an_0_oe
-label_right_signal pad_s3_an_0  IE s3_an_0_ie
-label_right_signal pad_s3_an_0  PU s3_an_0_pullup
-label_right_signal pad_s3_an_0  PD s3_an_0_pulldown
-label_right_signal pad_s3_an_0  SL s3_an_0_slew
-label_right_signal pad_s3_an_0  CS s3_an_0_schmitt
-label_right_signal pad_s3_an_0  PDRV0 s3_an_0_drive_0
-label_right_signal pad_s3_an_0  PDRV1 s3_an_0_drive_1
-label_right_signal pad_s3_an_0  ANA s3_an_0_ana
+label_right_analog pad_s3_an_0  pad s3_an\[0\]
 label_right_analog pad_s3_an_1  pad s3_an\[1\]
 label_right_analog pad_s4_an_0  pad s4_an\[0\]
+label_right_analog pad_s4_an_1  pad s4_an\[1\]
 label_right_analog pad_s5_an_0  pad s5_an\[0\]
 label_right_analog pad_s5_an_1  pad s5_an\[1\]
-label_right_analog pad_s5_an_2  pad s5_an\[2\]
 label_right_analog pad_s6_an_0  pad s6_an\[0\]
 label_right_analog pad_s6_an_1  pad s6_an\[1\]
 label_right_analog pad_s7_an_0  pad s7_an\[0\]
@@ -888,12 +878,10 @@ label_left_analog pad_s12_an_0  pad s12_an\[0\]
 label_left_analog pad_s12_an_1  pad s12_an\[1\]
 label_left_analog pad_s13_an_0  pad s13_an\[0\]
 label_left_analog pad_s13_an_1  pad s13_an\[1\]
-label_left_signal pad_s14_an_0  Y    s14_an_0_in
-label_left_signal pad_s14_an_0  PU    s14_an_0_pullup
-label_left_signal pad_s14_an_0  PD    s14_an_0_pulldown
+label_left_analog pad_s14_an_0  pad s14_an\[0\]
 label_left_analog pad_s14_an_1  pad s14_an\[1\]
-label_left_analog pad_s14_an_2  pad s14_an\[2\]
 label_left_analog pad_s15_an_0  pad s15_an\[0\]
+label_left_analog pad_s15_an_1  pad s15_an\[1\]
 label_left_analog pad_s16_an_0  pad s16_an\[0\]
 label_left_analog pad_s16_an_1  pad s16_an\[1\]
 label_left_analog pad_s17_an_0  pad s17_an\[0\]
@@ -985,8 +973,6 @@ add_constant_top pad_gpio_9 const_gpio_9
 add_constant_top pad_gpio_10 const_gpio_10
 add_constant_top pad_gpio_11 const_gpio_11
 
-add_constant_right pad_s3_an_0 const_3_0
-add_constant_left pad_s14_an_0 const_14_0
 
 select top cell
 expand
@@ -1027,10 +1013,6 @@ label_top_signal const_gpio_10 one gpio_10_one
 label_top_signal const_gpio_11 zero gpio_11_zero
 label_top_signal const_gpio_11 one gpio_11_one
 
-label_right_signal const_3_0    zero s3_an_0_zero
-label_right_signal const_3_0    one s3_an_0_one
-label_left_signal const_14_0    zero s14_an_0_zero
-label_left_signal const_14_0    one s14_an_0_one
 
 ## NOTE:  mask_rev has been removed from the padframe and put in
 ## the core instead.

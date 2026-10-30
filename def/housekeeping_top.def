@@ -1094,222 +1094,222 @@ PINS 284 ;
      + USE SIGNAL
      + PORT
         + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 873000 284000 ) N ;
-   - dbus_in_right[0] + NET dbus_in_right[0]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 967000 284000 ) N ;
-   - dbus_in_right[1] + NET dbus_in_right[1]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 969000 284000 ) N ;
-   - dbus_in_right[2] + NET dbus_in_right[2]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 971000 284000 ) N ;
-   - dbus_in_right[3] + NET dbus_in_right[3]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 973000 284000 ) N ;
-   - dbus_in_right[4] + NET dbus_in_right[4]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 975000 284000 ) N ;
-   - dbus_in_right[5] + NET dbus_in_right[5]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 977000 284000 ) N ;
-   - dbus_in_right[6] + NET dbus_in_right[6]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 979000 284000 ) N ;
-   - dbus_in_right[7] + NET dbus_in_right[7]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 981000 284000 ) N ;
-   - dbus_in_right[8] + NET dbus_in_right[8]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 983000 284000 ) N ;
-   - dbus_in_right[9] + NET dbus_in_right[9]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 985000 284000 ) N ;
-   - dbus_in_right[10] + NET dbus_in_right[10]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 987000 284000 ) N ;
    - dbus_in_right[11] + NET dbus_in_right[11]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 967000 284000 ) N ;
+   - dbus_in_right[10] + NET dbus_in_right[10]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 969000 284000 ) N ;
+   - dbus_in_right[9] + NET dbus_in_right[9]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 971000 284000 ) N ;
+   - dbus_in_right[8] + NET dbus_in_right[8]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 973000 284000 ) N ;
+   - dbus_in_right[7] + NET dbus_in_right[7]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 975000 284000 ) N ;
+   - dbus_in_right[6] + NET dbus_in_right[6]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 977000 284000 ) N ;
+   - dbus_in_right[5] + NET dbus_in_right[5]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 979000 284000 ) N ;
+   - dbus_in_right[4] + NET dbus_in_right[4]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 981000 284000 ) N ;
+   - dbus_in_right[3] + NET dbus_in_right[3]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 983000 284000 ) N ;
+   - dbus_in_right[2] + NET dbus_in_right[2]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 985000 284000 ) N ;
+   - dbus_in_right[1] + NET dbus_in_right[1]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 987000 284000 ) N ;
+   - dbus_in_right[0] + NET dbus_in_right[0]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
         + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 989000 284000 ) N ;
-   - io_in[8] + NET io_in[8]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1010000 284000 ) N ;
-   - io_oe[8] + NET io_oe[8]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1012000 284000 ) N ;
-   - io_out[8] + NET io_out[8]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1014000 284000 ) N ;
-   - io_slew[8] + NET io_slew[8]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1016000 284000 ) N ;
-   - io_ie[8] + NET io_ie[8]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1018000 284000 ) N ;
-   - io_pulldown[8] + NET io_pulldown[8]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1020000 284000 ) N ;
-   - io_pullup[8] + NET io_pullup[8]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1022000 284000 ) N ;
-   - io_schmitt[8] + NET io_schmitt[8]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1024000 284000 ) N ;
-   - io_in[9] + NET io_in[9]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1026000 284000 ) N ;
-   - io_oe[9] + NET io_oe[9]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1028000 284000 ) N ;
-   - io_out[9] + NET io_out[9]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1030000 284000 ) N ;
-   - io_slew[9] + NET io_slew[9]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1032000 284000 ) N ;
-   - io_ie[9] + NET io_ie[9]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1034000 284000 ) N ;
-   - io_pulldown[9] + NET io_pulldown[9]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1036000 284000 ) N ;
-   - io_pullup[9] + NET io_pullup[9]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1038000 284000 ) N ;
-   - io_schmitt[9] + NET io_schmitt[9]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1040000 284000 ) N ;
-   - io_in[10] + NET io_in[10]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1042000 284000 ) N ;
-   - io_oe[10] + NET io_oe[10]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1044000 284000 ) N ;
-   - io_out[10] + NET io_out[10]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1046000 284000 ) N ;
-   - io_slew[10] + NET io_slew[10]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1048000 284000 ) N ;
-   - io_ie[10] + NET io_ie[10]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1050000 284000 ) N ;
-   - io_pulldown[10] + NET io_pulldown[10]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1052000 284000 ) N ;
-   - io_pullup[10] + NET io_pullup[10]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1054000 284000 ) N ;
-   - io_schmitt[10] + NET io_schmitt[10]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1056000 284000 ) N ;
    - io_in[11] + NET io_in[11]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1058000 284000 ) N ;
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1010000 284000 ) N ;
    - io_oe[11] + NET io_oe[11]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1060000 284000 ) N ;
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1012000 284000 ) N ;
    - io_out[11] + NET io_out[11]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1062000 284000 ) N ;
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1014000 284000 ) N ;
    - io_slew[11] + NET io_slew[11]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1064000 284000 ) N ;
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1016000 284000 ) N ;
    - io_ie[11] + NET io_ie[11]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1066000 284000 ) N ;
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1018000 284000 ) N ;
    - io_pulldown[11] + NET io_pulldown[11]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1068000 284000 ) N ;
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1020000 284000 ) N ;
    - io_pullup[11] + NET io_pullup[11]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1070000 284000 ) N ;
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1022000 284000 ) N ;
    - io_schmitt[11] + NET io_schmitt[11]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1024000 284000 ) N ;
+   - io_in[10] + NET io_in[10]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1026000 284000 ) N ;
+   - io_oe[10] + NET io_oe[10]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1028000 284000 ) N ;
+   - io_out[10] + NET io_out[10]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1030000 284000 ) N ;
+   - io_slew[10] + NET io_slew[10]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1032000 284000 ) N ;
+   - io_ie[10] + NET io_ie[10]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1034000 284000 ) N ;
+   - io_pulldown[10] + NET io_pulldown[10]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1036000 284000 ) N ;
+   - io_pullup[10] + NET io_pullup[10]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1038000 284000 ) N ;
+   - io_schmitt[10] + NET io_schmitt[10]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1040000 284000 ) N ;
+   - io_in[9] + NET io_in[9]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1042000 284000 ) N ;
+   - io_oe[9] + NET io_oe[9]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1044000 284000 ) N ;
+   - io_out[9] + NET io_out[9]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1046000 284000 ) N ;
+   - io_slew[9] + NET io_slew[9]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1048000 284000 ) N ;
+   - io_ie[9] + NET io_ie[9]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1050000 284000 ) N ;
+   - io_pulldown[9] + NET io_pulldown[9]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1052000 284000 ) N ;
+   - io_pullup[9] + NET io_pullup[9]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1054000 284000 ) N ;
+   - io_schmitt[9] + NET io_schmitt[9]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1056000 284000 ) N ;
+   - io_in[8] + NET io_in[8]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1058000 284000 ) N ;
+   - io_oe[8] + NET io_oe[8]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1060000 284000 ) N ;
+   - io_out[8] + NET io_out[8]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1062000 284000 ) N ;
+   - io_slew[8] + NET io_slew[8]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1064000 284000 ) N ;
+   - io_ie[8] + NET io_ie[8]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1066000 284000 ) N ;
+   - io_pulldown[8] + NET io_pulldown[8]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1068000 284000 ) N ;
+   - io_pullup[8] + NET io_pullup[8]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1070000 284000 ) N ;
+   - io_schmitt[8] + NET io_schmitt[8]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
@@ -1334,7 +1334,7 @@ PINS 284 ;
      + USE SIGNAL
      + PORT
         + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1444000 284000 ) N ;
-   - voltgen_ena[2] + NET voltgen_ena[2]
+   - voltgen_ena[1] + NET voltgen_ena[1]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
@@ -1344,7 +1344,7 @@ PINS 284 ;
      + USE SIGNAL
      + PORT
         + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 1451000 284000 ) N ;
-   - voltgen_ena[1] + NET voltgen_ena[1]
+   - voltgen_ena[2] + NET voltgen_ena[2]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT

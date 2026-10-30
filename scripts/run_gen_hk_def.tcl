@@ -461,57 +461,57 @@ label_top_signal dbus_out\[0\]    2063	output
 # Right-side dbus return signals from project slot 1
 # Start at X=2157
 
-label_top_signal dbus_in_right\[0\]    2157	input
-label_top_signal dbus_in_right\[1\]    2159	input
-label_top_signal dbus_in_right\[2\]    2161	input
-label_top_signal dbus_in_right\[3\]    2163	input
-label_top_signal dbus_in_right\[4\]    2165	input
-label_top_signal dbus_in_right\[5\]    2167	input
-label_top_signal dbus_in_right\[6\]    2169	input
-label_top_signal dbus_in_right\[7\]    2171	input
-label_top_signal dbus_in_right\[8\]    2173	input
-label_top_signal dbus_in_right\[9\]    2175	input
-label_top_signal dbus_in_right\[10\]   2177	input
-label_top_signal dbus_in_right\[11\]   2179	input
+label_top_signal dbus_in_right\[11\]   2157	input
+label_top_signal dbus_in_right\[10\]   2159	input
+label_top_signal dbus_in_right\[9\]    2161	input
+label_top_signal dbus_in_right\[8\]    2163	input
+label_top_signal dbus_in_right\[7\]    2165	input
+label_top_signal dbus_in_right\[6\]    2167	input
+label_top_signal dbus_in_right\[5\]    2169	input
+label_top_signal dbus_in_right\[4\]    2171	input
+label_top_signal dbus_in_right\[3\]    2173	input
+label_top_signal dbus_in_right\[2\]    2175	input
+label_top_signal dbus_in_right\[1\]    2177	input
+label_top_signal dbus_in_right\[0\]    2179	input
 
 # The I/O ports at the top have to be threaded through the far
 # right side of the center column.  Start X at 2200.
 
-label_top_signal io_in\[8\]	      2200	input
-label_top_signal io_oe\[8\]	      2202	output
-label_top_signal io_out\[8\]	      2204	output
-label_top_signal io_slew\[8\]	      2206	output
-label_top_signal io_ie\[8\]	      2208	output
-label_top_signal io_pulldown\[8\]     2210	output
-label_top_signal io_pullup\[8\]	      2212	output
-label_top_signal io_schmitt\[8\]      2214	output
+label_top_signal io_in\[11\]	      2200	input
+label_top_signal io_oe\[11\]	      2202	output
+label_top_signal io_out\[11\]	      2204	output
+label_top_signal io_slew\[11\]	      2206	output
+label_top_signal io_ie\[11\]	      2208	output
+label_top_signal io_pulldown\[11\]    2210	output
+label_top_signal io_pullup\[11\]      2212	output
+label_top_signal io_schmitt\[11\]     2214	output
 
-label_top_signal io_in\[9\]	      2216	input
-label_top_signal io_oe\[9\]	      2218	output
-label_top_signal io_out\[9\]	      2220	output
-label_top_signal io_slew\[9\]	      2222	output
-label_top_signal io_ie\[9\]	      2224	output
-label_top_signal io_pulldown\[9\]     2226	output
-label_top_signal io_pullup\[9\]	      2228	output
-label_top_signal io_schmitt\[9\]      2230	output
+label_top_signal io_in\[10\]	      2216	input
+label_top_signal io_oe\[10\]	      2218	output
+label_top_signal io_out\[10\]	      2220	output
+label_top_signal io_slew\[10\]	      2222	output
+label_top_signal io_ie\[10\]	      2224	output
+label_top_signal io_pulldown\[10\]    2226	output
+label_top_signal io_pullup\[10\]      2228	output
+label_top_signal io_schmitt\[10\]     2230	output
 
-label_top_signal io_in\[10\]	      2232	input
-label_top_signal io_oe\[10\]	      2234	output
-label_top_signal io_out\[10\]	      2236	output
-label_top_signal io_slew\[10\]	      2238	output
-label_top_signal io_ie\[10\]	      2240	output
-label_top_signal io_pulldown\[10\]    2242	output
-label_top_signal io_pullup\[10\]      2244	output
-label_top_signal io_schmitt\[10\]     2246	output
+label_top_signal io_in\[9\]	      2232	input
+label_top_signal io_oe\[9\]	      2234	output
+label_top_signal io_out\[9\]	      2236	output
+label_top_signal io_slew\[9\]	      2238	output
+label_top_signal io_ie\[9\]	      2240	output
+label_top_signal io_pulldown\[9\]     2242	output
+label_top_signal io_pullup\[9\]       2244	output
+label_top_signal io_schmitt\[9\]      2246	output
 
-label_top_signal io_in\[11\]	      2248	input
-label_top_signal io_oe\[11\]	      2250	output
-label_top_signal io_out\[11\]	      2252	output
-label_top_signal io_slew\[11\]	      2254	output
-label_top_signal io_ie\[11\]	      2256	output
-label_top_signal io_pulldown\[11\]    2258	output
-label_top_signal io_pullup\[11\]      2260	output
-label_top_signal io_schmitt\[11\]     2262	output
+label_top_signal io_in\[8\]	      2248	input
+label_top_signal io_oe\[8\]	      2250	output
+label_top_signal io_out\[8\]	      2252	output
+label_top_signal io_slew\[8\]	      2254	output
+label_top_signal io_ie\[8\]	      2256	output
+label_top_signal io_pulldown\[8\]     2258	output
+label_top_signal io_pullup\[8\]       2260	output
+label_top_signal io_schmitt\[8\]      2262	output
 
 # The voltage bias generator pins come from the left and
 # start at x=2538
@@ -520,9 +520,9 @@ label_top_signal voltgen_value\[2\]    2538	output
 label_top_signal voltgen_value\[1\]    2543	output
 label_top_signal voltgen_value\[0\]    2549	output
 label_top_signal voltgen_high	       2634	output
-label_top_signal voltgen_ena\[2\]      2638	output
+label_top_signal voltgen_ena\[1\]      2638	output
 label_top_signal voltgen_ena\[0\]      2641	output
-label_top_signal voltgen_ena\[1\]      2644	output
+label_top_signal voltgen_ena\[2\]      2644	output
 
 # The bandgap is on the right with left-facing pins
 # Start at X=2700

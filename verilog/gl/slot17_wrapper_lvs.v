@@ -9,24 +9,23 @@
  */
 
 module slot17_wrapper (
+    inout vss3v3,
     inout [0:1] s17_an,
-    inout s17_an_0_esd,
-    inout s17_an_1_esd,
-    inout vbias,
-    input [23:0] dig_in,
-    output [11:0] dig_out,
-    inout ibias0,
-    inout ibias1,
+    inout vdd_3v3,
+    inout vss_5v0,
+    inout vdd_5v0,
+    inout vss_3v3,
     inout analog_bus3,
     inout analog_bus2,
     inout analog_bus1,
     inout analog_bus0,
-    inout vss_3v3,
-    inout vdd_3v3,
-    inout vss_5v0,
-    inout vdd_5v0,
+    inout vbias,
+    inout ibias0,
+    inout ibias1,
+    output [11:0] dig_out,
+    input [23:0] dig_in,
+    input reset,
     input enable,
-    input clk,
-    input reset
+    input clk
 );
 endmodule

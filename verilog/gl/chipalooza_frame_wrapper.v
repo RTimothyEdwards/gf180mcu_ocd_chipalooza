@@ -42,56 +42,42 @@ module chipalooza_frame_wrapper (
 
 	// Core infrastructure (padframe-facing pins)
 
-	inout  s1_an_0,
-	inout  s1_an_1,
-	inout  s2_an_0,
-	inout  s2_an_1,
-	input s3_an_0_in,
-	output s3_an_0_out,
-	output s3_an_0_oe,
-	output s3_an_0_ie,
-	output s3_an_0_pullup,
-	output s3_an_0_pullup,
-	output  s3_an_0_drive_0,
-	output  s3_an_0_drive_1,
-	output  s3_an_0_ana,
-	input  s3_an_0_one,
-	input  s3_an_0_zero,
-	inout  s3_an_1,
-	inout  s4_an_0,
-	inout  s5_an_0,
-	inout  s5_an_1,
-	inout  s5_an_2,
-	inout  s6_an_0,
-	inout  s6_an_1,
-	inout  s7_an_0,
-	inout  s7_an_1,
-	inout  s8_an_0,
-	inout  s9_an_0,
-	inout  s9_an_1,
-	inout  s9_an_2,
-	inout  s10_an_0,
-	inout  s10_an_1,
-	inout  s10_an_2,
-	inout  s11_an_0,
-	inout  s12_an_0,
-	inout  s12_an_1,
-	inout  s13_an_0,
-	inout  s13_an_1,
-	input  s14_an_0_in,
-	input  s14_an_0_pullup,
-	input  s14_an_0_pulldown,
-	input  s14_an_0_one,
-	input  s14_an_0_zero,
-	inout  s14_an_1,
-	inout  s14_an_2,
-	inout  s15_an_0,
-	inout  s16_an_0,
-	inout  s16_an_1,
-	inout  s17_an_0,
-	inout  s17_an_1,
-	inout  s18_an_0,
-	inout  s18_an_1,
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
+	// (analog core pin = pad pin)
 
 	output SDO,
 	output sdoena,
@@ -100,9 +86,7 @@ module chipalooza_frame_wrapper (
 	input  SCK,
 	input  clk,
 	input [11:0] gpio,
-	inout [3:0] analog,
-	input  porb,
-	input  [31:0] mask_rev
+	inout [3:0] analog
 );
 
 	// Declare a user project by defining HAS_USER_PROJECT

@@ -120,9 +120,6 @@ with open(wrapper_in_file, 'r') as ifile:
                     newline = spaces + 'input  ' + signal_name + '_one,'
                     wrapper_lines.append(newline)
                     newline = spaces + 'input  ' + signal_name + '_zero,'
-                elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
-                    # The input pad has the core signal only
-                    newline = spaces + 'inout  ' + signal_name + ','
                 elif pad_type.startswith('gf180mcu_ocd_io__bi_'):
                     # The bidirectional pads have a bunch of conotrols
                     newline = spaces + 'input ' + signal_name + '_in,'
@@ -148,6 +145,9 @@ with open(wrapper_in_file, 'r') as ifile:
                     newline = spaces + 'input  ' + signal_name + '_one,'
                     wrapper_lines.append(newline)
                     newline = spaces + 'input  ' + signal_name + '_zero,'
+                elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
+                    # The analog pad's core pin is the same net as the pad 
+                    newline = spaces + '// (analog core pin = pad pin)'
                 else:
                     print('Error:  Bad pad type ' + pad_type)
                     newline = line
@@ -189,6 +189,16 @@ with open(padframe_in_file, 'r') as ifile:
             if pad_subs == 'TYPE':
                 # Pad type is a simple string substitution
                 newline = re.sub(subtext, pad_type, line)
+            elif pad_subs == 'PAD':
+                # Pad pin name is "PAD" except for analog pads which are "ASIG5V"
+                # and use the pad name, not the signal name.
+                # The analog pad has no other signals, so there is no ending comma.
+                if pad_type == 'gf180mcu_ocd_io__asig_5p0':
+                    # Reconstruct the pad name from slot index and pin index
+                    pad_name = 's' + pad_slot_idx + '_an[' + pad_pin_idx + ']'
+                    newline = spaces + '.ASIG5V(' + pad_name + ')'
+                else:
+                    newline = spaces + '.PAD(' + signal_name + '),'
             elif pad_subs == 'SIGNALS':
                 signal_name = padrec[1]
                 smatch = re.match(sprex, line)
@@ -201,7 +211,8 @@ with open(padframe_in_file, 'r') as ifile:
                     padframe_lines.append(newline)
                     newline = spaces + '.PD(' + signal_name + '_pulldown)'
                 elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
-                    newline = spaces + '.ASIG5V(' + signal_name + ')'
+                    # For the analog pad, the core signal is the pad name
+                    newline = spaces + '// (core signal name = pad name)'
                 elif pad_type.startswith('gf180mcu_ocd_io__bi_'):
                     newline = spaces + '.IE(' + signal_name + '_ie),'
                     padframe_lines.append(newline)
@@ -252,7 +263,7 @@ with open(padframe_in_file, 'r') as ifile:
                     padframe_lines.append(newline)
                     newline = spaces + 'output wire ' + signal_name + '_zero,'
                 elif pad_type == 'gf180mcu_ocd_io__asig_5p0':
-                    newline = spaces + 'inout wire ' + signal_name + ','
+                    newline = spaces + '// (analog core pin = pad pin)'
                 elif pad_type.startswith('gf180mcu_ocd_io__bi_'):
                     newline = spaces + 'output wire ' + signal_name + '_in,'
                     padframe_lines.append(newline)

@@ -1,6 +1,6 @@
 magic
 tech gf180mcuD
-timestamp 1793291727
+timestamp 1793395937
 << checkpaint >>
 rect -201 5479 44201 5901
 rect -201 5459 804 5479
@@ -907,93 +907,93 @@ flabel metal2 17417 5660 17423 5700 0 FreeSans 48 90 0 0 dbus_out[1]
 port 215 nsew signal output
 flabel metal2 17457 5660 17463 5700 0 FreeSans 48 90 0 0 dbus_out[0]
 port 216 nsew signal output
-flabel metal2 19337 5660 19343 5700 0 FreeSans 48 90 0 0 dbus_in_right[0]
+flabel metal2 19337 5660 19343 5700 0 FreeSans 48 90 0 0 dbus_in_right[11]
 port 217 nsew signal input
-flabel metal2 19377 5660 19383 5700 0 FreeSans 48 90 0 0 dbus_in_right[1]
+flabel metal2 19377 5660 19383 5700 0 FreeSans 48 90 0 0 dbus_in_right[10]
 port 218 nsew signal input
-flabel metal2 19417 5660 19423 5700 0 FreeSans 48 90 0 0 dbus_in_right[2]
+flabel metal2 19417 5660 19423 5700 0 FreeSans 48 90 0 0 dbus_in_right[9]
 port 219 nsew signal input
-flabel metal2 19457 5660 19463 5700 0 FreeSans 48 90 0 0 dbus_in_right[3]
+flabel metal2 19457 5660 19463 5700 0 FreeSans 48 90 0 0 dbus_in_right[8]
 port 220 nsew signal input
-flabel metal2 19497 5660 19503 5700 0 FreeSans 48 90 0 0 dbus_in_right[4]
+flabel metal2 19497 5660 19503 5700 0 FreeSans 48 90 0 0 dbus_in_right[7]
 port 221 nsew signal input
-flabel metal2 19537 5660 19543 5700 0 FreeSans 48 90 0 0 dbus_in_right[5]
+flabel metal2 19537 5660 19543 5700 0 FreeSans 48 90 0 0 dbus_in_right[6]
 port 222 nsew signal input
-flabel metal2 19577 5660 19583 5700 0 FreeSans 48 90 0 0 dbus_in_right[6]
+flabel metal2 19577 5660 19583 5700 0 FreeSans 48 90 0 0 dbus_in_right[5]
 port 223 nsew signal input
-flabel metal2 19617 5660 19623 5700 0 FreeSans 48 90 0 0 dbus_in_right[7]
+flabel metal2 19617 5660 19623 5700 0 FreeSans 48 90 0 0 dbus_in_right[4]
 port 224 nsew signal input
-flabel metal2 19657 5660 19663 5700 0 FreeSans 48 90 0 0 dbus_in_right[8]
+flabel metal2 19657 5660 19663 5700 0 FreeSans 48 90 0 0 dbus_in_right[3]
 port 225 nsew signal input
-flabel metal2 19697 5660 19703 5700 0 FreeSans 48 90 0 0 dbus_in_right[9]
+flabel metal2 19697 5660 19703 5700 0 FreeSans 48 90 0 0 dbus_in_right[2]
 port 226 nsew signal input
-flabel metal2 19737 5660 19743 5700 0 FreeSans 48 90 0 0 dbus_in_right[10]
+flabel metal2 19737 5660 19743 5700 0 FreeSans 48 90 0 0 dbus_in_right[1]
 port 227 nsew signal input
-flabel metal2 19777 5660 19783 5700 0 FreeSans 48 90 0 0 dbus_in_right[11]
+flabel metal2 19777 5660 19783 5700 0 FreeSans 48 90 0 0 dbus_in_right[0]
 port 228 nsew signal input
-flabel metal2 20197 5660 20203 5700 0 FreeSans 48 90 0 0 io_in[8]
+flabel metal2 20197 5660 20203 5700 0 FreeSans 48 90 0 0 io_in[11]
 port 229 nsew signal input
-flabel metal2 20237 5660 20243 5700 0 FreeSans 48 90 0 0 io_oe[8]
+flabel metal2 20237 5660 20243 5700 0 FreeSans 48 90 0 0 io_oe[11]
 port 230 nsew signal output
-flabel metal2 20277 5660 20283 5700 0 FreeSans 48 90 0 0 io_out[8]
+flabel metal2 20277 5660 20283 5700 0 FreeSans 48 90 0 0 io_out[11]
 port 231 nsew signal output
-flabel metal2 20317 5660 20323 5700 0 FreeSans 48 90 0 0 io_slew[8]
+flabel metal2 20317 5660 20323 5700 0 FreeSans 48 90 0 0 io_slew[11]
 port 232 nsew signal output
-flabel metal2 20357 5660 20363 5700 0 FreeSans 48 90 0 0 io_ie[8]
+flabel metal2 20357 5660 20363 5700 0 FreeSans 48 90 0 0 io_ie[11]
 port 233 nsew signal output
-flabel metal2 20397 5660 20403 5700 0 FreeSans 48 90 0 0 io_pulldown[8]
+flabel metal2 20397 5660 20403 5700 0 FreeSans 48 90 0 0 io_pulldown[11]
 port 234 nsew signal output
-flabel metal2 20437 5660 20443 5700 0 FreeSans 48 90 0 0 io_pullup[8]
+flabel metal2 20437 5660 20443 5700 0 FreeSans 48 90 0 0 io_pullup[11]
 port 235 nsew signal output
-flabel metal2 20477 5660 20483 5700 0 FreeSans 48 90 0 0 io_schmitt[8]
+flabel metal2 20477 5660 20483 5700 0 FreeSans 48 90 0 0 io_schmitt[11]
 port 236 nsew signal output
-flabel metal2 20517 5660 20523 5700 0 FreeSans 48 90 0 0 io_in[9]
+flabel metal2 20517 5660 20523 5700 0 FreeSans 48 90 0 0 io_in[10]
 port 237 nsew signal input
-flabel metal2 20557 5660 20563 5700 0 FreeSans 48 90 0 0 io_oe[9]
+flabel metal2 20557 5660 20563 5700 0 FreeSans 48 90 0 0 io_oe[10]
 port 238 nsew signal output
-flabel metal2 20597 5660 20603 5700 0 FreeSans 48 90 0 0 io_out[9]
+flabel metal2 20597 5660 20603 5700 0 FreeSans 48 90 0 0 io_out[10]
 port 239 nsew signal output
-flabel metal2 20637 5660 20643 5700 0 FreeSans 48 90 0 0 io_slew[9]
+flabel metal2 20637 5660 20643 5700 0 FreeSans 48 90 0 0 io_slew[10]
 port 240 nsew signal output
-flabel metal2 20677 5660 20683 5700 0 FreeSans 48 90 0 0 io_ie[9]
+flabel metal2 20677 5660 20683 5700 0 FreeSans 48 90 0 0 io_ie[10]
 port 241 nsew signal output
-flabel metal2 20717 5660 20723 5700 0 FreeSans 48 90 0 0 io_pulldown[9]
+flabel metal2 20717 5660 20723 5700 0 FreeSans 48 90 0 0 io_pulldown[10]
 port 242 nsew signal output
-flabel metal2 20757 5660 20763 5700 0 FreeSans 48 90 0 0 io_pullup[9]
+flabel metal2 20757 5660 20763 5700 0 FreeSans 48 90 0 0 io_pullup[10]
 port 243 nsew signal output
-flabel metal2 20797 5660 20803 5700 0 FreeSans 48 90 0 0 io_schmitt[9]
+flabel metal2 20797 5660 20803 5700 0 FreeSans 48 90 0 0 io_schmitt[10]
 port 244 nsew signal output
-flabel metal2 20837 5660 20843 5700 0 FreeSans 48 90 0 0 io_in[10]
+flabel metal2 20837 5660 20843 5700 0 FreeSans 48 90 0 0 io_in[9]
 port 245 nsew signal input
-flabel metal2 20877 5660 20883 5700 0 FreeSans 48 90 0 0 io_oe[10]
+flabel metal2 20877 5660 20883 5700 0 FreeSans 48 90 0 0 io_oe[9]
 port 246 nsew signal output
-flabel metal2 20917 5660 20923 5700 0 FreeSans 48 90 0 0 io_out[10]
+flabel metal2 20917 5660 20923 5700 0 FreeSans 48 90 0 0 io_out[9]
 port 247 nsew signal output
-flabel metal2 20957 5660 20963 5700 0 FreeSans 48 90 0 0 io_slew[10]
+flabel metal2 20957 5660 20963 5700 0 FreeSans 48 90 0 0 io_slew[9]
 port 248 nsew signal output
-flabel metal2 20997 5660 21003 5700 0 FreeSans 48 90 0 0 io_ie[10]
+flabel metal2 20997 5660 21003 5700 0 FreeSans 48 90 0 0 io_ie[9]
 port 249 nsew signal output
-flabel metal2 21037 5660 21043 5700 0 FreeSans 48 90 0 0 io_pulldown[10]
+flabel metal2 21037 5660 21043 5700 0 FreeSans 48 90 0 0 io_pulldown[9]
 port 250 nsew signal output
-flabel metal2 21077 5660 21083 5700 0 FreeSans 48 90 0 0 io_pullup[10]
+flabel metal2 21077 5660 21083 5700 0 FreeSans 48 90 0 0 io_pullup[9]
 port 251 nsew signal output
-flabel metal2 21117 5660 21123 5700 0 FreeSans 48 90 0 0 io_schmitt[10]
+flabel metal2 21117 5660 21123 5700 0 FreeSans 48 90 0 0 io_schmitt[9]
 port 252 nsew signal output
-flabel metal2 21157 5660 21163 5700 0 FreeSans 48 90 0 0 io_in[11]
+flabel metal2 21157 5660 21163 5700 0 FreeSans 48 90 0 0 io_in[8]
 port 253 nsew signal input
-flabel metal2 21197 5660 21203 5700 0 FreeSans 48 90 0 0 io_oe[11]
+flabel metal2 21197 5660 21203 5700 0 FreeSans 48 90 0 0 io_oe[8]
 port 254 nsew signal output
-flabel metal2 21237 5660 21243 5700 0 FreeSans 48 90 0 0 io_out[11]
+flabel metal2 21237 5660 21243 5700 0 FreeSans 48 90 0 0 io_out[8]
 port 255 nsew signal output
-flabel metal2 21277 5660 21283 5700 0 FreeSans 48 90 0 0 io_slew[11]
+flabel metal2 21277 5660 21283 5700 0 FreeSans 48 90 0 0 io_slew[8]
 port 256 nsew signal output
-flabel metal2 21317 5660 21323 5700 0 FreeSans 48 90 0 0 io_ie[11]
+flabel metal2 21317 5660 21323 5700 0 FreeSans 48 90 0 0 io_ie[8]
 port 257 nsew signal output
-flabel metal2 21357 5660 21363 5700 0 FreeSans 48 90 0 0 io_pulldown[11]
+flabel metal2 21357 5660 21363 5700 0 FreeSans 48 90 0 0 io_pulldown[8]
 port 258 nsew signal output
-flabel metal2 21397 5660 21403 5700 0 FreeSans 48 90 0 0 io_pullup[11]
+flabel metal2 21397 5660 21403 5700 0 FreeSans 48 90 0 0 io_pullup[8]
 port 259 nsew signal output
-flabel metal2 21437 5660 21443 5700 0 FreeSans 48 90 0 0 io_schmitt[11]
+flabel metal2 21437 5660 21443 5700 0 FreeSans 48 90 0 0 io_schmitt[8]
 port 260 nsew signal output
 flabel metal2 26957 5660 26963 5700 0 FreeSans 48 90 0 0 voltgen_value[2]
 port 261 nsew signal output
@@ -1003,11 +1003,11 @@ flabel metal2 27177 5660 27183 5700 0 FreeSans 48 90 0 0 voltgen_value[0]
 port 263 nsew signal output
 flabel metal2 28877 5660 28883 5700 0 FreeSans 48 90 0 0 voltgen_high
 port 264 nsew signal output
-flabel metal2 28957 5660 28963 5700 0 FreeSans 48 90 0 0 voltgen_ena[2]
+flabel metal2 28957 5660 28963 5700 0 FreeSans 48 90 0 0 voltgen_ena[1]
 port 265 nsew signal output
 flabel metal2 29017 5660 29023 5700 0 FreeSans 48 90 0 0 voltgen_ena[0]
 port 266 nsew signal output
-flabel metal2 29077 5660 29083 5700 0 FreeSans 48 90 0 0 voltgen_ena[1]
+flabel metal2 29077 5660 29083 5700 0 FreeSans 48 90 0 0 voltgen_ena[2]
 port 267 nsew signal output
 flabel metal2 29837 5660 29843 5700 0 FreeSans 48 90 0 0 bandgap_ena
 port 268 nsew signal output

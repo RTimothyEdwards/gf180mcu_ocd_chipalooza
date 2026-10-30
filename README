@@ -351,6 +351,8 @@ proceed to step (8).
 (6) Rebuild the project slot wrappers with any custom definitions for
      the pads:
 
+	make wrappers
+	make symbols
 	make gds-slots
 
      This runs the script "run_gen_wrapper_gds.sh".

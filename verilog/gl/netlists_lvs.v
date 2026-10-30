@@ -2,10 +2,11 @@
  *------------------------------------------------------------------------
  * netlists_lvs.v
  *
- * Netlists for gf180mcu openframe project
- * This file includes all of the verilog modules for openframe,
- * excluding modules which are represented as SPICE netlists,
- * for use with netgen LVS.
+ * Netlists for gf180mcu Chipalooza harness chip.
+ *
+ * This file includes all of the verilog modules for chipalooza_frame
+ * and the harness chip top level, excluding modules which are represented
+ * as SPICE netlists (e.g., the SRAM), for use with netgen LVS.
  *
  *------------------------------------------------------------------------
  */ 
@@ -26,6 +27,32 @@
 
 /* ROM program for project ID */
 `include "user_id_programming.v"
+
+/* Housekeeping (synthesized digital) */
+`include "housekeeping_top.pnl.v"
+
+/* User project control block (synthesized digital) */
+`include "user_project_control.pnl.v"
+
+/* User project slot wrappers (placeholders) */
+`include "slot1_wrapper_lvs.v"
+`include "slot2_wrapper_lvs.v"
+`include "slot3_wrapper_lvs.v"
+`include "slot4_wrapper_lvs.v"
+`include "slot5_wrapper_lvs.v"
+`include "slot6_wrapper_lvs.v"
+`include "slot7_wrapper_lvs.v"
+`include "slot8_wrapper_lvs.v"
+`include "slot9_wrapper_lvs.v"
+`include "slot10_wrapper_lvs.v"
+`include "slot11_wrapper_lvs.v"
+`include "slot12_wrapper_lvs.v"
+`include "slot13_wrapper_lvs.v"
+`include "slot14_wrapper_lvs.v"
+`include "slot15_wrapper_lvs.v"
+`include "slot16_wrapper_lvs.v"
+`include "slot17_wrapper_lvs.v"
+`include "slot18_wrapper_lvs.v"
 
 /* Core cell (for LVS, use the schematic) */
 /* `include "chipalooza_frame.v" */
