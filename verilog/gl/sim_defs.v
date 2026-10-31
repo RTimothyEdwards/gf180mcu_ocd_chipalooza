@@ -52,7 +52,7 @@
 `include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/analog_switch_small.v"
 `include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/analog_pswitch_small.v"
 `include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/power_stage3v3.v"
-`include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/power_stage2.v"
+`include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/power_stage.v"
 `include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__bandgap_v3.v"
 `include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__voltgen_v2.v"
 `include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__biasgen2.v"

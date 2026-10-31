@@ -262,7 +262,11 @@ async def reset(dut, clk_running=True):
     dut.SDI_in.value = 0
     dut.CSB_in.value = 1
     dut.clk_in.value = 0
-    dut.mask_rev.value = 0xDEADBEEF
+    # The pad constants that the frame loops back onto the SPI and clock
+    # pads' configuration pins.  Undriven, the loopbacks would read z.
+    dut.CSB_one.value = 1
+    for pad in ("CSB", "SCK", "SDI", "clk", "SDO"):
+        getattr(dut, f"{pad}_zero").value = 0
     dut.gpio_in.value = 0
 
     # The shared analog pads start DISCONNECTED, which is NaN and not

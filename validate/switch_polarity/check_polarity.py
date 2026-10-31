@@ -49,11 +49,9 @@ CELLS = {
         ctrl="enable", a="in", b="out", ctrl_v=3.3, sig_v=5.0,
         order="dvdd dvss avdd in avss enable out",
         supplies={"dvdd": 3.3, "dvss": 0.0, "avdd": 5.0, "avss": 0.0}),
+    # Active-high enable on GF.  IHP had an active-low power_stage and
+    # this active-high one under the name power_stage2.
     "power_stage": dict(
-        ctrl="nenable", a="IOVDD_IN", b="IOVDD_OUT", ctrl_v=3.3, sig_v=5.0,
-        order="nenable IOVDD_IN IOVSS DVSS DVDD IOVDD_OUT",
-        supplies={"IOVSS": 0.0, "DVSS": 0.0, "DVDD": 3.3}),
-    "power_stage2": dict(
         ctrl="enable", a="IOVDD_IN", b="IOVDD_OUT", ctrl_v=3.3, sig_v=5.0,
         order="enable IOVDD_IN IOVSS DVSS DVDD IOVDD_OUT",
         supplies={"IOVSS": 0.0, "DVSS": 0.0, "DVDD": 3.3}),
@@ -159,7 +157,7 @@ def main():
         here, "..", "..", "dependencies", "gf180mcu_ocd_ip__analog_switches"))
     ap.add_argument("--pdk-root",
                     default=os.environ.get("PDK_ROOT",
-                                           os.path.expanduser("~/gits/GF-Open-PDK")))
+                                           "/usr/share/pdk"))
     ap.add_argument("--pdk", default=os.environ.get("PDK", "gf180mcuD"))
     ap.add_argument("--cell", action="append",
                     help="check only these cells (repeatable)")

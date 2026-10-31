@@ -10,7 +10,7 @@
 
 ROOT       := $(abspath ../..)
 RTL        := $(ROOT)/verilog/rtl
-PDK_ROOT   ?= $(HOME)/gits
+PDK_ROOT   ?= /usr/share/pdk
 PDK        ?= gf180mcuD
 TOP        := chipalooza_frame
 SCHEMATIC  ?= $(ROOT)/netlist/schematic/$(TOP).spice
@@ -73,19 +73,36 @@ lvs: $(NETLIST)
 	        >> netgen.tcl; \
 	done
 	@# The SRAM is a primitive in the schematic too, so circuit 2 needs a
-	@# definition for it or its pins come back numbered.  Reading the CDL
-	@# directly does not work here:  it spells buses A_ADDR<9> while the
-	@# Verilog side has A_ADDR[9], and netgen does not reconcile the two,
-	@# so 70 of the 73 pins proxy out.  The generated view carries the
-	@# CDL's names and order in Verilog spelling.
-	@echo 'readnet verilog $(ROOT)/verilog/gl/gf180mcu_ocd_ip_sram__sram1024x8m8wm1_lvs.v $$c2' >> netgen.tcl
+	@# definition for it or its pins come back numbered.  It must be the
+	@# PDK's SPICE netlist and NOT its Verilog blackbox:  a primitive binds
+	@# POSITIONALLY, in the .subckt order (VSS VDD A[9] ... CEN), and the
+	@# blackbox declares CLK CEN GWEN ... VDD VSS.  Given the blackbox,
+	@# netgen bound the supply nets to CLK and CEN -- it paired the frame's
+	@# vss5v0 with a node it called sram_clk.  The SPICE carries the right
+	@# order and, unlike IHP's CDL, already spells buses A[9].
+	@echo 'readnet spice $(PDK_ROOT)/$(PDK)/libs.ref/gf180mcu_ocd_ip_sram/spice/gf180mcu_ocd_ip_sram__sram1024x8m8wm1.spice $$c2' >> netgen.tcl
+	@# rm2 and user_id_programming are primitives too, with no netlist of
+	@# their own to read;  primitives.spice names their pins.
+	@echo 'readnet spice primitives.spice $$c2' >> netgen.tcl
 	@echo 'readnet spice $(SCHEMATIC) $$c2' >> netgen.tcl
 	@echo 'lvs "$$c1 $(TOP)" "$$c2 $(TOP)" setup.tcl comp.out' >> netgen.tcl
 	@# NETGEN_COLUMNS widens the side-by-side report so net and pin
 	@# names are not truncated;  the default cuts them off mid-name.
 	NETGEN_COLUMNS=50 netgen -batch source netgen.tcl
 	@rm -f netgen.tcl
-	@tail -3 comp.out
+	@# Report the VERDICT, and fail the target on a mismatch.  This used to
+	@# be "tail -3 comp.out", which shows only netgen's closing pin-matching
+	@# lines -- "Device classes ... are equivalent" -- and never the line
+	@# "Netlists do not match" that comes thousands of lines earlier.  A
+	@# failing comparison read as a passing one.
+	@grep -E '^Final result' comp.out
+	@if grep -q '^Netlists do not match' comp.out || \
+	    grep -qE '^Final result:.*(fail|mismatch)' comp.out; then \
+	    echo "LVS: views DO NOT MATCH  ($$(grep -c '^Netlists do not match' comp.out) cell(s) failed;  see comp.out)"; \
+	    exit 1; \
+	else \
+	    echo "LVS: views match"; \
+	fi
 
 selftest: $(NETLIST)
 	./selftest.py

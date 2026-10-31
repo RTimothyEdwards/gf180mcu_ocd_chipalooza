@@ -4676,7 +4676,7 @@ use housekeeping_top  housekeeping_top_0
 timestamp 1793397007
 transform 1 0 222030 0 1 84130
 box 0 0 439462 57000
-use por_3v3_selfbiased  por_3v3_selfbiased_0 ../dependencies/gf180mcu_ocd_ip__por/magic
+use gf180mcu_ocd_ip__por  gf180mcu_ocd_ip__por_0 ../dependencies/gf180mcu_ocd_ip__por/magic
 timestamp 1793397007
 transform 1 0 158940 0 -1 165576
 box 8140 -920 36542 12416

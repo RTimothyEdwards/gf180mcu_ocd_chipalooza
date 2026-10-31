@@ -2020,7 +2020,7 @@ C {analog_switch_small.sym} 1570 -940 0 0 {name=x17}
 C {analog_switch_med.sym} 1570 -570 0 0 {name=x23[3:0]}
 C {power_stage3v3.sym} 730 -440 0 1 {name=x25}
 C {power_stage.sym} 730 -580 0 1 {name=x7}
-C {por_3v3_selfbiased.sym} 1570 -1220 0 0 {name=x20}
+C {gf180mcu_ocd_ip__por.sym} 1570 -1220 0 0 {name=x20}
 C {lab_pin.sym} 2280 -1650 0 1 {name=p96 sig_type=std_logic lab=vbg}
 C {noconn.sym} 1750 -1190 0 1 {name=l6}
 C {lab_pin.sym} 1400 -1300 0 0 {name=p52 sig_type=std_logic lab=vdd3v3}

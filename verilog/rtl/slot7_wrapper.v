@@ -73,7 +73,6 @@ module slot7_wrapper (
      * which is also what LVS compares against.
      */
     inout wire [1:0] s7_an,	// dedicated analog pad(s)
-    inout wire s7_an_0_esd,	// secondary ESD-protected pin
     input real ibias0,		// shared current bias 0
     input real ibias1,		// shared current bias 1
     input real vbias,		// shared voltage bias

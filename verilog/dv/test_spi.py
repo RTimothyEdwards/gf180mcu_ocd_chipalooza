@@ -32,19 +32,21 @@ async def test_identity_registers(dut):
     assert status == 0x00, f"SPI status = 0x{status:02x}, expected 0x00"
 
 
+USER_ID = 0x12092025   # user_id_programming default
+
+
 @cocotb.test()
 async def test_mask_rev_passthrough(dut):
-    """mask_rev_in is metal-programmed and must read back byte for byte.
+    """The metal-programmed user ID must read back byte for byte.
 
-    digital_tb.v drove 0xdeadbeef but never checked it came back.
+    It comes from user_id_programming inside the frame, which ties each
+    bit high or low;  0x12092025 is that block's default USER_PROJECT_ID.
     """
     spi = await reset(dut)
-    dut.mask_rev.value = 0xDEADBEEF
-    await Timer(100, unit="ns")
 
     got = await spi.read_regs(REG["mask_rev_3"], 4)
     word = (got[0] << 24) | (got[1] << 16) | (got[2] << 8) | got[3]
-    assert word == 0xDEADBEEF, f"mask_rev read back 0x{word:08x}, expected 0xdeadbeef"
+    assert word == USER_ID, f"mask_rev read back 0x{word:08x}, expected 0x{USER_ID:08x}"
 
 
 @cocotb.test()

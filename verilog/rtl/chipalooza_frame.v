@@ -26,19 +26,64 @@ module chipalooza_frame (
     inout vdd3v3,     // 3.3V supply
     inout vss3v3,     // common ground
     inout vddd,	    // digital 3.3V supply
+
+    /* Extra ground pins along the sides of the frame.  The chip top
+     * level connects them to ground pads.  Inside the frame, the four
+     * named for a single slot (2, 8, 11, 17) run to a pin on that slot's
+     * wrapper;  the other four are unconnected, in the schematic and the
+     * layout alike.
+     */
+    inout vss3v3_slot4_5,
+    inout vss3v3_slot6_7,
+    inout vss3v3_slot11,
+    inout vss3v3_slot17,
+    inout vss5v0_slot2,
+    inout vss5v0_slot8,
+    inout vss5v0_slot12_13,
+    inout vss5v0_slot14_15,
 `endif
-  
+
     input wire clk_in,
     input wire SCK_in,      // from padframe
     input wire SDI_in,      // from padframe
     input wire CSB_in,      // from padframe
     output wire SDO_out,    // to padframe
     output wire SDO_ena,    // to padframe
-    input wire [31:0] mask_rev,      // metal programmed;  3.3V domain
+
+    /* Fixed pad configuration for the SPI and clock pads.  Each pad
+     * supplies its own constant (the "_zero" or "_one" pin) and the frame
+     * loops it back onto the pad's control inputs.  The loopback is a
+     * metal resistor (rm2) in the schematic and the layout, so the
+     * structural view instantiates one;  behaviourally it is a wire.
+     */
+    input  wire CSB_one,
+    input  wire CSB_zero,
+    output wire CSB_pullup,
+    output wire CSB_pulldown,
+    input  wire SCK_zero,
+    output wire SCK_pullup,
+    output wire SCK_pulldown,
+    input  wire SDI_zero,
+    output wire SDI_pullup,
+    output wire SDI_pulldown,
+    input  wire clk_zero,
+    output wire clk_pullup,
+    output wire clk_pulldown,
+    input  wire SDO_zero,
+    output wire SDO_pullup,
+    output wire SDO_pulldown,
+    output wire SDO_slew,
+    output wire SDO_schmitt,
+    output wire SDO_ie,
 
     input  wire [11:0] gpio_in,   // from shared digital I/O pads
     output wire [11:0] gpio_out,  // to shared digital I/O pads
     output wire [11:0] gpio_oe,   // to shared digital I/O pads
+    output wire [11:0] gpio_ie,        // to shared digital I/O pads
+    output wire [11:0] gpio_pullup,    // to shared digital I/O pads
+    output wire [11:0] gpio_pulldown,  // to shared digital I/O pads
+    output wire [11:0] gpio_schmitt,   // to shared digital I/O pads
+    output wire [11:0] gpio_slew,      // to shared digital I/O pads
 
     /* The four shared analog pins.
      *
@@ -67,12 +112,6 @@ module chipalooza_frame (
      * reals at all, and the split above is an iverilog artifact that
      * must not reach LVS.
      */
-    /* The ESD pads exist in BOTH views.  They are bondpad connections
-     * with nothing attached inside, so unlike "analog" they need no
-     * real/wire split and are declared unconditionally;  declaring them
-     * only under LVS_STRUCTURAL left the simulation view without them. */
-    inout wire [3:0] analog_esd,	// Unconnected in this module
-
 `ifdef LVS_STRUCTURAL
     inout wire [3:0] analog,
 `else
@@ -87,34 +126,28 @@ module chipalooza_frame (
     output real analog_pin3_out,
 `endif
 
-    /* Dedicated analog signals connected to the user projects */
-
-    /* A handful of the ESD pins fall outside user project boundaries
-     * and are unconnected.
-     *
-     * However, currently the ESD pins are not represented in the
-     * project wrapper verilog module definitions, so they are all
-     * unconnected, but those that are connected in the schematic
-     * and layout will need to be dealt with.
+    /* Dedicated analog signals connected to the user projects.  The
+     * pin count per slot is set by how the padframe lines up with the
+     * slots, from config.txt (the sN_an[] entries).
      */
-    inout  [1:0] s1_an,  inout s1_an_0_esd, inout s1_an_1_esd,
-    inout  [1:0] s2_an,  inout s2_an_0_esd, inout s2_an_1_esd,
-    inout  [1:0] s3_an,  inout s3_an_0_esd, inout s3_an_1_esd,
-    inout  [0:0] s4_an,  inout s4_an_0_esd,
-    inout  [2:0] s5_an,  inout s5_an_0_esd, inout s5_an_1_esd, inout s5_an_2_esd,
-    inout  [1:0] s6_an,  inout s6_an_0_esd, inout s6_an_1_esd,
-    inout  [1:0] s7_an,  inout s7_an_0_esd, inout s7_an_1_esd,
-    inout  [0:0] s8_an,  inout s8_an_0_esd,
-    inout  [2:0] s9_an,  inout s9_an_0_esd, inout s9_an_1_esd, inout s9_an_2_esd,
-    inout  [2:0] s10_an,  inout s10_an_0_esd, inout s10_an_1_esd, inout s10_an_2_esd,
-    inout  [0:0] s11_an,  inout s11_an_0_esd,
-    inout  [1:0] s12_an,  inout s12_an_0_esd, inout s12_an_1_esd,
-    inout  [1:0] s13_an,  inout s13_an_0_esd, inout s13_an_1_esd,
-    inout  [2:0] s14_an,  inout s14_an_0_esd, inout s14_an_1_esd, inout s14_an_2_esd,
-    inout  [0:0] s15_an,  inout s15_an_0_esd,
-    inout  [1:0] s16_an,  inout s16_an_0_esd, inout s16_an_1_esd,
-    inout  [1:0] s17_an,  inout s17_an_0_esd, inout s17_an_1_esd,
-    inout  [1:0] s18_an,  inout s18_an_0_esd, inout s18_an_1_esd
+    inout  [1:0] s1_an,
+    inout  [1:0] s2_an,
+    inout  [1:0] s3_an,
+    inout  [1:0] s4_an,
+    inout  [1:0] s5_an,
+    inout  [1:0] s6_an,
+    inout  [1:0] s7_an,
+    inout  [0:0] s8_an,
+    inout  [2:0] s9_an,
+    inout  [2:0] s10_an,
+    inout  [0:0] s11_an,
+    inout  [1:0] s12_an,
+    inout  [1:0] s13_an,
+    inout  [1:0] s14_an,
+    inout  [1:0] s15_an,
+    inout  [1:0] s16_an,
+    inout  [1:0] s17_an,
+    inout  [1:0] s18_an
 );
 
     /* Tie-off nets for hard-wired constants.
@@ -300,6 +333,51 @@ module chipalooza_frame (
     wire [4:0] voltgen_source;             // voltage bias ibias source tuning
 
 
+    /* The mask revision / user ID.  Metal programmed by an array of tie
+     * cells inside this block, and read back through housekeeping.
+     * Powered from the digital 3.3V supply, as the schematic draws it.
+     */
+    wire [31:0] mask_rev;
+
+    user_id_programming user_id (
+	`ifdef USE_POWER_PINS
+	    .VDD(vddd),
+	    .VSS(vss3v3),
+	`endif
+	.mask_rev(mask_rev)
+    );
+
+    /* SPI and clock pad configuration loopbacks (see the port list) */
+`ifdef LVS_STRUCTURAL
+    rm2 r_csb_pu   (.PLUS(CSB_one),  .MINUS(CSB_pullup));
+    rm2 r_csb_pd   (.PLUS(CSB_zero), .MINUS(CSB_pulldown));
+    rm2 r_sck_pu   (.PLUS(SCK_zero), .MINUS(SCK_pullup));
+    rm2 r_sck_pd   (.PLUS(SCK_zero), .MINUS(SCK_pulldown));
+    rm2 r_sdi_pu   (.PLUS(SDI_zero), .MINUS(SDI_pullup));
+    rm2 r_sdi_pd   (.PLUS(SDI_zero), .MINUS(SDI_pulldown));
+    rm2 r_clk_pu   (.PLUS(clk_zero), .MINUS(clk_pullup));
+    rm2 r_clk_pd   (.PLUS(clk_zero), .MINUS(clk_pulldown));
+    rm2 r_sdo_pu   (.PLUS(SDO_zero), .MINUS(SDO_pullup));
+    rm2 r_sdo_pd   (.PLUS(SDO_zero), .MINUS(SDO_pulldown));
+    rm2 r_sdo_slew (.PLUS(SDO_zero), .MINUS(SDO_slew));
+    rm2 r_sdo_smt  (.PLUS(SDO_zero), .MINUS(SDO_schmitt));
+    rm2 r_sdo_ie   (.PLUS(SDO_zero), .MINUS(SDO_ie));
+`else
+    assign CSB_pullup   = CSB_one;
+    assign CSB_pulldown = CSB_zero;
+    assign SCK_pullup   = SCK_zero;
+    assign SCK_pulldown = SCK_zero;
+    assign SDI_pullup   = SDI_zero;
+    assign SDI_pulldown = SDI_zero;
+    assign clk_pullup   = clk_zero;
+    assign clk_pulldown = clk_zero;
+    assign SDO_pullup   = SDO_zero;
+    assign SDO_pulldown = SDO_zero;
+    assign SDO_slew     = SDO_zero;
+    assign SDO_schmitt  = SDO_zero;
+    assign SDO_ie       = SDO_zero;
+`endif
+
     /* Instantiate the housekeeping top module */
     housekeeping_top hk_top (
 	`ifdef USE_POWER_PINS
@@ -323,6 +401,11 @@ module chipalooza_frame (
 	    .reset(reset),
 	    .clk_out(clk_out),
 	    .mask_rev_in(mask_rev),
+	    .io_ie(gpio_ie),
+	    .io_pullup(gpio_pullup),
+	    .io_pulldown(gpio_pulldown),
+	    .io_schmitt(gpio_schmitt),
+	    .io_slew(gpio_slew),
 	    .sram_clk(sram_clk),
 	    .sram_addr(sram_addr),
 	    .sram_idata(sram_idata),
@@ -540,8 +623,6 @@ module chipalooza_frame (
 	`ifdef USE_POWER_PINS
 	    .dvdd(vdd3v3),
 	    .dvss(vss3v3),
-	    .vdd(vdd5v0),
-	    .vss(vss5v0),
 	`endif
 	.ena(bandgap_ena),
 	.trim(bandgap_trim),
@@ -746,7 +827,10 @@ module chipalooza_frame (
      * against a constant.
      */
 `ifdef LVS_STRUCTURAL
+    /* Structurally there is nothing to resolve:  both buffer outputs and
+     * the trunk are one net (voltgen_vout in the schematic). */
     assign user_vbias_shared = vbias_from_cascode;
+    assign vbias_from_classab = vbias_from_cascode;
 `else
     assign user_vbias_shared =
 	(vbias_from_cascode == vbias_from_cascode) ? vbias_from_cascode :
@@ -808,7 +892,7 @@ module chipalooza_frame (
     generate
 	for (i = 0; i < 18; i = i + 1) begin : slot_switches
 	    /* Primary analog/high voltage power switch */
-	    power_stage2 switch5v0 (
+	    power_stage switch5v0 (
 		`ifdef USE_POWER_PINS
 		    .DVDD(vdd3v3),
 		    .DVSS(vss3v3),
@@ -972,7 +1056,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[0*24 +: 24]),
 	.dig_out(user_dig_out[0*12 +: 12]),
 	.s1_an(s1_an),
-	.s1_an_0_esd(s1_an_0_esd),
 	.ibias0(user_ibias[0*2 + 0]),
 	.ibias1(user_ibias[0*2 + 1]),
 	.vbias(user_vbias[0]),
@@ -988,6 +1071,7 @@ module chipalooza_frame (
 	    .vdd_3v3(user_dvdd[1]),
 	    .vss_5v0(vss5v0),
 	    .vss_3v3(vss3v3),
+	    .vss5v0(vss5v0_slot2),
 	`endif
 	.enable(user_ena[1]),
 	.clk(user_clk[1]),
@@ -995,8 +1079,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[1*24 +: 24]),
 	.dig_out(user_dig_out[1*12 +: 12]),
 	.s2_an(s2_an),
-	.s2_an_0_esd(s2_an_0_esd),
-	.s2_an_1_esd(s2_an_1_esd),
 	.ibias0(user_ibias[1*2 + 0]),
 	.ibias1(user_ibias[1*2 + 1]),
 	.vbias(user_vbias[1]),
@@ -1019,7 +1101,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[2*24 +: 24]),
 	.dig_out(user_dig_out[2*12 +: 12]),
 	.s3_an(s3_an),
-	.s3_an_0_esd(s3_an_0_esd),
 	.ibias0(user_ibias[2*2 + 0]),
 	.ibias1(user_ibias[2*2 + 1]),
 	.vbias(user_vbias[2]),
@@ -1042,7 +1123,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[3*24 +: 24]),
 	.dig_out(user_dig_out[3*12 +: 12]),
 	.s4_an(s4_an),
-	.s4_an_0_esd(s4_an_0_esd),
 	.ibias0(user_ibias[3*2 + 0]),
 	.ibias1(user_ibias[3*2 + 1]),
 	.vbias(user_vbias[3]),
@@ -1065,8 +1145,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[4*24 +: 24]),
 	.dig_out(user_dig_out[4*12 +: 12]),
 	.s5_an(s5_an),
-	.s5_an_0_esd(s5_an_0_esd),
-	.s5_an_1_esd(s5_an_1_esd),
 	.ibias0(user_ibias[4*2 + 0]),
 	.ibias1(user_ibias[4*2 + 1]),
 	.vbias(user_vbias[4]),
@@ -1089,8 +1167,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[5*24 +: 24]),
 	.dig_out(user_dig_out[5*12 +: 12]),
 	.s6_an(s6_an),
-	.s6_an_0_esd(s6_an_0_esd),
-	.s6_an_1_esd(s6_an_1_esd),
 	.ibias0(user_ibias[5*2 + 0]),
 	.ibias1(user_ibias[5*2 + 1]),
 	.vbias(user_vbias[5]),
@@ -1113,7 +1189,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[6*24 +: 24]),
 	.dig_out(user_dig_out[6*12 +: 12]),
 	.s7_an(s7_an),
-	.s7_an_0_esd(s7_an_0_esd),
 	.ibias0(user_ibias[6*2 + 0]),
 	.ibias1(user_ibias[6*2 + 1]),
 	.vbias(user_vbias[6]),
@@ -1129,6 +1204,7 @@ module chipalooza_frame (
 	    .vdd_3v3(user_dvdd[7]),
 	    .vss_5v0(vss5v0),
 	    .vss_3v3(vss3v3),
+	    .vss5v0(vss5v0_slot8),
 	`endif
 	.enable(user_ena[7]),
 	.clk(user_clk[7]),
@@ -1136,7 +1212,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[7*24 +: 24]),
 	.dig_out(user_dig_out[7*12 +: 12]),
 	.s8_an(s8_an),
-	.s8_an_0_esd(s8_an_0_esd),
 	.ibias0(user_ibias[7*2 + 0]),
 	.ibias1(user_ibias[7*2 + 1]),
 	.vbias(user_vbias[7]),
@@ -1159,8 +1234,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[8*24 +: 24]),
 	.dig_out(user_dig_out[8*12 +: 12]),
 	.s9_an(s9_an),
-	.s9_an_0_esd(s9_an_0_esd),
-	.s9_an_1_esd(s9_an_1_esd),
 	.ibias0(user_ibias[8*2 + 0]),
 	.ibias1(user_ibias[8*2 + 1]),
 	.vbias(user_vbias[8]),
@@ -1183,9 +1256,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[9*24 +: 24]),
 	.dig_out(user_dig_out[9*12 +: 12]),
 	.s10_an(s10_an),
-	.s10_an_0_esd(s10_an_0_esd),
-	.s10_an_1_esd(s10_an_1_esd),
-	.s10_an_2_esd(s10_an_2_esd),
 	.ibias0(user_ibias[9*2 + 0]),
 	.ibias1(user_ibias[9*2 + 1]),
 	.vbias(user_vbias[9]),
@@ -1201,6 +1271,7 @@ module chipalooza_frame (
 	    .vdd_3v3(user_dvdd[10]),
 	    .vss_5v0(vss5v0),
 	    .vss_3v3(vss3v3),
+	    .vss3v3(vss3v3_slot11),
 	`endif
 	.enable(user_ena[10]),
 	.clk(user_clk[10]),
@@ -1208,7 +1279,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[10*24 +: 24]),
 	.dig_out(user_dig_out[10*12 +: 12]),
 	.s11_an(s11_an),
-	.s11_an_0_esd(s11_an_0_esd),
 	.ibias0(user_ibias[10*2 + 0]),
 	.ibias1(user_ibias[10*2 + 1]),
 	.vbias(user_vbias[10]),
@@ -1231,8 +1301,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[11*24 +: 24]),
 	.dig_out(user_dig_out[11*12 +: 12]),
 	.s12_an(s12_an),
-	.s12_an_0_esd(s12_an_0_esd),
-	.s12_an_1_esd(s12_an_1_esd),
 	.ibias0(user_ibias[11*2 + 0]),
 	.ibias1(user_ibias[11*2 + 1]),
 	.vbias(user_vbias[11]),
@@ -1255,8 +1323,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[12*24 +: 24]),
 	.dig_out(user_dig_out[12*12 +: 12]),
 	.s13_an(s13_an),
-	.s13_an_0_esd(s13_an_0_esd),
-	.s13_an_1_esd(s13_an_1_esd),
 	.ibias0(user_ibias[12*2 + 0]),
 	.ibias1(user_ibias[12*2 + 1]),
 	.vbias(user_vbias[12]),
@@ -1279,9 +1345,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[13*24 +: 24]),
 	.dig_out(user_dig_out[13*12 +: 12]),
 	.s14_an(s14_an),
-	.s14_an_0_esd(s14_an_0_esd),
-	.s14_an_1_esd(s14_an_1_esd),
-	.s14_an_2_esd(s14_an_2_esd),
 	.ibias0(user_ibias[13*2 + 0]),
 	.ibias1(user_ibias[13*2 + 1]),
 	.vbias(user_vbias[13]),
@@ -1304,7 +1367,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[14*24 +: 24]),
 	.dig_out(user_dig_out[14*12 +: 12]),
 	.s15_an(s15_an),
-	.s15_an_0_esd(s15_an_0_esd),
 	.ibias0(user_ibias[14*2 + 0]),
 	.ibias1(user_ibias[14*2 + 1]),
 	.vbias(user_vbias[14]),
@@ -1327,8 +1389,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[15*24 +: 24]),
 	.dig_out(user_dig_out[15*12 +: 12]),
 	.s16_an(s16_an),
-	.s16_an_0_esd(s16_an_0_esd),
-	.s16_an_1_esd(s16_an_1_esd),
 	.ibias0(user_ibias[15*2 + 0]),
 	.ibias1(user_ibias[15*2 + 1]),
 	.vbias(user_vbias[15]),
@@ -1344,6 +1404,7 @@ module chipalooza_frame (
 	    .vdd_3v3(user_dvdd[16]),
 	    .vss_5v0(vss5v0),
 	    .vss_3v3(vss3v3),
+	    .vss3v3(vss3v3_slot17),
 	`endif
 	.enable(user_ena[16]),
 	.clk(user_clk[16]),
@@ -1351,8 +1412,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[16*24 +: 24]),
 	.dig_out(user_dig_out[16*12 +: 12]),
 	.s17_an(s17_an),
-	.s17_an_0_esd(s17_an_0_esd),
-	.s17_an_1_esd(s17_an_1_esd),
 	.ibias0(user_ibias[16*2 + 0]),
 	.ibias1(user_ibias[16*2 + 1]),
 	.vbias(user_vbias[16]),
@@ -1375,8 +1434,6 @@ module chipalooza_frame (
 	.dig_in(user_dig_in[17*24 +: 24]),
 	.dig_out(user_dig_out[17*12 +: 12]),
 	.s18_an(s18_an),
-	.s18_an_0_esd(s18_an_0_esd),
-	.s18_an_1_esd(s18_an_1_esd),
 	.ibias0(user_ibias[17*2 + 0]),
 	.ibias1(user_ibias[17*2 + 1]),
 	.vbias(user_vbias[17]),

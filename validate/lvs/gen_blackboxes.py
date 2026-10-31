@@ -32,7 +32,9 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 RTL = os.path.join(ROOT, "verilog", "rtl")
 GL = os.path.join(ROOT, "verilog", "gl")
 DEPS = os.path.join(ROOT, "dependencies")
-PDK = os.path.join(os.environ.get("PDK_ROOT", os.path.expanduser("~/gits")),
+# /usr/share/pdk is where open_pdks installs GF180MCU.  The ~/gits default
+# was inherited from IHP, whose PDK lives in its own repository.
+PDK = os.path.join(os.environ.get("PDK_ROOT", "/usr/share/pdk"),
                    os.environ.get("PDK", "gf180mcuD"))
 
 # Leaves of the structural view, in the order they are emitted.  The
@@ -49,8 +51,12 @@ SOURCES = [
     ("housekeeping_top",        os.path.join(GL, "housekeeping_top.pnl.v")),
     ("user_project_control",    os.path.join(GL, "user_project_control.pnl.v")),
     ("gf180mcu_ocd_ip_sram__sram1024x8m8wm1",
+     # The PDK's own power-pin blackbox, not the behavioural model:  the
+     # structural view connects VDD/VSS, which __blackbox.v lacks.  Only
+     # the port NAMES matter on this side -- yosys and netgen connect by
+     # name -- so its port order differing from the SPICE is harmless.
      os.path.join(PDK, "libs.ref/gf180mcu_ocd_ip_sram/verilog/"
-                       "gf180mcu_ocd_ip_sram__sram1024x8m8wm1.v")),
+                       "gf180mcu_ocd_ip_sram__sram1024x8m8wm1__blackbox_pp.v")),
 ]
 SOURCES += [(f"analog_{n}", os.path.join(
                 DEPS, "gf180mcu_ocd_ip__analog_switches/verilog",
@@ -59,15 +65,23 @@ SOURCES += [(f"analog_{n}", os.path.join(
 SOURCES += [(f"power_{n}", os.path.join(
                 DEPS, "gf180mcu_ocd_ip__analog_switches/verilog",
                 f"power_{n}.v"))
-            for n in ("stage3v3", "stage2")]
+            for n in ("stage3v3", "stage")]
 SOURCES += [(f"gf180mcu_ocd_ip__{n}", os.path.join(
                 DEPS, "gf180mcu_ocd_ip__biasgen/verilog",
                 f"gf180mcu_ocd_ip__{n}.v"))
-            for n in ("bandgap_v3", "biasgen2", "voltgen_v2")]
+            # Unsuffixed:  the GF blocks have no taped-out predecessor, so the
+            # IHP version suffixes (bandgap_v3, biasgen2, voltgen_v2) were
+            # dropped on 2026-10-28.  The stale names stopped this script
+            # running at all, so nothing was compared from then until now.
+            for n in ("bandgap", "biasgen", "voltgen", "classab_buffer")]
 # The power-on reset lives in its own submodule.
 SOURCES += [("gf180mcu_ocd_ip__por", os.path.join(
                 DEPS, "gf180mcu_ocd_ip__por/verilog",
                 "gf180mcu_ocd_ip__por.v"))]
+# The mask revision block.  Its gate-level netlist is the source:  the
+# schematic instantiates it as a primitive, and the layout is tie cells.
+SOURCES += [("user_id_programming",
+             os.path.join(GL, "user_id_programming.v"))]
 SOURCES += [(f"slot{i}_wrapper", os.path.join(RTL, f"slot{i}_wrapper.v"))
             for i in range(1, 19)]
 
@@ -158,19 +172,12 @@ def ports(path, module):
     return out
 
 
-# Pins a cell has in the LAYOUT and the CDL but not in its Verilog model.
-# The GF SRAM model declares no supplies at all, so without this the stub
-# came out with 70 of the SRAM's 73 pins and VDD/VDDARRAY/VSS were simply
-# absent from the comparison -- netgen proxies the missing pins and the
-# top level fails to match.  The "!" of the CDL's "VDD!" is a global
-# marker, not part of the name;  netgen drops it, so it is not used here.
-EXTRA_PORTS = {
-    "gf180mcu_ocd_ip_sram__sram1024x8m8wm1": [
-        ("inout", "", "VDD"),
-        ("inout", "", "VDDARRAY"),
-        ("inout", "", "VSS"),
-    ],
-}
+# Pins a cell has in the layout but not in its Verilog source.  Empty
+# since the SRAM moved to the PDK's __blackbox_pp.v, which declares
+# VDD/VSS itself;  the entry that made up for the old model's missing
+# supplies then duplicated them and added a VDDARRAY pin that the PDK
+# SPICE does not have.
+EXTRA_PORTS = {}
 
 
 def emit(module, path):
@@ -194,3 +201,15 @@ print("/* Port-only stubs for every leaf of chipalooza_frame's structural"
 print()
 for module, path in SOURCES:
     emit(module, path)
+
+# The rm2 metal resistor is a PDK device, so there is no Verilog source
+# to read.  The frame uses it for the SPI and clock pad loopbacks.  The pin
+# names are made up here and in primitives.spice, which defines the same
+# two names for the schematic side;  setup.tcl permutes them.
+print("/* rm2 --- 2 pins, metal resistor (PDK device;  see primitives.spice) */")
+print("(* blackbox *)")
+print("module rm2 (")
+print("    inout wire PLUS,")
+print("    inout wire MINUS")
+print(");")
+print("endmodule")

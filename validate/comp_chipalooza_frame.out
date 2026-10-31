@@ -3234,86 +3234,6 @@ ena                                                                          |en
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes gf180mcu_ocd_ip__classab_buffer and gf180mcu_ocd_ip__classab_buffer are equivalent.
-
-Class gf180mcu_as_sc_mcu7t3v3__buff_12 (0):  Merged 28 parallel devices.
-Class gf180mcu_as_sc_mcu7t3v3__buff_12 (1):  Merged 28 parallel devices.
-Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__buff_12                                  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__buff_12                                  
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (16->2)                                                            |nfet_03v3 (16->2)                                                            
-pfet_03v3 (16->2)                                                            |pfet_03v3 (16->2)                                                            
-Number of devices: 4                                                         |Number of devices: 4                                                         
-Number of nets: 7                                                            |Number of nets: 7                                                            
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__buff_12                                  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__buff_12                                  
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-VSS                                                                          |VSS                                                                          
-Y                                                                            |Y                                                                            
-VPW                                                                          |VPW                                                                          
-VDD                                                                          |VDD                                                                          
-A                                                                            |A                                                                            
-VNW                                                                          |VNW                                                                          
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__buff_12 and gf180mcu_as_sc_mcu7t3v3__buff_12 are equivalent.
-Flattening unmatched subcell nfet_03v3_3DMKYT in circuit por_3v3_schmitt_inv (0)(2 instances)
-Flattening unmatched subcell pfet_03v3_9U7ATZ in circuit por_3v3_schmitt_inv (0)(1 instance)
-Flattening unmatched subcell pfet_03v3_VR43ZA in circuit por_3v3_schmitt_inv (0)(1 instance)
-Flattening unmatched subcell nfet_03v3_45Z7NE in circuit por_3v3_schmitt_inv (0)(1 instance)
-Flattening unmatched subcell pfet_03v3_W2ZTV7 in circuit por_3v3_schmitt_inv (0)(1 instance)
-
-Class por_3v3_schmitt_inv (0):  Merged 5 parallel devices.
-Subcircuit summary:
-Circuit 1: por_3v3_schmitt_inv                                               |Circuit 2: por_3v3_schmitt_inv                                               
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (5->3)                                                             |nfet_03v3 (3)                                                                
-pfet_03v3 (6->3)                                                             |pfet_03v3 (3)                                                                
-Number of devices: 6                                                         |Number of devices: 6                                                         
-Number of nets: 6                                                            |Number of nets: 6                                                            
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: por_3v3_schmitt_inv                                               |Circuit 2: por_3v3_schmitt_inv                                               
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-out                                                                          |out                                                                          
-in                                                                           |in                                                                           
-vss                                                                          |vss                                                                          
-vdd3v3                                                                       |vdd3v3                                                                       
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes por_3v3_schmitt_inv and por_3v3_schmitt_inv are equivalent.
-Flattening unmatched subcell pfet_03v3_C7VN8M in circuit por_amp (0)(2 instances)
-Flattening unmatched subcell nfet_03v3_J6SUXM in circuit por_amp (0)(1 instance)
-Flattening unmatched subcell nfet_03v3_J6SUXX in circuit por_amp (0)(1 instance)
-
-Class por_amp (0):  Merged 59 parallel devices.
-Subcircuit summary:
-Circuit 1: por_amp                                                           |Circuit 2: por_amp                                                           
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-pfet_03v3 (16->3)                                                            |pfet_03v3 (3)                                                                
-nfet_03v3 (52->6)                                                            |nfet_03v3 (6)                                                                
-Number of devices: 9                                                         |Number of devices: 9                                                         
-Number of nets: 10                                                           |Number of nets: 10                                                           
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: por_amp                                                           |Circuit 2: por_amp                                                           
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-vss                                                                          |vss                                                                          
-inp                                                                          |inp                                                                          
-ena                                                                          |ena                                                                          
-inn                                                                          |inn                                                                          
-nbias                                                                        |nbias                                                                        
-vdd3v3                                                                       |vdd3v3                                                                       
-out                                                                          |out                                                                          
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes por_amp and por_amp are equivalent.
 Flattening unmatched subcell pfet_05v0_WX3F8K in circuit power_stage (0)(8 instances)
 
 Class power_stage (0):  Merged 720 parallel devices.
@@ -3531,6 +3451,86 @@ vssd                                                                         |vs
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes user_project_control and user_project_control are equivalent.
+
+Class gf180mcu_as_sc_mcu7t3v3__buff_12 (0):  Merged 28 parallel devices.
+Class gf180mcu_as_sc_mcu7t3v3__buff_12 (1):  Merged 28 parallel devices.
+Subcircuit summary:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__buff_12                                  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__buff_12                                  
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+nfet_03v3 (16->2)                                                            |nfet_03v3 (16->2)                                                            
+pfet_03v3 (16->2)                                                            |pfet_03v3 (16->2)                                                            
+Number of devices: 4                                                         |Number of devices: 4                                                         
+Number of nets: 7                                                            |Number of nets: 7                                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__buff_12                                  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__buff_12                                  
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+VSS                                                                          |VSS                                                                          
+Y                                                                            |Y                                                                            
+VPW                                                                          |VPW                                                                          
+VDD                                                                          |VDD                                                                          
+A                                                                            |A                                                                            
+VNW                                                                          |VNW                                                                          
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__buff_12 and gf180mcu_as_sc_mcu7t3v3__buff_12 are equivalent.
+Flattening unmatched subcell nfet_03v3_3DMKYT in circuit por_3v3_schmitt_inv (0)(2 instances)
+Flattening unmatched subcell pfet_03v3_9U7ATZ in circuit por_3v3_schmitt_inv (0)(1 instance)
+Flattening unmatched subcell pfet_03v3_VR43ZA in circuit por_3v3_schmitt_inv (0)(1 instance)
+Flattening unmatched subcell nfet_03v3_45Z7NE in circuit por_3v3_schmitt_inv (0)(1 instance)
+Flattening unmatched subcell pfet_03v3_W2ZTV7 in circuit por_3v3_schmitt_inv (0)(1 instance)
+
+Class por_3v3_schmitt_inv (0):  Merged 5 parallel devices.
+Subcircuit summary:
+Circuit 1: por_3v3_schmitt_inv                                               |Circuit 2: por_3v3_schmitt_inv                                               
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+nfet_03v3 (5->3)                                                             |nfet_03v3 (3)                                                                
+pfet_03v3 (6->3)                                                             |pfet_03v3 (3)                                                                
+Number of devices: 6                                                         |Number of devices: 6                                                         
+Number of nets: 6                                                            |Number of nets: 6                                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: por_3v3_schmitt_inv                                               |Circuit 2: por_3v3_schmitt_inv                                               
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+out                                                                          |out                                                                          
+in                                                                           |in                                                                           
+vss                                                                          |vss                                                                          
+vdd3v3                                                                       |vdd3v3                                                                       
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes por_3v3_schmitt_inv and por_3v3_schmitt_inv are equivalent.
+Flattening unmatched subcell pfet_03v3_C7VN8M in circuit por_amp (0)(2 instances)
+Flattening unmatched subcell nfet_03v3_J6SUXM in circuit por_amp (0)(1 instance)
+Flattening unmatched subcell nfet_03v3_J6SUXX in circuit por_amp (0)(1 instance)
+
+Class por_amp (0):  Merged 59 parallel devices.
+Subcircuit summary:
+Circuit 1: por_amp                                                           |Circuit 2: por_amp                                                           
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+pfet_03v3 (16->3)                                                            |pfet_03v3 (3)                                                                
+nfet_03v3 (52->6)                                                            |nfet_03v3 (6)                                                                
+Number of devices: 9                                                         |Number of devices: 9                                                         
+Number of nets: 10                                                           |Number of nets: 10                                                           
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: por_amp                                                           |Circuit 2: por_amp                                                           
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+vss                                                                          |vss                                                                          
+inp                                                                          |inp                                                                          
+ena                                                                          |ena                                                                          
+inn                                                                          |inn                                                                          
+nbias                                                                        |nbias                                                                        
+vdd3v3                                                                       |vdd3v3                                                                       
+out                                                                          |out                                                                          
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes por_amp and por_amp are equivalent.
 
 Subcircuit summary:
 Circuit 1: gf180mcu_as_sc_mcu7t3v3__tiel_4                                   |Circuit 2: gf180mcu_as_sc_mcu7t3v3__tiel_4                                   
@@ -6027,54 +6027,6 @@ clk                                                                          |cl
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes slot15_wrapper and slot15_wrapper are equivalent.
-Flattening unmatched subcell nfet_03v3_UDCARV in circuit por_3v3_selfbiased (0)(2 instances)
-Flattening unmatched subcell ppolyf_u_1k_FPWM3N in circuit por_3v3_selfbiased (0)(2 instances)
-Flattening unmatched subcell diode_nd2ps_03v3_E3DKMC in circuit por_3v3_selfbiased (0)(1 instance)
-Flattening unmatched subcell cap_mim_2p0fF_U8GDWG in circuit por_3v3_selfbiased (0)(1 instance)
-Flattening unmatched subcell pfet_03v3_KAPG2P in circuit por_3v3_selfbiased (0)(2 instances)
-Flattening unmatched subcell pfet_03v3_HJ4KN5 in circuit por_3v3_selfbiased (0)(2 instances)
-Flattening unmatched subcell nfet_03v3_EENGZV in circuit por_3v3_selfbiased (0)(2 instances)
-
-Removing zero-valued device vsrc from cell por_3v3_selfbiased (1) makes a better match
-Removing zero-valued device vsrc from cell por_3v3_selfbiased (1) makes a better match
-Removing zero-valued device vsrc from cell por_3v3_selfbiased (1) makes a better match
-Removing zero-valued device vsrc from cell por_3v3_selfbiased (1) makes a better match
-Removing zero-valued device vsrc from cell por_3v3_selfbiased (1) makes a better match
-Making another compare attempt.
-
-Class por_3v3_selfbiased (0):  Merged 112 parallel devices.
-Class por_3v3_selfbiased (0):  Merged 198 series devices.
-Class por_3v3_selfbiased (1):  Merged 1 parallel devices.
-Subcircuit summary:
-Circuit 1: por_3v3_selfbiased                                                |Circuit 2: por_3v3_selfbiased                                                
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (46->10)                                                           |nfet_03v3 (10)                                                               
-gf180mcu_as_sc_mcu7t3v3__buff_12 (2)                                         |gf180mcu_as_sc_mcu7t3v3__buff_12 (2)                                         
-gf180mcu_as_sc_mcu7t3v3__inv_4 (1)                                           |gf180mcu_as_sc_mcu7t3v3__inv_4 (1)                                           
-gf180mcu_as_sc_mcu7t3v3__fillcap_4 (2->1)                                    |gf180mcu_as_sc_mcu7t3v3__fillcap_4 (2->1)                                    
-ppolyf_u_1k (200->2)                                                         |ppolyf_u_1k (2)                                                              
-diode_nd2ps_03v3 (1)                                                         |diode_nd2ps_03v3 (1)                                                         
-cap_mim_2f0_m4m5_noshield (40->2)                                            |cap_mim_2f0_m4m5_noshield (40->2)                                            
-por_3v3_schmitt_inv (1)                                                      |por_3v3_schmitt_inv (1)                                                      
-pfet_03v3 (52->15)                                                           |pfet_03v3 (16->15)                                                           
-por_amp (1)                                                                  |por_amp (1)                                                                  
-Number of devices: 36                                                        |Number of devices: 36                                                        
-Number of nets: 20                                                           |Number of nets: 20                                                           
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: por_3v3_selfbiased                                                |Circuit 2: por_3v3_selfbiased                                                
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-por_unbuf                                                                    |por_unbuf                                                                    
-por                                                                          |por                                                                          
-porb                                                                         |porb                                                                         
-ena                                                                          |ena                                                                          
-vdd3v3                                                                       |vdd3v3                                                                       
-vss                                                                          |vss                                                                          
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes por_3v3_selfbiased and por_3v3_selfbiased are equivalent.
 
 Cell slot2_wrapper (0) disconnected node: s2_an[0]
 Cell slot2_wrapper (0) disconnected node: s2_an[1]
@@ -6301,6 +6253,54 @@ clk                                                                          |cl
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes slot6_wrapper and slot6_wrapper are equivalent.
+Flattening unmatched subcell nfet_03v3_UDCARV in circuit gf180mcu_ocd_ip__por (0)(2 instances)
+Flattening unmatched subcell ppolyf_u_1k_FPWM3N in circuit gf180mcu_ocd_ip__por (0)(2 instances)
+Flattening unmatched subcell diode_nd2ps_03v3_E3DKMC in circuit gf180mcu_ocd_ip__por (0)(1 instance)
+Flattening unmatched subcell cap_mim_2p0fF_U8GDWG in circuit gf180mcu_ocd_ip__por (0)(1 instance)
+Flattening unmatched subcell pfet_03v3_KAPG2P in circuit gf180mcu_ocd_ip__por (0)(2 instances)
+Flattening unmatched subcell pfet_03v3_HJ4KN5 in circuit gf180mcu_ocd_ip__por (0)(2 instances)
+Flattening unmatched subcell nfet_03v3_EENGZV in circuit gf180mcu_ocd_ip__por (0)(2 instances)
+
+Removing zero-valued device vsrc from cell gf180mcu_ocd_ip__por (1) makes a better match
+Removing zero-valued device vsrc from cell gf180mcu_ocd_ip__por (1) makes a better match
+Removing zero-valued device vsrc from cell gf180mcu_ocd_ip__por (1) makes a better match
+Removing zero-valued device vsrc from cell gf180mcu_ocd_ip__por (1) makes a better match
+Removing zero-valued device vsrc from cell gf180mcu_ocd_ip__por (1) makes a better match
+Making another compare attempt.
+
+Class gf180mcu_ocd_ip__por (0):  Merged 112 parallel devices.
+Class gf180mcu_ocd_ip__por (0):  Merged 198 series devices.
+Class gf180mcu_ocd_ip__por (1):  Merged 1 parallel devices.
+Subcircuit summary:
+Circuit 1: gf180mcu_ocd_ip__por                                              |Circuit 2: gf180mcu_ocd_ip__por                                              
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+nfet_03v3 (46->10)                                                           |nfet_03v3 (10)                                                               
+gf180mcu_as_sc_mcu7t3v3__buff_12 (2)                                         |gf180mcu_as_sc_mcu7t3v3__buff_12 (2)                                         
+gf180mcu_as_sc_mcu7t3v3__inv_4 (1)                                           |gf180mcu_as_sc_mcu7t3v3__inv_4 (1)                                           
+gf180mcu_as_sc_mcu7t3v3__fillcap_4 (2->1)                                    |gf180mcu_as_sc_mcu7t3v3__fillcap_4 (2->1)                                    
+ppolyf_u_1k (200->2)                                                         |ppolyf_u_1k (2)                                                              
+diode_nd2ps_03v3 (1)                                                         |diode_nd2ps_03v3 (1)                                                         
+cap_mim_2f0_m4m5_noshield (40->2)                                            |cap_mim_2f0_m4m5_noshield (40->2)                                            
+por_3v3_schmitt_inv (1)                                                      |por_3v3_schmitt_inv (1)                                                      
+pfet_03v3 (52->15)                                                           |pfet_03v3 (16->15)                                                           
+por_amp (1)                                                                  |por_amp (1)                                                                  
+Number of devices: 36                                                        |Number of devices: 36                                                        
+Number of nets: 20                                                           |Number of nets: 20                                                           
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: gf180mcu_ocd_ip__por                                              |Circuit 2: gf180mcu_ocd_ip__por                                              
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+por_unbuf                                                                    |por_unbuf                                                                    
+por                                                                          |por                                                                          
+porb                                                                         |porb                                                                         
+ena                                                                          |ena                                                                          
+vdd3v3                                                                       |vdd3v3                                                                       
+vss                                                                          |vss                                                                          
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_ocd_ip__por and gf180mcu_ocd_ip__por are equivalent.
 
 Class user_id_programming (0):  Merged 23 parallel devices.
 Class user_id_programming (1):  Merged 23 parallel devices.
@@ -8165,12 +8165,12 @@ slot3_wrapper (1)                                                            |sl
 slot7_wrapper (1)                                                            |slot7_wrapper (1)                                                            
 slot11_wrapper (1)                                                           |slot11_wrapper (1)                                                           
 slot15_wrapper (1)                                                           |slot15_wrapper (1)                                                           
-por_3v3_selfbiased (1)                                                       |por_3v3_selfbiased (1)                                                       
 slot2_wrapper (1)                                                            |slot2_wrapper (1)                                                            
 slot6_wrapper (1)                                                            |slot6_wrapper (1)                                                            
 power_stage (18)                                                             |power_stage (18)                                                             
 power_stage3v3 (18)                                                          |power_stage3v3 (18)                                                          
 user_project_control (18)                                                    |user_project_control (18)                                                    
+gf180mcu_ocd_ip__por (1)                                                     |gf180mcu_ocd_ip__por (1)                                                     
 user_id_programming (1)                                                      |user_id_programming (1)                                                      
 slot10_wrapper (1)                                                           |slot10_wrapper (1)                                                           
 slot14_wrapper (1)                                                           |slot14_wrapper (1)                                                           

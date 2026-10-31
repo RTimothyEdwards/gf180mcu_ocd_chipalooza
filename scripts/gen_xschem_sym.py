@@ -647,13 +647,12 @@ def main(argv):
                          geom if kind == 'mag' else None,
                          draw.get(module))
         extra = ''
-        if kind == 'spice':
-            gldir = os.path.join(root, 'verilog', 'gl')
-            os.makedirs(gldir, exist_ok=True)
-            emit_lvs_verilog(module, ports,
-                             os.path.join(gldir, module + '_lvs.v'),
-                             'the SPICE netlist shipped with this cell')
-            extra = '  + gl/' + module + '_lvs.v'
+        # No _lvs.v for a SPICE-sourced primitive (the SRAM).  The PDK
+        # already supplies what each side of the comparison needs:  a
+        # power-pin Verilog blackbox for the structural view, and the SPICE
+        # netlist itself for the schematic view, whose port order is the
+        # one the primitive binds to.  A local copy here was a third view
+        # of the same port list to keep in step, and nothing reads it.
         if kind == 'mag':
             gldir = os.path.join(root, 'verilog', 'gl')
             os.makedirs(gldir, exist_ok=True)

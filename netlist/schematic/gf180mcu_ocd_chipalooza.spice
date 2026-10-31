@@ -120,7 +120,7 @@ x23[1] vdd3v3 vss3v3 vdd5v0 ana10[1] vss5v0 net9[1] analog[1] analog_switch_med
 x23[0] vdd3v3 vss3v3 vdd5v0 ana10[0] vss5v0 net9[0] analog[0] analog_switch_med
 x25 net8 vdd3v3 vss3v3 net7 power_stage3v3
 x7 net6 vdd5v0 vss5v0 vss3v3 vdd3v3 net72 power_stage
-x20 vdd3v3 vdd3v3 net5 vss3v3 porb por por_3v3_selfbiased
+x20 vdd3v3 vdd3v3 net5 vss3v3 porb por gf180mcu_ocd_ip__por
 * noconn #net5
 x26 vss3v3 vddd sram_addr[9] sram_addr[8] sram_addr[7] sram_addr[6] sram_addr[5] sram_addr[4] sram_addr[3] sram_addr[2]
 + sram_addr[1] sram_addr[0] sram_clk sram_writeb sram_odata[7] sram_odata[6] sram_odata[5] sram_odata[4] sram_odata[3] sram_odata[2]
@@ -705,10 +705,10 @@ x4 DVSS DVDD gf180mcu_as_sc_mcu7t3v3__tap_2
 .ends
 
 
-* expanding   symbol:  por_3v3_selfbiased.sym # of pins=6
-** sym_path: /home/tim/gits/gf180mcu_ocd_chipalooza/dependencies/gf180mcu_ocd_ip__por/xschem/por_3v3_selfbiased.sym
-** sch_path: /home/tim/gits/gf180mcu_ocd_chipalooza/dependencies/gf180mcu_ocd_ip__por/xschem/por_3v3_selfbiased.sch
-.subckt por_3v3_selfbiased vdd3v3 ena por_unbuf vss porb por
+* expanding   symbol:  gf180mcu_ocd_ip__por.sym # of pins=6
+** sym_path: /home/tim/gits/gf180mcu_ocd_chipalooza/dependencies/gf180mcu_ocd_ip__por/xschem/gf180mcu_ocd_ip__por.sym
+** sch_path: /home/tim/gits/gf180mcu_ocd_chipalooza/dependencies/gf180mcu_ocd_ip__por/xschem/gf180mcu_ocd_ip__por.sch
+.subckt gf180mcu_ocd_ip__por vdd3v3 ena por_unbuf vss porb por
 *.PININFO ena:I vdd3v3:B vss:B por_unbuf:O porb:O por:O
 x1 vdd3v3 vpb vref vfb ena vss net9 por_amp
 x2 vdd3v3 vcap por_unbuf vss por_3v3_schmitt_inv

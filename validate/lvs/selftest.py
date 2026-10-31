@@ -55,10 +55,12 @@ def swap_slot_addresses(src):
     again this will not find it, which is itself the failure being
     guarded against --- hence the explicit error rather than a skip.
     """
-    a = ".proj_addr({ DVSS, DVSS, DVSS, DVSS, DVDD })"
-    b = ".proj_addr({ DVSS, DVSS, DVSS, DVDD, DVSS })"
+    # GF's 3.3 V supply nets.  This was DVDD/DVSS on IHP;  with those
+    # names the test stopped here even though the ties were intact.
+    a = ".proj_addr({ vss3v3, vss3v3, vss3v3, vss3v3, vdd3v3 })"
+    b = ".proj_addr({ vss3v3, vss3v3, vss3v3, vdd3v3, vss3v3 })"
     if a not in src or b not in src:
-        sys.exit("selftest: proj_addr is not tied to DVDD/DVSS.  If it is "
+        sys.exit("selftest: proj_addr is not tied to vdd3v3/vss3v3.  If it is "
                  "back to a literal, netgen is SILENTLY IGNORING the slot "
                  "addresses -- see the note at the top of this file.")
     i = src.index(a)
@@ -69,7 +71,7 @@ def swap_slot_addresses(src):
 
 def cross_bandgap_biases(src):
     """Swap the bandgap's two bias connections."""
-    i = src.index("gf180mcu_ocd_ip__bandgap_v3 bandgap")
+    i = src.index("gf180mcu_ocd_ip__bandgap bandgap")
     j = src.index(");", i)
     blk = src[i:j]
     out = (blk.replace(".ibias1_250n(bandgap_sink2_ibias)", ".ibias1_250n(TMP)")

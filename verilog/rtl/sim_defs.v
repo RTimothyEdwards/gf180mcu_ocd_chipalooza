@@ -52,7 +52,7 @@
 `include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/analog_switch_small.v"
 `include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/analog_pswitch_small.v"
 `include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/power_stage3v3.v"
-`include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/power_stage2.v"
+`include "../../dependencies/gf180mcu_ocd_ip__analog_switches/verilog/power_stage.v"
 `include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__bandgap.v"
 `include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__voltgen.v"
 `include "../../dependencies/gf180mcu_ocd_ip__biasgen/verilog/gf180mcu_ocd_ip__classab_buffer.v"
@@ -64,4 +64,6 @@
 `include "libs.ref/gf180mcu_as_sc_mcu7t3v3/verilog/gf180mcu_as_sc_mcu7t3v3.v"
 
 // All the digital, cobbled together for simulation
+`include "../gl/user_id_programming.v"
+
 `include "chipalooza_frame.v"

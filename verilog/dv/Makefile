@@ -7,10 +7,14 @@
 #
 # Needs cocotb and iverilog.  PDK_ROOT/PDK must point at the GF PDK so
 # that sim_defs.v can find the SRAM and standard-cell models.
+#
+# PDK_ROOT is set by default to the local open-pdks installation target
+# of /usr/share/pdk/.  For any other target, set PDK_ROOT before running
+# "make".
 
 SIM           ?= icarus
 TOPLEVEL_LANG ?= verilog
-PDK_ROOT      ?= $(HOME)/gits
+PDK_ROOT      ?= /usr/share/pdk
 PDK           ?= gf180mcuD
 
 RTL := $(abspath $(shell pwd)/../rtl)

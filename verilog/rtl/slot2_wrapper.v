@@ -50,6 +50,7 @@ module slot2_wrapper (
     input real vdd_3v3,		// 3.3V gated power (NaN when gated off)
     inout wire vss_5v0,
     inout wire vss_3v3,
+    inout wire vss5v0,		// ground pad routed through this slot (vss5v0_slot2 on the frame)
 `endif
 
     input wire enable,		// project enable
@@ -73,8 +74,6 @@ module slot2_wrapper (
      * which is also what LVS compares against.
      */
     inout wire [1:0] s2_an,	// dedicated analog pad(s)
-    inout wire s2_an_0_esd,	// secondary ESD-protected pin
-    inout wire s2_an_1_esd,	// secondary ESD-protected pin
     input real ibias0,		// shared current bias 0
     input real ibias1,		// shared current bias 1
     input real vbias,		// shared voltage bias

@@ -25,3 +25,11 @@ foreach cell {analog_switch_med analog_switch_small analog_pswitch_small} {
 # switches plus the two diagnostic ones.  Dropping it from the comparison
 # is correct -- it is a simulation modelling switch, not layout.
 property "-circuit1 analog_pswitch_small" remove CURRENT_MODE
+
+# The rm2 metal resistors of the SPI and clock pad loopbacks.  A resistor
+# IS symmetric, so unlike the power stages its two ends are permutable.
+permute "-circuit1 rm2" PLUS MINUS
+permute "-circuit2 rm2" PLUS MINUS
+# The structural view has no geometry for them;  the resistor dimensions
+# are checked by layout-vs-schematic, not here.
+property "-circuit2 rm2" delete m r_width r_length

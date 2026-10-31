@@ -21,7 +21,7 @@
  * I/O cell than the default on a dedicated pin, only this file changes.
  *
  * The number of dedicated analog pins is fixed per slot by the padframe
- * and is taken from config.txt (the sN_an[] entries).  This slot has 1.
+ * and is taken from config.txt (the sN_an[] entries).  This slot has 2.
  *
  * ANALOG PORTS ARE SCALAR "real", ONE PER LINE.  This looks verbose next
  * to a packed bus, and it is the only form that works:
@@ -72,8 +72,7 @@ module slot15_wrapper (
      * The names match the layout and the documented chip pinout,
      * which is also what LVS compares against.
      */
-    inout wire [0:0] s15_an,	// dedicated analog pad(s)
-    inout wire s15_an_0_esd,	// secondary ESD-protected pin
+    inout wire [1:0] s15_an,	// dedicated analog pad(s)
     input real ibias0,		// shared current bias 0
     input real ibias1,		// shared current bias 1
     input real vbias,		// shared voltage bias

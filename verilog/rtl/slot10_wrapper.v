@@ -73,9 +73,6 @@ module slot10_wrapper (
      * which is also what LVS compares against.
      */
     inout wire [2:0] s10_an,	// dedicated analog pad(s)
-    inout wire s10_an_0_esd,	// secondary ESD-protected pin
-    inout wire s10_an_1_esd,	// secondary ESD-protected pin
-    inout wire s10_an_2_esd,	// secondary ESD-protected pin
     input real ibias0,		// shared current bias 0
     input real ibias1,		// shared current bias 1
     input real vbias,		// shared voltage bias
