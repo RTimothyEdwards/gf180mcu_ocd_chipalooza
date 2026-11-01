@@ -1,7 +1,7 @@
 magic
 tech gf180mcuD
 magscale 1 10
-timestamp 1793386076
+timestamp 1793541954
 << checkpaint >>
 rect -2010 -2010 256860 84552
 << obsm1 >>
@@ -71,9 +71,9 @@ rect 0 30187 462 30246
 rect 0 30072 462 30130
 rect 254006 15739 254806 24603
 << metal5 >>
-rect 0 73790 466 80789
+rect 0 73790 466 79790
 rect 0 50229 462 70597
-rect 0 22681 462 29604
+rect 0 22681 462 28681
 rect 0 1775 462 19242
 << comment >>
 rect 0 82081 254850 82542
@@ -87,11 +87,11 @@ flabel metal3 254006 49739 254406 58603 0 FreeSans 3200 90 0 0 s1_an[1]
 port 18 nsew
 flabel metal5 0 10119 462 19242 0 FreeSans 2769 90 0 0 vdd_3v3
 port 19 nsew
-flabel metal5 0 73790 462 80713 0 FreeSans 2769 90 0 0 vss_5v0
+flabel metal5 0 73790 462 79790 0 FreeSans 2769 90 0 0 vss_5v0
 port 20 nsew
 flabel metal5 0 50229 462 70597 0 FreeSans 2769 90 0 0 vdd_5v0
 port 21 nsew
-flabel metal5 0 22681 462 29604 0 FreeSans 2769 90 0 0 vss_3v3
+flabel metal5 0 22681 462 28681 0 FreeSans 2769 90 0 0 vss_3v3
 port 22 nsew
 flabel metal3 0 38694 462 39155 0 FreeSans 1846 180 0 0 analog_bus3
 port 23 nsew

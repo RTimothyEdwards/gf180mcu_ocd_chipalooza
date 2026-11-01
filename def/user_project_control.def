@@ -269,11 +269,6 @@ PINS 119 ;
      + USE SIGNAL
      + PORT
         + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 9000 69000 ) N ;
-   - proj_3v3_ena + NET proj_3v3_ena
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 11000 69000 ) N ;
    - proj_analog_ena[3] + NET proj_analog_ena[3]
      + DIRECTION OUTPUT
      + USE SIGNAL
@@ -489,6 +484,11 @@ PINS 119 ;
      + USE SIGNAL
      + PORT
         + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 97000 69000 ) N ;
+   - proj_3v3_ena + NET proj_3v3_ena
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER Metal2 ( -150 -1000 ) ( 150 1000 )        + PLACED ( 99000 69000 ) N ;
    - dig_out[11] + NET dig_out[11]
      + DIRECTION OUTPUT
      + USE SIGNAL

@@ -347,10 +347,33 @@ set_output_delay $sck_io_delay -clock SCK $config_outputs
 # max_delay's required time), which made an 8 ns budget read as -12 ns
 # and reported a 14.8 ns violation on a path that is actually 2.6 ns.
 #
-# Measured depth is 14 logic levels, 2.58 ns at nom_slow_1p08V_125C on a
-# non-timing-driven netlist, so 7.5 ns is comfortable.  dbus_out also has
-# to charge the trunk load, which is the slower part.
+# Measured on GF180MCU (RUN_2026-10-31_21-32-48, post-route with
+# parasitics), pin to pin from io_in / dbus_in_*:
+#
+#                   io_out          dbus_out
+#     ss_125C_3v00  4.92 - 6.03 ns  3.86 - 5.41 ns
+#     tt_025C_3v30  3.65 - 4.42 ns  2.93 - 4.11 ns
+#     ff_n40C_3v60  2.86 - 3.44 ns  2.34 - 3.28 ns
+#
+# The worst is dbus_in_left[10] -> io_out[6], almost all of it a chain of
+# eight mux2_2 at ~0.37 ns each at ss.  7.5 ns leaves ~1.5 ns of margin at
+# ss.  (The 2.58 ns quoted here before was IHP's, at nom_slow_1p08V_125C.)
+# The clk-domain sequencer and pattern registers reach dbus_out in at most
+# 5.64 ns at ss and stay under this budget too.
 set_max_delay 7.5 -to $router_outputs
+
+# The SCK-domain routing-select registers also reach these ports, but they
+# are configuration:  written by an SPI register write and then held, like
+# the outputs in $config_outputs, so they get the same budget.  Measured
+# from the SCK edge they carry ~1.7 ns of SCK clock tree and ~0.7 ns of
+# clk-to-Q ahead of the same mux chain, which put io_out at 7.27 - 8.18 ns
+# at ss and failed 7.5 ns on nine bits with no real path behind it.
+#
+# The -from makes this the more specific exception, so it overrides the
+# line above for these paths only;  clk-domain and pin-to-pin paths keep
+# 7.5 ns.  It is a max_delay and not an output delay for the reason given
+# above:  the two compound at a shared endpoint.
+set_max_delay $sck_io_delay -from [get_clocks SCK] -to $router_outputs
 
 #-----------------------------------------------------------------------
 # SRAM interface timing

@@ -170,6 +170,15 @@ RT_CLOCK_MAX_LAYER: Metal4
 
 # GRT_LAYER_ADJUSTMENTS: [0, 0, 0, 0, 0.5]
 
+# Antenna diodes on every input port.  Odb.DiodesOnPorts runs after the
+# resizer's fanout repair and after CTS, so its diodes land on the port
+# net itself, one beside each gate the port drives.  Diodes instantiated
+# in the RTL do not survive that:  the resizer treats a diode pin as an
+# ordinary load and splits it off behind a fanout buffer (17 of 81 in
+# housekeeping_top, including clk and SCK under CTS), leaving the long
+# frame-level wire on a bare gate.  Hence no diodes in the RTL.
+DIODE_ON_PORTS: in
+
 # Resizer
 DESIGN_REPAIR_BUFFER_INPUT_PORTS: false
 DESIGN_REPAIR_BUFFER_OUTPUT_PORTS: false

@@ -641,14 +641,15 @@ x1 DVDD_IN DVSS P_DRIVE enable gate_drive_3v3
 .subckt power_stage enable IOVDD_IN IOVSS DVSS DVDD IOVDD_OUT
 *.PININFO enable:I IOVDD_IN:I DVSS:I DVDD:I IOVSS:I IOVDD_OUT:O
 x2 net2 net1 P_DRIVE IOVDD_IN IOVSS gate_drive_large
-x1 DVDD VNW VPW DVSS net1 enable gf180mcu_as_sc_mcu7t3v3__inv_4
-x3 DVDD VNW VPW DVSS net2 net1 gf180mcu_as_sc_mcu7t3v3__inv_4
-x4[1] DVDD VNW VPW DVSS gf180mcu_as_sc_mcu7t3v3__fillcap_4
-x4[0] DVDD VNW VPW DVSS gf180mcu_as_sc_mcu7t3v3__fillcap_4
-x9 DVDD VNW VPW DVSS enable gf180mcu_as_sc_mcu7t3v3__diode_2
 XM1 IOVDD_OUT P_DRIVE IOVDD_IN IOVDD_IN pfet_05v0 L=0.50u W=10.0u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u'
 + pd='2*int((nf+1)/2) * (W/nf + 0.18u)' ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0 m=720 par=720
-x4 DVSS DVDD gf180mcu_as_sc_mcu7t3v3__tap_2
+x4[1] DVSS DVDD gf180mcu_as_sc_mcu7t3v3__tap_2
+x4[0] DVSS DVDD gf180mcu_as_sc_mcu7t3v3__tap_2
+x5[1] DVDD DVDD DVSS DVSS gf180mcu_as_sc_mcu7t3v3__fillcap_4
+x5[0] DVDD DVDD DVSS DVSS gf180mcu_as_sc_mcu7t3v3__fillcap_4
+x6 DVDD DVDD DVSS DVSS enable gf180mcu_as_sc_mcu7t3v3__diode_2
+x7 DVDD DVDD DVSS DVSS net1 enable gf180mcu_as_sc_mcu7t3v3__inv_4
+x1 DVDD DVDD DVSS DVSS net2 net1 gf180mcu_as_sc_mcu7t3v3__inv_4
 .ends
 
 

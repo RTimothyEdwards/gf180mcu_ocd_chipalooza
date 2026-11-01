@@ -32,12 +32,12 @@
 # proj_ena		(output)	top
 # proj_reset		(output)	top
 # proj_5v0_ena		(output)	top
-# proj_3v3_ena		(output)	top
 # proj_analog_ena[3:0]	(output)	top
 # proj_ibias_ena[1:0]	(output)	top
 # proj_vbias_ena	(output)	top
 # proj_dig_in[23:0]	(output)	top
 # proj_dig_out[11:0]	(input)		top
+# proj_3v3_ena		(output)	top
 #
 # dig_out_relay[11:0]	(input)		left
 #
@@ -202,7 +202,6 @@ label_top_signal proj_clk	 	3	output
 label_top_signal proj_ena	 	5  	output
 label_top_signal proj_reset	 	7  	output
 label_top_signal proj_5v0_ena		9  	output
-label_top_signal proj_3v3_ena	 	11  	output
 label_top_signal proj_analog_ena\[3\]   13 	output
 label_top_signal proj_analog_ena\[2\]   15 	output
 label_top_signal proj_analog_ena\[1\]   17 	output
@@ -246,6 +245,7 @@ label_top_signal proj_dig_out\[3\]      91 	input
 label_top_signal proj_dig_out\[2\]      93 	input
 label_top_signal proj_dig_out\[1\]      95 	input
 label_top_signal proj_dig_out\[0\]      97 	input
+label_top_signal proj_3v3_ena	 	99  	output
 
 # The daisy-chained return bus.  dig_out (right edge) and
 # dig_out_relay (left edge) must stay at matching y positions and in

@@ -190,21 +190,10 @@ module user_project_control (
 	.Y(proj_clk_unbuf)
     );
 
-    /* Place antenna diodes on all of the digital inputs (except select,
-     * which just runs from the base to the wrapper)
+    /* No antenna diodes here.  They are added by the flow (DIODE_ON_PORTS
+     * in the LibreLane config), after fanout repair and CTS, so that they
+     * stay on the port nets;  see the config for why.
      */
-
-    (* keep *)
-    gf180mcu_as_sc_mcu7t3v3__diode_2 tiedowns [70:0] (
-	// no. signals = 5, 5, 1, 1, 1, 1, 4, 2, 1, 1, 1, 24, 12, 12 = 71
-	/* The GF180 antenna diode's pin is DIODE;  the IHP sg13cmos5l_antennanp
-	 * it replaced used A, so the ported instance named a pin that does not
-	 * exist on this cell.
-	 */
-	.DIODE({proj_addr, proj_sel, clk, dig_ena, enable, reset, analog_ena,
-		ibias_ena, vbias_ena, power_5v0_ena, power_3v3_ena, dig_in,
-		dig_out_relay, proj_dig_out})
-    );
 
     /* Buffer all of the long-haul outputs, which is everything that goes back to
      * the housekeeping block.  The daisy-chained outputs are effectively long-

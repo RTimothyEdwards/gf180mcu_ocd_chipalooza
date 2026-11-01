@@ -1821,6 +1821,27 @@ VNW                                                                          |VN
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__fillcap_8 and gf180mcu_as_sc_mcu7t3v3__fillcap_8 are equivalent.
 
+Subcircuit summary:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__fillcap_16                               |Circuit 2: gf180mcu_as_sc_mcu7t3v3__fillcap_16                               
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+nfet_03v3 (1)                                                                |nfet_03v3 (1)                                                                
+pfet_03v3 (1)                                                                |pfet_03v3 (1)                                                                
+Number of devices: 2                                                         |Number of devices: 2                                                         
+Number of nets: 6                                                            |Number of nets: 6                                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__fillcap_16                               |Circuit 2: gf180mcu_as_sc_mcu7t3v3__fillcap_16                               
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+VSS                                                                          |VSS                                                                          
+VPW                                                                          |VPW                                                                          
+VDD                                                                          |VDD                                                                          
+VNW                                                                          |VNW                                                                          
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__fillcap_16 and gf180mcu_as_sc_mcu7t3v3__fillcap_16 are equivalent.
+
 Class gf180mcu_as_sc_mcu7t3v3__mux2_2 (0):  Merged 2 parallel devices.
 Class gf180mcu_as_sc_mcu7t3v3__mux2_2 (1):  Merged 2 parallel devices.
 Subcircuit summary:
@@ -1898,27 +1919,6 @@ VNW                                                                          |VN
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__dlxtp_2 and gf180mcu_as_sc_mcu7t3v3__dlxtp_2 are equivalent.
-
-Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__fillcap_16                               |Circuit 2: gf180mcu_as_sc_mcu7t3v3__fillcap_16                               
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (1)                                                                |nfet_03v3 (1)                                                                
-pfet_03v3 (1)                                                                |pfet_03v3 (1)                                                                
-Number of devices: 2                                                         |Number of devices: 2                                                         
-Number of nets: 6                                                            |Number of nets: 6                                                            
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__fillcap_16                               |Circuit 2: gf180mcu_as_sc_mcu7t3v3__fillcap_16                               
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-VSS                                                                          |VSS                                                                          
-VPW                                                                          |VPW                                                                          
-VDD                                                                          |VDD                                                                          
-VNW                                                                          |VNW                                                                          
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__fillcap_16 and gf180mcu_as_sc_mcu7t3v3__fillcap_16 are equivalent.
 
 Class gf180mcu_as_sc_mcu7t3v3__and2_2 (0):  Merged 2 parallel devices.
 Class gf180mcu_as_sc_mcu7t3v3__and2_2 (1):  Merged 2 parallel devices.
@@ -3062,8 +3062,8 @@ Circuit 1: analog_switch_med                                                 |Ci
 -----------------------------------------------------------------------------|-----------------------------------------------------------------------------
 gf180mcu_as_sc_mcu7t3v3__fillcap_4 (2->1)                                    |gf180mcu_as_sc_mcu7t3v3__fillcap_4 (2->1)                                    
 gf180mcu_as_sc_mcu7t3v3__inv_4 (2)                                           |gf180mcu_as_sc_mcu7t3v3__inv_4 (2)                                           
-gf180mcu_as_sc_mcu7t3v3__diode_2 (1)                                         |gf180mcu_as_sc_mcu7t3v3__diode_2 (1)                                         
 pfet_05v0 (39->1)                                                            |pfet_05v0 (39->1)                                                            
+gf180mcu_as_sc_mcu7t3v3__diode_2 (1)                                         |gf180mcu_as_sc_mcu7t3v3__diode_2 (1)                                         
 nfet_05v0 (39->1)                                                            |nfet_05v0 (39->1)                                                            
 gate_drive_med (1)                                                           |gate_drive_med (1)                                                           
 Number of devices: 7                                                         |Number of devices: 7                                                         
@@ -3203,8 +3203,8 @@ trim[4]                                                                      |tr
 trim[12]                                                                     |trim[12]                                                                     
 trim[15]                                                                     |trim[15]                                                                     
 trim[3]                                                                      |trim[3]                                                                      
-trim[10]                                                                     |trim[10]                                                                     
 trim[11]                                                                     |trim[11]                                                                     
+trim[10]                                                                     |trim[10]                                                                     
 trim[14]                                                                     |trim[14]                                                                     
 trim[13]                                                                     |trim[13]                                                                     
 dvss                                                                         |dvss                                                                         
@@ -3247,16 +3247,15 @@ gf180mcu_as_sc_mcu7t3v3__inv_4 (2)                                           |gf
 gf180mcu_as_sc_mcu7t3v3__diode_2 (1)                                         |gf180mcu_as_sc_mcu7t3v3__diode_2 (1)                                         
 gate_drive_large (1)                                                         |gate_drive_large (1)                                                         
 Number of devices: 6                                                         |Number of devices: 6                                                         
-Number of nets: 12                                                           |Number of nets: 12                                                           
+Number of nets: 10                                                           |Number of nets: 10                                                           
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Netlists match uniquely with port errors.
 
 Subcircuit pins:
 Circuit 1: power_stage                                                       |Circuit 2: power_stage                                                       
 -----------------------------------------------------------------------------|-----------------------------------------------------------------------------
-DVDD                                                                         |DVDD                                                                         
-gf180mcu_as_sc_mcu7t3v3__inv_4_1/VPW                                         |(no pin, node is VPW)                                                        
 DVSS                                                                         |DVSS                                                                         
+DVDD                                                                         |DVDD                                                                         
 IOVSS                                                                        |IOVSS                                                                        
 IOVDD_OUT                                                                    |IOVDD_OUT                                                                    
 IOVDD_IN                                                                     |IOVDD_IN                                                                     
@@ -3289,19 +3288,19 @@ enable                                                                       |en
 Cell pin lists are equivalent.
 Device classes power_stage3v3 and power_stage3v3 are equivalent.
 
-Class user_project_control (0):  Merged 105 parallel devices.
-Class user_project_control (1):  Merged 105 parallel devices.
+Class user_project_control (0):  Merged 107 parallel devices.
+Class user_project_control (1):  Merged 107 parallel devices.
 Subcircuit summary:
 Circuit 1: user_project_control                                              |Circuit 2: user_project_control                                              
 -----------------------------------------------------------------------------|-----------------------------------------------------------------------------
 gf180mcu_as_sc_mcu7t3v3__buff_8 (27)                                         |gf180mcu_as_sc_mcu7t3v3__buff_8 (27)                                         
-gf180mcu_as_sc_mcu7t3v3__fillcap_4 (43->1)                                   |gf180mcu_as_sc_mcu7t3v3__fillcap_4 (43->1)                                   
-gf180mcu_as_sc_mcu7t3v3__fillcap_8 (38->1)                                   |gf180mcu_as_sc_mcu7t3v3__fillcap_8 (38->1)                                   
-gf180mcu_as_sc_mcu7t3v3__diode_2 (71)                                        |gf180mcu_as_sc_mcu7t3v3__diode_2 (71)                                        
+gf180mcu_as_sc_mcu7t3v3__fillcap_8 (39->1)                                   |gf180mcu_as_sc_mcu7t3v3__fillcap_8 (39->1)                                   
+gf180mcu_as_sc_mcu7t3v3__fillcap_16 (27->1)                                  |gf180mcu_as_sc_mcu7t3v3__fillcap_16 (27->1)                                  
 gf180mcu_as_sc_mcu7t3v3__mux2_2 (12)                                         |gf180mcu_as_sc_mcu7t3v3__mux2_2 (12)                                         
 gf180mcu_as_sc_mcu7t3v3__buff_4 (21)                                         |gf180mcu_as_sc_mcu7t3v3__buff_4 (21)                                         
+gf180mcu_as_sc_mcu7t3v3__fillcap_4 (44->1)                                   |gf180mcu_as_sc_mcu7t3v3__fillcap_4 (44->1)                                   
 gf180mcu_as_sc_mcu7t3v3__dlxtp_2 (24)                                        |gf180mcu_as_sc_mcu7t3v3__dlxtp_2 (24)                                        
-gf180mcu_as_sc_mcu7t3v3__fillcap_16 (27->1)                                  |gf180mcu_as_sc_mcu7t3v3__fillcap_16 (27->1)                                  
+gf180mcu_as_sc_mcu7t3v3__diode_2 (82)                                        |gf180mcu_as_sc_mcu7t3v3__diode_2 (82)                                        
 gf180mcu_as_sc_mcu7t3v3__and2_2 (12)                                         |gf180mcu_as_sc_mcu7t3v3__and2_2 (12)                                         
 gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (1)                                       |gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (1)                                       
 gf180mcu_as_sc_mcu7t3v3__and3_2 (1)                                          |gf180mcu_as_sc_mcu7t3v3__and3_2 (1)                                          
@@ -3317,30 +3316,32 @@ gf180mcu_as_sc_mcu7t3v3__inv_2 (3)                                           |gf
 gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (1)                                       |gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (1)                                       
 gf180mcu_as_sc_mcu7t3v3__buff_2 (5)                                          |gf180mcu_as_sc_mcu7t3v3__buff_2 (5)                                          
 gf180mcu_as_sc_mcu7t3v3__dlxtn_2 (1)                                         |gf180mcu_as_sc_mcu7t3v3__dlxtn_2 (1)                                         
-Number of devices: 203                                                       |Number of devices: 203                                                       
+Number of devices: 214                                                       |Number of devices: 214                                                       
 Number of nets: 202                                                          |Number of nets: 202                                                          
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Resolving symmetries by property value.
 Resolving symmetries by pin name.
-Netlists match uniquely.
+Resolving symmetries by net name.
+Netlists match with 10 symmetries.
 
 Subcircuit pins:
 Circuit 1: user_project_control                                              |Circuit 2: user_project_control                                              
 -----------------------------------------------------------------------------|-----------------------------------------------------------------------------
-enable                                                                       |enable                                                                       
 proj_sel[1]                                                                  |proj_sel[1]                                                                  
-proj_addr[3]                                                                 |proj_addr[3]                                                                 
 proj_sel[2]                                                                  |proj_sel[2]                                                                  
+proj_addr[3]                                                                 |proj_addr[3]                                                                 
 proj_addr[1]                                                                 |proj_addr[1]                                                                 
-proj_addr[0]                                                                 |proj_addr[0]                                                                 
 proj_sel[0]                                                                  |proj_sel[0]                                                                  
+proj_addr[0]                                                                 |proj_addr[0]                                                                 
 proj_sel[3]                                                                  |proj_sel[3]                                                                  
 proj_addr[2]                                                                 |proj_addr[2]                                                                 
+clk                                                                          |clk                                                                          
+enable                                                                       |enable                                                                       
 proj_ibias_ena[0]                                                            |proj_ibias_ena[0]                                                            
+proj_vbias_ena                                                               |proj_vbias_ena                                                               
 dig_out[1]                                                                   |dig_out[1]                                                                   
 dig_out[3]                                                                   |dig_out[3]                                                                   
 dig_out[5]                                                                   |dig_out[5]                                                                   
-dig_out[0]                                                                   |dig_out[0]                                                                   
 dig_out[2]                                                                   |dig_out[2]                                                                   
 dig_out[4]                                                                   |dig_out[4]                                                                   
 proj_analog_ena[1]                                                           |proj_analog_ena[1]                                                           
@@ -3349,103 +3350,102 @@ proj_5v0_ena                                                                 |pr
 proj_analog_ena[0]                                                           |proj_analog_ena[0]                                                           
 proj_analog_ena[2]                                                           |proj_analog_ena[2]                                                           
 proj_3v3_ena                                                                 |proj_3v3_ena                                                                 
-proj_vbias_ena                                                               |proj_vbias_ena                                                               
 proj_ibias_ena[1]                                                            |proj_ibias_ena[1]                                                            
 dig_out[8]                                                                   |dig_out[8]                                                                   
 dig_out[11]                                                                  |dig_out[11]                                                                  
 dig_out[7]                                                                   |dig_out[7]                                                                   
 dig_out[10]                                                                  |dig_out[10]                                                                  
 dig_out[9]                                                                   |dig_out[9]                                                                   
+dig_out[0]                                                                   |dig_out[0]                                                                   
 dig_out[6]                                                                   |dig_out[6]                                                                   
 proj_ena                                                                     |proj_ena                                                                     
-proj_dig_in[5]                                                               |proj_dig_in[5]                                                               
-proj_dig_in[0]                                                               |proj_dig_in[0]                                                               
-proj_dig_in[4]                                                               |proj_dig_in[4]                                                               
 proj_reset                                                                   |proj_reset                                                                   
-proj_dig_in[21]                                                              |proj_dig_in[21]                                                              
-proj_dig_in[23]                                                              |proj_dig_in[23]                                                              
-proj_dig_in[18]                                                              |proj_dig_in[18]                                                              
-proj_dig_in[20]                                                              |proj_dig_in[20]                                                              
-proj_dig_in[22]                                                              |proj_dig_in[22]                                                              
-proj_dig_in[17]                                                              |proj_dig_in[17]                                                              
-proj_dig_in[19]                                                              |proj_dig_in[19]                                                              
 proj_clk                                                                     |proj_clk                                                                     
 proj_dig_in[3]                                                               |proj_dig_in[3]                                                               
-proj_dig_in[2]                                                               |proj_dig_in[2]                                                               
-proj_dig_in[6]                                                               |proj_dig_in[6]                                                               
-proj_dig_in[1]                                                               |proj_dig_in[1]                                                               
-proj_dig_in[14]                                                              |proj_dig_in[14]                                                              
-proj_dig_in[16]                                                              |proj_dig_in[16]                                                              
+proj_dig_in[5]                                                               |proj_dig_in[5]                                                               
+proj_dig_in[4]                                                               |proj_dig_in[4]                                                               
+proj_dig_in[18]                                                              |proj_dig_in[18]                                                              
 proj_dig_in[7]                                                               |proj_dig_in[7]                                                               
 proj_dig_in[9]                                                               |proj_dig_in[9]                                                               
 proj_dig_in[11]                                                              |proj_dig_in[11]                                                              
 proj_dig_in[13]                                                              |proj_dig_in[13]                                                              
-proj_dig_in[15]                                                              |proj_dig_in[15]                                                              
+proj_dig_in[17]                                                              |proj_dig_in[17]                                                              
+proj_dig_in[6]                                                               |proj_dig_in[6]                                                               
 proj_dig_in[8]                                                               |proj_dig_in[8]                                                               
 proj_dig_in[10]                                                              |proj_dig_in[10]                                                              
 proj_dig_in[12]                                                              |proj_dig_in[12]                                                              
-proj_sel[4]                                                                  |proj_sel[4]                                                                  
+proj_dig_in[14]                                                              |proj_dig_in[14]                                                              
+proj_dig_in[21]                                                              |proj_dig_in[21]                                                              
+proj_dig_in[16]                                                              |proj_dig_in[16]                                                              
+proj_dig_in[23]                                                              |proj_dig_in[23]                                                              
+proj_dig_in[20]                                                              |proj_dig_in[20]                                                              
+proj_dig_in[15]                                                              |proj_dig_in[15]                                                              
+proj_dig_in[22]                                                              |proj_dig_in[22]                                                              
+proj_dig_in[19]                                                              |proj_dig_in[19]                                                              
+proj_dig_in[0]                                                               |proj_dig_in[0]                                                               
+proj_dig_in[2]                                                               |proj_dig_in[2]                                                               
+proj_dig_in[1]                                                               |proj_dig_in[1]                                                               
 proj_addr[4]                                                                 |proj_addr[4]                                                                 
-dig_ena                                                                      |dig_ena                                                                      
+proj_sel[4]                                                                  |proj_sel[4]                                                                  
 reset                                                                        |reset                                                                        
+analog_ena[1]                                                                |analog_ena[1]                                                                
+power_3v3_ena                                                                |power_3v3_ena                                                                
 analog_ena[3]                                                                |analog_ena[3]                                                                
 power_5v0_ena                                                                |power_5v0_ena                                                                
-power_3v3_ena                                                                |power_3v3_ena                                                                
 analog_ena[2]                                                                |analog_ena[2]                                                                
-vbias_ena                                                                    |vbias_ena                                                                    
 ibias_ena[1]                                                                 |ibias_ena[1]                                                                 
 analog_ena[0]                                                                |analog_ena[0]                                                                
-analog_ena[1]                                                                |analog_ena[1]                                                                
+dig_ena                                                                      |dig_ena                                                                      
 ibias_ena[0]                                                                 |ibias_ena[0]                                                                 
-proj_dig_out[0]                                                              |proj_dig_out[0]                                                              
+vbias_ena                                                                    |vbias_ena                                                                    
+dig_out_relay[1]                                                             |dig_out_relay[1]                                                             
+dig_out_relay[3]                                                             |dig_out_relay[3]                                                             
+dig_out_relay[2]                                                             |dig_out_relay[2]                                                             
+dig_out_relay[4]                                                             |dig_out_relay[4]                                                             
+dig_out_relay[5]                                                             |dig_out_relay[5]                                                             
 proj_dig_out[1]                                                              |proj_dig_out[1]                                                              
 proj_dig_out[2]                                                              |proj_dig_out[2]                                                              
 proj_dig_out[3]                                                              |proj_dig_out[3]                                                              
 proj_dig_out[4]                                                              |proj_dig_out[4]                                                              
 proj_dig_out[5]                                                              |proj_dig_out[5]                                                              
-dig_out_relay[0]                                                             |dig_out_relay[0]                                                             
-dig_out_relay[1]                                                             |dig_out_relay[1]                                                             
-dig_out_relay[2]                                                             |dig_out_relay[2]                                                             
-dig_out_relay[3]                                                             |dig_out_relay[3]                                                             
-dig_out_relay[4]                                                             |dig_out_relay[4]                                                             
-dig_out_relay[5]                                                             |dig_out_relay[5]                                                             
-proj_dig_out[10]                                                             |proj_dig_out[10]                                                             
-proj_dig_out[11]                                                             |proj_dig_out[11]                                                             
-proj_dig_out[6]                                                              |proj_dig_out[6]                                                              
-proj_dig_out[7]                                                              |proj_dig_out[7]                                                              
-proj_dig_out[8]                                                              |proj_dig_out[8]                                                              
-proj_dig_out[9]                                                              |proj_dig_out[9]                                                              
 dig_out_relay[11]                                                            |dig_out_relay[11]                                                            
+dig_out_relay[0]                                                             |dig_out_relay[0]                                                             
 dig_out_relay[10]                                                            |dig_out_relay[10]                                                            
 dig_out_relay[6]                                                             |dig_out_relay[6]                                                             
 dig_out_relay[7]                                                             |dig_out_relay[7]                                                             
 dig_out_relay[8]                                                             |dig_out_relay[8]                                                             
 dig_out_relay[9]                                                             |dig_out_relay[9]                                                             
-clk                                                                          |clk                                                                          
-dig_in[20]                                                                   |dig_in[20]                                                                   
-dig_in[18]                                                                   |dig_in[18]                                                                   
-dig_in[17]                                                                   |dig_in[17]                                                                   
-dig_in[22]                                                                   |dig_in[22]                                                                   
-dig_in[19]                                                                   |dig_in[19]                                                                   
-dig_in[21]                                                                   |dig_in[21]                                                                   
+proj_dig_out[11]                                                             |proj_dig_out[11]                                                             
+proj_dig_out[0]                                                              |proj_dig_out[0]                                                              
+proj_dig_out[10]                                                             |proj_dig_out[10]                                                             
+proj_dig_out[6]                                                              |proj_dig_out[6]                                                              
+proj_dig_out[7]                                                              |proj_dig_out[7]                                                              
+proj_dig_out[8]                                                              |proj_dig_out[8]                                                              
+proj_dig_out[9]                                                              |proj_dig_out[9]                                                              
+dig_in[2]                                                                    |dig_in[2]                                                                    
+dig_in[0]                                                                    |dig_in[0]                                                                    
+dig_in[1]                                                                    |dig_in[1]                                                                    
 dig_in[23]                                                                   |dig_in[23]                                                                   
+dig_in[14]                                                                   |dig_in[14]                                                                   
+dig_in[21]                                                                   |dig_in[21]                                                                   
+dig_in[16]                                                                   |dig_in[16]                                                                   
+dig_in[20]                                                                   |dig_in[20]                                                                   
+dig_in[15]                                                                   |dig_in[15]                                                                   
+dig_in[19]                                                                   |dig_in[19]                                                                   
+dig_in[22]                                                                   |dig_in[22]                                                                   
 dig_in[4]                                                                    |dig_in[4]                                                                    
 dig_in[5]                                                                    |dig_in[5]                                                                    
-dig_in[0]                                                                    |dig_in[0]                                                                    
-dig_in[2]                                                                    |dig_in[2]                                                                    
-dig_in[6]                                                                    |dig_in[6]                                                                    
 dig_in[3]                                                                    |dig_in[3]                                                                    
-dig_in[1]                                                                    |dig_in[1]                                                                    
-dig_in[16]                                                                   |dig_in[16]                                                                   
-dig_in[13]                                                                   |dig_in[13]                                                                   
+dig_in[17]                                                                   |dig_in[17]                                                                   
 dig_in[10]                                                                   |dig_in[10]                                                                   
-dig_in[11]                                                                   |dig_in[11]                                                                   
-dig_in[8]                                                                    |dig_in[8]                                                                    
-dig_in[15]                                                                   |dig_in[15]                                                                   
-dig_in[14]                                                                   |dig_in[14]                                                                   
-dig_in[12]                                                                   |dig_in[12]                                                                   
-dig_in[9]                                                                    |dig_in[9]                                                                    
 dig_in[7]                                                                    |dig_in[7]                                                                    
+dig_in[11]                                                                   |dig_in[11]                                                                   
+dig_in[6]                                                                    |dig_in[6]                                                                    
+dig_in[18]                                                                   |dig_in[18]                                                                   
+dig_in[13]                                                                   |dig_in[13]                                                                   
+dig_in[12]                                                                   |dig_in[12]                                                                   
+dig_in[8]                                                                    |dig_in[8]                                                                    
+dig_in[9]                                                                    |dig_in[9]                                                                    
 vddd                                                                         |vddd                                                                         
 vssd                                                                         |vssd                                                                         
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -4696,31 +4696,6 @@ Y                                                                            |Y
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__or2_2 and gf180mcu_as_sc_mcu7t3v3__or2_2 are equivalent.
 
-Class gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (0):  Merged 18 parallel devices.
-Class gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (1):  Merged 18 parallel devices.
-Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__clkbuff_8                                |Circuit 2: gf180mcu_as_sc_mcu7t3v3__clkbuff_8                                
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (11->2)                                                            |nfet_03v3 (11->2)                                                            
-pfet_03v3 (11->2)                                                            |pfet_03v3 (11->2)                                                            
-Number of devices: 4                                                         |Number of devices: 4                                                         
-Number of nets: 7                                                            |Number of nets: 7                                                            
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__clkbuff_8                                |Circuit 2: gf180mcu_as_sc_mcu7t3v3__clkbuff_8                                
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-Y                                                                            |Y                                                                            
-VSS                                                                          |VSS                                                                          
-VPW                                                                          |VPW                                                                          
-A                                                                            |A                                                                            
-VDD                                                                          |VDD                                                                          
-VNW                                                                          |VNW                                                                          
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__clkbuff_8 and gf180mcu_as_sc_mcu7t3v3__clkbuff_8 are equivalent.
-
 Class gf180mcu_as_sc_mcu7t3v3__aoi21_2 (0):  Merged 4 parallel devices.
 Class gf180mcu_as_sc_mcu7t3v3__aoi21_2 (1):  Merged 4 parallel devices.
 Subcircuit summary:
@@ -4750,31 +4725,6 @@ A                                                                            |A
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__aoi21_2 and gf180mcu_as_sc_mcu7t3v3__aoi21_2 are equivalent.
-
-Class gf180mcu_as_sc_mcu7t3v3__inv_6 (0):  Merged 10 parallel devices.
-Class gf180mcu_as_sc_mcu7t3v3__inv_6 (1):  Merged 10 parallel devices.
-Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__inv_6                                    |Circuit 2: gf180mcu_as_sc_mcu7t3v3__inv_6                                    
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (6->1)                                                             |nfet_03v3 (6->1)                                                             
-pfet_03v3 (6->1)                                                             |pfet_03v3 (6->1)                                                             
-Number of devices: 2                                                         |Number of devices: 2                                                         
-Number of nets: 6                                                            |Number of nets: 6                                                            
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__inv_6                                    |Circuit 2: gf180mcu_as_sc_mcu7t3v3__inv_6                                    
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-A                                                                            |A                                                                            
-Y                                                                            |Y                                                                            
-VSS                                                                          |VSS                                                                          
-VPW                                                                          |VPW                                                                          
-VDD                                                                          |VDD                                                                          
-VNW                                                                          |VNW                                                                          
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__inv_6 and gf180mcu_as_sc_mcu7t3v3__inv_6 are equivalent.
 
 Class gf180mcu_as_sc_mcu7t3v3__maj3_2 (0):  Merged 2 parallel devices.
 Class gf180mcu_as_sc_mcu7t3v3__maj3_2 (1):  Merged 2 parallel devices.
@@ -4887,6 +4837,31 @@ B                                                                            |B
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__oai22_2 and gf180mcu_as_sc_mcu7t3v3__oai22_2 are equivalent.
 
+Class gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (0):  Merged 18 parallel devices.
+Class gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (1):  Merged 18 parallel devices.
+Subcircuit summary:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__clkbuff_8                                |Circuit 2: gf180mcu_as_sc_mcu7t3v3__clkbuff_8                                
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+nfet_03v3 (11->2)                                                            |nfet_03v3 (11->2)                                                            
+pfet_03v3 (11->2)                                                            |pfet_03v3 (11->2)                                                            
+Number of devices: 4                                                         |Number of devices: 4                                                         
+Number of nets: 7                                                            |Number of nets: 7                                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__clkbuff_8                                |Circuit 2: gf180mcu_as_sc_mcu7t3v3__clkbuff_8                                
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+Y                                                                            |Y                                                                            
+VSS                                                                          |VSS                                                                          
+VPW                                                                          |VPW                                                                          
+A                                                                            |A                                                                            
+VDD                                                                          |VDD                                                                          
+VNW                                                                          |VNW                                                                          
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__clkbuff_8 and gf180mcu_as_sc_mcu7t3v3__clkbuff_8 are equivalent.
+
 Class gf180mcu_as_sc_mcu7t3v3__xor2_2 (0):  Merged 2 parallel devices.
 Class gf180mcu_as_sc_mcu7t3v3__xor2_2 (1):  Merged 2 parallel devices.
 Subcircuit summary:
@@ -4996,20 +4971,20 @@ B                                                                            |B
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__nor3_2 and gf180mcu_as_sc_mcu7t3v3__nor3_2 are equivalent.
 
-Class gf180mcu_as_sc_mcu7t3v3__inv_8 (0):  Merged 14 parallel devices.
-Class gf180mcu_as_sc_mcu7t3v3__inv_8 (1):  Merged 14 parallel devices.
+Class gf180mcu_as_sc_mcu7t3v3__inv_6 (0):  Merged 10 parallel devices.
+Class gf180mcu_as_sc_mcu7t3v3__inv_6 (1):  Merged 10 parallel devices.
 Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__inv_8                                    |Circuit 2: gf180mcu_as_sc_mcu7t3v3__inv_8                                    
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__inv_6                                    |Circuit 2: gf180mcu_as_sc_mcu7t3v3__inv_6                                    
 -----------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (8->1)                                                             |nfet_03v3 (8->1)                                                             
-pfet_03v3 (8->1)                                                             |pfet_03v3 (8->1)                                                             
+nfet_03v3 (6->1)                                                             |nfet_03v3 (6->1)                                                             
+pfet_03v3 (6->1)                                                             |pfet_03v3 (6->1)                                                             
 Number of devices: 2                                                         |Number of devices: 2                                                         
 Number of nets: 6                                                            |Number of nets: 6                                                            
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Netlists match uniquely.
 
 Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__inv_8                                    |Circuit 2: gf180mcu_as_sc_mcu7t3v3__inv_8                                    
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__inv_6                                    |Circuit 2: gf180mcu_as_sc_mcu7t3v3__inv_6                                    
 -----------------------------------------------------------------------------|-----------------------------------------------------------------------------
 A                                                                            |A                                                                            
 Y                                                                            |Y                                                                            
@@ -5019,7 +4994,7 @@ VDD                                                                          |VD
 VNW                                                                          |VNW                                                                          
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__inv_8 and gf180mcu_as_sc_mcu7t3v3__inv_8 are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__inv_6 and gf180mcu_as_sc_mcu7t3v3__inv_6 are equivalent.
 
 Class gf180mcu_as_sc_mcu7t3v3__mux4_2 (0):  Merged 2 parallel devices.
 Class gf180mcu_as_sc_mcu7t3v3__mux4_2 (1):  Merged 2 parallel devices.
@@ -5050,6 +5025,31 @@ VSS                                                                          |VS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__mux4_2 and gf180mcu_as_sc_mcu7t3v3__mux4_2 are equivalent.
+
+Class gf180mcu_as_sc_mcu7t3v3__inv_8 (0):  Merged 14 parallel devices.
+Class gf180mcu_as_sc_mcu7t3v3__inv_8 (1):  Merged 14 parallel devices.
+Subcircuit summary:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__inv_8                                    |Circuit 2: gf180mcu_as_sc_mcu7t3v3__inv_8                                    
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+nfet_03v3 (8->1)                                                             |nfet_03v3 (8->1)                                                             
+pfet_03v3 (8->1)                                                             |pfet_03v3 (8->1)                                                             
+Number of devices: 2                                                         |Number of devices: 2                                                         
+Number of nets: 6                                                            |Number of nets: 6                                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__inv_8                                    |Circuit 2: gf180mcu_as_sc_mcu7t3v3__inv_8                                    
+-----------------------------------------------------------------------------|-----------------------------------------------------------------------------
+A                                                                            |A                                                                            
+Y                                                                            |Y                                                                            
+VSS                                                                          |VSS                                                                          
+VPW                                                                          |VPW                                                                          
+VDD                                                                          |VDD                                                                          
+VNW                                                                          |VNW                                                                          
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__inv_8 and gf180mcu_as_sc_mcu7t3v3__inv_8 are equivalent.
 
 Class gf180mcu_as_sc_mcu7t3v3__nand4_2 (0):  Merged 8 parallel devices.
 Class gf180mcu_as_sc_mcu7t3v3__nand4_2 (1):  Merged 8 parallel devices.
@@ -5135,33 +5135,6 @@ VDD                                                                          |VD
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__aoi21b_2 and gf180mcu_as_sc_mcu7t3v3__aoi21b_2 are equivalent.
 
-Class gf180mcu_as_sc_mcu7t3v3__mux2_4 (0):  Merged 6 parallel devices.
-Class gf180mcu_as_sc_mcu7t3v3__mux2_4 (1):  Merged 6 parallel devices.
-Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__mux2_4                                   |Circuit 2: gf180mcu_as_sc_mcu7t3v3__mux2_4                                   
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-pfet_03v3 (9->6)                                                             |pfet_03v3 (9->6)                                                             
-nfet_03v3 (9->6)                                                             |nfet_03v3 (9->6)                                                             
-Number of devices: 12                                                        |Number of devices: 12                                                        
-Number of nets: 14                                                           |Number of nets: 14                                                           
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__mux2_4                                   |Circuit 2: gf180mcu_as_sc_mcu7t3v3__mux2_4                                   
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-VNW                                                                          |VNW                                                                          
-VPW                                                                          |VPW                                                                          
-S                                                                            |S                                                                            
-VDD                                                                          |VDD                                                                          
-VSS                                                                          |VSS                                                                          
-Y                                                                            |Y                                                                            
-A                                                                            |A                                                                            
-B                                                                            |B                                                                            
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__mux2_4 and gf180mcu_as_sc_mcu7t3v3__mux2_4 are equivalent.
-
 Class gf180mcu_as_sc_mcu7t3v3__oai211_2 (0):  Merged 8 parallel devices.
 Class gf180mcu_as_sc_mcu7t3v3__oai211_2 (1):  Merged 8 parallel devices.
 Subcircuit summary:
@@ -5189,60 +5162,6 @@ B                                                                            |B
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__oai211_2 and gf180mcu_as_sc_mcu7t3v3__oai211_2 are equivalent.
-
-Class gf180mcu_as_sc_mcu7t3v3__aoi22_4 (0):  Merged 24 parallel devices.
-Class gf180mcu_as_sc_mcu7t3v3__aoi22_4 (1):  Merged 24 parallel devices.
-Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__aoi22_4                                  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__aoi22_4                                  
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-pfet_03v3 (16->4)                                                            |pfet_03v3 (16->4)                                                            
-nfet_03v3 (16->4)                                                            |nfet_03v3 (16->4)                                                            
-Number of devices: 8                                                         |Number of devices: 8                                                         
-Number of nets: 12                                                           |Number of nets: 12                                                           
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__aoi22_4                                  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__aoi22_4                                  
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-C                                                                            |C                                                                            
-VDD                                                                          |VDD                                                                          
-B                                                                            |B                                                                            
-A                                                                            |A                                                                            
-D                                                                            |D                                                                            
-VSS                                                                          |VSS                                                                          
-VNW                                                                          |VNW                                                                          
-Y                                                                            |Y                                                                            
-VPW                                                                          |VPW                                                                          
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__aoi22_4 and gf180mcu_as_sc_mcu7t3v3__aoi22_4 are equivalent.
-
-Class gf180mcu_as_sc_mcu7t3v3__and2_4 (0):  Merged 6 parallel devices.
-Class gf180mcu_as_sc_mcu7t3v3__and2_4 (1):  Merged 6 parallel devices.
-Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__and2_4                                   |Circuit 2: gf180mcu_as_sc_mcu7t3v3__and2_4                                   
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (6->3)                                                             |nfet_03v3 (6->3)                                                             
-pfet_03v3 (6->3)                                                             |pfet_03v3 (6->3)                                                             
-Number of devices: 6                                                         |Number of devices: 6                                                         
-Number of nets: 9                                                            |Number of nets: 9                                                            
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__and2_4                                   |Circuit 2: gf180mcu_as_sc_mcu7t3v3__and2_4                                   
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-VPW                                                                          |VPW                                                                          
-VDD                                                                          |VDD                                                                          
-VNW                                                                          |VNW                                                                          
-VSS                                                                          |VSS                                                                          
-Y                                                                            |Y                                                                            
-B                                                                            |B                                                                            
-A                                                                            |A                                                                            
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__and2_4 and gf180mcu_as_sc_mcu7t3v3__and2_4 are equivalent.
 
 Class gf180mcu_as_sc_mcu7t3v3__nand4bb_2 (0):  Merged 8 parallel devices.
 Class gf180mcu_as_sc_mcu7t3v3__nand4bb_2 (1):  Merged 8 parallel devices.
@@ -5272,61 +5191,6 @@ Y                                                                            |Y
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__nand4bb_2 and gf180mcu_as_sc_mcu7t3v3__nand4bb_2 are equivalent.
 
-Class gf180mcu_as_sc_mcu7t3v3__oai21_4 (0):  Merged 18 parallel devices.
-Class gf180mcu_as_sc_mcu7t3v3__oai21_4 (1):  Merged 18 parallel devices.
-Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__oai21_4                                  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__oai21_4                                  
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (12->3)                                                            |nfet_03v3 (12->3)                                                            
-pfet_03v3 (12->3)                                                            |pfet_03v3 (12->3)                                                            
-Number of devices: 6                                                         |Number of devices: 6                                                         
-Number of nets: 10                                                           |Number of nets: 10                                                           
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__oai21_4                                  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__oai21_4                                  
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-B                                                                            |B                                                                            
-VSS                                                                          |VSS                                                                          
-A                                                                            |A                                                                            
-VDD                                                                          |VDD                                                                          
-C                                                                            |C                                                                            
-VPW                                                                          |VPW                                                                          
-VNW                                                                          |VNW                                                                          
-Y                                                                            |Y                                                                            
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__oai21_4 and gf180mcu_as_sc_mcu7t3v3__oai21_4 are equivalent.
-
-Class gf180mcu_as_sc_mcu7t3v3__ao22_4 (0):  Merged 6 parallel devices.
-Class gf180mcu_as_sc_mcu7t3v3__ao22_4 (1):  Merged 6 parallel devices.
-Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__ao22_4                                   |Circuit 2: gf180mcu_as_sc_mcu7t3v3__ao22_4                                   
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (8->5)                                                             |nfet_03v3 (8->5)                                                             
-pfet_03v3 (8->5)                                                             |pfet_03v3 (8->5)                                                             
-Number of devices: 10                                                        |Number of devices: 10                                                        
-Number of nets: 13                                                           |Number of nets: 13                                                           
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__ao22_4                                   |Circuit 2: gf180mcu_as_sc_mcu7t3v3__ao22_4                                   
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-VDD                                                                          |VDD                                                                          
-VSS                                                                          |VSS                                                                          
-VPW                                                                          |VPW                                                                          
-VNW                                                                          |VNW                                                                          
-C                                                                            |C                                                                            
-B                                                                            |B                                                                            
-Y                                                                            |Y                                                                            
-A                                                                            |A                                                                            
-D                                                                            |D                                                                            
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__ao22_4 and gf180mcu_as_sc_mcu7t3v3__ao22_4 are equivalent.
-
 Class gf180mcu_as_sc_mcu7t3v3__nand3b_2 (0):  Merged 6 parallel devices.
 Class gf180mcu_as_sc_mcu7t3v3__nand3b_2 (1):  Merged 6 parallel devices.
 Subcircuit summary:
@@ -5353,33 +5217,6 @@ A                                                                            |A
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes gf180mcu_as_sc_mcu7t3v3__nand3b_2 and gf180mcu_as_sc_mcu7t3v3__nand3b_2 are equivalent.
-
-Class gf180mcu_as_sc_mcu7t3v3__aoi21_4 (0):  Merged 18 parallel devices.
-Class gf180mcu_as_sc_mcu7t3v3__aoi21_4 (1):  Merged 18 parallel devices.
-Subcircuit summary:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__aoi21_4                                  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__aoi21_4                                  
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-nfet_03v3 (12->3)                                                            |nfet_03v3 (12->3)                                                            
-pfet_03v3 (12->3)                                                            |pfet_03v3 (12->3)                                                            
-Number of devices: 6                                                         |Number of devices: 6                                                         
-Number of nets: 10                                                           |Number of nets: 10                                                           
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: gf180mcu_as_sc_mcu7t3v3__aoi21_4                                  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__aoi21_4                                  
------------------------------------------------------------------------------|-----------------------------------------------------------------------------
-A                                                                            |A                                                                            
-C                                                                            |C                                                                            
-VDD                                                                          |VDD                                                                          
-B                                                                            |B                                                                            
-VSS                                                                          |VSS                                                                          
-Y                                                                            |Y                                                                            
-VPW                                                                          |VPW                                                                          
-VNW                                                                          |VNW                                                                          
------------------------------------------------------------------------------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes gf180mcu_as_sc_mcu7t3v3__aoi21_4 and gf180mcu_as_sc_mcu7t3v3__aoi21_4 are equivalent.
 
 Cell slot16_wrapper (0) disconnected node: s16_an[0]
 Cell slot16_wrapper (0) disconnected node: s16_an[1]
@@ -7372,8 +7209,8 @@ Net: dvss                                                                    |Ne
   bias_generator_be0p/dvss = 3                                               |  bias_generator_be0p/dvss = 3                                               
   bias_generator_ben1um/dvss = 3                                             |  bias_generator_ben1um/dvss = 3                                             
   bias_generator_ben250nm/dvss = 1                                           |  bias_generator_ben250nm/dvss = 1                                           
-  bias_generator_ben1um/avss = 3                                             |                                                                             
   bias_generator_ben1um/bias_nstack_3/shld3 = 3                              |                                                                             
+  bias_generator_ben1um/avss = 3                                             |                                                                             
   bias_amp_large/avss = 1                                                    |                                                                             
   bias_generator_be0p/avss = 3                                               |                                                                             
   bias_nstack/ena = 7                                                        |                                                                             
@@ -7751,100 +7588,95 @@ clk                                                                          |cl
 Cell pin lists are equivalent.
 Device classes slot12_wrapper and slot12_wrapper are equivalent.
 
-Class housekeeping_top (0):  Merged 16668 parallel devices.
-Class housekeeping_top (1):  Merged 16668 parallel devices.
+Class housekeeping_top (0):  Merged 16607 parallel devices.
+Class housekeeping_top (1):  Merged 16607 parallel devices.
 Subcircuit summary:
 Circuit 1: housekeeping_top                                                  |Circuit 2: housekeeping_top                                                  
 -----------------------------------------------------------------------------|-----------------------------------------------------------------------------
-gf180mcu_as_sc_mcu7t3v3__fillcap_8 (2921->1)                                 |gf180mcu_as_sc_mcu7t3v3__fillcap_8 (2921->1)                                 
-gf180mcu_as_sc_mcu7t3v3__fillcap_16 (9820->1)                                |gf180mcu_as_sc_mcu7t3v3__fillcap_16 (9820->1)                                
-gf180mcu_as_sc_mcu7t3v3__fillcap_4 (3930->1)                                 |gf180mcu_as_sc_mcu7t3v3__fillcap_4 (3930->1)                                 
-gf180mcu_as_sc_mcu7t3v3__buff_8 (222)                                        |gf180mcu_as_sc_mcu7t3v3__buff_8 (222)                                        
+gf180mcu_as_sc_mcu7t3v3__fillcap_16 (9871->1)                                |gf180mcu_as_sc_mcu7t3v3__fillcap_16 (9871->1)                                
+gf180mcu_as_sc_mcu7t3v3__fillcap_8 (2847->1)                                 |gf180mcu_as_sc_mcu7t3v3__fillcap_8 (2847->1)                                 
+gf180mcu_as_sc_mcu7t3v3__fillcap_4 (3892->1)                                 |gf180mcu_as_sc_mcu7t3v3__fillcap_4 (3892->1)                                 
+gf180mcu_as_sc_mcu7t3v3__buff_8 (230)                                        |gf180mcu_as_sc_mcu7t3v3__buff_8 (230)                                        
 gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (501)                                      |gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (501)                                      
 gf180mcu_as_sc_mcu7t3v3__or3_2 (46)                                          |gf180mcu_as_sc_mcu7t3v3__or3_2 (46)                                          
 gf180mcu_as_sc_mcu7t3v3__ao31_2 (108)                                        |gf180mcu_as_sc_mcu7t3v3__ao31_2 (108)                                        
-gf180mcu_as_sc_mcu7t3v3__ao22_2 (144)                                        |gf180mcu_as_sc_mcu7t3v3__ao22_2 (144)                                        
+gf180mcu_as_sc_mcu7t3v3__ao22_2 (145)                                        |gf180mcu_as_sc_mcu7t3v3__ao22_2 (145)                                        
 gf180mcu_as_sc_mcu7t3v3__oa22_2 (135)                                        |gf180mcu_as_sc_mcu7t3v3__oa22_2 (135)                                        
 gf180mcu_as_sc_mcu7t3v3__or4_2 (103)                                         |gf180mcu_as_sc_mcu7t3v3__or4_2 (103)                                         
 gf180mcu_as_sc_mcu7t3v3__tieh_4 (501)                                        |gf180mcu_as_sc_mcu7t3v3__tieh_4 (501)                                        
-gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (148)                                     |gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (148)                                     
+gf180mcu_as_sc_mcu7t3v3__diode_2 (228)                                       |gf180mcu_as_sc_mcu7t3v3__diode_2 (228)                                       
 gf180mcu_as_sc_mcu7t3v3__nor3b_2 (4)                                         |gf180mcu_as_sc_mcu7t3v3__nor3b_2 (4)                                         
 gf180mcu_as_sc_mcu7t3v3__ao21_2 (95)                                         |gf180mcu_as_sc_mcu7t3v3__ao21_2 (95)                                         
 gf180mcu_as_sc_mcu7t3v3__and4_2 (65)                                         |gf180mcu_as_sc_mcu7t3v3__and4_2 (65)                                         
-gf180mcu_as_sc_mcu7t3v3__inv_2 (224)                                         |gf180mcu_as_sc_mcu7t3v3__inv_2 (224)                                         
-gf180mcu_as_sc_mcu7t3v3__and2_2 (284)                                        |gf180mcu_as_sc_mcu7t3v3__and2_2 (284)                                        
+gf180mcu_as_sc_mcu7t3v3__and2_2 (285)                                        |gf180mcu_as_sc_mcu7t3v3__and2_2 (285)                                        
 gf180mcu_as_sc_mcu7t3v3__oa211_2 (85)                                        |gf180mcu_as_sc_mcu7t3v3__oa211_2 (85)                                        
-gf180mcu_as_sc_mcu7t3v3__oai21_2 (68)                                        |gf180mcu_as_sc_mcu7t3v3__oai21_2 (68)                                        
-gf180mcu_as_sc_mcu7t3v3__buff_2 (292)                                        |gf180mcu_as_sc_mcu7t3v3__buff_2 (292)                                        
+gf180mcu_as_sc_mcu7t3v3__oai21_2 (69)                                        |gf180mcu_as_sc_mcu7t3v3__oai21_2 (69)                                        
+gf180mcu_as_sc_mcu7t3v3__buff_2 (268)                                        |gf180mcu_as_sc_mcu7t3v3__buff_2 (268)                                        
 gf180mcu_as_sc_mcu7t3v3__ao211_2 (117)                                       |gf180mcu_as_sc_mcu7t3v3__ao211_2 (117)                                       
-gf180mcu_as_sc_mcu7t3v3__mux2_2 (492)                                        |gf180mcu_as_sc_mcu7t3v3__mux2_2 (492)                                        
+gf180mcu_as_sc_mcu7t3v3__mux2_2 (494)                                        |gf180mcu_as_sc_mcu7t3v3__mux2_2 (494)                                        
 gf180mcu_as_sc_mcu7t3v3__nand2_2 (180)                                       |gf180mcu_as_sc_mcu7t3v3__nand2_2 (180)                                       
 gf180mcu_as_sc_mcu7t3v3__oa21_2 (58)                                         |gf180mcu_as_sc_mcu7t3v3__oa21_2 (58)                                         
 gf180mcu_as_sc_mcu7t3v3__and3_2 (64)                                         |gf180mcu_as_sc_mcu7t3v3__and3_2 (64)                                         
-gf180mcu_as_sc_mcu7t3v3__diode_2 (184)                                       |gf180mcu_as_sc_mcu7t3v3__diode_2 (184)                                       
 gf180mcu_as_sc_mcu7t3v3__xnor2_2 (44)                                        |gf180mcu_as_sc_mcu7t3v3__xnor2_2 (44)                                        
+gf180mcu_as_sc_mcu7t3v3__inv_2 (225)                                         |gf180mcu_as_sc_mcu7t3v3__inv_2 (225)                                         
+gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (147)                                     |gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (147)                                     
 gf180mcu_as_sc_mcu7t3v3__nor2b_2 (172)                                       |gf180mcu_as_sc_mcu7t3v3__nor2b_2 (172)                                       
-gf180mcu_as_sc_mcu7t3v3__nor2_2 (159)                                        |gf180mcu_as_sc_mcu7t3v3__nor2_2 (159)                                        
+gf180mcu_as_sc_mcu7t3v3__nor2_2 (160)                                        |gf180mcu_as_sc_mcu7t3v3__nor2_2 (160)                                        
 gf180mcu_as_sc_mcu7t3v3__or2_2 (122)                                         |gf180mcu_as_sc_mcu7t3v3__or2_2 (122)                                         
-gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (30)                                      |gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (30)                                      
-gf180mcu_as_sc_mcu7t3v3__aoi21_2 (81)                                        |gf180mcu_as_sc_mcu7t3v3__aoi21_2 (81)                                        
-gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (98)                                     |gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (98)                                     
+gf180mcu_as_sc_mcu7t3v3__aoi21_2 (82)                                        |gf180mcu_as_sc_mcu7t3v3__aoi21_2 (82)                                        
+gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (99)                                     |gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (99)                                     
 gf180mcu_as_sc_mcu7t3v3__nand2b_2 (20)                                       |gf180mcu_as_sc_mcu7t3v3__nand2b_2 (20)                                       
-gf180mcu_as_sc_mcu7t3v3__inv_6 (3)                                           |gf180mcu_as_sc_mcu7t3v3__inv_6 (3)                                           
 gf180mcu_as_sc_mcu7t3v3__maj3_2 (2)                                          |gf180mcu_as_sc_mcu7t3v3__maj3_2 (2)                                          
 gf180mcu_as_sc_mcu7t3v3__aoi31_2 (10)                                        |gf180mcu_as_sc_mcu7t3v3__aoi31_2 (10)                                        
-gf180mcu_as_sc_mcu7t3v3__aoi22_2 (12)                                        |gf180mcu_as_sc_mcu7t3v3__aoi22_2 (12)                                        
+gf180mcu_as_sc_mcu7t3v3__aoi22_2 (13)                                        |gf180mcu_as_sc_mcu7t3v3__aoi22_2 (13)                                        
 gf180mcu_as_sc_mcu7t3v3__oai22_2 (4)                                         |gf180mcu_as_sc_mcu7t3v3__oai22_2 (4)                                         
-gf180mcu_as_sc_mcu7t3v3__inv_4 (8)                                           |gf180mcu_as_sc_mcu7t3v3__inv_4 (8)                                           
+gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (24)                                      |gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (24)                                      
 gf180mcu_as_sc_mcu7t3v3__xor2_2 (28)                                         |gf180mcu_as_sc_mcu7t3v3__xor2_2 (28)                                         
+gf180mcu_as_sc_mcu7t3v3__inv_4 (4)                                           |gf180mcu_as_sc_mcu7t3v3__inv_4 (4)                                           
 gf180mcu_as_sc_mcu7t3v3__aoi211_2 (13)                                       |gf180mcu_as_sc_mcu7t3v3__aoi211_2 (13)                                       
 gf180mcu_as_sc_mcu7t3v3__nand4b_2 (2)                                        |gf180mcu_as_sc_mcu7t3v3__nand4b_2 (2)                                        
-gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (4)                                       |gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (4)                                       
 gf180mcu_as_sc_mcu7t3v3__nor3_2 (6)                                          |gf180mcu_as_sc_mcu7t3v3__nor3_2 (6)                                          
-gf180mcu_as_sc_mcu7t3v3__inv_8 (3)                                           |gf180mcu_as_sc_mcu7t3v3__inv_8 (3)                                           
+gf180mcu_as_sc_mcu7t3v3__inv_6 (2)                                           |gf180mcu_as_sc_mcu7t3v3__inv_6 (2)                                           
 gf180mcu_as_sc_mcu7t3v3__mux4_2 (10)                                         |gf180mcu_as_sc_mcu7t3v3__mux4_2 (10)                                         
+gf180mcu_as_sc_mcu7t3v3__inv_8 (6)                                           |gf180mcu_as_sc_mcu7t3v3__inv_8 (6)                                           
 gf180mcu_as_sc_mcu7t3v3__nand4_2 (8)                                         |gf180mcu_as_sc_mcu7t3v3__nand4_2 (8)                                         
-gf180mcu_as_sc_mcu7t3v3__nor2_4 (3)                                          |gf180mcu_as_sc_mcu7t3v3__nor2_4 (3)                                          
+gf180mcu_as_sc_mcu7t3v3__nor2_4 (2)                                          |gf180mcu_as_sc_mcu7t3v3__nor2_4 (2)                                          
 gf180mcu_as_sc_mcu7t3v3__nand3_2 (6)                                         |gf180mcu_as_sc_mcu7t3v3__nand3_2 (6)                                         
+gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (3)                                       |gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (3)                                       
 gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (13)                                       |gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (13)                                       
-gf180mcu_as_sc_mcu7t3v3__mux2_4 (2)                                          |gf180mcu_as_sc_mcu7t3v3__mux2_4 (2)                                          
-gf180mcu_as_sc_mcu7t3v3__buff_4 (6)                                          |gf180mcu_as_sc_mcu7t3v3__buff_4 (6)                                          
+gf180mcu_as_sc_mcu7t3v3__buff_4 (4)                                          |gf180mcu_as_sc_mcu7t3v3__buff_4 (4)                                          
 gf180mcu_as_sc_mcu7t3v3__oai211_2 (1)                                        |gf180mcu_as_sc_mcu7t3v3__oai211_2 (1)                                        
-gf180mcu_as_sc_mcu7t3v3__aoi22_4 (1)                                         |gf180mcu_as_sc_mcu7t3v3__aoi22_4 (1)                                         
-gf180mcu_as_sc_mcu7t3v3__and2_4 (1)                                          |gf180mcu_as_sc_mcu7t3v3__and2_4 (1)                                          
 gf180mcu_as_sc_mcu7t3v3__nand4bb_2 (3)                                       |gf180mcu_as_sc_mcu7t3v3__nand4bb_2 (3)                                       
-gf180mcu_as_sc_mcu7t3v3__oai21_4 (1)                                         |gf180mcu_as_sc_mcu7t3v3__oai21_4 (1)                                         
-gf180mcu_as_sc_mcu7t3v3__ao22_4 (1)                                          |gf180mcu_as_sc_mcu7t3v3__ao22_4 (1)                                          
 gf180mcu_as_sc_mcu7t3v3__nand3b_2 (1)                                        |gf180mcu_as_sc_mcu7t3v3__nand3b_2 (1)                                        
-gf180mcu_as_sc_mcu7t3v3__aoi21_4 (1)                                         |gf180mcu_as_sc_mcu7t3v3__aoi21_4 (1)                                         
-Number of devices: 5002                                                      |Number of devices: 5002                                                      
-Number of nets: 4898                                                         |Number of nets: 4898                                                         
+Number of devices: 5020                                                      |Number of devices: 5020                                                      
+Number of nets: 4872                                                         |Number of nets: 4872                                                         
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Resolving symmetries by property value.
 Resolving symmetries by pin name.
 Resolving symmetries by net name.
-Netlists match with 24 symmetries.
+Netlists match with 51 symmetries.
 
 Subcircuit pins:
 Circuit 1: housekeeping_top                                                  |Circuit 2: housekeeping_top                                                  
 -----------------------------------------------------------------------------|-----------------------------------------------------------------------------
-porb                                                                         |porb                                                                         
-dbus_in_left[8]                                                              |dbus_in_left[8]                                                              
-dbus_in_left[11]                                                             |dbus_in_left[11]                                                             
-dbus_in_left[9]                                                              |dbus_in_left[9]                                                              
-dbus_in_left[1]                                                              |dbus_in_left[1]                                                              
-dbus_in_left[2]                                                              |dbus_in_left[2]                                                              
+io_in[5]                                                                     |io_in[5]                                                                     
+io_in[3]                                                                     |io_in[3]                                                                     
 dbus_in_right[1]                                                             |dbus_in_right[1]                                                             
-dbus_in_right[3]                                                             |dbus_in_right[3]                                                             
+sram_odata[7]                                                                |sram_odata[7]                                                                
+sram_odata[4]                                                                |sram_odata[4]                                                                
+sram_odata[3]                                                                |sram_odata[3]                                                                
+sram_odata[2]                                                                |sram_odata[2]                                                                
+sram_odata[6]                                                                |sram_odata[6]                                                                
+sram_odata[5]                                                                |sram_odata[5]                                                                
+sram_odata[1]                                                                |sram_odata[1]                                                                
+sram_odata[0]                                                                |sram_odata[0]                                                                
 mask_rev_in[23]                                                              |mask_rev_in[23]                                                              
 mask_rev_in[31]                                                              |mask_rev_in[31]                                                              
-SDO                                                                          |SDO                                                                          
 mask_rev_in[6]                                                               |mask_rev_in[6]                                                               
 mask_rev_in[5]                                                               |mask_rev_in[5]                                                               
-mask_rev_in[14]                                                              |mask_rev_in[14]                                                              
 mask_rev_in[13]                                                              |mask_rev_in[13]                                                              
+mask_rev_in[14]                                                              |mask_rev_in[14]                                                              
 dbus_in_right[4]                                                             |dbus_in_right[4]                                                             
-dbus_in_left[4]                                                              |dbus_in_left[4]                                                              
 mask_rev_in[4]                                                               |mask_rev_in[4]                                                               
 mask_rev_in[12]                                                              |mask_rev_in[12]                                                              
 mask_rev_in[28]                                                              |mask_rev_in[28]                                                              
@@ -7856,14 +7688,14 @@ mask_rev_in[27]                                                              |ma
 mask_rev_in[7]                                                               |mask_rev_in[7]                                                               
 mask_rev_in[2]                                                               |mask_rev_in[2]                                                               
 mask_rev_in[26]                                                              |mask_rev_in[26]                                                              
-mask_rev_in[30]                                                              |mask_rev_in[30]                                                              
 mask_rev_in[29]                                                              |mask_rev_in[29]                                                              
+mask_rev_in[30]                                                              |mask_rev_in[30]                                                              
 mask_rev_in[1]                                                               |mask_rev_in[1]                                                               
 mask_rev_in[17]                                                              |mask_rev_in[17]                                                              
 mask_rev_in[9]                                                               |mask_rev_in[9]                                                               
 mask_rev_in[25]                                                              |mask_rev_in[25]                                                              
-dbus_in_right[0]                                                             |dbus_in_right[0]                                                             
 dbus_in_left[0]                                                              |dbus_in_left[0]                                                              
+dbus_in_right[0]                                                             |dbus_in_right[0]                                                             
 mask_rev_in[0]                                                               |mask_rev_in[0]                                                               
 mask_rev_in[15]                                                              |mask_rev_in[15]                                                              
 mask_rev_in[10]                                                              |mask_rev_in[10]                                                              
@@ -7873,66 +7705,54 @@ mask_rev_in[22]                                                              |ma
 mask_rev_in[21]                                                              |mask_rev_in[21]                                                              
 mask_rev_in[16]                                                              |mask_rev_in[16]                                                              
 mask_rev_in[24]                                                              |mask_rev_in[24]                                                              
-clk                                                                          |clk                                                                          
-SCK                                                                          |SCK                                                                          
-io_in[8]                                                                     |io_in[8]                                                                     
-io_in[5]                                                                     |io_in[5]                                                                     
-dbus_in_left[7]                                                              |dbus_in_left[7]                                                              
-dbus_in_right[7]                                                             |dbus_in_right[7]                                                             
-dbus_in_left[6]                                                              |dbus_in_left[6]                                                              
-dbus_in_right[6]                                                             |dbus_in_right[6]                                                             
-dbus_in_right[5]                                                             |dbus_in_right[5]                                                             
-dbus_in_left[5]                                                              |dbus_in_left[5]                                                              
-dbus_in_left[3]                                                              |dbus_in_left[3]                                                              
-dbus_in_right[10]                                                            |dbus_in_right[10]                                                            
-dbus_in_left[10]                                                             |dbus_in_left[10]                                                             
-dbus_in_right[2]                                                             |dbus_in_right[2]                                                             
-dbus_in_right[9]                                                             |dbus_in_right[9]                                                             
-dbus_in_right[8]                                                             |dbus_in_right[8]                                                             
-dbus_in_right[11]                                                            |dbus_in_right[11]                                                            
-io_in[6]                                                                     |io_in[6]                                                                     
-CSB                                                                          |CSB                                                                          
-io_in[0]                                                                     |io_in[0]                                                                     
-sdo_ena                                                                      |sdo_ena                                                                      
+porb                                                                         |porb                                                                         
 io_in[7]                                                                     |io_in[7]                                                                     
-io_in[3]                                                                     |io_in[3]                                                                     
+io_in[2]                                                                     |io_in[2]                                                                     
 io_in[9]                                                                     |io_in[9]                                                                     
+io_in[1]                                                                     |io_in[1]                                                                     
 io_in[11]                                                                    |io_in[11]                                                                    
 io_in[4]                                                                     |io_in[4]                                                                     
-io_in[1]                                                                     |io_in[1]                                                                     
-io_in[2]                                                                     |io_in[2]                                                                     
-io_in[10]                                                                    |io_in[10]                                                                    
+io_in[8]                                                                     |io_in[8]                                                                     
 SDI                                                                          |SDI                                                                          
-sram_addr[9]                                                                 |sram_addr[9]                                                                 
-sram_addr[0]                                                                 |sram_addr[0]                                                                 
-sram_addr[7]                                                                 |sram_addr[7]                                                                 
-sram_addr[6]                                                                 |sram_addr[6]                                                                 
-sram_addr[2]                                                                 |sram_addr[2]                                                                 
-sram_addr[4]                                                                 |sram_addr[4]                                                                 
-sram_addr[1]                                                                 |sram_addr[1]                                                                 
-sram_addr[5]                                                                 |sram_addr[5]                                                                 
-sram_addr[8]                                                                 |sram_addr[8]                                                                 
+SDO                                                                          |SDO                                                                          
+dbus_in_left[4]                                                              |dbus_in_left[4]                                                              
+dbus_in_left[10]                                                             |dbus_in_left[10]                                                             
+dbus_in_left[1]                                                              |dbus_in_left[1]                                                              
+dbus_in_left[8]                                                              |dbus_in_left[8]                                                              
+dbus_in_left[11]                                                             |dbus_in_left[11]                                                             
+CSB                                                                          |CSB                                                                          
+sdo_ena                                                                      |sdo_ena                                                                      
 sram_addr[3]                                                                 |sram_addr[3]                                                                 
+sram_addr[8]                                                                 |sram_addr[8]                                                                 
+sram_addr[9]                                                                 |sram_addr[9]                                                                 
+sram_addr[1]                                                                 |sram_addr[1]                                                                 
+sram_writeb                                                                  |sram_writeb                                                                  
 sram_idata[4]                                                                |sram_idata[4]                                                                
 sram_idata[3]                                                                |sram_idata[3]                                                                
-sram_idata[1]                                                                |sram_idata[1]                                                                
-sram_idata[0]                                                                |sram_idata[0]                                                                
-sram_idata[2]                                                                |sram_idata[2]                                                                
 sram_idata[6]                                                                |sram_idata[6]                                                                
 sram_idata[7]                                                                |sram_idata[7]                                                                
 sram_idata[5]                                                                |sram_idata[5]                                                                
-sram_writeb                                                                  |sram_writeb                                                                  
+sram_idata[0]                                                                |sram_idata[0]                                                                
+sram_idata[1]                                                                |sram_idata[1]                                                                
+sram_idata[2]                                                                |sram_idata[2]                                                                
+sram_addr[6]                                                                 |sram_addr[6]                                                                 
+sram_addr[7]                                                                 |sram_addr[7]                                                                 
+sram_addr[5]                                                                 |sram_addr[5]                                                                 
+sram_addr[4]                                                                 |sram_addr[4]                                                                 
+sram_addr[0]                                                                 |sram_addr[0]                                                                 
+sram_addr[2]                                                                 |sram_addr[2]                                                                 
 clk_out                                                                      |clk_out                                                                      
 bandgap_trim[7]                                                              |bandgap_trim[7]                                                              
 bandgap_ena                                                                  |bandgap_ena                                                                  
-reset                                                                        |reset                                                                        
 proj_sel[0]                                                                  |proj_sel[0]                                                                  
 proj_sel[2]                                                                  |proj_sel[2]                                                                  
 proj_sel[4]                                                                  |proj_sel[4]                                                                  
+reset                                                                        |reset                                                                        
 proj_sel[1]                                                                  |proj_sel[1]                                                                  
 proj_sel[3]                                                                  |proj_sel[3]                                                                  
 io_oe[11]                                                                    |io_oe[11]                                                                    
 voltgen_sink1[1]                                                             |voltgen_sink1[1]                                                             
+io_pullup[9]                                                                 |io_pullup[9]                                                                 
 biasgen_ref_vbg                                                              |biasgen_ref_vbg                                                              
 voltgen_value[2]                                                             |voltgen_value[2]                                                             
 io_schmitt[3]                                                                |io_schmitt[3]                                                                
@@ -7962,7 +7782,6 @@ io_pulldown[9]                                                               |io
 voltgen_source[4]                                                            |voltgen_source[4]                                                            
 io_slew[3]                                                                   |io_slew[3]                                                                   
 io_pullup[4]                                                                 |io_pullup[4]                                                                 
-io_pullup[9]                                                                 |io_pullup[9]                                                                 
 io_slew[10]                                                                  |io_slew[10]                                                                  
 io_pulldown[11]                                                              |io_pulldown[11]                                                              
 voltgen_sink2[1]                                                             |voltgen_sink2[1]                                                             
@@ -7977,7 +7796,6 @@ io_pullup[1]                                                                 |io
 voltgen_sink1[0]                                                             |voltgen_sink1[0]                                                             
 bandgap_trim[11]                                                             |bandgap_trim[11]                                                             
 io_slew[7]                                                                   |io_slew[7]                                                                   
-io_pullup[8]                                                                 |io_pullup[8]                                                                 
 bandgap_sink1[2]                                                             |bandgap_sink1[2]                                                             
 voltgen_value[1]                                                             |voltgen_value[1]                                                             
 io_schmitt[2]                                                                |io_schmitt[2]                                                                
@@ -8023,6 +7841,7 @@ io_pullup[0]                                                                 |io
 voltgen_sink2[2]                                                             |voltgen_sink2[2]                                                             
 io_slew[6]                                                                   |io_slew[6]                                                                   
 io_pullup[7]                                                                 |io_pullup[7]                                                                 
+io_pullup[8]                                                                 |io_pullup[8]                                                                 
 bandgap_sink1[1]                                                             |bandgap_sink1[1]                                                             
 voltgen_value[0]                                                             |voltgen_value[0]                                                             
 io_schmitt[1]                                                                |io_schmitt[1]                                                                
@@ -8031,37 +7850,40 @@ idac2_value[0]                                                               |id
 io_schmitt[8]                                                                |io_schmitt[8]                                                                
 bandgap_trim[3]                                                              |bandgap_trim[3]                                                              
 io_oe[3]                                                                     |io_oe[3]                                                                     
-dbus_out[18]                                                                 |dbus_out[18]                                                                 
 io_oe[7]                                                                     |io_oe[7]                                                                     
-dbus_out[20]                                                                 |dbus_out[20]                                                                 
+dbus_out[22]                                                                 |dbus_out[22]                                                                 
 io_oe[0]                                                                     |io_oe[0]                                                                     
 io_oe[1]                                                                     |io_oe[1]                                                                     
 io_oe[2]                                                                     |io_oe[2]                                                                     
 io_oe[10]                                                                    |io_oe[10]                                                                    
 bandgap_trim[1]                                                              |bandgap_trim[1]                                                              
 io_oe[4]                                                                     |io_oe[4]                                                                     
-dbus_out[17]                                                                 |dbus_out[17]                                                                 
 io_oe[5]                                                                     |io_oe[5]                                                                     
 io_oe[6]                                                                     |io_oe[6]                                                                     
 io_oe[8]                                                                     |io_oe[8]                                                                     
 io_oe[9]                                                                     |io_oe[9]                                                                     
-dbus_out[21]                                                                 |dbus_out[21]                                                                 
 io_out[10]                                                                   |io_out[10]                                                                   
 dbus_out[23]                                                                 |dbus_out[23]                                                                 
+io_out[5]                                                                    |io_out[5]                                                                    
 io_ie[11]                                                                    |io_ie[11]                                                                    
 bandgap_trim[5]                                                              |bandgap_trim[5]                                                              
 bandgap_trim[0]                                                              |bandgap_trim[0]                                                              
 dbus_out[2]                                                                  |dbus_out[2]                                                                  
 bandgap_trim[12]                                                             |bandgap_trim[12]                                                             
 bandgap_trim[14]                                                             |bandgap_trim[14]                                                             
+dbus_out[18]                                                                 |dbus_out[18]                                                                 
 bandgap_trim[9]                                                              |bandgap_trim[9]                                                              
-io_out[5]                                                                    |io_out[5]                                                                    
+io_out[0]                                                                    |io_out[0]                                                                    
 io_out[7]                                                                    |io_out[7]                                                                    
 dbus_out[13]                                                                 |dbus_out[13]                                                                 
+dbus_out[20]                                                                 |dbus_out[20]                                                                 
+dbus_out[21]                                                                 |dbus_out[21]                                                                 
 dbus_out[4]                                                                  |dbus_out[4]                                                                  
 io_out[4]                                                                    |io_out[4]                                                                    
 bandgap_trim[2]                                                              |bandgap_trim[2]                                                              
 io_out[11]                                                                   |io_out[11]                                                                   
+dbus_out[6]                                                                  |dbus_out[6]                                                                  
+dbus_out[7]                                                                  |dbus_out[7]                                                                  
 bandgap_trim[4]                                                              |bandgap_trim[4]                                                              
 bandgap_trim[6]                                                              |bandgap_trim[6]                                                              
 dbus_out[0]                                                                  |dbus_out[0]                                                                  
@@ -8069,16 +7891,14 @@ dbus_out[1]                                                                  |db
 dbus_out[5]                                                                  |dbus_out[5]                                                                  
 dbus_out[3]                                                                  |dbus_out[3]                                                                  
 dbus_out[9]                                                                  |dbus_out[9]                                                                  
-dbus_out[11]                                                                 |dbus_out[11]                                                                 
 bandgap_trim[13]                                                             |bandgap_trim[13]                                                             
 dbus_out[10]                                                                 |dbus_out[10]                                                                 
-dbus_out[22]                                                                 |dbus_out[22]                                                                 
+dbus_out[11]                                                                 |dbus_out[11]                                                                 
+dbus_out[17]                                                                 |dbus_out[17]                                                                 
 bandgap_trim[8]                                                              |bandgap_trim[8]                                                              
 bandgap_trim[15]                                                             |bandgap_trim[15]                                                             
 io_out[6]                                                                    |io_out[6]                                                                    
 project_zero                                                                 |project_zero                                                                 
-dbus_out[7]                                                                  |dbus_out[7]                                                                  
-dbus_out[6]                                                                  |dbus_out[6]                                                                  
 dbus_out[8]                                                                  |dbus_out[8]                                                                  
 dbus_out[12]                                                                 |dbus_out[12]                                                                 
 dbus_out[14]                                                                 |dbus_out[14]                                                                 
@@ -8097,21 +7917,32 @@ io_ie[8]                                                                     |io
 io_ie[5]                                                                     |io_ie[5]                                                                     
 io_ie[9]                                                                     |io_ie[9]                                                                     
 io_ie[6]                                                                     |io_ie[6]                                                                     
-io_out[0]                                                                    |io_out[0]                                                                    
 io_out[1]                                                                    |io_out[1]                                                                    
 io_out[2]                                                                    |io_out[2]                                                                    
 io_out[3]                                                                    |io_out[3]                                                                    
 io_out[8]                                                                    |io_out[8]                                                                    
 io_out[9]                                                                    |io_out[9]                                                                    
 sram_clk                                                                     |sram_clk                                                                     
-sram_odata[7]                                                                |sram_odata[7]                                                                
-sram_odata[3]                                                                |sram_odata[3]                                                                
-sram_odata[6]                                                                |sram_odata[6]                                                                
-sram_odata[5]                                                                |sram_odata[5]                                                                
-sram_odata[2]                                                                |sram_odata[2]                                                                
-sram_odata[4]                                                                |sram_odata[4]                                                                
-sram_odata[1]                                                                |sram_odata[1]                                                                
-sram_odata[0]                                                                |sram_odata[0]                                                                
+dbus_in_left[7]                                                              |dbus_in_left[7]                                                              
+dbus_in_right[7]                                                             |dbus_in_right[7]                                                             
+dbus_in_left[6]                                                              |dbus_in_left[6]                                                              
+dbus_in_right[6]                                                             |dbus_in_right[6]                                                             
+dbus_in_left[5]                                                              |dbus_in_left[5]                                                              
+dbus_in_right[5]                                                             |dbus_in_right[5]                                                             
+dbus_in_left[3]                                                              |dbus_in_left[3]                                                              
+dbus_in_right[3]                                                             |dbus_in_right[3]                                                             
+dbus_in_right[10]                                                            |dbus_in_right[10]                                                            
+dbus_in_left[2]                                                              |dbus_in_left[2]                                                              
+dbus_in_right[2]                                                             |dbus_in_right[2]                                                             
+dbus_in_left[9]                                                              |dbus_in_left[9]                                                              
+dbus_in_right[9]                                                             |dbus_in_right[9]                                                             
+dbus_in_right[8]                                                             |dbus_in_right[8]                                                             
+dbus_in_right[11]                                                            |dbus_in_right[11]                                                            
+SCK                                                                          |SCK                                                                          
+clk                                                                          |clk                                                                          
+io_in[6]                                                                     |io_in[6]                                                                     
+io_in[10]                                                                    |io_in[10]                                                                    
+io_in[0]                                                                     |io_in[0]                                                                     
 vddd                                                                         |vddd                                                                         
 vssd                                                                         |vssd                                                                         
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -8205,7 +8036,7 @@ slot12_wrapper (1)                                                           |sl
 housekeeping_top (1)                                                         |housekeeping_top (1)                                                         
 rm2 (13)                                                                     |rm2 (13)                                                                     
 Number of devices: 319                                                       |Number of devices: 319                                                       
-Number of nets: 1655                                                         |Number of nets: 1655                                                         
+Number of nets: 1637                                                         |Number of nets: 1637                                                         
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 Resolving symmetries by property value.
 Resolving symmetries by pin name.

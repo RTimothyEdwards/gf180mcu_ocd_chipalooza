@@ -15,7 +15,8 @@
 
 /*
  * Module which instantiates the housekeeping unit along with
- * antenna tie-downs on all inputs and buffers on all outputs.
+ * buffers on all outputs.  (Antenna diodes on the inputs are added
+ * by the flow;  see DIODE_ON_PORTS in librelane/housekeeping_top.)
  */
 
 module housekeeping_top (
@@ -129,13 +130,10 @@ module housekeeping_top (
 
     // NOTE:  GF verilog for the standard cells does not have power and ground
 
-    /* Instantiate antenna tie-downs on all input pins */
-    (* keep *)
-    gf180mcu_as_sc_mcu7t3v3__diode_2 tiedowns [80:0] (
-	// no. signals = 1 + 1 + 1 + 1 + 1 + 32 + 12 + 12 + 12 + 8 = 81
-	.DIODE({porb, clk, SCK, SDI, CSB, mask_rev_in, dbus_in_right, dbus_in_left,
-		io_in, sram_odata})
-    );
+    /* No antenna diodes here.  They are added by the flow (DIODE_ON_PORTS
+     * in the LibreLane config), after fanout repair and CTS, so that they
+     * stay on the port nets;  see the config for why.
+     */
     
     /* Buffer the clock to all projects with the largest clock buffer available */
     (* keep *)

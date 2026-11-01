@@ -167,6 +167,21 @@ PDN_CORE_RING: false
 # be deleted by hand after the previous run.
 PDN_MULTILAYER: false
 
+# The default strap pitch (153.6 um) is wider than this 114 um core, so
+# the block got a single pair of Metal4 straps.  At 75 um there are two,
+# at about x = 16 and 91 um from the core edge.
+PDN_VPITCH: 75
+
+# Antenna diodes on every input port.  Odb.DiodesOnPorts runs after the
+# resizer's fanout repair and after CTS, so its diodes land on the port
+# net itself, one beside each gate the port drives.  Diodes instantiated
+# in the RTL do not survive that:  the resizer treats a diode pin as an
+# ordinary load and splits it off behind a fanout buffer (17 of 81 in
+# housekeeping_top, including clk and SCK under CTS), leaving the long
+# frame-level wire on a bare gate.  Hence no diodes in the RTL.
+DIODE_ON_PORTS: in
+
+
 # FP_PDN_CFG: dir::pdn_cfg.tcl
 
 # FP_PDN_VWIDTH: 2.0

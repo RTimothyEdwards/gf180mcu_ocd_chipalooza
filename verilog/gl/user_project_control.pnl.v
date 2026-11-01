@@ -132,23 +132,437 @@ module user_project_control (clk,
  wire clknet_1_1__leaf_clk_regs;
  wire net7;
 
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_0_104 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__15__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_sel[2]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__16__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_addr[3]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__17__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_sel[1]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__18__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_sel[1]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__18__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_addr[1]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__19__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_addr[0]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__19__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_sel[0]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__20__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_addr[3]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__20__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_sel[3]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__21__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_sel[2]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__21__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_addr[2]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__22__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_sel[0]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__22__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_addr[0]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__23__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_addr[2]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__23__C (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_addr[1]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__24__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_addr[4]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__24__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_sel[4]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__25__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_sel[3]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__28__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(ibias_ena[1]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__29__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(analog_ena[0]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__30__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(analog_ena[1]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__31__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(analog_ena[2]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__32__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(analog_ena[3]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__33__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(power_3v3_ena));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__34__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(power_5v0_ena));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__35__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(enable));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__36__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(reset));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__37__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_ena));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__38__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(vbias_ena));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__39__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(ibias_ena[0]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__40__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[0]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__40__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[0]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__41__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[1]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__41__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[1]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__42__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[2]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__42__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[2]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__43__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[3]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__43__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[3]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__44__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[4]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__44__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[4]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__45__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[5]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__45__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[5]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__46__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[6]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__46__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[6]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__47__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[7]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__47__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[7]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__48__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[8]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__48__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[8]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__49__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[9]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__49__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[9]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__50__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[10]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__50__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[10]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__51__A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_out_relay[11]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__51__B (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(proj_dig_out[11]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__52__RN (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(enable));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA__53__RN (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(enable));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA_clkbuf_0_clk_A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(clk));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 ANTENNA_clkbuf_regs_0_clk_A (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(clk));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[0].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[0]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[10].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[10]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[11].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[11]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[12].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[12]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[13].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[13]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[14].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[14]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[15].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[15]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[16].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[16]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[17].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[17]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[18].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[18]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[19].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[19]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[1].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[1]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[20].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[20]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[21].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[21]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[22].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[22]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[23].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[23]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[2].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[2]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[3].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[3]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[4].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[4]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[5].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[5]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[6].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[6]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[7].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[7]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[8].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[8]));
+ gf180mcu_as_sc_mcu7t3v3__diode_2 \ANTENNA_dig_in_gen[9].dig_in_latch_D  (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd),
+    .DIODE(dig_in[9]));
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_0_106 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_0_108 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_0_116 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_0_132 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_0_120 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_0_138 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_0_142 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_0_154 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_0_158 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_0_166 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -164,11 +578,7 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_0_53 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_0_55 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_0_33 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -176,47 +586,39 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_0_70 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_0_72 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_0_86 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_0_80 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_10_103 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_0_82 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_10_107 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_10_109 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_10_111 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_10_125 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_10_113 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_10_141 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_10_133 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_10_149 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_10_149 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_10_153 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_10_151 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_10_168 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_10_172 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_10_170 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -244,39 +646,43 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_10_2 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_10_39 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_10_50 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_10_41 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_10_95 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_10_60 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_11_118 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_10_83 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_11_142 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_10_85 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_11_150 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_11_116 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_11_154 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_11_120 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_11_170 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_11_144 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_11_178 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_11_152 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_11_172 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -292,35 +698,35 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_11_36 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_11_2 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_11_46 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_11_27 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_11_69 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_11_29 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_11_72 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_11_48 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_11_76 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_11_50 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_11_95 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_11_6 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_11_99 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_11_74 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_12_104 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_11_78 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -337,18 +743,6 @@ module user_project_control (clk,
     .VPW(vssd),
     .VSS(vssd));
  gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_12_121 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_12_140 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_12_156 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_12_172 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -376,87 +770,87 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_12_2 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_12_2 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_12_27 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_12_27 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_12_4 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_12_46 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_12_46 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_12_50 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_12_67 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_12_6 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_12_83 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_12_72 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_12_85 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_12_8 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_13_106 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_12_80 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_13_110 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_12_84 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_13_129 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_12_86 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_13_137 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_13_118 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_13_139 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_13_144 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_13_160 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_13_152 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_13_173 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_13_156 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_13_189 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_13_162 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_13_197 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_13_178 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_13_199 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_13_194 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_13_2 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_13_198 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_13_27 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_13_2 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_13_6 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_13_43 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_13_65 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_13_47 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -464,35 +858,43 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_13_72 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_13_72 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_14_125 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_13_76 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_14_133 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_13_95 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_14_155 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_13_97 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_14_159 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_14_10 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_14_165 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_14_125 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_14_168 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_14_14 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_14_172 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_14_16 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_14_162 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_14_170 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -516,51 +918,35 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_14_2 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_14_2 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_14_46 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_14_37 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_14_6 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_14_45 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_14_84 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_14_83 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_14_86 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_15_104 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_15_104 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_15_120 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_15_112 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_15_138 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_15_134 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_15_138 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_15_146 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_15_165 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_15_169 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_15_154 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -608,7 +994,7 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_15_70 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_15_72 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -616,19 +1002,19 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_15_86 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_15_80 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_1_127 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_1_135 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_1_158 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_1_154 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_1_174 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_1_170 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -648,47 +1034,43 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_1_49 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_1_72 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_1_53 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_1_79 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_1_55 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_1_83 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_1_76 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_1_85 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_1_78 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_1_88 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_1_81 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_1_92 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_1_86 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_1_94 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_1_89 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_2_109 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_1_91 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_2_113 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_2_126 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_2_165 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_2_157 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -720,31 +1102,11 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_2_28 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_2_64 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_2_41 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_2_70 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_2_86 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_2_94 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_2_98 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_3_118 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_2_66 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -776,55 +1138,39 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_3_56 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_3_64 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_3_60 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_3_68 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_3_63 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_3_93 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_3_67 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_4_127 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_3_69 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_4_131 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_3_72 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_4_133 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_4_100 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_4_150 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_4_104 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_4_166 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_4_107 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_4_123 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_4_131 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_4_151 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_4_167 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_4_174 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -852,27 +1198,19 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_4_56 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_4_59 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_4_60 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_5_158 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_5_109 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_5_174 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_5_125 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_5_156 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_5_172 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_5_178 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -888,51 +1226,51 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_5_2 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_5_52 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_5_60 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_5_61 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_5_72 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_5_69 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_5_93 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_5_72 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_6_107 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_5_76 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_6_126 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_5_78 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_6_161 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_6_103 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_6_169 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_6_128 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_6_173 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_6_136 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_6_177 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_6_165 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_6_179 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_6_177 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_6_189 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_6_193 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -944,47 +1282,35 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_6_2 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_6_59 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_6_34 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_6_75 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_6_37 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_6_91 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_6_54 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_6_99 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_6_61 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_7_102 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_6_65 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_7_121 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_6_67 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_7_137 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_7_116 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_7_124 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_7_128 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_7_136 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_7_139 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -996,11 +1322,11 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_7_147 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_7_161 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_7_163 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_7_177 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -1020,15 +1346,11 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_7_2 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_7_49 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_7_6 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_7_60 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_7_64 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -1036,59 +1358,47 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_7_72 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_7_72 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_7_76 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_7_98 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_7_78 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_8_102 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_8_125 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_104 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_8_141 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_107 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_8_145 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_8_164 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_147 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_8_172 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_150 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_174 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_8_163 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_177 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_8_171 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_8_187 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_8_177 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_179 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_8_189 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_8_197 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_8_195 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -1096,43 +1406,63 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_8_2 (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd));
  gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_34 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_4 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_37 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_8_51 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_8_56 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_8_67 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_8_72 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_8_83 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_8_94 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_9_111 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_9_103 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_9_134 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_9_119 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_9_138 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_9_135 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_9_172 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_9_139 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_9_142 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_9_146 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_9_150 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_9_167 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fillcap_4 FILLER_9_175 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_9_179 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -1148,19 +1478,23 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_9_37 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_16 FILLER_9_45 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_9_48 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_9_61 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_9_50 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_9_69 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
- gf180mcu_as_sc_mcu7t3v3__fill_1 FILLER_9_91 (.VDD(vddd),
+ gf180mcu_as_sc_mcu7t3v3__fillcap_8 FILLER_9_72 (.VDD(vddd),
+    .VNW(vddd),
+    .VPW(vssd),
+    .VSS(vssd));
+ gf180mcu_as_sc_mcu7t3v3__fill_2 FILLER_9_80 (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd));
@@ -1489,7 +1823,7 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .B(net5),
+    .B(\control_base.select ),
     .A(vbias_ena),
     .Y(\control_base.proj_vbias_ena ));
  gf180mcu_as_sc_mcu7t3v3__and2_2 _39_ (.VDD(vddd),
@@ -1503,7 +1837,7 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .S(net4),
+    .S(net3),
     .B(proj_dig_out[0]),
     .A(dig_out_relay[0]),
     .Y(\control_base.dig_out[0] ));
@@ -1669,20 +2003,20 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .A(clknet_1_1__leaf_clk));
+    .A(clknet_1_0__leaf_clk));
  gf180mcu_as_sc_mcu7t3v3__and2_2 clockgate_and (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
     .B(proj_clk_gate),
-    .A(clknet_1_0__leaf_clk),
+    .A(clknet_1_1__leaf_clk),
     .Y(proj_clk_unbuf));
  gf180mcu_as_sc_mcu7t3v3__dlxtn_2 clockgate_latch (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(clknet_1_1__leaf_clk),
-    .D(\control_base.select ),
+    .ENA(clknet_1_0__leaf_clk),
+    .D(net5),
     .Q(proj_clk_gate));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[0].dig_in_latch  (.VDD(vddd),
     .VNW(vddd),
@@ -1723,35 +2057,35 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(net1),
+    .ENA(net2),
     .D(dig_in[14]),
     .Q(\proj_dig_in_unbuf[14] ));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[15].dig_in_latch  (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(net1),
+    .ENA(net2),
     .D(dig_in[15]),
     .Q(\proj_dig_in_unbuf[15] ));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[16].dig_in_latch  (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(net1),
+    .ENA(net2),
     .D(dig_in[16]),
     .Q(\proj_dig_in_unbuf[16] ));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[17].dig_in_latch  (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(net2),
+    .ENA(net1),
     .D(dig_in[17]),
     .Q(\proj_dig_in_unbuf[17] ));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[18].dig_in_latch  (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(net2),
+    .ENA(net1),
     .D(dig_in[18]),
     .Q(\proj_dig_in_unbuf[18] ));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[19].dig_in_latch  (.VDD(vddd),
@@ -1765,7 +2099,7 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(net3),
+    .ENA(net4),
     .D(dig_in[1]),
     .Q(\proj_dig_in_unbuf[1] ));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[20].dig_in_latch  (.VDD(vddd),
@@ -1800,7 +2134,7 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(net3),
+    .ENA(net4),
     .D(dig_in[2]),
     .Q(\proj_dig_in_unbuf[2] ));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[3].dig_in_latch  (.VDD(vddd),
@@ -1814,21 +2148,21 @@ module user_project_control (clk,
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(net4),
+    .ENA(net3),
     .D(dig_in[4]),
     .Q(\proj_dig_in_unbuf[4] ));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[5].dig_in_latch  (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(net4),
+    .ENA(net3),
     .D(dig_in[5]),
     .Q(\proj_dig_in_unbuf[5] ));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[6].dig_in_latch  (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
     .VSS(vssd),
-    .ENA(net3),
+    .ENA(net1),
     .D(dig_in[6]),
     .Q(\proj_dig_in_unbuf[6] ));
  gf180mcu_as_sc_mcu7t3v3__dlxtp_2 \dig_in_gen[7].dig_in_latch  (.VDD(vddd),
@@ -2014,361 +2348,6 @@ module user_project_control (clk,
     .VSS(vssd),
     .A(\control_base.proj_5v0_ena ),
     .Y(proj_5v0_ena));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[0]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[0]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[10]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[10]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[11]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[11]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[12]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[0]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[13]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[1]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[14]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[2]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[15]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[3]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[16]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[4]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[17]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[5]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[18]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[6]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[19]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[7]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[1]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[1]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[20]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[8]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[21]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[9]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[22]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[10]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[23]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_out_relay[11]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[24]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[0]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[25]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[1]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[26]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[2]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[27]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[3]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[28]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[4]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[29]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[5]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[2]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[2]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[30]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[6]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[31]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[7]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[32]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[8]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[33]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[9]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[34]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[10]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[35]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[11]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[36]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[12]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[37]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[13]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[38]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[14]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[39]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[15]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[3]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[3]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[40]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[16]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[41]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[17]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[42]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[18]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[43]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[19]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[44]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[20]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[45]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[21]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[46]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[22]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[47]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_in[23]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[48]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(power_3v3_ena));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[49]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(power_5v0_ena));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[4]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[4]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[50]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(vbias_ena));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[51]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(ibias_ena[0]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[52]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(ibias_ena[1]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[53]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(analog_ena[0]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[54]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(analog_ena[1]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[55]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(analog_ena[2]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[56]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(analog_ena[3]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[57]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(reset));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[58]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(enable));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[59]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(dig_ena));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[5]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[5]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[60]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(clknet_1_0__leaf_clk));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[61]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_sel[0]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[62]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_sel[1]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[63]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_sel[2]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[64]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_sel[3]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[65]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_sel[4]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[66]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_addr[0]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[67]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_addr[1]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[68]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_addr[2]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[69]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_addr[3]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[6]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[6]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[70]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_addr[4]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[7]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[7]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[8]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[8]));
- gf180mcu_as_sc_mcu7t3v3__diode_2 \tiedowns[9]  (.VDD(vddd),
-    .VNW(vddd),
-    .VPW(vssd),
-    .VSS(vssd),
-    .DIODE(proj_dig_out[9]));
  gf180mcu_as_sc_mcu7t3v3__buff_8 \userbuffers[0]  (.VDD(vddd),
     .VNW(vddd),
     .VPW(vssd),
