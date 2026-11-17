@@ -345,7 +345,7 @@ proceed to step (8).
 	2) The user project wrapper layout in magic/openframe_project_wrapper.mag
 
      This script must be run from the magic/ directory.  If the script determines
-     that a file "sg13cmos5_padframe.mag" exists, it will not run.  It may be run
+     that a file "gf180mcu_padframe.mag" exists, it will not run.  It may be run
      again at any time by deleting the padframe layout.
 
 (6) Rebuild the project slot wrappers with any custom definitions for
