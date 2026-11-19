@@ -23,7 +23,7 @@ cd magic
 magic -dnull -noconsole -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
 drc off
 crashbackups stop
-locking disable
+locking enable
 
 source ../scripts/layout_setup.tcl
 for {set i 1} {\$i <= 18} {incr i} {

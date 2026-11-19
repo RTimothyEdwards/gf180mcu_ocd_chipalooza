@@ -136,7 +136,7 @@ query_placements() {
 	    -rcfile "${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc" 2>&1 <<EOF
 drc off
 crashbackups stop
-locking disable
+locking enable
 source ../scripts/layout_setup.tcl
 units microns
 load $frame

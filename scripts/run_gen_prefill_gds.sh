@@ -22,7 +22,7 @@ cd magic
 magic -dnull -noconsole -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
 drc off
 crashbackups stop
-locking disable
+locking enable
 
 # Read chipalooza_frame and write GDS (with hierarchical processing)
 load chipalooza_frame
@@ -36,7 +36,7 @@ EOF
 magic -dnull -noconsole -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
 drc off
 crashbackups stop
-locking disable
+locking enable
 
 gds readonly true
 gds read chipalooza_frame 
