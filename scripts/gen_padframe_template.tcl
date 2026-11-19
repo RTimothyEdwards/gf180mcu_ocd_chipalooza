@@ -28,7 +28,7 @@ namespace path {::tcl::mathop ::tcl::mathfunc}
 
 drc off
 crashbackups stop
-locking disable
+locking enable
 units microns
 
 # Add the I/O library path (see setup.sh)
