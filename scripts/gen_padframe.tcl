@@ -649,10 +649,10 @@ label_pad pad_vss5v0_0 vss5v0
 label_pad pad_s3_an_0 s3_an\[0\]
 label_pad pad_s3_an_1 s3_an\[1\]
 label_pad pad_s4_an_0 s4_an\[0\]
+label_pad pad_s4_an_1 s4_an\[1\]
 label_pad pad_vss3v3_0 vss3v3
 label_pad pad_s5_an_0 s5_an\[0\]
 label_pad pad_s5_an_1 s5_an\[1\]
-label_pad pad_s5_an_2 s5_an\[2\]
 label_pad pad_s6_an_0 s6_an\[0\]
 label_pad pad_s6_an_1 s6_an\[1\]
 label_pad pad_vss3v3_1 vss3v3
@@ -690,9 +690,9 @@ label_pad pad_s13_an_0 s13_an\[0\]
 label_pad pad_s13_an_1 s13_an\[1\]
 label_pad pad_s14_an_0 s14_an\[0\]
 label_pad pad_s14_an_1 s14_an\[1\]
-label_pad pad_s14_an_2 s14_an\[2\]
-label_pad pad_vss5v0_4 vss5v0
+label_pad pad_vss5v0_5 vss5v0
 label_pad pad_s15_an_0 s15_an\[0\]
+label_pad pad_s15_an_1 s15_an\[1\]
 label_pad pad_s16_an_0 s16_an\[0\]
 label_pad pad_s16_an_1 s16_an\[1\]
 label_pad pad_vss3v3_3 vss3v3
