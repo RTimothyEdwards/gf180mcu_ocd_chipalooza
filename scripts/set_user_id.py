@@ -21,6 +21,8 @@
 #
 # set_user_id.py ---
 #
+# (GF180MCU version)
+#
 # Manipulate the magic database and verilog source files for the
 # user_id_programming block to set the user ID number.  Specifically,
 # the via programming is done in layout "user_id_vias.mag", which
@@ -38,44 +40,44 @@
 #
 # user_id_vias layout map:
 # Positions marked (in microns) for value = 0.  For value = 1, move
-# the via 0.485um to the left (97 internal units)
-# The via size is 0.2um x 0.2um  (40 x 40 internal units)
+# the via 1.94um to the left (194 internal units)
+# The via size is 0.3um x 0.3um  (30 x 30 internal units)
 #
 # Signal        Via lower left corner position (magic internal units)
 # name		X      	Y     
 #---------------------------------------------------
-# mask_rev[0]   97	1020
-# mask_rev[1]	97	4
-# mask_rev[2]	1249	1020
-# mask_rev[3]	1249	4
-# mask_rev[4]	2401	1020
-# mask_rev[5]	2401	4
-# mask_rev[6]	3553	1020
-# mask_rev[7]   3553	4
-# mask_rev[8]   4705	1020
-# mask_rev[9]   4705	4
-# mask_rev[10]  5857	1020
-# mask_rev[11]  5857	4
-# mask_rev[12]	7009	1020
-# mask_rev[13]	7009	4
-# mask_rev[14]	8161	1020
-# mask_rev[15]	8161	4
-# mask_rev[16]	9313	1020
-# mask_rev[17]	9313	4
-# mask_rev[18]	10465	1020
-# mask_rev[19]	10465	4
-# mask_rev[20]	11617	1020
-# mask_rev[21]	11617	4
-# mask_rev[22]	12769	1020
-# mask_rev[23]	12769	4
-# mask_rev[24]	13921	1020
-# mask_rev[25]	13921	4
-# mask_rev[26]	15073	1020
-# mask_rev[27]	15073	4
-# mask_rev[28]	16225	1020
-# mask_rev[29]	16225	4
-# mask_rev[30]	17377	1020
-# mask_rev[31]	17377	4
+# mask_rev[0]   194	489
+# mask_rev[1]	194	0
+# mask_rev[2]	866	489
+# mask_rev[3]	866	0
+# mask_rev[4]	1426	489
+# mask_rev[5]	1426	0
+# mask_rev[6]	2098	489
+# mask_rev[7]   2098	0
+# mask_rev[8]   2658	489
+# mask_rev[9]   2658	0
+# mask_rev[10]  3330	489
+# mask_rev[11]  3330	0
+# mask_rev[12]	3890	489
+# mask_rev[13]	3890	0
+# mask_rev[14]	4562	489
+# mask_rev[15]	4562	0
+# mask_rev[16]	5122	489
+# mask_rev[17]	5122	0
+# mask_rev[18]	5794	489
+# mask_rev[19]	5794	0
+# mask_rev[20]	6354	489
+# mask_rev[21]	6354	0
+# mask_rev[22]	7026	489
+# mask_rev[23]	7026	0
+# mask_rev[24]	7586	489
+# mask_rev[25]	7586	0
+# mask_rev[26]	8258	489
+# mask_rev[27]	8258	0
+# mask_rev[28]	8818	489
+# mask_rev[29]	8818	0
+# mask_rev[30]	9490	489
+# mask_rev[31]	9490	0
 #----------------------------------------------------------------------
 
 import os
@@ -120,12 +122,8 @@ def parse_user_id(value):
 def read_programmed_id(vfile):
     """Read the ID actually programmed into the verilog.
 
-    Returns (connections, parameter), either of which may be None if it
-    could not be read.  The two are separate on purpose:  the parameter is
-    documentation that nothing overrides, while the connections to the
-    tiehi and tielo cells are what reach the chip.
+    Returns "parameter" which may be None if it could not be read.
     """
-    bits = {}
     param = None
 
     try:
@@ -135,21 +133,11 @@ def read_programmed_id(vfile):
         return (None, None)
 
     for line in vlines:
-        amatch = assignrex.match(line)
-        if amatch:
-            idx = int(amatch.group(2))
-            if idx < 32 and idx == int(amatch.group(4)):
-                bits[idx] = '1' if amatch.group(3) == 'high' else '0'
-            continue
         pmatch = paramrex.search(line)
         if pmatch:
             param = int(pmatch.group(2), 16)
 
-    connections = None
-    if len(bits) == 32:
-        connections = int(''.join(bits[i] for i in range(31, -1, -1)), 2)
-
-    return (connections, param)
+    return param
 
 
 def usage():
@@ -175,14 +163,14 @@ if __name__ == '__main__':
     # Coordinate pairs in magic internal units
 
     mask_rev = (
-	(97,	1020), (97,	4), (1249,	1020), (1249,	4),
-	(2401,	1020), (2401,	4), (3553,	1020), (3553,	4),
-	(4705,	1020), (4705,	4), (5857,	1020), (5857,	4),
-	(7009,	1020), (7009,	4), (8161,	1020), (8161,	4),
-	(9313,	1020), (9313,	4), (10465,	1020), (10465,	4),
-	(11617,	1020), (11617,	4), (12769,	1020), (12769,	4),
-	(13921,	1020), (13921,	4), (15073,	1020), (15073,	4),
-	(16225,	1020), (16225,	4), (17377,	1020), (17377,	4));
+	(194,	489), (194,	0), (866,	489), (866,	0),
+	(1426,	489), (1426,	0), (2098,	489), (2098,	0),
+	(2658,	489), (2658,	0), (3330,	489), (3330,	0),
+	(3890,	489), (3890,	0), (4562,	489), (4562,	0),
+	(5122,	489), (5122,	0), (5794,	489), (5794,	0),
+	(6354,	489), (6354,	0), (7026,	489), (7026,	0),
+	(7586,	489), (7586,	0), (8258,	489), (8258,	0),
+	(8818,	489), (8818,	0), (9490,	489), (9490,	0));
 
     optionlist = []
     arguments = []
@@ -265,21 +253,8 @@ if __name__ == '__main__':
             print('0')
             sys.exit(1)
 
-        (connections, parameter) = read_programmed_id(vfile)
-
-        if connections == None:
-            print('Error:  Could not read all 32 mask_rev connections from ' +
-			vfile + '.', file=sys.stderr)
-            print('0')
-            sys.exit(1)
-
-        if parameter != None and parameter != connections:
-            print("Warning:  USER_PROJECT_ID reads 32'h" +
-			'{0:08X}'.format(parameter) + " but the connections encode " +
-			"32'h" + '{0:08X}'.format(connections) +
-			'.  Reporting the connections.', file=sys.stderr)
-
-        print(str(connections))
+        parameter = read_programmed_id(vfile)
+        print(str(parameter))
         sys.exit(0)
 
     if not user_id_value:
@@ -355,8 +330,8 @@ if __name__ == '__main__':
 
         xllint = xint
         yllint = yint
-        xurint = xint + 40
-        yurint = yint + 40
+        xurint = xint + 30
+        yurint = yint + 30
  
         # Get the values for the corner coordinates in magic internal units
         xlli = xllint
@@ -366,9 +341,9 @@ if __name__ == '__main__':
 
         viaoldposdata = f"rect {xlli} {ylli} {xuri} {yuri}"
 
-        # For "one" bits, the X position is moved 0.485 microns to the left
-        newxllint = xllint - 97
-        newxurint = xurint - 97
+        # For "one" bits, the X position is moved 1.94 microns to the left
+        newxllint = xllint - 194
+        newxurint = xurint - 194
 
         # Get the values for the new corner coordinates in magic internal units
         newxlli = newxllint
@@ -412,33 +387,10 @@ if __name__ == '__main__':
 
     vfile = vpath + '/gl/user_id_programming.v'
 
-    # Two things in this file encode the ID, and only one of them is real.
-    # USER_PROJECT_ID is a parameter that nothing overrides;  what actually
-    # reaches the chip is the set of hard-coded connections to the tiehi and
-    # tielo cells below it, which is what the layout and netgen see.
-    #
-    # Both are rewritten on every run, even when the parameter already reads
-    # correctly, because the two can drift apart.  If they ever do, it is the
-    # connections that taped out, so trusting the parameter and skipping the
-    # rest would hide the discrepancy rather than fix it.  Rewriting lines
-    # that are already correct costs nothing.
-    #
-    # paramrex and assignrex are defined at the top of this file and are
-    # shared with read_programmed_id(), so that what -report reads and what
-    # this step rewrites can never drift apart.
-    #
-    # NOTE:  the parameter is in the module's parameter list and so has no
-    # trailing semicolon.  An earlier version of that pattern required one
-    # and therefore never matched anything.
-
-    # Column at which the trailing /* bit */ comment starts, matching the
-    # file as it is written.  Keeping it means an unchanged ID produces no
-    # diff at all.
-    comment_col = 49
+    # Replace the value of USER_PROJECT_ID with the new ID
 
     id_hex = '{0:08X}'.format(user_id_int)
 
-    oldbits = {}
     outlines = []
     nchanged = 0
     paramfound = False
@@ -449,49 +401,6 @@ if __name__ == '__main__':
         vlines = ifile.read().splitlines()
 
     for line in vlines:
-        amatch = assignrex.match(line)
-        if amatch:
-            indent = amatch.group(1)
-            idx = int(amatch.group(2))
-            rhsidx = int(amatch.group(4))
-
-            if idx > 31:
-                print('Error:  mask_rev[' + str(idx) + '] is out of range in ' + vfile)
-                errors += 1
-                outlines.append(line)
-                continue
-
-            # The left and right hand sides must name the same bit.  A
-            # mismatch here would quietly program the wrong bit.
-            if idx != rhsidx:
-                print('Error:  mask_rev[' + str(idx) + '] is driven from ' +
-			'user_proj_id_' + amatch.group(3) + '[' + str(rhsidx) +
-			'] in ' + vfile)
-                errors += 1
-                outlines.append(line)
-                continue
-
-            if idx in oldbits:
-                print('Error:  mask_rev[' + str(idx) + '] is assigned twice in ' + vfile)
-                errors += 1
-                outlines.append(line)
-                continue
-
-            oldbits[idx] = '1' if amatch.group(3) == 'high' else '0'
-
-            bit = user_id_bits[idx]
-            level = 'high' if bit == '1' else 'low'
-            body = (indent + 'assign mask_rev[' + str(idx) + '] = ' +
-			'user_proj_id_' + level + '[' + str(idx) + '];')
-            oline = body.ljust(comment_col) + '/* ' + bit + ' */'
-
-            if oline != line:
-                nchanged += 1
-                if debugmode:
-                    print('Bit ' + str(idx) + ':  ' + oldbits[idx] + ' -> ' + bit)
-            outlines.append(oline)
-            continue
-
         if paramrex.search(line):
             paramfound = True
             oldparam = paramrex.search(line).group(2)
@@ -503,37 +412,17 @@ if __name__ == '__main__':
 
         outlines.append(line)
 
-    # Everything must have been found, or the file is not what we think.
-
-    missing = [i for i in range(0, 32) if i not in oldbits]
-    if missing:
-        print('Error:  no assign line found for mask_rev bit(s) ' +
-		', '.join(str(i) for i in missing) + ' in ' + vfile)
-        errors += 1
-
+    # The parameter must have been found, or the file is not what we think.
     if not paramfound:
         print('Error:  no USER_PROJECT_ID parameter found in ' + vfile)
         errors += 1
-
-    # Report a parameter that disagreed with the connections.  This is the
-    # accident the whole belt-and-braces rewrite exists to catch, so say so
-    # rather than fixing it silently.
-
-    if paramfound and not missing:
-        oldconn = int(''.join(oldbits[i] for i in range(31, -1, -1)), 2)
-        if int(oldparam, 16) != oldconn:
-            print("Warning:  USER_PROJECT_ID read 32'h" + oldparam.upper() +
-			" but the connections encoded 32'h" +
-			'{0:08X}'.format(oldconn) + '.')
-            print('          The two had drifted apart.  It is the connections')
-            print("          that program the chip.  Both are now 32'h" + id_hex + '.')
 
     if errors == 0:
         with open(vfile, 'w') as ofile:
             for line in outlines:
                 print(line, file=ofile)
         if nchanged == 0:
-            print('Done!  (parameter and all 32 bits were already correct)')
+            print('Done!  (parameter was already correct)')
         else:
             print('Done!  (' + str(nchanged) + ' line(s) changed)')
     else:
@@ -554,8 +443,8 @@ if __name__ == '__main__':
                 oline = re.sub('alpha_[0-9A-F]', 'alpha_' + dchar, line)
                 # Add path reference if cell was not previously found in the file
                 if dchar not in wasseen:
-                    if 'hexdigits' not in oline:
-                        oline += ' hexdigits'
+                    if 'PDKPATH' not in oline:
+                        oline += ' $PDKPATH/libs.ref/gf180mcu_ocd_alpha_large/mag'
                 outlines.append(oline)
                 wasseen[dchar] = True
                 digit += 1

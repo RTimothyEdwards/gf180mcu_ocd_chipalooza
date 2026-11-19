@@ -20,7 +20,7 @@
 // a parameter
 
 module user_id_programming #(
-    parameter USER_PROJECT_ID = 32'h12092025
+    parameter USER_PROJECT_ID = 32'h20261213
 ) (
 `ifdef USE_POWER_PINS
     inout VDD,
@@ -54,50 +54,13 @@ module user_id_programming #(
             .ZERO(user_proj_id_low)
     );
 
-    /* Replacing the assignment with a hard-coded connection
-     * until netgen can be made to understand the RHS expression
-     * as structural verilog.
-     */
-    // genvar i;
-    // generate
-    //	for (i = 0; i < 32; i = i+1) begin
-    //	    assign mask_rev[i] = (USER_PROJECT_ID & (32'h01 << i)) ?
-    //		user_proj_id_high[i] : user_proj_id_low[i];
-    //	end
-    // endgenerate
-
-    assign mask_rev[31] = user_proj_id_low[31];   /* 0 */
-    assign mask_rev[30] = user_proj_id_low[30];   /* 0 */
-    assign mask_rev[29] = user_proj_id_low[29];   /* 0 */
-    assign mask_rev[28] = user_proj_id_high[28];  /* 1 */
-    assign mask_rev[27] = user_proj_id_low[27];   /* 0 */
-    assign mask_rev[26] = user_proj_id_low[26];   /* 0 */
-    assign mask_rev[25] = user_proj_id_high[25];  /* 1 */
-    assign mask_rev[24] = user_proj_id_low[24];   /* 0 */
-    assign mask_rev[23] = user_proj_id_low[23];   /* 0 */
-    assign mask_rev[22] = user_proj_id_low[22];   /* 0 */
-    assign mask_rev[21] = user_proj_id_low[21];   /* 0 */
-    assign mask_rev[20] = user_proj_id_low[20];   /* 0 */
-    assign mask_rev[19] = user_proj_id_high[19];  /* 1 */
-    assign mask_rev[18] = user_proj_id_low[18];   /* 0 */
-    assign mask_rev[17] = user_proj_id_low[17];   /* 0 */
-    assign mask_rev[16] = user_proj_id_high[16];  /* 1 */
-    assign mask_rev[15] = user_proj_id_low[15];   /* 0 */
-    assign mask_rev[14] = user_proj_id_low[14];   /* 0 */
-    assign mask_rev[13] = user_proj_id_high[13];  /* 1 */
-    assign mask_rev[12] = user_proj_id_low[12];   /* 0 */
-    assign mask_rev[11] = user_proj_id_low[11];   /* 0 */
-    assign mask_rev[10] = user_proj_id_low[10];   /* 0 */
-    assign mask_rev[9] = user_proj_id_low[9];     /* 0 */
-    assign mask_rev[8] = user_proj_id_low[8];     /* 0 */
-    assign mask_rev[7] = user_proj_id_low[7];     /* 0 */
-    assign mask_rev[6] = user_proj_id_low[6];     /* 0 */
-    assign mask_rev[5] = user_proj_id_high[5];    /* 1 */
-    assign mask_rev[4] = user_proj_id_low[4];     /* 0 */
-    assign mask_rev[3] = user_proj_id_low[3];     /* 0 */
-    assign mask_rev[2] = user_proj_id_high[2];    /* 1 */
-    assign mask_rev[1] = user_proj_id_low[1];     /* 0 */
-    assign mask_rev[0] = user_proj_id_high[0];    /* 1 */
+    genvar i;
+    generate
+    for (i = 0; i < 32; i = i+1) begin
+        assign mask_rev[i] = (USER_PROJECT_ID & (32'h01 << i)) ?
+    	user_proj_id_high[i] : user_proj_id_low[i];
+    end
+    endgenerate
 
 `ifdef LVS
     /* Enumerate the decap cells for LVS only */
