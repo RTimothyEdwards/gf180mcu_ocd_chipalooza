@@ -113,28 +113,24 @@ module gf180mcu_padframe (
     output wire SDI_in,
     output wire SDI_zero,
     output wire SDI_one,
-    input  wire SDI_oe,
     input  wire SDI_pullup,
     input  wire SDI_pulldown,
 
     output wire CSB_in,
     output wire CSB_zero,
     output wire CSB_one,
-    input  wire CSB_oe,
     input  wire CSB_pullup,
     input  wire CSB_pulldown,
 
     output wire SCK_in,
     output wire SCK_zero,
     output wire SCK_one,
-    input  wire SCK_oe,
     input  wire SCK_pullup,
     input  wire SCK_pulldown,
 
     output wire clk_in,
     output wire clk_zero,
     output wire clk_one,
-    input  wire clk_oe,
     input  wire clk_pullup,
     input  wire clk_pulldown
 );
@@ -426,7 +422,7 @@ module gf180mcu_padframe (
 
     // Right side pads
 
-    gf180mcu_ocd_io__vss pad_vss3v3_0 (
+    gf180mcu_ocd_io__dvdd pad_vdd5v0_0 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -435,7 +431,7 @@ module gf180mcu_padframe (
 	`endif	/* USE_POWER_PINS */
     );
 
-    gf180mcu_ocd_io__vss pad_vss3v3_1 (
+    gf180mcu_ocd_io__vdd pad_vdd3v3_0 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -444,16 +440,7 @@ module gf180mcu_padframe (
 	`endif	/* USE_POWER_PINS */
     );
 
-    gf180mcu_ocd_io__dvdd pad_vdd5v0_0 (
-	`ifdef USE_POWER_PINS
-	    .iovdd(vdd5v0),
-	    .iovss(vss5v0),
-	    .vdd(vdd3v3),
-	    .vss(vss3v3)
-	`endif	/* USE_POWER_PINS */
-    );
-
-    gf180mcu_ocd_io__dvdd pad_vdd5v0_1 (
+    gf180mcu_ocd_io__vdd pad_vdd3v3_1 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -559,7 +546,7 @@ module gf180mcu_padframe (
 	// (core signal name = pad name)
     );
 
-    gf180mcu_ocd_io__vss pad_vss3v3_2 (
+    gf180mcu_ocd_io__vss pad_vss3v3_0 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -612,7 +599,7 @@ module gf180mcu_padframe (
 	// (core signal name = pad name)
     );
 
-    gf180mcu_ocd_io__dvss pad_vss5v0_1 (
+    gf180mcu_ocd_io__vss pad_vss3v3_1 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -654,7 +641,7 @@ module gf180mcu_padframe (
 	// (core signal name = pad name)
     );
 
-    gf180mcu_ocd_io__dvss pad_vss5v0_2 (
+    gf180mcu_ocd_io__dvss pad_vss5v0_1 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -698,7 +685,7 @@ module gf180mcu_padframe (
 
     // Top side pads
 
-    gf180mcu_ocd_io__vss pad_vss3v3_3 (
+    gf180mcu_ocd_io__vdd pad_vdd3v3_2 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -779,7 +766,7 @@ module gf180mcu_padframe (
 	.CS(gpio_11_schmitt)
     );
 
-    gf180mcu_ocd_io__dvss pad_vss5v0_3 (
+    gf180mcu_ocd_io__dvss pad_vss5v0_2 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -828,7 +815,7 @@ module gf180mcu_padframe (
 	.ASIG5V(analog[3])
     );
 
-    gf180mcu_ocd_io__dvss pad_vss5v0_4 (
+    gf180mcu_ocd_io__dvss pad_vss5v0_3 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -837,7 +824,7 @@ module gf180mcu_padframe (
 	`endif	/* USE_POWER_PINS */
     );
 
-    gf180mcu_ocd_io__dvss pad_vss5v0_5 (
+    gf180mcu_ocd_io__dvdd pad_vdd5v0_1 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -855,35 +842,6 @@ module gf180mcu_padframe (
 	`endif	/* USE_POWER_PINS */
     );
 
-    gf180mcu_ocd_io__dvdd pad_vdd5v0_3 (
-	`ifdef USE_POWER_PINS
-	    .iovdd(vdd5v0),
-	    .iovss(vss5v0),
-	    .vdd(vdd3v3),
-	    .vss(vss3v3)
-	`endif	/* USE_POWER_PINS */
-    );
-
-    gf180mcu_ocd_io__dvdd pad_vdd5v0_4 (
-	`ifdef USE_POWER_PINS
-	    .iovdd(vdd5v0),
-	    .iovss(vss5v0),
-	    .vdd(vdd3v3),
-	    .vss(vss3v3)
-	`endif	/* USE_POWER_PINS */
-    );
-
-    gf180mcu_ocd_io__dvdd pad_vdd5v0_5 (
-	`ifdef USE_POWER_PINS
-	    .iovdd(vdd5v0),
-	    .iovss(vss5v0),
-	    .vdd(vdd3v3),
-	    .vss(vss3v3)
-	`endif	/* USE_POWER_PINS */
-    );
-
-    // Right side pads
-
     gf180mcu_ocd_io__asig_5p0 pad_s10_an_0 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
@@ -895,6 +853,17 @@ module gf180mcu_padframe (
 	// (core signal name = pad name)
     );
 
+    gf180mcu_ocd_io__vss pad_vss3v3_2 (
+	`ifdef USE_POWER_PINS
+	    .iovdd(vdd5v0),
+	    .iovss(vss5v0),
+	    .vdd(vdd3v3),
+	    .vss(vss3v3)
+	`endif	/* USE_POWER_PINS */
+    );
+
+    // Right side pads
+
     gf180mcu_ocd_io__asig_5p0 pad_s10_an_1 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
@@ -904,6 +873,15 @@ module gf180mcu_padframe (
 	`endif	/* USE_POWER_PINS */
 	.ASIG5V(s10_an[1])
 	// (core signal name = pad name)
+    );
+
+    gf180mcu_ocd_io__vss pad_vss3v3_3 (
+	`ifdef USE_POWER_PINS
+	    .iovdd(vdd5v0),
+	    .iovss(vss5v0),
+	    .vdd(vdd3v3),
+	    .vss(vss3v3)
+	`endif	/* USE_POWER_PINS */
     );
 
     gf180mcu_ocd_io__asig_5p0 pad_s10_an_2 (
@@ -959,7 +937,7 @@ module gf180mcu_padframe (
 	// (core signal name = pad name)
     );
 
-    gf180mcu_ocd_io__dvss pad_vss5v0_6 (
+    gf180mcu_ocd_io__dvss pad_vss5v0_4 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -1012,7 +990,7 @@ module gf180mcu_padframe (
 	// (core signal name = pad name)
     );
 
-    gf180mcu_ocd_io__dvss pad_vss5v0_7 (
+    gf180mcu_ocd_io__dvss pad_vss5v0_5 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -1118,7 +1096,7 @@ module gf180mcu_padframe (
 	// (core signal name = pad name)
     );
 
-    gf180mcu_ocd_io__vdd pad_vdd3v3_1 (
+    gf180mcu_ocd_io__vdd pad_vdd3v3_3 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),
@@ -1127,7 +1105,7 @@ module gf180mcu_padframe (
 	`endif	/* USE_POWER_PINS */
     );
 
-    gf180mcu_ocd_io__vdd pad_vdd3v3_2 (
+    gf180mcu_ocd_io__vdd pad_vdd3v3_4 (
 	`ifdef USE_POWER_PINS
 	    .iovdd(vdd5v0),
 	    .iovss(vss5v0),

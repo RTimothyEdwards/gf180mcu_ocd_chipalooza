@@ -1,7 +1,7 @@
 magic
 tech gf180mcuD
 magscale 1 10
-timestamp 1793386076
+timestamp 1795029560
 << checkpaint >>
 rect -2010 -2010 256860 84552
 << obsm1 >>
@@ -77,9 +77,9 @@ rect 48 3269 318 5319
 rect 48 899 318 2949
 rect 48 0 318 243
 << metal5 >>
-rect 254384 73790 254850 80789
+rect 254384 73790 254850 79790
 rect 254388 50229 254850 70597
-rect 254388 22681 254850 29604
+rect 254388 22681 254850 28681
 rect 48 5899 918 7799
 rect 318 5319 918 5899
 rect 48 3269 918 5319
@@ -95,109 +95,109 @@ rect 254388 462 254850 82081
 rect 0 0 254850 462
 << labels >>
 flabel metal3 248 64139 648 73003 0 FreeSans 3200 90 0 0 s12_an[0]
-port 49 nsew
+port 48 nsew
 flabel metal3 248 30139 648 39003 0 FreeSans 3200 90 0 0 s12_an[1]
-port 50 nsew
+port 49 nsew
 flabel metal5 254388 10119 254850 19242 0 FreeSans 2769 90 0 0 vdd_3v3
+port 50 nsew
+flabel metal5 254388 73790 254850 79790 0 FreeSans 2769 90 0 0 vss_5v0
 port 51 nsew
-flabel metal5 254388 73790 254850 80713 0 FreeSans 2769 90 0 0 vss_5v0
-port 52 nsew
 flabel metal5 254388 50229 254850 70597 0 FreeSans 2769 90 0 0 vdd_5v0
+port 52 nsew
+flabel metal5 254388 22681 254850 28681 0 FreeSans 2769 90 0 0 vss_3v3
 port 53 nsew
-flabel metal5 254388 22681 254850 29604 0 FreeSans 2769 90 0 0 vss_3v3
-port 54 nsew
 flabel metal3 254388 38694 254850 39155 0 FreeSans 1846 0 0 0 analog_bus3
-port 55 nsew
+port 54 nsew
 flabel metal3 254388 39372 254850 39834 0 FreeSans 1846 0 0 0 analog_bus2
-port 56 nsew
+port 55 nsew
 flabel metal3 254388 40051 254850 40512 0 FreeSans 1846 0 0 0 analog_bus1
-port 57 nsew
+port 56 nsew
 flabel metal3 254388 40729 254850 41191 0 FreeSans 1846 0 0 0 analog_bus0
-port 58 nsew
+port 57 nsew
 flabel metal3 254388 35414 254850 35876 0 FreeSans 1846 0 0 0 vbias
-port 59 nsew
+port 58 nsew
 flabel metal3 254388 36093 254850 36554 0 FreeSans 1846 0 0 0 ibias0
-port 60 nsew
+port 59 nsew
 flabel metal3 254388 36771 254850 37233 0 FreeSans 1846 0 0 0 ibias1
-port 61 nsew
+port 60 nsew
 flabel metal3 254388 30072 254850 30122 0 FreeSans 406 0 0 0 dig_out[0]
-port 62 nsew
+port 61 nsew
 flabel metal3 254388 30187 254850 30238 0 FreeSans 406 0 0 0 dig_out[1]
-port 63 nsew
+port 62 nsew
 flabel metal3 254388 30303 254850 30353 0 FreeSans 406 0 0 0 dig_out[2]
-port 64 nsew
+port 63 nsew
 flabel metal3 254388 30418 254850 30469 0 FreeSans 406 0 0 0 dig_out[3]
-port 65 nsew
+port 64 nsew
 flabel metal3 254388 30534 254850 30585 0 FreeSans 406 0 0 0 dig_out[4]
-port 66 nsew
+port 65 nsew
 flabel metal3 254388 30649 254850 30700 0 FreeSans 406 0 0 0 dig_out[5]
-port 67 nsew
+port 66 nsew
 flabel metal3 254388 30765 254850 30816 0 FreeSans 406 0 0 0 dig_out[6]
-port 68 nsew
+port 67 nsew
 flabel metal3 254388 30880 254850 30931 0 FreeSans 406 0 0 0 dig_out[7]
-port 69 nsew
+port 68 nsew
 flabel metal3 254388 30996 254850 31047 0 FreeSans 406 0 0 0 dig_out[8]
-port 70 nsew
+port 69 nsew
 flabel metal3 254388 31111 254850 31162 0 FreeSans 406 0 0 0 dig_out[9]
-port 71 nsew
+port 70 nsew
 flabel metal3 254388 31227 254850 31278 0 FreeSans 406 0 0 0 dig_out[10]
-port 72 nsew
+port 71 nsew
 flabel metal3 254388 31343 254850 31393 0 FreeSans 406 0 0 0 dig_out[11]
-port 73 nsew
+port 72 nsew
 flabel metal3 254388 31647 254850 31698 0 FreeSans 406 0 0 0 dig_in[0]
-port 74 nsew
+port 73 nsew
 flabel metal3 254388 31763 254850 31813 0 FreeSans 406 0 0 0 dig_in[1]
-port 75 nsew
+port 74 nsew
 flabel metal3 254388 31878 254850 31929 0 FreeSans 406 0 0 0 dig_in[2]
-port 76 nsew
+port 75 nsew
 flabel metal3 254388 31994 254850 32045 0 FreeSans 406 0 0 0 dig_in[3]
-port 77 nsew
+port 76 nsew
 flabel metal3 254388 32109 254850 32160 0 FreeSans 406 0 0 0 dig_in[4]
-port 78 nsew
+port 77 nsew
 flabel metal3 254388 32225 254850 32276 0 FreeSans 406 0 0 0 dig_in[5]
-port 79 nsew
+port 78 nsew
 flabel metal3 254388 32340 254850 32391 0 FreeSans 406 0 0 0 dig_in[6]
-port 80 nsew
+port 79 nsew
 flabel metal3 254388 32456 254850 32507 0 FreeSans 406 0 0 0 dig_in[7]
-port 81 nsew
+port 80 nsew
 flabel metal3 254388 32571 254850 32622 0 FreeSans 406 0 0 0 dig_in[8]
-port 82 nsew
+port 81 nsew
 flabel metal3 254388 32687 254850 32738 0 FreeSans 406 0 0 0 dig_in[9]
-port 83 nsew
+port 82 nsew
 flabel metal3 254388 32803 254850 32853 0 FreeSans 406 0 0 0 dig_in[10]
-port 84 nsew
+port 83 nsew
 flabel metal3 254388 32918 254850 32969 0 FreeSans 406 0 0 0 dig_in[11]
-port 85 nsew
+port 84 nsew
 flabel metal3 254388 33034 254850 33084 0 FreeSans 406 0 0 0 dig_in[12]
-port 86 nsew
+port 85 nsew
 flabel metal3 254388 33149 254850 33200 0 FreeSans 406 0 0 0 dig_in[13]
-port 87 nsew
+port 86 nsew
 flabel metal3 254388 33265 254850 33315 0 FreeSans 406 0 0 0 dig_in[14]
-port 88 nsew
+port 87 nsew
 flabel metal3 254388 33380 254850 33431 0 FreeSans 406 0 0 0 dig_in[15]
-port 89 nsew
+port 88 nsew
 flabel metal3 254388 33496 254850 33547 0 FreeSans 406 0 0 0 dig_in[16]
-port 90 nsew
+port 89 nsew
 flabel metal3 254388 33611 254850 33662 0 FreeSans 406 0 0 0 dig_in[17]
-port 91 nsew
+port 90 nsew
 flabel metal3 254388 33727 254850 33778 0 FreeSans 406 0 0 0 dig_in[18]
-port 92 nsew
+port 91 nsew
 flabel metal3 254388 33842 254850 33893 0 FreeSans 406 0 0 0 dig_in[19]
-port 93 nsew
+port 92 nsew
 flabel metal3 254388 33958 254850 34009 0 FreeSans 406 0 0 0 dig_in[20]
-port 94 nsew
+port 93 nsew
 flabel metal3 254388 34073 254850 34124 0 FreeSans 406 0 0 0 dig_in[21]
-port 95 nsew
+port 94 nsew
 flabel metal3 254388 34189 254850 34240 0 FreeSans 406 0 0 0 dig_in[22]
-port 96 nsew
+port 95 nsew
 flabel metal3 254388 34305 254850 34355 0 FreeSans 406 0 0 0 dig_in[23]
-port 97 nsew
+port 96 nsew
 flabel metal3 254388 34420 254850 34471 0 FreeSans 406 0 0 0 reset
-port 98 nsew
+port 97 nsew
 flabel metal3 254388 34544 254850 34595 0 FreeSans 406 0 0 0 enable
-port 99 nsew
+port 98 nsew
 flabel metal3 254388 34659 254850 34710 0 FreeSans 406 0 0 0 clk
-port 100 nsew
+port 99 nsew
 << properties >>
 string FIXED_BBOX 0 0 254854 82542
 << end >>

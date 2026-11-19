@@ -526,7 +526,7 @@ box move n [- [lindex $ibox 3] [lindex $ibox 1]]
 
 # Place the remainder in clockwise order
 place_spacers_left 83 7
-place_pad_left	 pad_vss3v3_4	gf180mcu_ocd_io__vss	 pad_79
+place_pad_left	 pad_vss3v3_6	gf180mcu_ocd_io__vss	 pad_79
 place_spacers_left 82 s
 place_pad_left	 pad_vdd3v3_4 	gf180mcu_ocd_io__vdd	 pad_78
 place_spacers_left 81
@@ -540,7 +540,7 @@ place_pad_left	 pad_s17_an_1	gf180mcu_ocd_io__asig_5p0	 	 pad_74
 place_spacers_left 77
 place_pad_left	 pad_s17_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_73
 place_spacers_left 76
-place_pad_left	 pad_vss3v3_3	gf180mcu_ocd_io__vss	 pad_72
+place_pad_left	 pad_vss3v3_5	gf180mcu_ocd_io__vss	 pad_72
 place_spacers_left 75
 place_pad_left	 pad_s16_an_1	gf180mcu_ocd_io__asig_5p0		 pad_71
 place_spacers_left 74
@@ -568,13 +568,13 @@ place_pad_left	 pad_s12_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_60
 place_spacers_left 63
 place_pad_left	 pad_s11_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_59
 place_spacers_left 62
-place_pad_left	 pad_vss3v3_2	gf180mcu_ocd_io__vss 	 pad_58
+place_pad_left	 pad_vss3v3_4	gf180mcu_ocd_io__vss 	 pad_58
 place_spacers_left 61
 place_pad_left	 pad_s10_an_2	gf180mcu_ocd_io__asig_5p0	 	 pad_57
 place_spacers_left 60
-place_pad_left	 pad_s10_an_1	gf180mcu_ocd_io__asig_5p0	 	 pad_56
+place_pad_left	 pad_vss3v3_3	gf180mcu_ocd_io__vss	 pad_56
 place_spacers_left 59
-place_pad_left	 pad_s10_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_55
+place_pad_left	 pad_s10_an_1	gf180mcu_ocd_io__asig_5p0	 	 pad_55
 place_spacers_left 58 8
 place_pad_left	 pad_corner_nw	gf180mcu_ocd_io__cor
 
@@ -585,9 +585,9 @@ box move e [- [lindex $ibox 2] [lindex $ibox 0]]
 box move n 5
 
 place_spacers_top 57 6
-place_pad_top	pad_vdd5v0_4	gf180mcu_ocd_io__dvdd	 pad_54
+place_pad_top	pad_vss3v3_2	gf180mcu_ocd_io__vss	 pad_54
 place_spacers_top 56
-place_pad_top	pad_vdd5v0_3	gf180mcu_ocd_io__dvdd	 pad_53
+place_pad_top	 pad_s10_an_0	gf180mcu_ocd_io__asig_5p0	 	 pad_53
 place_spacers_top 55
 place_pad_top	pad_vdd5v0_2	gf180mcu_ocd_io__dvdd	 pad_52
 place_spacers_top 54
@@ -676,12 +676,12 @@ label_pad pad_analog_3 analog\[3\]
 label_pad pad_vss5v0_3 vss5v0
 label_pad pad_vdd5v0_1 vdd5v0
 label_pad pad_vdd5v0_2 vdd5v0
-label_pad pad_vdd5v0_3 vdd5v0
-label_pad pad_vdd5v0_4 vdd5v0
 label_pad pad_s10_an_0 s10_an\[0\]
-label_pad pad_s10_an_1 s10_an\[1\]
-label_pad pad_s10_an_2 s10_an\[2\]
 label_pad pad_vss3v3_2 vss3v3
+label_pad pad_s10_an_1 s10_an\[1\]
+label_pad pad_vss3v3_3 vss3v3
+label_pad pad_s10_an_2 s10_an\[2\]
+label_pad pad_vss3v3_4 vss3v3
 label_pad pad_s11_an_0 s11_an\[0\]
 label_pad pad_s12_an_0 s12_an\[0\]
 label_pad pad_s12_an_1 s12_an\[1\]
@@ -695,14 +695,14 @@ label_pad pad_s15_an_0 s15_an\[0\]
 label_pad pad_s15_an_1 s15_an\[1\]
 label_pad pad_s16_an_0 s16_an\[0\]
 label_pad pad_s16_an_1 s16_an\[1\]
-label_pad pad_vss3v3_3 vss3v3
+label_pad pad_vss3v3_5 vss3v3
 label_pad pad_s17_an_0 s17_an\[0\]
 label_pad pad_s17_an_1 s17_an\[1\]
 label_pad pad_s18_an_0 s18_an\[0\]
 label_pad pad_s18_an_1 s18_an\[1\]
 label_pad pad_vdd3v3_3 vdd3v3
 label_pad pad_vdd3v3_4 vdd3v3
-label_pad pad_vss3v3_4 vss3v3
+label_pad pad_vss3v3_6 vss3v3
 
 # Label all internal digital pins
 
@@ -1075,18 +1075,18 @@ label_power_pad_top pad_vss5v0_2 vdd5v0
 label_power_pad_top pad_vss5v0_3 vdd5v0
 label_power_pad_top pad_vdd5v0_1 vdd5v0
 label_power_pad_top pad_vdd5v0_2 vdd5v0
-label_power_pad_top pad_vdd5v0_3 vdd5v0
-label_power_pad_top pad_vdd5v0_4 vdd5v0
+label_power_pad_top pad_vss3v3_2 vss3v3
 
 # Left power pins
 
-label_power_pad_left pad_vss3v3_2 vss3v3
+label_power_pad_left pad_vss3v3_3 vss3v3
+label_power_pad_left pad_vss3v3_4 vss3v3
 label_power_pad_left pad_vss5v0_4 vss5v0
 label_power_pad_left pad_vss5v0_5 vss5v0
-label_power_pad_left pad_vss3v3_3 vss3v3
+label_power_pad_left pad_vss3v3_5 vss3v3
 label_power_pad_left pad_vdd3v3_3 vdd3v3
 label_power_pad_left pad_vdd3v3_4 vdd3v3
-label_power_pad_left pad_vss3v3_4 vss3v3
+label_power_pad_left pad_vss3v3_6 vss3v3
 
 writeall force gf180mcu_padframe
 

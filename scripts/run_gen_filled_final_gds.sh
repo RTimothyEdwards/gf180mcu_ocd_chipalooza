@@ -1,64 +1,43 @@
 #!/bin/bash
 #
-# Run layout GDS generation on gf180mcu_ocd_chipalooza
-# Run this script from the magic/ directory
+# Run the klayout fill generation on the top level chip to produce
+# the final design to submit to Wafer.Space.
 #
-# This is a compositor designed to do the following:
-# (1) Read the top level gf180mcu_ocd_chipalooza
-# (2) Add the fill pattern cell
-# (3) Write out everything with a new top level.
-#
-# NOTE:  If PROJECT is set as an environment variable, then the final
-# top level cell name and GDS file name will be set to its value.  If
-# not, then the default top level name is "gf180mcu_ocd_chipalooza_final".
-# When submitting for an GF shuttle run, the project name will be dictated
-# by the GF submission process (e.g., PROJECT=GF__MPC9763).
-
-export PROJECT=${PROJECT:-gf180mcu_ocd_chipalooza_final}
+# This script is assumed to be run in the magic/ directory, as it
+# cds up one directory level and then down to gds/.  It could be
+# made smarter about this.
 
 export PDK_ROOT=${PDK_ROOT:-/usr/share/pdk}
 export PDK=${PDK:-gf180mcuD}
 
-echo "Generating final (filled) GDS for $PROJECT"
+echo "Generating fill for gf180mcu_ocd_chipalooza"
 
-# Like the project top level pre-fill, the new top level layout (.mag) is
-# always automatically generated.  Any existing one needs to be deleted or
-# this script will fail.
+cd ../gds
 
-rm -f ${PROJECT}.mag
+# Some designs have a requirement for flag "Metal2_ignore_active", or
+# else the GF fill rules will not allow density to be met.  This may
+# not be necessary for the harness chip because much of the user
+# project areas is unused and is pure fill.
 
-magic -dnull -noconsole -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
-drc off
-crashbackups stop
-locking disable
+# NOTE: Wafer.Space requires file hashes for validation, but the hashes
+# must be run on the *uncompressed* GDS.  So generate uncompressed GDS
+# output, print the hash values, then compress the final GDS for tapeout.
 
-gds readonly true
-gds rescale false
-gds read ../gds/gf180mcu_ocd_chipalooza.gds.gz
-gds read ../gds/gf180mcu_ocd_chipalooza_fill_pattern.gds.gz
+klayout -zz -r \
+    ${PDK_ROOT}/gf180mcuD/libs.tech/klayout/tech/scripts/fill_all.rb \
+    -rd input=gf180mcu_ocd_chipalooza.gds.gz \
+    -rd output=gf180mcu_ocd_chipalooza_final.gds
 
-units microns
-snap internal
+echo "md5sum:"
+md5sum gf180mcu_ocd_chipalooza_final.gds
 
-load $PROJECT -silent
-box values 0 0 0 0
-getcell gf180mcu_ocd_chipalooza child 0 0
-box position 0 0
-getcell gf180mcu_ocd_chipalooza_fill_pattern child 0 0
+echo "sha1sum:"
+sha1sum gf180mcu_ocd_chipalooza_final.gds
 
-# Regenerate the pad pins on the new top level.
-box position 16.1 16.1
-dump padframe_pins child 0 0
+echo "sha256sum:"
+sha256sum gf180mcu_ocd_chipalooza_final.gds
 
-# Write out the .mag file for LVS purposes
-writeall force $PROJECT
+gzip -n --best gf180mcu_ocd_chipalooza_final.gds
 
-cif *hier write disable
-cif *array write disable
-gds compress 9
-gds write $PROJECT
-quit -noprompt
-EOF
-mv ${PROJECT}.gds.gz ../gds/
 echo "Done!"
 exit 0

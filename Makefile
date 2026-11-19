@@ -253,10 +253,7 @@ gds-slots:				## write gds/slot<N>_wrapper.gds for all 18 slots  (11)
 gds-prefill:				## assemble the pre-fill top-level GDS  (12)
 	./scripts/run_gen_prefill_gds.sh
 
-fill:					## generate the fill pattern GDS  (13)
-	cd gds && ../scripts/generate_fill.py gf180mcu_ocd_chipalooza.gds.gz -dist
-
-gds-final:				## assemble the post-fill final GDS  (14)
+gds-final:				## generate fill and assemble the post-fill final GDS  (14)
 	cd magic && ../scripts/run_gen_filled_final_gds.sh
 
 # ---------------------------------------------------------------------

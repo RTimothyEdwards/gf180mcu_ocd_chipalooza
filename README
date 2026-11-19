@@ -345,7 +345,7 @@ proceed to step (8).
 	2) The user project wrapper layout in magic/openframe_project_wrapper.mag
 
      This script must be run from the magic/ directory.  If the script determines
-     that a file "sg13cmos5_padframe.mag" exists, it will not run.  It may be run
+     that a file "gf180mcu_padframe.mag" exists, it will not run.  It may be run
      again at any time by deleting the padframe layout.
 
 (6) Rebuild the project slot wrappers with any custom definitions for
@@ -402,19 +402,8 @@ The following steps continue with the top-level chip integration
      locations.  It then places the seal ring and writes out the top-
      level GDS. 
 
-(10) Generate fill patterns for the chip using
-
-	make fill
-
-     This step will "cd" to the gds/ directory and run the script
-     "generate_fill.py" as follows:
-
-	../scripts/generate_fill.py gf180mcu_ocd_chipalooza.gds.gz -dist 
-
-     This step generates the fill patterns for the chip, in a separate
-     GDS file called gf180mcu_ocd_chipalooza_fill_pattern.gds.gz.
-
-(11) Create the final top-level GDS with
+(10) Generate fill patterns for the chip using klayout and create the
+     final top-level GDS with
 
 	make gds-final
 
@@ -427,7 +416,7 @@ The following steps continue with the top-level chip integration
      file name, set the environment variable "PROJECT" to the cell name
      before running the script.
 
-(12) Final DRC verification:
+(11) Final DRC verification:
 
 	make drc-final
 
@@ -436,7 +425,7 @@ The following steps continue with the top-level chip integration
      been set (see above), then the final DRC result can be found in
      validate/${PROJECT}.lyrdb
 
-(13) Extraction for final LVS verification:
+(12) Extraction for final LVS verification:
 
 	make extract-sch-top
 	make extract-top
@@ -446,7 +435,7 @@ The following steps continue with the top-level chip integration
      in netlist/layout/.  If the PROJECT environment variable has been
      set, then the final netlist is netlist/layout/${PROJECT}.spice.
 
-(14) Final LVS:
+(13) Final LVS:
 
 	make lvs-top
 
@@ -474,7 +463,7 @@ The following steps continue with the top-level chip integration
      not been attempted and would require converting the verilog of the
      padframe, wrapper, and top level cell to SPICE/CDL.
      
-(15) (Item to do, not yet automated)
+(14) (Item to do, not yet automated)
      Preparation for foundry submission:
 
      GF has its own requirements for chip submission that are not
