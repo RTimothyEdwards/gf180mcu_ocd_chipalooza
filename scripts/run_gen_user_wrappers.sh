@@ -37,7 +37,7 @@ echo "Generating slot wrappers"
 magic -dnull -noconsole -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
 drc off
 crashbackups stop
-locking disable
+locking enable
 tech unlock *
 units microns
 snap internal
