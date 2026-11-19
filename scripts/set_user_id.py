@@ -175,14 +175,14 @@ if __name__ == '__main__':
     # Coordinate pairs in magic internal units
 
     mask_rev = (
-	(97,	1020), (97,	4), (1249,	1020), (1249,	4),
-	(2401,	1020), (2401,	4), (3553,	1020), (3553,	4),
-	(4705,	1020), (4705,	4), (5857,	1020), (5857,	4),
-	(7009,	1020), (7009,	4), (8161,	1020), (8161,	4),
-	(9313,	1020), (9313,	4), (10465,	1020), (10465,	4),
-	(11617,	1020), (11617,	4), (12769,	1020), (12769,	4),
-	(13921,	1020), (13921,	4), (15073,	1020), (15073,	4),
-	(16225,	1020), (16225,	4), (17377,	1020), (17377,	4));
+	(194,	489), (194,	0), (866,	489), (866,	0),
+	(1426,	489), (1426,	0), (2098,	489), (2098,	0),
+	(2658,	489), (2658,	0), (3330,	489), (3330,	0),
+	(3890,	489), (3890,	0), (4562,	489), (4562,	0),
+	(5122,	489), (5122,	0), (5794,	489), (5794,	0),
+	(6354,	489), (6354,	0), (7026,	489), (7026,	0),
+	(7586,	489), (7586,	0), (8258,	489), (8258,	0),
+	(8818,	489), (8818,	0), (9490,	489), (9490,	0));
 
     optionlist = []
     arguments = []
@@ -355,8 +355,8 @@ if __name__ == '__main__':
 
         xllint = xint
         yllint = yint
-        xurint = xint + 40
-        yurint = yint + 40
+        xurint = xint + 30
+        yurint = yint + 30
  
         # Get the values for the corner coordinates in magic internal units
         xlli = xllint
@@ -367,8 +367,8 @@ if __name__ == '__main__':
         viaoldposdata = f"rect {xlli} {ylli} {xuri} {yuri}"
 
         # For "one" bits, the X position is moved 0.485 microns to the left
-        newxllint = xllint - 97
-        newxurint = xurint - 97
+        newxllint = xllint - 194
+        newxurint = xurint - 194
 
         # Get the values for the new corner coordinates in magic internal units
         newxlli = newxllint
@@ -434,7 +434,7 @@ if __name__ == '__main__':
     # Column at which the trailing /* bit */ comment starts, matching the
     # file as it is written.  Keeping it means an unchanged ID produces no
     # diff at all.
-    comment_col = 49
+    comment_col = 50
 
     id_hex = '{0:08X}'.format(user_id_int)
 
@@ -552,10 +552,13 @@ if __name__ == '__main__':
             if 'alphaX_' in line:
                 dchar = user_id_value[7 - digit].upper()
                 oline = re.sub('alpha_[0-9A-F]', 'alpha_' + dchar, line)
-                # Add path reference if cell was not previously found in the file
-                if dchar not in wasseen:
-                    if 'hexdigits' not in oline:
-                        oline += ' hexdigits'
+                # Give every digit the library path.  Magic writes the path only on the
+                # first use of a cell, so after a digit change a cell's first use may be
+                # a line without one.  (The IHP version appended "hexdigits", a local
+                # folder there;  the GF180 digits are in gf180mcu_ocd_alpha_large.)
+                tok = oline.split()
+                if tok[0] == 'use' and len(tok) >= 3:
+                    oline = 'use ' + tok[1] + '  ' + tok[2] + ' $PDKPATH/libs.ref/gf180mcu_ocd_alpha_large/mag'
                 outlines.append(oline)
                 wasseen[dchar] = True
                 digit += 1
