@@ -70,24 +70,24 @@ project_id: 20261213
 #--------------------------------------------------------------------------------------
 # Project	URL
 #--------------------------------------------------------------------------------------
-s1_source:	-
-s2_source:	-
+s1_source:	https://github.com/sckzor/CMOS_LNB
+s2_source:	https://github.com/christoph-weiser/gf180mcu_cw_ip_vref
 s3_source:	-
-s4_source:	-
-s5_source:	-
-s6_source:	-
-s7_source:	-
-s8_source:	-
+s4_source:	https://github.com/jonahsaunders/gf180mcu_jonah_saunders_ip__bandgap
+s5_source:	https://github.com/juansebastian-moya/Chipalooza_2026_INL
+s6_source:	https://github.com/lhrodovalho/gf180mcu_rodovalho_ip__lpopamp
+s7_source:	https://github.com/arjun2000ananth/sar_adc_gf180
+s8_source:	https://github.cm/harrydshill/CMOS_INA_GF180MCU
 s9_source:	-
 s10_source:	-
 s11_source:	-
 s12_source:	-
 s13_source:	-
-s14_source:	-
-s15_source:	-
-s16_source:	-
-s17_source:	-
-s18_source:	-
+s14_source:	https://github.com/tdextrous/gf180mcu_tjd_ip__rofncppll
+s15_source:	https://gitea.osmocom.org/no2/gf180mcu_no2_chipalooza_3__usb_tests
+s16_source:	https://github.com/tatzelbrumm/gf180_cm_ip__single2diff2single
+s17_source:	https://github.com/bhagwat-rahul/gf180mcud_rahulbhagwat_ip_ldo
+s18_source:	https://github.com/Vaticori/chipalooza3-ldo-gf180
 
 #--------------------------------------------------------------------------------------
 # Project	Branch		Commit
@@ -114,24 +114,24 @@ s18_version:	-		-
 #--------------------------------------------------------------------------------------
 # Project	Author
 #--------------------------------------------------------------------------------------
-slot_1:		-
-slot_2:		-
-slot_3:		-
-slot_4:		-
-slot_5:		-
-slot_6:		-
-slot_7:		-
-slot_8:		-
-slot_9:		-
-slot_10:	-
-slot_11:	-
-slot_12:	-
-slot_13:	-
-slot_14:	-
-slot_15:	-
-slot_16:	-
-slot_17:	-
-slot_18:	-
+slot_1:		Sands and Araujo
+slot_2:		Weiser
+slot_3:		Hubai
+slot_4:		Saunders
+slot_5:		Moya
+slot_6:		Rodovalho
+slot_7:		Ananth and Yu
+slot_8:		Hill and Hoshino
+slot_9:		Hill and Hoshino
+slot_10:	Al Sabagh
+slot_11:	Al Sabagh
+slot_12:	(reserved)
+slot_13:	Hasler
+slot_14:	Dexter
+slot_15:	Munaut
+slot_16:	Maier
+slot_17:	Bhagwat
+slot_18:	Novatska
 
 #--------------------------------------------------------------------------------------
 # Pad name	Pad type			Core signal name
