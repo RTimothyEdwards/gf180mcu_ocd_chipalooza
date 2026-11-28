@@ -82,7 +82,7 @@ s9_source:	-
 s10_source:	-
 s11_source:	https://github.com/EngGhaith/The-Silent-Owl-GF180MCU-WB-LNA
 s12_source:	-
-s13_source:	-
+s13_source:	https://github.com/GTIceLab/GF180_Chipalooza
 s14_source:	https://github.com/tdextrous/gf180mcu_tjd_ip__rofncppll
 s15_source:	https://gitea.osmocom.org/no2/gf180mcu_no2_chipalooza_3__usb_tests
 s16_source:	https://github.com/tatzelbrumm/gf180_cm_ip__single2diff2single
